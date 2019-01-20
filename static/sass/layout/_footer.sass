@@ -1,0 +1,108 @@
+/* FOOTER STYLES - LAYOUT/FOOTER
+
+$footer-header-color: $accent-med
+$footer-background-color: $accent-light
+$footer-font-size: px-to-em(14px)
+
+$column-width: map-get($columns_config, width)
+$row-width: map-get($rows_config, width)
+
+footer
+  background-color: $footer-background-color
+  font-size: $footer-font-size
+  margin-top: $row-width
+  padding: 1.5em 0
+
+  .categories,
+  .stay-connected-copyright
+    justify-content: space-between
+
+  .footer-column
+    line-height: px-to-em(20px)
+
+    +respond-to(schmedium)
+      line-height: px-to-em(22px)
+      margin-bottom: 1em
+
+  .nav-header-link,
+  .title-link
+    color: $accent-med
+    font-weight: 700
+
+  a
+    +hocus
+      color: $accent-dark
+
+
+    color: $dark
+
+  address
+    font-style: normal
+
+.categories
+  border-bottom: $border
+  padding-bottom: $row-width
+
+.footer-title
+  +respond-to(schmedium)
+    height: auto
+    opacity: 1
+    margin: 0 0 0.5em 0
+
+
+  font:
+    size: px-to-em(17px)
+    weight: 700
+  height: 0
+  opacity: 0
+
+.sub-links
+  margin: 0.25em 0
+
+  li > a
+    +hocus
+      color: $accent-dark
+
+.contact
+  padding-top: $row-width
+
+.contact-phone
+  &:not(:last-of-type)
+    margin: 0 0 0.5em
+
+  span:first-of-type
+    font-weight: 700
+
+.stay-connected-copyright
+  margin-top: 1em
+
+.stay-connected
+  +flex(row, baseline, flex-start)
+
+  +respond-to(schmedium)
+    flex-direction: column
+    align-items: stretch
+
+
+  p,
+  .nav-link:not(:last-of-type)
+    margin: 0 0.5em 0 0
+
+  p,
+  .nav-link
+    +respond-to(schmedium)
+      margin: 0
+
+  p
+    font-weight: 700
+
+.copyright
+  +respond-to(schmedium)
+    margin-top: 1em
+
+
+  color: $dark
+  font-weight: 700
+
+  &:hover
+    font-weight: 700

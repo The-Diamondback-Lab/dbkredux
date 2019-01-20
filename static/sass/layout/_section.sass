@@ -1,0 +1,37 @@
+/* SECTION STYLES - LAYOUT/SECTION
+
+$rows: ('width': map-get($rows_config, width), 'gutter': map-get($rows_config, gutter), 'max': 10)
+
+$columns: ('width': map-get($rows, width), 'gutter': map-get($rows, gutter), 'max': 24)
+
+section
+  margin: map-get($columns_config, width) 0
+
+  > h2
+    color: $accent-dark
+    margin: 0 0 px-to-em(17) 0
+    font:
+      size: px-to-em(18)
+      weight: 600
+    text-transform: uppercase
+
+#section-music
+  > .articles-with-ads
+    +flex(row, center, space-between)
+
+#section-science-and-tech
+  > .articles-with-ads
+    +flex(row-reverse, center, space-between)
+
+    .minor-articles-grid
+      +grid(grid, $rows, $columns)
+
+      figure
+        +grid_item(1, 12, 2, 18)
+
+    .advertisement:first-of-type
+      margin-bottom: px-to-em(50)
+
+.articles-with-ads
+  > div:not(.minor-articles-grid)
+    +flex(column, center, space-between)

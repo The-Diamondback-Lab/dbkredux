@@ -1,0 +1,35 @@
+// -----------------------------------------------------------------------------
+// contains all global sass functions
+// -----------------------------------------------------------------------------
+
+/// get an asset from the assets folder
+/// @param {string} $filename - name of asset file with extension
+/// @param {string} $type [image] - type of asset. i.e: image, font
+/// @param {url} full asset path
+@function asset($filename, $type: image)
+  $folder: '#{$type}s'
+
+  @return url('#{$base-url}/#{$folder}/#{$filename}')
+
+/// get breakpoint from breakpoint map
+/// @param {string} $breakpoint - name of breakpoint to get
+/// @return {string} associated breakpoint value
+/// @throw 'Sorry, #{$breakpoint} does not exist in the map $breakpoints.'
+/// @throw 'Sorry, the map $breakpoints does not exist.'
+@function breakpoint($breakpoint)
+  @if global-variable-exists(breakpoints)
+    @if map-has-key($breakpoints, $breakpoint)
+      @return #{px-to-em(map-get($breakpoints, $breakpoint))}
+    @else
+      @error 'Sorry, #{$breakpoint} does not exist in the map $breakpoints.'
+  @else
+    @error 'Sorry, the map $breakpoints does not exist.'
+
+/// convert pixels to ems
+/// @param {number | string} $px - pixels to convert
+/// @return {string}
+@function px-to-em($px)
+  @if unitless($px)
+    $px: $px * 1px
+
+  @return #{$px / 16px}em

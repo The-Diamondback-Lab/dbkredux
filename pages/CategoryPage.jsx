@@ -1,0 +1,87 @@
+// react
+import * as React from 'reactn';
+import { Link } from "../routes";
+import Router from 'next/router';
+import Head from 'next/head';
+
+// components
+import Advertisement from '../components/Advertisement.jsx';
+import LoadedArticles from '../components/LoadedArticles.jsx';
+
+import ErrorPage from '../pages/ErrorPage.jsx';
+
+import {
+  request
+} from '../utilities/app.utilities.js';
+
+
+
+/* eslint-disable space-before-function-paren */
+/* eslint-disable camelcase */
+
+export default class CategoryPage extends React.Component {
+
+  static async getInitialProps({ query }) {
+    var categorypath = query.categorypath;
+    var categoryId = categorypath.substring(categorypath.lastIndexOf('/') + 1);
+    try {
+      var category_data = await request(`/category/${categoryId}`);
+      /*
+        If the navigated URL has a valid category at the end of the path but is not the correct URL, redirect it to the correct URL
+      */
+      if ("/category/"+categorypath+"/" !== category_data.link) {
+        return {
+          category: null,
+          redirect_url: category_data.link
+        };
+      }
+      return {
+        category: category_data
+      };
+    }
+    catch (e) {
+      console.log(e);
+      return {
+        category: null
+      }
+    }
+  }
+
+  componentDidMount() {
+    if (this.props.category === null){
+      Router.push(this.props.redirect_url);
+    }
+  }
+
+  render() {
+    const { category } = this.props;
+    if (!category) {
+      return <ErrorPage />;
+    }
+    else {
+      return <React.Fragment>
+        <main className='page category-page'>
+          <Head>
+            <title>{category.name + " - The Diamondback  "}</title>
+            <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+          </Head>
+          <div className='container-narrow'>
+            <h1><Link href={category.link}><a dangerouslySetInnerHTML={{ __html: category.name }}></a></Link></h1>
+            <span>{category.description}</span>
+          </div>
+          <div className='container-narrow flex'>
+            <div className='left-rail'>
+              <hr />
+              <LoadedArticles type="category" param={category.id}></LoadedArticles>
+            </div>
+            <div className='right-rail'>
+              <Advertisement path='300x250_Banner_B' size={[300, 250]} mode="desktop" />
+              <br />
+              <Advertisement path='300x600_Banner_C' size={[300, 600]} mode="desktop" />
+            </div>
+          </div>
+        </main>
+        </React.Fragment>
+    }
+  }
+}

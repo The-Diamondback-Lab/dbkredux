@@ -1,0 +1,151 @@
+/* HELPER CLASSES - BASE/HELPERS
+
+$major-rows: ('width': map-get($rows_config, width), 'gutter': map-get($rows_config, gutter), 'max': 23)
+
+$minor-rows: ('width': map-get($rows_config, width), 'gutter': map-get($major-rows, gutter), 'max': 10)
+
+$columns: ('width': map-get($columns_config, width), 'gutter': map-get($major-rows, gutter), 'max': map-get($columns_config, max))
+
+%article-banner
+  background-color: rgba($dark, 0.75)
+
+  > .container
+    .article-block-author
+      color: $accent-med
+
+    .article-block-published
+      color: $light
+
+%article-banner-alt
+  background-color: rgba($accent-med, 0.875)
+
+  > .container
+    .article-block-author
+      color: $light
+
+%major-articles-grid
+  +grid(grid, $major-rows, $columns)
+
+  > figure
+    &:first-of-type,
+    &:last-of-type
+      > figcaption
+        @extend %article-banner
+
+    &:nth-of-type(2),
+    &:nth-of-type(3)
+      > figcaption
+        @extend %article-banner-alt
+
+    &:first-of-type
+      +grid_item(1, 11, 1, 8)
+
+    &:nth-of-type(2)
+      +grid_item(1, 11, 9, 5)
+
+    &:nth-of-type(3)
+      +grid_item(12, 11, 1, 5)
+
+    &:last-of-type
+      +grid_item(12, 11, 6, 8)
+
+%related-articles-list
+  display: flex
+  +respond-to(medium)
+    flex-direction: column 
+    
+  > figure
+      width: 500px 
+      height: 300px
+      margin-right: 10px
+      +respond-to(medium)
+        margin-bottom: 10px
+      +respond-to(small)
+        width: 100%
+
+  > figure 
+    &:first-of-type,
+    &:last-of-type
+      > figcaption
+        @extend %article-banner
+
+    &:nth-of-type(2)
+      > figcaption
+        @extend %article-banner-alt
+    
+    > figcaption
+      height: 40%
+      > .container > a
+        font-size: 1em
+  
+
+%minor-articles-grid
+  +grid(grid, $minor-rows, $columns)
+
+  > figure
+    +grid_item(1, 10, 1, 10)
+
+    figcaption
+      @extend %article-banner
+
+.center
+  +flex(row, center, center)
+
+.column
+  +flex(column, stretch, flex-start)
+
+.container
+  height: 100%
+  margin: 0 auto
+  max-width: $max-width
+  width: 100%
+
+.container-narrow
+  height: 100%
+  margin: 0 auto
+  width: 1200px
+  max-width: $max-width
+  // +respond-to(medium)
+  //   width: 100%
+
+.flex
+  display: flex
+
+.left-rail
+  width: 70%
+  +respond-to(medium)
+    width: 100%
+
+.right-rail
+  width: 30%
+  margin-left: 100px
+  +respond-to(medium)
+    display: none
+  align-items: center
+
+.disappear
+  height: 0 !important
+  opacity: 0 !important
+  padding: 0 !important
+  width: 0 !important
+
+.major-articles-grid
+  @extend %major-articles-grid
+
+.minor-articles-grid
+  @extend %minor-articles-grid
+
+.related-articles-list
+  @extend %related-articles-list
+
+.row
+  +flex
+  +respond-to(schmedium)
+    flex-direction: column
+
+.scrolled
+  position: fixed
+  z-index: 5
+
+
+

@@ -1,0 +1,38 @@
+/* SEARCHBAR COMPONENT STYLES - COMPONENTS/SEARCHBAR
+
+.searchbar
+  +flex(row, center, space-between)
+  +hocus
+    cursor: pointer
+
+
+  border-bottom: 1px solid $dark
+  padding: 0 0 px-to-em(2.5)
+
+  > i,
+  > input
+    color: black
+
+  > i
+    font-size: px-to-em(10)
+
+  > input
+    +hocus
+      font-weight: 500
+
+
+    font:
+      size: px-to-em(16)
+      weight: 500
+    padding-right: px-to-em(20)
+
+    &::placeholder
+      // color: $accent-med
+
+.searchbar-mobile
+  > button
+    width: 10% !important
+  
+  >input
+    background-color: transparent
+    width: 90%

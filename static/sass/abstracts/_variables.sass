@@ -1,0 +1,96 @@
+// GLOBAL SASS VARIABLES
+
+// colors
+/// black
+/// @type color
+$dark: rgba(0, 0, 0, 1)
+
+/// grey
+/// @type color
+$grey: rgba(151, 151, 151, 1)
+
+/// off white
+/// @type color
+$light: rgba(249, 250, 252, 1)
+
+/// white
+/// @type color
+$white: rgba(255, 255, 255, 1)
+
+/// blue
+/// @type color
+$accent-dark: rgba(38, 94, 167, 1)
+
+/// dbk red
+/// @type color
+$accent-med: rgba(229, 29, 55, 1)
+
+/// off white blue
+/// @type color
+$accent-light: rgba(237, 241, 246, 1)
+
+// fonts
+/// regular font family
+/// @type List
+$font-stack: 'IBM Plex Sans', Helvetica, Helvetica Neue, Open Sans, Arial, sans-serif !default
+
+/// code (monospace) font family
+/// @type List
+$code-font-stack: Courier New, DejaVu Sans Mono, Bitstream Vera Sans Mono, Monaco, monospace !default
+
+// elements
+/// container's maximum width
+/// @type percentage
+$max-width: 87.5% !default
+
+/// border
+/// @type percentage
+$border: px-to-em(0.25) solid rgba($grey, 0.5)
+
+/// columns map
+/// @type {Map}
+/// @prop {string} keys - identifiers mapped to a given length
+/// @prop {number} values - width and gutter width expressed in ems + max cols
+$columns_config: ('width': px-to-em(85), 'gutter': px-to-em(20), 'max': 12)
+
+/// rows map
+/// @type {Map}
+/// @prop {string} keys - identifiers mapped to a given length
+/// @prop {number} values - width and gutter width expressed in ems
+$rows_config: ('width': px-to-em(42.5), 'gutter': px-to-em(8.5), 'max': 12)
+
+// paths
+/// url where all assets are served from
+/// @type string
+$base-url: '../../assets/'
+
+// breakpoints
+/// xsmall breakpoint
+/// @type length
+$breakpoint-xsmall: 320px
+
+/// small breakpoint
+/// @type length
+$breakpoint-small: 480px
+
+/// medium breakpoint
+/// @type length
+$breakpoint-schmedium: 768px
+
+/// second medium breakpoint
+/// @type length
+$breakpoint-medium: 980px
+
+/// large breakpoint
+/// @type length
+$breakpoint-large: 1200px
+
+/// xlarge breakpoint
+/// @type length
+$breakpoint-xlarge: 1440px
+
+/// breakpoints map
+/// @type {Map}
+/// @prop {string} keys - identifiers mapped to a given length
+/// @prop {number} values - actual breakpoints expressed in px
+$breakpoints: ('xsmall': $breakpoint-xsmall, 'small': $breakpoint-small, 'schmedium': $breakpoint-schmedium, 'medium': $breakpoint-medium, 'large': $breakpoint-large, 'xlarge': $breakpoint-xlarge)

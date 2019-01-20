@@ -1,0 +1,62 @@
+/* ARTICLE BLOCK COMPONENT STYLES - COMPONENTS/ARTICLE
+
+.article-block
+  margin: 0
+  position: relative
+  overflow: hidden
+
+  > div,
+  > figcaption
+    width: 100%
+
+  > div
+    height: 100%
+
+  > figcaption
+    bottom: 0
+    height: px-to-em(85 * 1.125)
+    position: absolute
+    z-index: 2
+
+    > .container
+      +flex(column, flex-start, center)
+
+      padding: 1em 0
+
+      > a
+        color: $white
+        font-weight: 600
+
+.article-block-image
+  background:
+    repeat: none
+    size: cover
+  width: 100%
+  height: 100%
+
+.article-block-title
+  color: $white
+  font:
+    size: px-to-em(18)
+    weight: 700
+
+.article-info
+  +flex(row, flex-end, flex-start)
+
+  padding-top: 0.125em
+  width: 100%
+
+  p
+    margin: 0
+
+.article-block-author,
+.article-block-published
+  font-size: px-to-em(14)
+
+.article-block-author
+  font-weight: 600 !important
+  margin: 0 map-get($rows_config, gutter) 0 0
+  text-transform: capitalize
+
+.article-block-published
+  margin: 0

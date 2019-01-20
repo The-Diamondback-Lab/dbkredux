@@ -1,0 +1,98 @@
+/* NAVIGATION STYLES - LAYOUT/NAVIGATION
+
+$navigation-font-size: px-to-em(14.5)
+$navigation-icon-font-size: px-to-em(24)
+$navigation-margin: px-to-em(9)
+$navigation-margin-medium: px-to-em(7.5)
+
+nav
+  +flex(row, center, space-between)
+
+  height: 56px
+
+  border:
+    bottom: $border
+    top: $border
+  padding: px-to-em(12) 0
+
+  > .container
+    +flex(row, center, space-between)
+
+  background-color: white
+  transition: background-color .5s linear
+
+#menu-btn,
+.navigation-links > a,
+.navigation-links > button:not(:last-of-type)
+  margin: 0 $navigation-margin 0 0
+  +respond-to(medium)
+    margin: 0 $navigation-margin-medium 0 0
+
+#menu-btn
+  font-size: px-to-em(22)
+
+.navigation-links
+  +flex(row, center)
+
+  > div
+    +flex(row, center)
+
+    > a
+      color: black !important
+      font-family: dbkFont
+      font:
+        weight: 500 !important
+        size: px-to-em(35)
+
+  > a,
+  > button
+    +respond-to(medium)
+      font-size: px-to-em(12) !important
+
+
+    font-size: $navigation-font-size
+    text-transform: uppercase
+
+  > a
+    +hocus
+      color: $accent-dark
+
+
+    color: $dark
+    font:
+      size: $navigation-font-size
+      weight: 400
+
+  > .special-nav
+    +hocus
+      color: $accent-dark
+
+
+    color: $accent-med
+    font-weight: 600
+    padding: 0
+
+    &:first-of-type
+      margin: 0 px-to-em(15) !important
+
+.navigation-links-social
+  > a
+    +hocus
+      color: $accent-med
+
+
+    color: darken($accent-light, 5%)
+    font-size: px-to-em(26)
+    margin-left: $navigation-margin
+
+.nav-sticky
+  position: fixed
+  top: 0
+  width: 100%
+  z-index: 1000
+  background-color: rgba(255, 255, 255, 0.95)
+
+.nav-mobile
+  height: 75px
+  
+

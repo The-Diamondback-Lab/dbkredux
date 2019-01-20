@@ -1,0 +1,54 @@
+/* ARTICLE PAGE STYLES - PAGES/ARTICLEPAGE.SASS
+$content-width: 70%
+
+.author
+    font-weight: 600
+
+.category
+    text-transform: uppercase
+    > a
+        margin-right: 15px
+    +respond-to(medium)
+        font-size: 1em
+
+.details
+    font-size: 1em
+    margin-bottom: 20px
+
+    +flex(row, flex-start, flex-start)
+    width: 100%
+    +respond-to(medium)
+        flex-direction: column
+        > .dot
+            display: none
+    > span
+        margin-right: 15px
+    
+
+.article-text
+    width: 100%
+    line-height: 1.6
+    font-size: 1.1em
+    > p
+        margin-bottom: 20px
+        margin-top: 20px
+        
+.image-area
+    width: 100%
+    > .article-image
+        width: 100%
+        max-height: 500px
+        border-bottom: 4px solid $accent-med
+        border-top: 4px solid $accent-med
+        object-fit: cover
+    +respond-to(medium)
+        width: 100%
+    
+.article-caption
+    font-size: 0.8em
+    > p
+        margin-top: 0
+h1
+    width: 100%
+    +respond-to(medium)
+        font-size: 1.7em

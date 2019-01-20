@@ -1,0 +1,90 @@
+$nav-height: 56px
+$nav-height-mobile: 75px
+    
+.sidebar
+    position: absolute
+    z-index: 999
+    left: -100%
+    min-width: 300px
+    display: flex
+    flex-direction: column
+    background-color: white
+    border: 0.01562em solid rgba(151, 151, 151, 0.5)
+    border-top: none
+    transition: left 0.5s ease-in-out
+    font-size: 0.8em
+    height: 94%
+
+.sidebar.open
+    left: 0
+
+.sidebar-mobile
+    width: 70%
+    height: 70%
+    > .search-section
+        width: 100%
+        padding: 50px
+        height: 50px
+        border-bottom: 0.01562em solid rgba(151, 151, 151, 0.5)
+
+
+.sidebar-link
+    display: flex
+    align-content: center
+    padding: 10px
+    padding-left: 30px
+    cursor: pointer
+    > p
+        text-align: left
+
+.sidebar-link:hover
+    background-color: #DDDDDD
+
+
+.sidebar-item
+    overflow: visible
+    border-bottom: 0.01562em solid rgba(151, 151, 151, 0.5)
+
+
+.sidebar-item
+    > .sidebar-item
+        display: none
+        >div
+            width: 100%
+            height: 100%
+
+.sidebar-item.active
+    > .sidebar-item
+        display: block
+        background-color: #f1f1f1
+    > .sidebar-link
+        background-color: #CCCCCC !important
+    // border-left: 3px solid $accent-med
+
+.sidebar-item.has-children
+    > .sidebar-link > a > p
+        font-weight: 600
+
+
+
+
+.sidebar-sticky
+    position: fixed
+    top: $nav-height
+    bottom: 0
+    height: auto
+
+.sidebar-sticky.sidebar-mobile
+    top: $nav-height-mobile
+    bottom: 0
+    height: auto
+
+.sidebar a 
+    color: black
+    font-size: 1em
+    font-weight: 400
+    text-transform: uppercase
+
+.sidebar button
+    width: 100%
+    

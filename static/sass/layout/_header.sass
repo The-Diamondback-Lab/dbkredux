@@ -1,0 +1,30 @@
+/* HEADER STYLES - LAYOUT/HEADER
+
+$row-width: map-get($rows-config, width)
+$row-gutter: map-get($rows-config, gutter)
+
+$nav-height: 56px
+$nav-height-mobile: 75px
+
+header
+  padding-bottom: $row-width
+  width: 100vw
+
+  > .container
+    +flex(row, flex-end, space-between)
+    +respond-to(schmedium)
+      padding: 0
+      
+    > a
+      width: 17.5%
+
+      > img
+        width: 100%
+
+    padding: $row-width 0 px-to-em(20)
+
+header.pad-bottom
+  margin-bottom: $nav-height
+  +respond-to(schmedium)
+    margin-bottom: $nav-height-mobile
+

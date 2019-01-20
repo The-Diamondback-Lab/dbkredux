@@ -1,0 +1,51 @@
+/* GENERAL STYLES - BASE/COMMON
+
+*
+  +transition(ease-in-out, 0.375s)
+
+  font-family: $font-stack
+
+*,
+html
+  box-sizing: border-box
+  overflow-x: hidden
+  scroll-behavior: smooth
+
+\::-webkit-scrollbar
+  display: none
+
+html,
+body
+  color: $dark
+  margin: 0
+
+a,
+button
+  +hocus
+    cursor: pointer
+
+a
+  color: $accent-med
+  text-decoration: none
+
+  +hocus
+    color: $accent-dark
+
+button,
+input
+  border: none
+  outline: none
+  padding: 0
+
+button
+  background-color: transparent
+
+.preload
+  opacity: 0
+
+.postload
+  opacity: 1
+  transition: opacity 0.5s
+
+.page
+  margin-bottom: 30px

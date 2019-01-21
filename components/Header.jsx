@@ -77,6 +77,8 @@ export default class Header extends React.Component {
         this.setState( {scrolled: scrolledState} );
       }
     });
+
+    $("#header").fadeIn();
   }
 
   componentWillUnmount() {
@@ -87,6 +89,7 @@ export default class Header extends React.Component {
   render() {
     const { mobile } = this.global;
     const { scrolled } = this.state;
+    const { menu } = this.props;
     // var mobile = responsive(BREAKPOINTS.schmedium, 'less_eq');
     var searchBar = "";
     if (!mobile){
@@ -106,7 +109,7 @@ export default class Header extends React.Component {
         </div>
 
         {/* navigation */}
-        <Navigation scrolled={scrolled} />
+        <Navigation menu={menu} scrolled={scrolled} />
         <Sidebar scrolled={scrolled}/>
       </header>
     );

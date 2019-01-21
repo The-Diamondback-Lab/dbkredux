@@ -14,7 +14,7 @@ export default class Section extends React.Component {
     this.state = { ads: [], loaded: false };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     const { ads } = this.props;
 
     if (ads) {

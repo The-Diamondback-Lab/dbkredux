@@ -26,7 +26,6 @@ import Advertisement from '../components/Advertisement';
 * @throws {Error} new error with provided message
 */
 export const handleError = message => {
-  console.log(message);
   throw new Error(message);
 };
 
@@ -133,7 +132,7 @@ export const parseDate = object => {
       }
     },
     formatted: moment(original_date).format('MMMM DD, YYYY'),
-    updated: moment(dates.updated).format('MM/DD/YYYY')
+    updated: moment(dates.updated).format('MMMM DD, YYYY')
   };
   return object;
 };
@@ -203,4 +202,42 @@ export const injectArticleAds = (content) => {
   });
 
   return output;
+}
+
+export const chooseArticleDates = (article) => {
+  var date = article.date;
+  if (date.ago.updated.hours === date.ago.published.hours){
+    date.updated = "";
+    date.published = "Published " + formatDate(date.formatted, date.ago.published);
+  }
+  else {
+    date.updated = "Updated " + formatDate(date.updated, date.ago.updated);
+    date.published = "Published " + formatDate(date.formatted, date.ago.published);
+  }
+  return article;
+}
+
+function formatDate(original, ago) {
+  if (ago.days <= 10) { //if < 10 days ago, display "ago" format
+    if (ago.hours < 24) {
+      if (ago.hours === 0) {
+        return "today";
+      } 
+      else if (ago.hours === 1) {
+        return ago.hours + " hour ago";
+      } 
+      else {
+        return ago.hours + " hours ago";
+      }
+    } 
+    else if (ago.days === 1) {
+      return ago.days + " day ago";
+    } 
+    else {
+     return ago.days + " days ago";
+    }
+  }
+  else{
+    return original;
+  }
 }

@@ -13,7 +13,7 @@ import RelatedContent from '../components/RelatedContent.jsx';
 import Advertisement from '../components/Advertisement.jsx';
 
 import {
-  request, parseDate, loadImage, processArticleBody, injectArticleAds
+  request, parseDate, loadImage, processArticleBody, injectArticleAds, chooseArticleDates
 } from '../utilities/app.utilities.js';
 
 
@@ -32,32 +32,14 @@ export default class ArticlePage extends React.Component {
     try {
       article_data = await request(`/articles/${query.slug}`);
       article_data = parseDate(article_data);
-
-      //choose how to display dates for the article
-      if (article_data.date.ago.updated.days <= 10) {
-        if (article_data.date.ago.updated.hours < 24) {
-          if (article_data.date.ago.updated.hours === 0) {
-            article_data.date.updated = "today";
-          }
-          else if (article_data.date.ago.updated.hours === 1) {
-            article_data.date.updated = article_data.date.ago.updated.hours + " hour ago";
-          }
-          else {
-            article_data.date.updated = article_data.date.ago.updated.hours + " hours ago";
-          }
-        }
-        else if (article_data.date.ago.updated.days === 1) {
-          article_data.date.updated = article_data.date.ago.updated.days + " day ago";
-        }
-        else {
-          article_data.date.updated = article_data.date.ago.updated.days + " days ago";
-        }
-      }
+      article_data = chooseArticleDates(article_data);
     } catch (error) {
+      console.log(error);
       return {
         article: null
       };
     }
+
     return {
       article: article_data
     };
@@ -71,40 +53,6 @@ export default class ArticlePage extends React.Component {
 
   componentDidMount() {
     this.setState({ scriptjsLoaderEnabled: true });
-  }
-
-  injectArticleAds(content) {
-    var parsed = Parser(content);
-    var ad1 = <React.Fragment key={parsed.length + 1}>
-      <Advertisement path="300x250_Mobile_InStory_Top" size={[300, 250]} mode="mobile"></Advertisement>
-      <Advertisement path="300x250_Desktop_InStory_Top" size={[300, 250]} mode="desktop"></Advertisement>
-    </React.Fragment>;
-
-    var ad2 = <React.Fragment key={parsed.length + 2}>
-      <Advertisement path="300x250_Mobile_InStory_Bottom" size={[300, 250]} mode="mobile"></Advertisement>
-      <Advertisement path="300x250_Desktop_InStory_Bottom" size={[300, 250]} mode="desktop"></Advertisement>
-    </React.Fragment>;
-
-    var output = [];
-    var paragraphs = 0;
-    var ad1Pushed = false;
-    var ad2Pushed = false;
-    parsed.forEach(e => {
-      output.push(e);
-      if (typeof e === 'object' && e.type === 'p') {
-        paragraphs++;
-      }
-      if (paragraphs === 2 && !ad1Pushed) {
-        output.push(ad1);
-        ad1Pushed = true;
-      }
-      if (paragraphs === 6 && !ad2Pushed) {
-        output.push(ad2);
-        ad2Pushed = true;
-      }
-    });
-
-    return output;
   }
 
   generateCategories(categoryList) {
@@ -143,16 +91,16 @@ export default class ArticlePage extends React.Component {
               <div className='details'>
                 <span className='accent author'><Link href={article.author.link}><a>{article.author.name}</a></Link></span>
                 <span className='dot'>·</span>
-                <span>Published {article.date.formatted}</span>
-                <span className='dot'>·</span>
-                <span>Updated {article.date.updated}</span>
+                <span>{article.date.published}</span>
+                {article.date.updated ? <span className='dot'>·</span> : ""}
+                {article.date.updated ? <span>{article.date.updated}</span> : ""}
               </div>
               <div className="addthis_inline_share_toolbox"></div>
               <div className='image-area'>
                 <img
                   alt='Article Image'
                   className='article-image'
-                  id={"image-" + article.id} src={article.featured_image.url}
+                  id={"image-" + article.id} src={article.featured_image.article}
                   onLoad={() => (loadImage("image-" + article.id))} />
               </div>
               <span className='article-caption' dangerouslySetInnerHTML={{ __html: article.featured_image.caption }}></span>

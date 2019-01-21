@@ -7,3 +7,4 @@ routes
 .add({name: 'Category Page', pattern: '/category/:categorypath+', page: 'CategoryPage'})
 .add({name: 'Author Page', pattern: '/author/:authorId', page: 'AuthorPage'})
 .add({name: 'Search Results', pattern: '/search', page: 'SearchResults'})
+.add({name: 'Custom Page', pattern: '/:pageId', page: 'CustomPage'})

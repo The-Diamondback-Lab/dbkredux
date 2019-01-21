@@ -15,18 +15,8 @@ import { faBars } from '@fortawesome/free-solid-svg-icons'
 
 export default class Navigation extends React.Component {
 
-  constructor(props){
-    super(props);
-    this.state = { menu: null };
-  }
-
-  async componentDidMount() {
-    let menu = await request('/menu/header');
-    this.setState({ menu: menu.items});
-  }
-
   render() {
-    const { menu } = this.state;
+    const { menu } = this.props;
     if (menu === null){
       return <div className="container"> 
       <div className='navigation-links'>
@@ -45,7 +35,7 @@ export default class Navigation extends React.Component {
           <div className='navigation-links'>
             <NavigationButton mobile={mobile} scrolled={scrolled} />&nbsp;
             {/* don't show links if on mobile */}
-            {mobile ? null : <NavigationLinks menu={menu} />}
+            {mobile ? null : <NavigationLinks menu={menu.items} />}
           </div>
         </div>
       </nav>

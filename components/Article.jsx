@@ -28,7 +28,7 @@ export default class Article extends React.Component {
             <img 
             alt='Article'
             className='article-block-image preload' 
-            id={`image-${id}`} src={featured_image.url} 
+            id={`image-${id}`} src={featured_image.article} 
             onLoad={() => loadImage(`image-${id}`)}/>
           </a>
         </Link>

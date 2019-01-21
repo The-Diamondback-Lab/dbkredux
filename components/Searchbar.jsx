@@ -19,6 +19,9 @@ class Searchbar extends React.Component {
 
   searchClicked() {
     var searchTerm = $("#global-search-bar").val().toLowerCase().trim().replace(/\s\s+/g, ' ');
+    if (searchTerm.length < 1){
+      return;
+    }
     if (searchTerm.length > 50){ //LIMIT SEARCHES TO 50 CHARACTERS
       searchTerm = searchTerm.substring(0, 50);
     }

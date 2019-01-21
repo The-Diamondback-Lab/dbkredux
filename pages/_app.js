@@ -26,12 +26,13 @@ export default class MyApp extends App {
       
       let footer = await request('/menu/footer');
       let social = await request('/menu/stay-connected');  
+      let header = await request('/menu/header');
 
       return { pageProps, menus: {
           footer: footer,
-          social: social
+          social: social,
+          header: header
       } }
-      
     }
 
     render () {
@@ -47,7 +48,7 @@ export default class MyApp extends App {
             <NoSSR>
                 <Takeover />
             </NoSSR>
-                <Header />
+                <Header menu={menus.header}/>
                 <Advertisement path='728x90_Banner_A' size={[728, 90]} mode="desktop" />
                 <Advertisement path='300x50_Mobile_Header' size={[300, 50]} mode="mobile" />
             <Component {...pageProps} />

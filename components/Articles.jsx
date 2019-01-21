@@ -23,7 +23,7 @@ export default class Articles extends React.Component {
     this.state = { articles: [], loaded: false };
   }
 
-  async componentWillMount() {
+  async componentDidMount() {
     const { category } = this.props;
 
     try {

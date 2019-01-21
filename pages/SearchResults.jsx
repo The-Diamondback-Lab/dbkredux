@@ -7,7 +7,6 @@ import Advertisement from '../components/Advertisement.jsx';
 import LoadedArticles from '../components/LoadedArticles.jsx';
 
 //layout
-import Global from '../layouts/Global.jsx';
 import ErrorPage from '../pages/ErrorPage.jsx';
 
 
@@ -37,7 +36,7 @@ export default class SearchResults extends React.Component {
       return <ErrorPage />;
     }
     else {
-      return <Global>
+      return <React.Fragment>
         <Head>
         <title>{`${search} - The Diamondback  `}</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
@@ -58,7 +57,7 @@ export default class SearchResults extends React.Component {
           </div>
         </div>
       </main>
-    </Global>
+    </React.Fragment>
     }
   }
 }

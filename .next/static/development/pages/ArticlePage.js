@@ -233,7 +233,7 @@ function (_React$Component) {
         alt: "Article",
         className: "article-block-image preload",
         id: "image-".concat(id),
-        src: featured_image.url,
+        src: featured_image.article,
         onLoad: function onLoad() {
           return Object(_utilities_app_utilities__WEBPACK_IMPORTED_MODULE_2__["loadImage"])("image-".concat(id));
         }
@@ -53817,55 +53817,6 @@ function (_React$Component) {
       });
     }
   }, {
-    key: "injectArticleAds",
-    value: function injectArticleAds(content) {
-      var parsed = html_react_parser__WEBPACK_IMPORTED_MODULE_4___default()(content);
-      var ad1 = reactn__WEBPACK_IMPORTED_MODULE_1__["createElement"](reactn__WEBPACK_IMPORTED_MODULE_1__["Fragment"], {
-        key: parsed.length + 1
-      }, reactn__WEBPACK_IMPORTED_MODULE_1__["createElement"](_components_Advertisement_jsx__WEBPACK_IMPORTED_MODULE_8__["default"], {
-        path: "300x250_Mobile_InStory_Top",
-        size: [300, 250],
-        mode: "mobile"
-      }), reactn__WEBPACK_IMPORTED_MODULE_1__["createElement"](_components_Advertisement_jsx__WEBPACK_IMPORTED_MODULE_8__["default"], {
-        path: "300x250_Desktop_InStory_Top",
-        size: [300, 250],
-        mode: "desktop"
-      }));
-      var ad2 = reactn__WEBPACK_IMPORTED_MODULE_1__["createElement"](reactn__WEBPACK_IMPORTED_MODULE_1__["Fragment"], {
-        key: parsed.length + 2
-      }, reactn__WEBPACK_IMPORTED_MODULE_1__["createElement"](_components_Advertisement_jsx__WEBPACK_IMPORTED_MODULE_8__["default"], {
-        path: "300x250_Mobile_InStory_Bottom",
-        size: [300, 250],
-        mode: "mobile"
-      }), reactn__WEBPACK_IMPORTED_MODULE_1__["createElement"](_components_Advertisement_jsx__WEBPACK_IMPORTED_MODULE_8__["default"], {
-        path: "300x250_Desktop_InStory_Bottom",
-        size: [300, 250],
-        mode: "desktop"
-      }));
-      var output = [];
-      var paragraphs = 0;
-      var ad1Pushed = false;
-      var ad2Pushed = false;
-      parsed.forEach(function (e) {
-        output.push(e);
-
-        if (_typeof(e) === 'object' && e.type === 'p') {
-          paragraphs++;
-        }
-
-        if (paragraphs === 2 && !ad1Pushed) {
-          output.push(ad1);
-          ad1Pushed = true;
-        }
-
-        if (paragraphs === 6 && !ad2Pushed) {
-          output.push(ad2);
-          ad2Pushed = true;
-        }
-      });
-      return output;
-    }
-  }, {
     key: "generateCategories",
     value: function generateCategories(categoryList) {
       return categoryList.map(function (cat) {
@@ -53924,9 +53875,9 @@ function (_React$Component) {
         href: article.author.link
       }, reactn__WEBPACK_IMPORTED_MODULE_1__["createElement"]("a", null, article.author.name))), reactn__WEBPACK_IMPORTED_MODULE_1__["createElement"]("span", {
         className: "dot"
-      }, "\xB7"), reactn__WEBPACK_IMPORTED_MODULE_1__["createElement"]("span", null, "Published ", article.date.formatted), reactn__WEBPACK_IMPORTED_MODULE_1__["createElement"]("span", {
+      }, "\xB7"), reactn__WEBPACK_IMPORTED_MODULE_1__["createElement"]("span", null, article.date.published), article.date.updated ? reactn__WEBPACK_IMPORTED_MODULE_1__["createElement"]("span", {
         className: "dot"
-      }, "\xB7"), reactn__WEBPACK_IMPORTED_MODULE_1__["createElement"]("span", null, "Updated ", article.date.updated)), reactn__WEBPACK_IMPORTED_MODULE_1__["createElement"]("div", {
+      }, "\xB7") : "", article.date.updated ? reactn__WEBPACK_IMPORTED_MODULE_1__["createElement"]("span", null, article.date.updated) : ""), reactn__WEBPACK_IMPORTED_MODULE_1__["createElement"]("div", {
         className: "addthis_inline_share_toolbox"
       }), reactn__WEBPACK_IMPORTED_MODULE_1__["createElement"]("div", {
         className: "image-area"
@@ -53934,7 +53885,7 @@ function (_React$Component) {
         alt: "Article Image",
         className: "article-image",
         id: "image-" + article.id,
-        src: article.featured_image.url,
+        src: article.featured_image.article,
         onLoad: function onLoad() {
           return Object(_utilities_app_utilities_js__WEBPACK_IMPORTED_MODULE_9__["loadImage"])("image-" + article.id);
         }
@@ -53979,40 +53930,25 @@ function (_React$Component) {
 
               case 5:
                 article_data = _context2.sent;
-                article_data = Object(_utilities_app_utilities_js__WEBPACK_IMPORTED_MODULE_9__["parseDate"])(article_data); //choose how to display dates for the article
-
-                if (article_data.date.ago.updated.days <= 10) {
-                  if (article_data.date.ago.updated.hours < 24) {
-                    if (article_data.date.ago.updated.hours === 0) {
-                      article_data.date.updated = "today";
-                    } else if (article_data.date.ago.updated.hours === 1) {
-                      article_data.date.updated = article_data.date.ago.updated.hours + " hour ago";
-                    } else {
-                      article_data.date.updated = article_data.date.ago.updated.hours + " hours ago";
-                    }
-                  } else if (article_data.date.ago.updated.days === 1) {
-                    article_data.date.updated = article_data.date.ago.updated.days + " day ago";
-                  } else {
-                    article_data.date.updated = article_data.date.ago.updated.days + " days ago";
-                  }
-                }
-
-                _context2.next = 13;
+                article_data = Object(_utilities_app_utilities_js__WEBPACK_IMPORTED_MODULE_9__["parseDate"])(article_data);
+                article_data = Object(_utilities_app_utilities_js__WEBPACK_IMPORTED_MODULE_9__["chooseArticleDates"])(article_data);
+                _context2.next = 14;
                 break;
 
               case 10:
                 _context2.prev = 10;
                 _context2.t0 = _context2["catch"](2);
+                console.log(_context2.t0);
                 return _context2.abrupt("return", {
                   article: null
                 });
 
-              case 13:
+              case 14:
                 return _context2.abrupt("return", {
                   article: article_data
                 });
 
-              case 14:
+              case 15:
               case "end":
                 return _context2.stop();
             }
@@ -54183,6 +54119,10 @@ routes.add({
   name: 'Search Results',
   pattern: '/search',
   page: 'SearchResults'
+}).add({
+  name: 'Custom Page',
+  pattern: '/:pageId',
+  page: 'CustomPage'
 });
 
 /***/ }),
@@ -54191,7 +54131,7 @@ routes.add({
 /*!************************************!*\
   !*** ./utilities/app.utilities.js ***!
   \************************************/
-/*! exports provided: handleError, responsive, request, parseDate, replaceLink, scrolling, loadImage, processArticleBody, injectArticleAds */
+/*! exports provided: handleError, responsive, request, parseDate, replaceLink, scrolling, loadImage, processArticleBody, injectArticleAds, chooseArticleDates */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -54205,6 +54145,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "loadImage", function() { return loadImage; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "processArticleBody", function() { return processArticleBody; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "injectArticleAds", function() { return injectArticleAds; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "chooseArticleDates", function() { return chooseArticleDates; });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
@@ -54251,7 +54192,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 */
 
 var handleError = function handleError(message) {
-  console.log(message);
   throw new Error(message);
 };
 /**
@@ -54383,7 +54323,7 @@ var parseDate = function parseDate(object) {
       }
     },
     formatted: moment__WEBPACK_IMPORTED_MODULE_4___default()(original_date).format('MMMM DD, YYYY'),
-    updated: moment__WEBPACK_IMPORTED_MODULE_4___default()(dates.updated).format('MM/DD/YYYY')
+    updated: moment__WEBPACK_IMPORTED_MODULE_4___default()(dates.updated).format('MMMM DD, YYYY')
   };
   return object;
 };
@@ -54470,6 +54410,40 @@ var injectArticleAds = function injectArticleAds(content) {
   });
   return output;
 };
+var chooseArticleDates = function chooseArticleDates(article) {
+  var date = article.date;
+
+  if (date.ago.updated.hours === date.ago.published.hours) {
+    date.updated = "";
+    date.published = "Published " + formatDate(date.formatted, date.ago.published);
+  } else {
+    date.updated = "Updated " + formatDate(date.updated, date.ago.updated);
+    date.published = "Published " + formatDate(date.formatted, date.ago.published);
+  }
+
+  return article;
+};
+
+function formatDate(original, ago) {
+  if (ago.days <= 10) {
+    //if < 10 days ago, display "ago" format
+    if (ago.hours < 24) {
+      if (ago.hours === 0) {
+        return "today";
+      } else if (ago.hours === 1) {
+        return ago.hours + " hour ago";
+      } else {
+        return ago.hours + " hours ago";
+      }
+    } else if (ago.days === 1) {
+      return ago.days + " day ago";
+    } else {
+      return ago.days + " days ago";
+    }
+  } else {
+    return original;
+  }
+}
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../node_modules/process/browser.js */ "./node_modules/process/browser.js")))
 
 /***/ }),

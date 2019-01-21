@@ -461,8 +461,9 @@ function (_React$Component) {
                     });
                   }
                 });
+                jquery__WEBPACK_IMPORTED_MODULE_3___default()("#header").fadeIn();
 
-              case 5:
+              case 6:
               case "end":
                 return _context.stop();
             }
@@ -486,7 +487,8 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       var mobile = this.global.mobile;
-      var scrolled = this.state.scrolled; // var mobile = responsive(BREAKPOINTS.schmedium, 'less_eq');
+      var scrolled = this.state.scrolled;
+      var menu = this.props.menu; // var mobile = responsive(BREAKPOINTS.schmedium, 'less_eq');
 
       var searchBar = "";
 
@@ -506,6 +508,7 @@ function (_React$Component) {
         src: "/static/images/the-diamondback-logo.svg",
         alt: "The Diamondback"
       }))), searchBar)), reactn__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_Navigation_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        menu: menu,
         scrolled: scrolled
       }), reactn__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_Sidebar_jsx__WEBPACK_IMPORTED_MODULE_5__["default"], {
         scrolled: scrolled
@@ -612,24 +615,16 @@ function (_React$Component) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Navigation; });
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var reactn__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactn */ "./node_modules/reactn/index.js");
-/* harmony import */ var reactn__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(reactn__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../routes */ "./routes.js");
-/* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_routes__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _utilities_app_utilities_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utilities/app.utilities.js */ "./utilities/app.utilities.js");
-/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
-/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
-
-
+/* harmony import */ var reactn__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! reactn */ "./node_modules/reactn/index.js");
+/* harmony import */ var reactn__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(reactn__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../routes */ "./routes.js");
+/* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_routes__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _utilities_app_utilities_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utilities/app.utilities.js */ "./utilities/app.utilities.js");
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -663,85 +658,45 @@ var Navigation =
 function (_React$Component) {
   _inherits(Navigation, _React$Component);
 
-  function Navigation(props) {
-    var _this;
-
+  function Navigation() {
     _classCallCheck(this, Navigation);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Navigation).call(this, props));
-    _this.state = {
-      menu: null
-    };
-    return _this;
+    return _possibleConstructorReturn(this, _getPrototypeOf(Navigation).apply(this, arguments));
   }
 
   _createClass(Navigation, [{
-    key: "componentDidMount",
-    value: function () {
-      var _componentDidMount = _asyncToGenerator(
-      /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var menu;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                _context.next = 2;
-                return Object(_utilities_app_utilities_js__WEBPACK_IMPORTED_MODULE_3__["request"])('/menu/header');
-
-              case 2:
-                menu = _context.sent;
-                this.setState({
-                  menu: menu.items
-                });
-
-              case 4:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee, this);
-      }));
-
-      function componentDidMount() {
-        return _componentDidMount.apply(this, arguments);
-      }
-
-      return componentDidMount;
-    }()
-  }, {
     key: "render",
     value: function render() {
-      var menu = this.state.menu;
+      var menu = this.props.menu;
 
       if (menu === null) {
-        return reactn__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        return reactn__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "container"
-        }, reactn__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        }, reactn__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "navigation-links"
         }));
       }
 
       var mobile = this.global.mobile;
       var scrolled = this.props.scrolled;
-      return reactn__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("nav", {
+      return reactn__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
         id: "nav-bar",
         className: "".concat(scrolled ? 'nav-sticky' : '', " ").concat(mobile ? 'nav-mobile' : '')
-      }, reactn__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+      }, reactn__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container"
-      }, reactn__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+      }, reactn__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "navigation-links"
-      }, reactn__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(NavigationButton, {
+      }, reactn__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(NavigationButton, {
         mobile: mobile,
         scrolled: scrolled
-      }), "\xA0", mobile ? null : reactn__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(NavigationLinks, {
-        menu: menu
+      }), "\xA0", mobile ? null : reactn__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(NavigationLinks, {
+        menu: menu.items
       }))));
     }
   }]);
 
   return Navigation;
-}(reactn__WEBPACK_IMPORTED_MODULE_1___default.a.Component);
+}(reactn__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 
 
@@ -753,7 +708,7 @@ function (_React$Component2) {
   function NavigationButton() {
     var _getPrototypeOf2;
 
-    var _this2;
+    var _this;
 
     _classCallCheck(this, NavigationButton);
 
@@ -761,40 +716,40 @@ function (_React$Component2) {
       args[_key] = arguments[_key];
     }
 
-    _this2 = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(NavigationButton)).call.apply(_getPrototypeOf2, [this].concat(args)));
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(NavigationButton)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this2)), "_onClick", function (e) {
-      _this2.global.toggleSidebar();
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "_onClick", function (e) {
+      _this.global.toggleSidebar();
     });
 
-    return _this2;
+    return _this;
   }
 
   _createClass(NavigationButton, [{
     key: "render",
     value: function render() {
-      var _this3 = this;
+      var _this2 = this;
 
       var mobile = this.props.mobile;
-      return reactn__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, reactn__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+      return reactn__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, reactn__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         id: "menu-btn",
         onClick: function onClick(e) {
-          return _this3._onClick(e);
+          return _this2._onClick(e);
         }
-      }, reactn__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_4__["FontAwesomeIcon"], {
-        icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__["faBars"]
+      }, reactn__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__["FontAwesomeIcon"], {
+        icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4__["faBars"]
       })),
       /* only show small dbk logo if scrolled or mobile */
-      mobile ? reactn__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_routes__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+      mobile ? reactn__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_routes__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         href: "/"
-      }, reactn__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
+      }, reactn__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         className: "mobile-dbk-logo"
       }, "DBK")) : null);
     }
   }]);
 
   return NavigationButton;
-}(reactn__WEBPACK_IMPORTED_MODULE_1___default.a.Component);
+}(reactn__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 var NavigationLinks =
 /*#__PURE__*/
@@ -811,9 +766,9 @@ function (_React$Component3) {
     key: "render",
     value: function render() {
       var menu = this.props.menu;
-      return reactn__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(reactn__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, menu.map(function (item, i) {
+      return reactn__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactn__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, menu.map(function (item, i) {
         if (item.type === 'custom') {
-          return reactn__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
+          return reactn__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
             className: "dissapear-on-mobile",
             href: item.url,
             key: "link-".concat(i),
@@ -822,15 +777,15 @@ function (_React$Component3) {
           }, item.title);
         }
 
-        return reactn__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_routes__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+        return reactn__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_routes__WEBPACK_IMPORTED_MODULE_1__["Link"], {
           href: item.url,
           key: "link-".concat(i)
-        }, reactn__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
+        }, reactn__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
           className: "disappear-on-mobile"
         }, item.title));
-      }), reactn__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+      }), reactn__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "special-nav disappear-on-mobile"
-      }, "Newsletter"), reactn__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
+      }, "Newsletter"), reactn__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         className: "special-nav disappear-on-mobile",
         href: "https://issuu.com/thediamondback",
         target: "_blank",
@@ -840,7 +795,7 @@ function (_React$Component3) {
   }]);
 
   return NavigationLinks;
-}(reactn__WEBPACK_IMPORTED_MODULE_1___default.a.Component);
+}(reactn__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 /***/ }),
 
@@ -909,6 +864,10 @@ function (_React$Component) {
     key: "searchClicked",
     value: function searchClicked() {
       var searchTerm = jquery__WEBPACK_IMPORTED_MODULE_2___default()("#global-search-bar").val().toLowerCase().trim().replace(/\s\s+/g, ' ');
+
+      if (searchTerm.length < 1) {
+        return;
+      }
 
       if (searchTerm.length > 50) {
         //LIMIT SEARCHES TO 50 CHARACTERS
@@ -55537,7 +55496,9 @@ function (_App) {
       }), reactn__WEBPACK_IMPORTED_MODULE_1__["createElement"]("link", {
         rel: "shortcut icon",
         href: "/static/favicon.ico"
-      })), reactn__WEBPACK_IMPORTED_MODULE_1__["createElement"](react_no_ssr__WEBPACK_IMPORTED_MODULE_3___default.a, null, reactn__WEBPACK_IMPORTED_MODULE_1__["createElement"](_components_Takeover_jsx__WEBPACK_IMPORTED_MODULE_8__["default"], null)), reactn__WEBPACK_IMPORTED_MODULE_1__["createElement"](_components_Header_jsx__WEBPACK_IMPORTED_MODULE_5__["default"], null), reactn__WEBPACK_IMPORTED_MODULE_1__["createElement"](_components_Advertisement_jsx__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      })), reactn__WEBPACK_IMPORTED_MODULE_1__["createElement"](react_no_ssr__WEBPACK_IMPORTED_MODULE_3___default.a, null, reactn__WEBPACK_IMPORTED_MODULE_1__["createElement"](_components_Takeover_jsx__WEBPACK_IMPORTED_MODULE_8__["default"], null)), reactn__WEBPACK_IMPORTED_MODULE_1__["createElement"](_components_Header_jsx__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        menu: menus.header
+      }), reactn__WEBPACK_IMPORTED_MODULE_1__["createElement"](_components_Advertisement_jsx__WEBPACK_IMPORTED_MODULE_7__["default"], {
         path: "728x90_Banner_A",
         size: [728, 90],
         mode: "desktop"
@@ -55564,7 +55525,7 @@ function (_App) {
       var _getInitialProps = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(_ref) {
-        var Component, ctx, pageProps, footer, social;
+        var Component, ctx, pageProps, footer, social, header;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -55594,15 +55555,21 @@ function (_App) {
 
               case 11:
                 social = _context.sent;
+                _context.next = 14;
+                return Object(_utilities_app_utilities_js__WEBPACK_IMPORTED_MODULE_10__["request"])('/menu/header');
+
+              case 14:
+                header = _context.sent;
                 return _context.abrupt("return", {
                   pageProps: pageProps,
                   menus: {
                     footer: footer,
-                    social: social
+                    social: social,
+                    header: header
                   }
                 });
 
-              case 13:
+              case 16:
               case "end":
                 return _context.stop();
             }
@@ -55677,6 +55644,10 @@ routes.add({
   name: 'Search Results',
   pattern: '/search',
   page: 'SearchResults'
+}).add({
+  name: 'Custom Page',
+  pattern: '/:pageId',
+  page: 'CustomPage'
 });
 
 /***/ }),
@@ -55685,7 +55656,7 @@ routes.add({
 /*!************************************!*\
   !*** ./utilities/app.utilities.js ***!
   \************************************/
-/*! exports provided: handleError, responsive, request, parseDate, replaceLink, scrolling, loadImage, processArticleBody, injectArticleAds */
+/*! exports provided: handleError, responsive, request, parseDate, replaceLink, scrolling, loadImage, processArticleBody, injectArticleAds, chooseArticleDates */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -55699,6 +55670,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "loadImage", function() { return loadImage; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "processArticleBody", function() { return processArticleBody; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "injectArticleAds", function() { return injectArticleAds; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "chooseArticleDates", function() { return chooseArticleDates; });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
@@ -55745,7 +55717,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 */
 
 var handleError = function handleError(message) {
-  console.log(message);
   throw new Error(message);
 };
 /**
@@ -55877,7 +55848,7 @@ var parseDate = function parseDate(object) {
       }
     },
     formatted: moment__WEBPACK_IMPORTED_MODULE_4___default()(original_date).format('MMMM DD, YYYY'),
-    updated: moment__WEBPACK_IMPORTED_MODULE_4___default()(dates.updated).format('MM/DD/YYYY')
+    updated: moment__WEBPACK_IMPORTED_MODULE_4___default()(dates.updated).format('MMMM DD, YYYY')
   };
   return object;
 };
@@ -55964,6 +55935,40 @@ var injectArticleAds = function injectArticleAds(content) {
   });
   return output;
 };
+var chooseArticleDates = function chooseArticleDates(article) {
+  var date = article.date;
+
+  if (date.ago.updated.hours === date.ago.published.hours) {
+    date.updated = "";
+    date.published = "Published " + formatDate(date.formatted, date.ago.published);
+  } else {
+    date.updated = "Updated " + formatDate(date.updated, date.ago.updated);
+    date.published = "Published " + formatDate(date.formatted, date.ago.published);
+  }
+
+  return article;
+};
+
+function formatDate(original, ago) {
+  if (ago.days <= 10) {
+    //if < 10 days ago, display "ago" format
+    if (ago.hours < 24) {
+      if (ago.hours === 0) {
+        return "today";
+      } else if (ago.hours === 1) {
+        return ago.hours + " hour ago";
+      } else {
+        return ago.hours + " hours ago";
+      }
+    } else if (ago.days === 1) {
+      return ago.days + " day ago";
+    } else {
+      return ago.days + " days ago";
+    }
+  } else {
+    return original;
+  }
+}
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../node_modules/process/browser.js */ "./node_modules/process/browser.js")))
 
 /***/ }),

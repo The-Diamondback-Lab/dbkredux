@@ -25,7 +25,7 @@ export default class LoadedArticle extends React.Component {
           alt="Article"
           className="picture preload" 
           id={`image-${id}`} 
-          src={featured_image.url} 
+          src={featured_image.preview} 
           onLoad={() => loadImage("image-"+id)} />
         </a>
         </Link>

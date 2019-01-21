@@ -38,6 +38,9 @@ export default class RelatedContent extends React.Component {
                     .map(a => parseDate(a))
                     .map((s, i) => <Article {...s} key={i} />);
 
+            if (articles_data.length === 4){
+                articles_data.pop(); //makes sure we're only getting a maximum of 3 articles
+            } 
             this.setState({ articles: articles_data, loaded: true });
         }
         catch (error) {

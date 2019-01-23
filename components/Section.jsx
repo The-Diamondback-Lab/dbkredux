@@ -30,11 +30,26 @@ export default class Section extends React.Component {
     const { ads, loaded } = this.state;
     const { category, max, section_type } = this.props;
 
-    return (
-      <section className={section_type} id={`section-${category.slug}`}>
-        {/* section heading */}
-        <h2 dangerouslySetInnerHTML={{ __html: category.name }} />
-
+     // list of classes for this article section
+     let classes = [section_type];
+     // add certain classes if we have ads
+     if (this.props.ads) {
+       // if it has a single banner C ad, put it on the right side
+       // if it has two banner B ads, put it on the left side
+ 
+       let ads = this.props.ads;
+ 
+       if (ads.every(adObj => /^\d+x\d+_Banner_C$/.test(adObj.path)) && ads.length === 1) {
+         classes.push('with-ads-right');
+       } else if (ads.every(adObj => /^\d+x\d+_Banner_B$/.test(adObj.path)) && ads.length === 2) {
+         classes.push('with-ads-left');
+       }
+     }
+ 
+     return (
+       <section className={classes.join(' ')} id={`section-${category.slug}`}>
+         {/* section heading */}
+         <h2 dangerouslySetInnerHTML={{ __html: category.name }} />
         {
           this.props.ads && loaded
             ? (

@@ -1,10 +1,11 @@
 /* HELPER CLASSES - BASE/HELPERS
 
-$major-rows: ('width': map-get($rows_config, width), 'gutter': map-get($rows_config, gutter), 'max': 23)
+$major-rows: ('width': px-to-em(552.5), 'gutter': map-get($rows_config, gutter), 'max': 2)
+$major-rows-short: map-set($major-rows, max, 1)
 
-$minor-rows: ('width': map-get($rows_config, width), 'gutter': map-get($major-rows, gutter), 'max': 10)
+$minor-rows: ('width': px-to-em(501.5), 'gutter': map-get($major-rows, gutter), 'max': 1)
 
-$columns: ('width': map-get($columns_config, width), 'gutter': map-get($major-rows, gutter), 'max': map-get($columns_config, max))
+$columns: ('width': 1fr, 'gutter': map-get($major-rows, gutter), 'max': 20)
 
 %article-banner
   background-color: rgba($dark, 0.75)
@@ -27,27 +28,27 @@ $columns: ('width': map-get($columns_config, width), 'gutter': map-get($major-ro
   +grid(grid, $major-rows, $columns)
 
   > figure
-    &:first-of-type,
-    &:last-of-type
+    &:nth-of-type(4n+1),
+    &:nth-of-type(4n+4)
       > figcaption
         @extend %article-banner
 
-    &:nth-of-type(2),
-    &:nth-of-type(3)
+    &:nth-of-type(4n+2),
+    &:nth-of-type(4n+3)
       > figcaption
         @extend %article-banner-alt
 
-    &:first-of-type
-      +grid_item(1, 11, 1, 8)
+    &:nth-of-type(4n+1)
+      +grid_item(1, 1, 1, 9)
 
-    &:nth-of-type(2)
-      +grid_item(1, 11, 9, 5)
+    &:nth-of-type(4n+2)
+      +grid_item(1, 1, 10, 11)
 
-    &:nth-of-type(3)
-      +grid_item(12, 11, 1, 5)
+    &:nth-of-type(4n+3)
+      +grid_item(2, 1, 1, 6)
 
-    &:last-of-type
-      +grid_item(12, 11, 6, 8)
+    &:nth-of-type(4n+4)
+      +grid_item(2, 1, 7, 14)
 
 %related-articles-list
   display: flex
@@ -83,7 +84,7 @@ $columns: ('width': map-get($columns_config, width), 'gutter': map-get($major-ro
   +grid(grid, $minor-rows, $columns)
 
   > figure
-    +grid_item(1, 10, 1, 10)
+    +grid_item(1, 1, 1, 14)
 
     figcaption
       @extend %article-banner
@@ -131,6 +132,10 @@ $columns: ('width': map-get($columns_config, width), 'gutter': map-get($major-ro
 
 .major-articles-grid
   @extend %major-articles-grid
+
+.major-articles-grid.short-grid
+  @extend %major-articles-grid
+  +grid(grid, $major-rows-short, $columns)
 
 .minor-articles-grid
   @extend %minor-articles-grid

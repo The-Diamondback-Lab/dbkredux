@@ -46,14 +46,12 @@
 
 /// css grid item mixin
 /// @param {ident} $row-start - grid-row-start
-/// @param {ident} $row-end - grid-row-end
+/// @param {ident} $row-span - grid-row-span
 /// @param {ident} $column-start - grid-column-start
-/// @param {ident} $column-end - grid-column-end
-=grid_item($row-start, $row-end, $column-start, $column-end)
-  grid-column-end: span $column-end
-  grid-column-start: $column-start
-  grid-row-end: span $row-end
-  grid-row-start: $row-start
+/// @param {ident} $column-span - grid-column-span
+=grid_item($row-start, $row-span, $column-start, $column-span)
+  grid-row: $row-start / span $row-span
+  grid-column: $column-start / span $column-span
   min-width: 0
 
   @content

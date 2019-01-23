@@ -51,13 +51,25 @@ export default class Articles extends React.Component {
   render() {
     const { articles, loaded } = this.state;
     const { category, max, section } = this.props;
+    
+    let classes = ['articles'];
 
+    if (loaded) {
+      if (section === 'major') {
+        classes.push('major-articles-grid');
+
+        if (articles.length <= 2) {
+          classes.push('short-grid');
+        }
+      } else {
+        classes.push('minor-articles-grid');
+      }
+    } else {
+      classes.push('center');
+    }
     return (
       <div
-        className={`articles ${loaded
-          ? section === 'major' ? 'major-articles-grid' : 'minor-articles-grid'
-          : 'center'}`
-        }
+        className={classes.join(' ')}
         id={`${category.slug}`}
       >
         {

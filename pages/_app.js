@@ -41,7 +41,7 @@ export default class MyApp extends App {
       return (
         <Container>
             <Head>
-                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
                 <meta name="description" content="The Diamondack" />
                 <link rel="shortcut icon" href="/static/favicon.ico" />
             </Head>

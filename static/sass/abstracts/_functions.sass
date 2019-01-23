@@ -33,3 +33,7 @@
     $px: $px * 1px
 
   @return #{$px / 16px}em
+
+@function map-set($map, $key, $value)
+  $new: ($key: $value)
+  @return map-merge($map, $new)

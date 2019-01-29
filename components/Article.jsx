@@ -19,8 +19,31 @@ import { loadImage } from '../utilities/app.utilities';
 export default class Article extends React.Component {
 
   render() {
-    const { author, date, id, link, title, featured_image } = this.props;
+    const { author, date, id, link, title, featured_image, text_only } = this.props;
 
+    if (text_only) {
+      return (
+        <div className='article-text-block'>
+            <Link href={link}>
+              <a dangerouslySetInnerHTML={{ __html: title }}
+              className='article-block-title'></a>
+            </Link>
+
+            <div className='article-info'>
+              <Link href = {author.link}>
+                <a dangerouslySetInnerHTML={{ __html: author.name }}
+                className='article-block-author'></a>
+              </Link>
+              <p
+                dangerouslySetInnerHTML={{
+                  __html: this._published(date.ago.published)
+                }}
+                className='article-block-published'
+              />
+            </div>
+        </div>
+      )
+    }
     return (
       <figure className='article-block fadeIn animated'>
         <Link href={link}>

@@ -62,7 +62,10 @@ export default class Home extends React.Component {
           <div className='container'>
             <div className='homepage'>
               <div className="left-rail">
-                <FeaturedArticle data={featuredData} />
+                <div className = 'featured-story-area'>
+                  <FeaturedArticle data={featuredData} />
+                  <Articles category="news" max={5} mode="text-only" />
+                </div>
 
                 <Articles category="campus" max={4} mode="major-articles-grid" />
               </div>

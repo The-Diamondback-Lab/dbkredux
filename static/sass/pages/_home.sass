@@ -3,3 +3,19 @@
 .homepage
   width: 100%
   height: 100%
+
+.featured-story-area
+  display: flex
+  > .articles
+    width: 300px
+    margin-left: 20px
+    +respond-to(medium)
+      display: none
+
+.featured-story-area h1
+  font-size: 1em
+  text-transform: uppercase
+  color: $accent-dark
+  margin-bottom: 0
+
+

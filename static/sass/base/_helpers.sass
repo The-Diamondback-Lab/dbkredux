@@ -1,9 +1,9 @@
 /* HELPER CLASSES - BASE/HELPERS
 
-$major-rows: ('width': px-to-em(552.5), 'gutter': map-get($rows_config, gutter), 'max': 2)
+$major-rows: ('width': px-to-em(300), 'gutter': map-get($rows_config, gutter), 'max': 2)
 $major-rows-short: map-set($major-rows, max, 1)
 
-$minor-rows: ('width': px-to-em(501.5), 'gutter': map-get($major-rows, gutter), 'max': 1)
+$minor-rows: ('width': px-to-em(200), 'gutter': map-get($major-rows, gutter), 'max': 1)
 
 $columns: ('width': 1fr, 'gutter': map-get($major-rows, gutter), 'max': 20)
 
@@ -26,6 +26,7 @@ $columns: ('width': 1fr, 'gutter': map-get($major-rows, gutter), 'max': 20)
 
 %major-articles-grid
   +grid(grid, $major-rows, $columns)
+  width: 70%
 
   > figure
     &:nth-of-type(4n+1),
@@ -45,10 +46,10 @@ $columns: ('width': 1fr, 'gutter': map-get($major-rows, gutter), 'max': 20)
       +grid_item(1, 1, 10, 11)
 
     &:nth-of-type(4n+3)
-      +grid_item(2, 1, 1, 6)
+      +grid_item(2, 1, 1, 8)
 
     &:nth-of-type(4n+4)
-      +grid_item(2, 1, 7, 14)
+      +grid_item(2, 1, 9, 12)
 
 %related-articles-list
   display: flex
@@ -88,6 +89,16 @@ $columns: ('width': 1fr, 'gutter': map-get($major-rows, gutter), 'max': 20)
 
     figcaption
       @extend %article-banner
+
+  
+.article-text-block
+  > .article-block-title
+    color: black
+  > .article-info > .article-block-published
+    color: grey
+  border-bottom: 0.5px solid grey
+  margin-top: 20px
+  padding-bottom: 20px
 
 .center
   +flex(row, center, center)
@@ -138,7 +149,7 @@ $columns: ('width': 1fr, 'gutter': map-get($major-rows, gutter), 'max': 20)
 
 .right-rail-show
   width: 30%
-  margin-left: 100px
+  margin-left: 50px
   +respond-to(medium)
     width: 100%
     margin-left: 0px

@@ -21,10 +21,15 @@ export default class Advertisement extends React.Component {
     this._mounted = true;
 
     const { path, size, mode } = this.props;
+    var displayMode = mode;
+
+    if (typeof mode === 'undefined'){
+      displayMode = "";
+    }
 
     if (this._mounted) {
       // update component state with props
-      this.setState({ path: path, size: size, mode: mode, loaded: true });
+      this.setState({ path: path, size: size, mode: displayMode, loaded: true });
     }
   }
   

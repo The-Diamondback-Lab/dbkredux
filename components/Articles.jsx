@@ -24,7 +24,7 @@ export default class Articles extends React.Component {
   }
 
   async componentDidMount() {
-    const { category, max } = this.props;
+    const { category, max, mode } = this.props;
 
     try {
       // request category articles
@@ -40,7 +40,7 @@ export default class Articles extends React.Component {
         articles_data
           .sort((a, a2) => moment(a2.date).diff(a.date))
           .map(a => parseDate(a))
-          .map((s, i) => <Article {...s} key={i} />);
+          .map((s, i) => <Article text_only={mode === 'text-only'} {...s} key={i} />);
 
       this.setState({ articles: articles_data, loaded: true, category: categories_data });
 
@@ -76,10 +76,13 @@ export default class Articles extends React.Component {
     } */
 
     return (
-      <div className={classes.join(' ')} id={`${category.id}`}>
-        {
-          articles
-        }
+      <div className='articles'>
+        <h1 dangerouslySetInnerHTML={{ __html: category.name }}></h1>
+        <div className={classes.join(' ')} id={`${category.id}`}>
+          {
+            articles
+          }
+        </div>
       </div>
     );
   }

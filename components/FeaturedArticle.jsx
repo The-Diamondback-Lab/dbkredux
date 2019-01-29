@@ -20,7 +20,7 @@ export default class FeaturedArticle extends React.Component {
     const { author, date, id, link, title, featured_image } = this.props.data;
 
     return (
-      <figure className='article-block'>
+      <figure className='article-block featured-article'>
         <Link href={link}>
           <a>
             <img

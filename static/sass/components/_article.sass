@@ -14,7 +14,6 @@
 
   > figcaption
     bottom: 0
-    height: px-to-em(85 * 1.125)
     position: absolute
     z-index: 2
 
@@ -28,9 +27,7 @@
         font-weight: 600
 
 .article-block-image
-  background:
-    repeat: none
-    size: cover
+  object-fit: cover
   width: 100%
   height: 100%
 
@@ -41,7 +38,7 @@
     weight: 700
 
 .article-info
-  +flex(row, flex-end, flex-start)
+  +flex(row, center, flex-start)
 
   padding-top: 0.125em
   width: 100%

@@ -10,19 +10,17 @@ import { Link } from '../routes';
 
 // jquery
 import { loadImage } from '../utilities/app.utilities';
-
 /*
  * TODO: check if this.props.data.featured_media === 0
  * if so -> .article-block.text, otherwise .article-block.image
  */
 
-export default class Article extends React.Component {
-
+export default class FeaturedArticle extends React.Component {
   render() {
-    const { author, date, id, link, title, featured_image } = this.props;
+    const { author, date, id, link, title, featured_image } = this.props.data;
 
     return (
-      <figure className='article-block fadeIn animated'>
+      <figure className='article-block'>
         <Link href={link}>
           <a>
             <img

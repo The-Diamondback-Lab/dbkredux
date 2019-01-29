@@ -20,16 +20,17 @@ import {
 export default class Articles extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { articles: [], loaded: false };
+    this.state = { articles: [], loaded: false, category: null };
   }
 
   async componentDidMount() {
-    const { category } = this.props;
+    const { category, max } = this.props;
 
     try {
       // request category articles
-      let articles_data = await request(`/articles?category=${category.id}&preview=true`);
-      
+      let articles_data = await request(`/articles?category=${category}&preview=true&per_page=${max}`);
+      let categories_data = await request(`/category/${category}`);
+
       /*
        * NOTICE: articles_data is an array contaning article block components,
        * NOT the article page components. below we sort the articles by date,
@@ -41,7 +42,7 @@ export default class Articles extends React.Component {
           .map(a => parseDate(a))
           .map((s, i) => <Article {...s} key={i} />);
 
-      this.setState({ articles: articles_data, loaded: true });
+      this.setState({ articles: articles_data, loaded: true, category: categories_data });
 
     } catch (error) {
       handleError(error.message);
@@ -49,13 +50,19 @@ export default class Articles extends React.Component {
   }
 
   render() {
-    const { articles, loaded } = this.state;
-    const { category, max, section } = this.props;
-    
+    const { articles, category, loaded } = this.state;
+    const { mode } = this.props;
+
     let classes = ['articles'];
 
     if (loaded) {
-      if (section === 'major') {
+      classes.push(mode);
+    } else {
+      return (<Loading />);
+    }
+
+    /* if (loaded) {
+      if (mode === 'major') {
         classes.push('major-articles-grid');
 
         if (articles.length <= 2) {
@@ -66,14 +73,12 @@ export default class Articles extends React.Component {
       }
     } else {
       classes.push('center');
-    }
+    } */
+
     return (
-      <div
-        className={classes.join(' ')}
-        id={`${category.slug}`}
-      >
+      <div className={classes.join(' ')} id={`${category.id}`}>
         {
-          loaded ? articles.map((a, i) => i < max ? a : null) : <Loading />
+          articles
         }
       </div>
     );

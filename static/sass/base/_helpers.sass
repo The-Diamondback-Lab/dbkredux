@@ -53,10 +53,10 @@ $columns: ('width': 1fr, 'gutter': map-get($major-rows, gutter), 'max': 20)
 %related-articles-list
   display: flex
   +respond-to(medium)
-    flex-direction: column 
-    
+    flex-direction: column
+
   > figure
-      width: 500px 
+      width: 500px
       height: 300px
       margin-right: 10px
       +respond-to(medium)
@@ -64,7 +64,7 @@ $columns: ('width': 1fr, 'gutter': map-get($major-rows, gutter), 'max': 20)
       +respond-to(small)
         width: 100%
 
-  > figure 
+  > figure
     &:first-of-type,
     &:last-of-type
       > figcaption
@@ -73,12 +73,12 @@ $columns: ('width': 1fr, 'gutter': map-get($major-rows, gutter), 'max': 20)
     &:nth-of-type(2)
       > figcaption
         @extend %article-banner-alt
-    
+
     > figcaption
       height: 40%
       > .container > a
         font-size: 1em
-  
+
 
 %minor-articles-grid
   +grid(grid, $minor-rows, $columns)
@@ -95,12 +95,14 @@ $columns: ('width': 1fr, 'gutter': map-get($major-rows, gutter), 'max': 20)
 .column
   +flex(column, stretch, flex-start)
 
+// container for homepage
 .container
   height: 100%
   margin: 0 auto
   max-width: $max-width
   width: 100%
 
+// containers for any page but the homepage
 .container-narrow
   height: 100%
   margin: 0 auto
@@ -108,6 +110,16 @@ $columns: ('width': 1fr, 'gutter': map-get($major-rows, gutter), 'max': 20)
   max-width: $max-width
   // +respond-to(medium)
   //   width: 100%
+
+.homepage
+  padding-top: 20px
+  display: flex
+  width: 100%
+  // align stuff in a row
+  flex-direction: row
+  +respond-to(medium)
+    // align in a single column
+    flex-direction: column
 
 .flex
   display: flex
@@ -122,6 +134,14 @@ $columns: ('width': 1fr, 'gutter': map-get($major-rows, gutter), 'max': 20)
   margin-left: 100px
   +respond-to(medium)
     display: none
+  align-items: center
+
+.right-rail-show
+  width: 30%
+  margin-left: 100px
+  +respond-to(medium)
+    width: 100%
+    margin-left: 0px
   align-items: center
 
 .disappear
@@ -151,6 +171,3 @@ $columns: ('width': 1fr, 'gutter': map-get($major-rows, gutter), 'max': 20)
 .scrolled
   position: fixed
   z-index: 5
-
-
-

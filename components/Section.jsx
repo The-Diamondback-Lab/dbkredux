@@ -11,7 +11,7 @@ import Articles from '../components/Articles.jsx';
 export default class Section extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { ads: [], loaded: false };
+    this.state = { loaded: false };
   }
 
   componentDidMount() {
@@ -36,16 +36,16 @@ export default class Section extends React.Component {
      if (this.props.ads) {
        // if it has a single banner C ad, put it on the right side
        // if it has two banner B ads, put it on the left side
- 
+
        let ads = this.props.ads;
- 
+
        if (ads.every(adObj => /^\d+x\d+_Banner_C$/.test(adObj.path)) && ads.length === 1) {
          classes.push('with-ads-right');
        } else if (ads.every(adObj => /^\d+x\d+_Banner_B$/.test(adObj.path)) && ads.length === 2) {
          classes.push('with-ads-left');
        }
      }
- 
+
      return (
        <section className={classes.join(' ')} id={`section-${category.slug}`}>
          {/* section heading */}

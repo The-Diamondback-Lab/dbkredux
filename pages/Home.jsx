@@ -7,21 +7,24 @@ import Head from 'next/head';
 
 // components
 import Section from '../components/Section.jsx';
+import FeaturedArticle from '../components/FeaturedArticle';
+import Advertisement from '../components/Advertisement';
+import Articles from '../components/Articles';
 
 // components
 // import Advertisement from '../components/Advertisement.jsx';
 
-export default class Home extends React.Component {
+import { request, parseDate } from '../utilities/app.utilities';
 
+export default class Home extends React.Component {
   static async getInitialProps() {
     var sections = [
       {
-        category: { name: 'campus', slug: 'campus', id: 'campus' },
+        category: { name: 'campus', id: 'campus' },
         max: 4,
         section_type: 'major'
       },
       {
-        ads: [{ path: '300x600_Banner_C', size: [300, 600], mode: "desktop" }],
         category: { name: 'music', slug: 'music', id: 'music' },
         max: 1,
         section_type: 'minor'
@@ -32,24 +35,24 @@ export default class Home extends React.Component {
         section_type: 'major'
       },
       {
-        ads: [
-          { path: '300x250_Banner_B', size: [300, 250], mode: "desktop" },
-          { path: '300x250_Banner_B', size: [300, 250], mode: "desktop" }
-        ],
         category: { name: 'science & tech', slug: 'science-and-tech', id: 'science-and-tech' },
         max: 1,
         section_type: 'minor'
       }
     ];
+
+    let featuredData = parseDate(await request('/featured_article'));
+
     return {
-      sections: sections
+      sections,
+      featuredData
     };
   }
 
   render() {
-    const { sections } = this.props;
+    const { sections, featuredData } = this.props;
 
-    return (  
+    return (
       <React.Fragment>
         <Head>
           <title>{"The Diamondback"}</title>
@@ -57,13 +60,24 @@ export default class Home extends React.Component {
         </Head>
         <main className='page'>
           <div className='container'>
-            <div className='landing'>
-              {/* feature article, <ArticleBlock />  */}
+            <div className='homepage'>
+              <div className="left-rail">
+                <FeaturedArticle data={featuredData} />
 
-              {/* three smaller articles, <ArticleBlock.Text /> */}
+                <Articles category="campus" max={4} mode="major-articles-grid" />
+              </div>
+              <div className="right-rail-show">
+                <Advertisement path='300x250_Banner_B' size={[300, 250]} />
+                <br />
+                <Advertisement path='300x600_Banner_C' size={[300, 600]} mode="desktop" />
+                <br />
+                <Advertisement path='120x90_Banner_D' size={[120, 90]} />
+                <br />
+                <Advertisement path='120x90_Banner_F' size={[120, 90]} />
+                <br />
+                <Advertisement path='300x250_Banner_G' size={[300, 250]} />
+              </div>
             </div>
-            {/* categories */}
-            {sections.map((c, i) => <Section {...c} key={i} />)}
           </div>
         </main>
       </React.Fragment>

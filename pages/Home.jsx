@@ -64,22 +64,52 @@ export default class Home extends React.Component {
               <div className="left-rail">
                 <div className = 'featured-story-area'>
                   <FeaturedArticle data={featuredData} />
-                  <Articles category="news" max={5} mode="text-only" />
+                  <Articles category="latest" max={5} mode="text-only" />
                 </div>
-
                 <Articles category="campus" max={4} mode="major-articles-grid" />
+                <Articles category="sports" max={4} mode="major-articles-grid" />
+                <div className = 'homepage-row'>
+                  <Articles category="sports" max={7} mode="first-featured" />
+                  <Articles category="sports" max={7} mode="first-featured" />
+                </div>
+                <div className = 'homepage-row'>
+                  <Articles category="sports" max={7} mode="first-featured" />
+                  <Articles category="campus" max={7} mode="first-featured" />
+                  <Articles category="sports" max={7} mode="first-featured" />
+                </div>
               </div>
               <div className="right-rail-show">
                 <Advertisement path='300x250_Banner_B' size={[300, 250]} />
                 <br />
                 <Advertisement path='300x600_Banner_C' size={[300, 600]} mode="desktop" />
                 <br />
-                <Advertisement path='120x90_Banner_D' size={[120, 90]} />
+                <div class = 'ad-row'>
+                  <Advertisement path='120x90_Banner_D' size={[120, 90]} />
+                  <Advertisement path='120x90_Banner_F' size={[120, 90]} />
+                </div>
                 <br />
-                <Advertisement path='120x90_Banner_F' size={[120, 90]} />
+                <Articles category="basketball-women" max={1} mode="single-article" />
+                <Articles category="football" max={1} mode="single-article" />
+                <Articles category="field-hockey" max={1} mode="single-article" />
                 <br />
                 <Advertisement path='300x250_Banner_G' size={[300, 250]} />
+                <br />
+                <h2 style = {{'text-align': 'center'}}>Sponsored Content</h2>
               </div>
+            </div>
+            <div class='homepage-bottom'>
+                <div className = 'homepage-row'>
+                  <Articles category="sports" max={1} mode="single-article" />
+                  <Articles category="campus" max={1} mode="single-article" />
+                  <Articles category="sports" max={1} mode="single-article" />
+                  <Articles category="sports" max={1} mode="single-article" />
+                </div>
+                <div className = 'homepage-row'>
+                  <Articles category="sports" max={1} mode="single-article" />
+                  <Articles category="campus" max={1} mode="single-article" />
+                  <Articles category="sports" max={1} mode="single-article" />
+                  <Articles category="sports" max={1} mode="single-article" />
+                </div>
             </div>
           </div>
         </main>

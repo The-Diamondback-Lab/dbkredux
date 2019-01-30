@@ -78,7 +78,7 @@ export default class Header extends React.Component {
       }
     });
 
-    $("#header").fadeIn();
+    // $("#header").fadeIn();
   }
 
   componentWillUnmount() {

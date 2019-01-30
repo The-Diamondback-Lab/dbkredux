@@ -3,6 +3,16 @@
 .homepage
   width: 100%
   height: 100%
+  & .articles
+    margin-bottom: 20px
+
+.homepage-bottom
+  width: 100%
+  display: flex
+  flex-direction: column
+  & .articles
+    +respond-to(medium)
+      margin-bottom: 10px
 
 .featured-story-area
   display: flex
@@ -12,10 +22,34 @@
     +respond-to(medium)
       display: none
 
-.featured-story-area h1
-  font-size: 1em
-  text-transform: uppercase
-  color: $accent-dark
-  margin-bottom: 0
+.ad-row
+  display: flex
+  flex-direction: row
+  justify-content: center
+  > *
+    margin-left: 5px
+    margin-right: 5px
+
+.homepage-row
+  display: flex
+  flex-direction: row
+  justify-content: space-between
+  margin-bottom: 20px
+  > *
+    margin-left: 10px
+    margin-right: 10px
+    flex-basis: 0
+    flex-grow: 1
+  +respond-to(medium)
+    flex-direction: column
+    > *
+      margin-left: 0px
+      margin-right: 0px    
+      flex-basis: auto
+
+
+
+
+
 
 

@@ -8,7 +8,8 @@ $minor-rows: ('width': px-to-em(200), 'gutter': map-get($major-rows, gutter), 'm
 $columns: ('width': 1fr, 'gutter': map-get($major-rows, gutter), 'max': 20)
 
 %article-banner
-  background-color: rgba($dark, 0.75)
+  background-color: rgba($dark, 0.875)
+  border-top: 2px solid $accent-med
 
   > .container
     .article-block-author
@@ -19,6 +20,7 @@ $columns: ('width': 1fr, 'gutter': map-get($major-rows, gutter), 'max': 20)
 
 %article-banner-alt
   background-color: rgba($accent-med, 0.875)
+  border-top: 2px solid white
 
   > .container
     .article-block-author
@@ -26,8 +28,14 @@ $columns: ('width': 1fr, 'gutter': map-get($major-rows, gutter), 'max': 20)
 
 %major-articles-grid
   +grid(grid, $major-rows, $columns)
-  width: 70%
-
+  width: 100%
+  +respond-to(small)
+    //stack the grid on mobile
+    display: flex
+    flex-direction: column
+    > figure
+      width: 100%
+      height: 200px
   > figure
     &:nth-of-type(4n+1),
     &:nth-of-type(4n+4)
@@ -90,15 +98,35 @@ $columns: ('width': 1fr, 'gutter': map-get($major-rows, gutter), 'max': 20)
     figcaption
       @extend %article-banner
 
+%single-article
+    display: flex
+    flex-direction: column
+    figure
+      height: 300px
+
+    figcaption
+      @extend %article-banner
+
+
   
 .article-text-block
   > .article-block-title
     color: black
+  > .article-block-title:hover
+    color: $accent-dark
   > .article-info > .article-block-published
     color: grey
   border-bottom: 0.5px solid grey
   margin-top: 20px
   padding-bottom: 20px
+
+.first-featured
+  display: flex
+  flex-direction: column
+  > figure
+    min-height: 300px
+    > figcaption
+      @extend %article-banner
 
 .center
   +flex(row, center, center)
@@ -149,7 +177,7 @@ $columns: ('width': 1fr, 'gutter': map-get($major-rows, gutter), 'max': 20)
 
 .right-rail-show
   width: 30%
-  margin-left: 50px
+  margin-left: 100px
   +respond-to(medium)
     width: 100%
     margin-left: 0px
@@ -173,6 +201,9 @@ $columns: ('width': 1fr, 'gutter': map-get($major-rows, gutter), 'max': 20)
 
 .related-articles-list
   @extend %related-articles-list
+
+.single-article
+  @extend %single-article
 
 .row
   +flex

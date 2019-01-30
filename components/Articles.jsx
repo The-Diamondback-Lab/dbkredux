@@ -12,6 +12,8 @@ import moment from 'moment';
 import Article from '../components/Article.jsx';
 import Loading from '../components/Loading.jsx';
 
+import { Link } from '../routes';
+
 // utility functions
 import {
   handleError, request, parseDate
@@ -28,8 +30,19 @@ export default class Articles extends React.Component {
 
     try {
       // request category articles
-      let articles_data = await request(`/articles?category=${category}&preview=true&per_page=${max}`);
-      let categories_data = await request(`/category/${category}`);
+      var articles_data = null;
+      var categories_data = null;
+      if (category === 'latest'){
+        articles_data = await request(`/articles?preview=true&per_page=${max}`);
+        categories_data = {
+          name: 'Latest',
+          id: 'latest'
+        };
+      }
+      else{
+        articles_data = await request(`/articles?category=${category}&preview=true&per_page=${max}`);
+        categories_data = await request(`/category/${category}`);  
+      }
 
       /*
        * NOTICE: articles_data is an array contaning article block components,
@@ -40,7 +53,14 @@ export default class Articles extends React.Component {
         articles_data
           .sort((a, a2) => moment(a2.date).diff(a.date))
           .map(a => parseDate(a))
-          .map((s, i) => <Article text_only={mode === 'text-only'} {...s} key={i} />);
+          .map((s, i) => {
+            if (mode === 'text-only' || (mode === 'first-featured' && i !== 0)){
+              return <Article text_only={true} {...s} key={i} />;
+            }
+            else{
+              return <Article text_only={false} {...s} key={i} />;
+            }
+          });
 
       this.setState({ articles: articles_data, loaded: true, category: categories_data });
 
@@ -61,24 +81,18 @@ export default class Articles extends React.Component {
       return (<Loading />);
     }
 
-    /* if (loaded) {
-      if (mode === 'major') {
-        classes.push('major-articles-grid');
-
-        if (articles.length <= 2) {
-          classes.push('short-grid');
-        }
-      } else {
-        classes.push('minor-articles-grid');
-      }
-    } else {
-      classes.push('center');
-    } */
-
+    var header = "";
+    if (category.name === 'Latest'){
+      header = <h1>Latest</h1>;
+    }
+    else{
+      header = <Link href={category.link}><a><h1 dangerouslySetInnerHTML={{ __html: category.name }}></h1></a></Link>;
+    }
+    
     return (
-      <div className='articles'>
-        <h1 dangerouslySetInnerHTML={{ __html: category.name }}></h1>
-        <div className={classes.join(' ')} id={`${category.id}`}>
+      <div className={`articles ${category.id}`}>
+        {header}
+        <div className={classes.join(' ')} >
           {
             articles
           }

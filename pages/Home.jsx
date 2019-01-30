@@ -42,15 +42,17 @@ export default class Home extends React.Component {
     ];
 
     let featuredData = parseDate(await request('/featured_article'));
+    let sponsoredContent = (await request('/pages/sponsored-content')).content.rendered;
 
     return {
       sections,
-      featuredData
+      featuredData,
+      sponsoredContent
     };
   }
 
   render() {
-    const { sections, featuredData } = this.props;
+    const { sections, featuredData, sponsoredContent } = this.props;
 
     return (
       <React.Fragment>
@@ -83,7 +85,7 @@ export default class Home extends React.Component {
                 <br />
                 <Advertisement path='300x600_Banner_C' size={[300, 600]} mode="desktop" />
                 <br />
-                <div class = 'ad-row'>
+                <div className = 'ad-row'>
                   <Advertisement path='120x90_Banner_D' size={[120, 90]} />
                   <Advertisement path='120x90_Banner_F' size={[120, 90]} />
                 </div>
@@ -94,10 +96,13 @@ export default class Home extends React.Component {
                 <br />
                 <Advertisement path='300x250_Banner_G' size={[300, 250]} />
                 <br />
-                <h2 style = {{'text-align': 'center'}}>Sponsored Content</h2>
+                <div className='sponsored-content-homepage'>
+                  <h2>Sponsored</h2>
+                  <div dangerouslySetInnerHTML={{__html: sponsoredContent}} />
+                </div>
               </div>
             </div>
-            <div class='homepage-bottom'>
+            <div className='homepage-bottom'>
                 <div className = 'homepage-row'>
                   <Articles category="sports" max={1} mode="single-article" />
                   <Articles category="campus" max={1} mode="single-article" />

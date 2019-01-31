@@ -73,7 +73,7 @@ export default class Articles extends React.Component {
     const { articles, category, loaded } = this.state;
     const { mode } = this.props;
 
-    let classes = ['articles'];
+    let classes = [];
 
     if (loaded) {
       classes.push(mode);

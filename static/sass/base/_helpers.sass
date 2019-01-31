@@ -24,7 +24,10 @@ $columns: ('width': 1fr, 'gutter': map-get($major-rows, gutter), 'max': 20)
 
   > .container
     .article-block-author
-      color: $light
+      color: black
+
+    .article-block-published
+      color: white
 
 %major-articles-grid
   +grid(grid, $major-rows, $columns)
@@ -110,6 +113,10 @@ $columns: ('width': 1fr, 'gutter': map-get($major-rows, gutter), 'max': 20)
 
   
 .article-text-block
+  width: $max-width
+  display: flex
+  flex-direction: column
+  justify-content: center
   > .article-block-title
     color: black
   > .article-block-title:hover
@@ -123,6 +130,7 @@ $columns: ('width': 1fr, 'gutter': map-get($major-rows, gutter), 'max': 20)
 .first-featured
   display: flex
   flex-direction: column
+  align-items: center
   > figure
     min-height: 300px
     > figcaption

@@ -71,7 +71,7 @@
       "publicPath": "static/chunks/commons.b5af9b775cff32ba3136.js"
     }
   ],
-  "../modules/_core": [
+  "../../modules/_core": [
     {
       "id": 9,
       "name": "./node_modules/core-js/library/modules/_core.js",
@@ -143,7 +143,7 @@
       "publicPath": "static/chunks/commons.b5af9b775cff32ba3136.js"
     }
   ],
-  "../components/Loading.jsx": [
+  "./Loading.jsx": [
     {
       "id": 18,
       "name": "./components/Loading.jsx",
@@ -867,7 +867,7 @@
       "publicPath": "static/chunks/commons.b5af9b775cff32ba3136.js"
     }
   ],
-  "../core-js/object/keys": [
+  "@babel/runtime-corejs2/core-js/object/keys": [
     {
       "id": 111,
       "name": "./node_modules/@babel/runtime-corejs2/core-js/object/keys.js",
@@ -1363,7 +1363,7 @@
       "publicPath": "static/chunks/commons.b5af9b775cff32ba3136.js"
     }
   ],
-  "./en-ie.js": [
+  "./en-ie": [
     {
       "id": 174,
       "name": "./node_modules/moment/locale/en-ie.js",
@@ -1379,7 +1379,7 @@
       "publicPath": "static/chunks/commons.b5af9b775cff32ba3136.js"
     }
   ],
-  "./en-nz": [
+  "./en-nz.js": [
     {
       "id": 176,
       "name": "./node_modules/moment/locale/en-nz.js",

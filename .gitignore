@@ -1,2 +1,8 @@
+# package directories
 node_modules
-.next
+jspm_packages
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml

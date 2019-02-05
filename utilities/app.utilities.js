@@ -14,6 +14,8 @@ import Parser from 'html-react-parser';
 
 import Advertisement from '../components/Advertisement';
 
+const API_URL = 'https://4v5ahulc28.execute-api.us-east-1.amazonaws.com/dev';
+
 /*
  * Application utility functions.
  */
@@ -65,7 +67,7 @@ export const responsive = (breakpoint, operator) => {
  */
 export const request = async (endpoint) => {
   try {
-    endpoint = `${process.env.API_URL || 'http://localhost:8080'}${endpoint}`;
+    endpoint = `${API_URL}${endpoint}`;
     let req = await axios.get(endpoint);
 
     return req.data;

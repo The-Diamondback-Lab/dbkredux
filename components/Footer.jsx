@@ -104,7 +104,7 @@ export default class Footer extends React.Component {
               {social.items.map((link, i) => <FooterLink {...link} key={i} />)}
             </div>
 
-            <Link href='/'><a className='copyright'>&copy; 2018 The Diamondback</a></Link>
+            <Link href='/'><a className='copyright'>&copy; {new Date().getFullYear()} The Diamondback</a></Link>
           </div>
         </div>
       </footer>

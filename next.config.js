@@ -2,7 +2,7 @@
 const withCSS = require('@zeit/next-css')
 const withSass = require('@zeit/next-sass')
 
-module.exports = withSass(withCSS({
+deps = withSass(withCSS({
     webpack: function (config) {
       config.module.rules.push({
         test: /\.(eot|woff|woff2|ttf|svg|png|jpg|gif)$/,
@@ -17,3 +17,5 @@ module.exports = withSass(withCSS({
       return config
     }
   }))
+
+module.exports = deps

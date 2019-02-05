@@ -90,7 +90,7 @@ export default class Home extends React.Component {
                   <Advertisement path='120x90_Banner_F' size={[120, 90]} />
                 </div>
                 <br />
-                <Articles category="basketball-women" max={1} mode="single-article" />
+                <Articles category="womens-basketball" max={1} mode="single-article" />
                 <Articles category="football" max={1} mode="single-article" />
                 <Articles category="field-hockey" max={1} mode="single-article" />
                 <br />

@@ -17,18 +17,27 @@ export default class LoadedArticle extends React.Component {
 
   render() {
     const { author, date, id, link, title, excerpt, featured_image } = this.props;
+
+    var featuredImage = <Link href={link}>
+    <div className="loaded-article-picture"></div>
+    </Link>;
+    
+    if (featured_image) {
+      featuredImage = <Link href={link}>
+      <a className="loaded-article-picture" >
+        <img 
+        alt="Article"
+        className="picture preload" 
+        id={`image-${id}`} 
+        src={featured_image.preview} 
+        onLoad={() => loadImage("image-"+id)} />
+      </a>
+      </Link>;
+    }
+
     return (
       <div className="loaded-article-block fadeIn animated">
-        <Link href={link}>
-        <a className="loaded-article-picture" >
-          <img 
-          alt="Article"
-          className="picture preload" 
-          id={`image-${id}`} 
-          src={featured_image.preview} 
-          onLoad={() => loadImage("image-"+id)} />
-        </a>
-        </Link>
+        {featuredImage}
         <div className="loaded-article-details">
           <Link href={link}><a><h2>{title}</h2></a></Link>
           <Link href={link}><a dangerouslySetInnerHTML={{ __html: excerpt }}></a></Link>

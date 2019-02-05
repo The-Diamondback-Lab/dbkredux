@@ -20,6 +20,18 @@ export default class Article extends React.Component {
 
   render() {
     const { author, date, id, link, title, featured_image, text_only } = this.props;
+    var featuredImage = <Link href={link}><a><div className='article-block-image'/></a></Link>;
+    if (featured_image) {
+      featuredImage = (<Link href={link}>
+      <a>
+        <img
+        alt='Article'
+        className='article-block-image'
+        id={`image-${id}`} src={featured_image.article}
+        onLoad={() => loadImage(`image-${id}`)}/>
+      </a>
+    </Link>);
+    }
 
     if (text_only) {
       return (
@@ -46,15 +58,7 @@ export default class Article extends React.Component {
     }
     return (
       <figure className='article-block fadeIn animated'>
-        <Link href={link}>
-          <a>
-            <img
-            alt='Article'
-            className='article-block-image'
-            id={`image-${id}`} src={featured_image.article}
-            onLoad={() => loadImage(`image-${id}`)}/>
-          </a>
-        </Link>
+        {featuredImage}
         <figcaption>
           <div className='container'>
             <Link href={link}>

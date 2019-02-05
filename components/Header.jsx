@@ -3,6 +3,8 @@
 // NOTICE: importing reactn instead of react
 import React, { setGlobal } from 'reactn';
 
+import NoSSR from 'react-no-ssr';
+
 import { Link } from '../routes';
 
 // jquery
@@ -101,10 +103,12 @@ export default class Header extends React.Component {
       <header id="header" className={`${scrolled ? 'pad-bottom' : ''}`} >
         <div id="masthead" className={`container${mobile ? ' disappear' : ''}`}>
           <React.Fragment>
-            <Link to="/">
-              <a><img src="/static/images/the-diamondback-logo.svg" alt='The Diamondback' /></a>
-            </Link>
-            {searchBar}
+            <NoSSR>
+              <Link to="/">
+                <a><img src="/static/images/the-diamondback-logo.svg" alt='The Diamondback' /></a>
+              </Link>
+              {searchBar}
+            </NoSSR>
           </React.Fragment>
         </div>
 

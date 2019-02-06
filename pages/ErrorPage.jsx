@@ -4,7 +4,7 @@ import { Link } from '../routes';
 import Head from 'next/head';
 
 //sass
-import '../static/sass/app.sass';
+import '../styles/sass/app.sass';
 
 
 

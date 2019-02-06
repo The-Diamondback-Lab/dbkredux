@@ -13,7 +13,7 @@ import Sidekick from '../components/Sidekick.jsx';
 import { request } from '../utilities/app.utilities.js';
 
 //sass
-import '../static/sass/app.sass';
+import '../styles/sass/app.sass';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 
 export default class MyApp extends App {

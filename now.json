@@ -1,0 +1,41 @@
+{
+  "name": "dbk-frontend",
+  "version": 2,
+  "public": true,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@now/next"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/",
+      "dest": "/Home"
+    },
+    {
+      "src": "/404",
+      "dest": "/ErrorPage"
+    },
+    {
+      "src": "^\\/([0-9]{4})\\/([0-9]{2})\\/([0-9]{2})\\/([^\\/]+?)(?:\\/)?$",
+      "dest": "/ArticlePage?year=$1&month=$2&day=$3&slug=$4"
+    },
+    {
+      "src": "^\\/category\\/((?:[^\\/]+?)(?:\\/(?:[^\\/]+?))*)(?:\\/)?$",
+      "dest": "/CategoryPage?categorypath=$1"
+    },
+    {
+      "src": "^\\/author\\/([^\\/]+?)(?:\\/)?$",
+      "dest": "/AuthorPage?authorId=$1"
+    },
+    {
+      "src": "^\\/search(?:\\/)?$",
+      "dest": "/SearchResults"
+    },
+    {
+      "src": "^\\/([^\\/]+?)(?:\\/)?$",
+      "dest": "/CustomPage?pageId=$1"
+    }
+  ]
+}

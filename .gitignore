@@ -2,7 +2,5 @@
 node_modules
 jspm_packages
 
-# Elastic Beanstalk Files
-.elasticbeanstalk/*
-!.elasticbeanstalk/*.cfg.yml
-!.elasticbeanstalk/*.global.yml
+# Next files
+.next

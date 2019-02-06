@@ -43,21 +43,6 @@ export default class Takeover extends React.Component {
     window.addEventListener('scroll', this.resizeHeaderOnScroll);
   }
 
-  async componentDidMount() {
-    //get takeover data from S3
-    let resp = await axios.get("https://s3.amazonaws.com/dbk-ads-s3/links.json");
-    var desktop = {
-      link: resp.data.takeover_desktop,
-      img: "https://s3.amazonaws.com/dbk-ads-s3/takeover-desktop.jpg"
-    };
-    var mobile = {
-      link: resp.data.takeover_mobile,
-      img: "https://s3.amazonaws.com/dbk-ads-s3/takeover-mobile.jpg"
-    };
-    this.setState( {desktop: desktop, mobile: mobile, loaded: true});
-    window.addEventListener('scroll', this.resizeHeaderOnScroll);
-  }
-
   getTakeover() {
     const { desktop, mobile } = this.state;
     var link = desktop.link;

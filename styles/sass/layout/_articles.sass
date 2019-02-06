@@ -1,0 +1,30 @@
+/* GROUP ARTICLES STYLES - LAYOUT/ARTICLES
+
+.articles h1
+  text-transform: uppercase
+  font-size: 1em
+  color: #222222
+  font-weight: 800
+  &:before
+    width: 1.2em
+    background-color: $accent-med
+    content: ""
+    display: block
+    height: 0.25rem
+    margin-bottom: 0.5em
+  
+.articles a > h1
+  &:hover
+    color: $accent-dark
+
+.articles
+  +respond-to(schmedium)
+    & .article-block-title
+      font-size: 0.8em
+    & .article-block-author
+      font-size: 0.5em
+    & .article-block-published
+      font-size: 0.5em
+
+
+

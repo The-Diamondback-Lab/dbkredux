@@ -6,10 +6,19 @@ $content-width: 70%
 
 .category
     text-transform: uppercase
+    display: flex
+    flex-direction: row
+    margin-top: 10px
     > a
         margin-right: 15px
-    +respond-to(medium)
+        background-color: lightgray
+        padding: 10px
         font-size: 1em
+        font-weight: 600
+
+    +respond-to(medium)
+        font-size: 0.7em
+        padding: 5px
 
 .details
     font-size: 1em

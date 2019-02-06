@@ -24,7 +24,7 @@ export default class Loading extends React.Component {
                 </div>
               )
               : (
-                <div className='spinner'>
+                <div className='spinner' style={{"width": "200px", "height": "200px"}}>
                   <FontAwesomeIcon icon={faSpinner} className='far fa-spinner fa-spin animated' size="lg" />
                 </div>
               )

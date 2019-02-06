@@ -1,0 +1,40 @@
+/* FEATURED ARTICLE COMPONENT STYLES - COMPONENTS/FEATUREDARTICLE
+
+.featured-article
+  width: 800px
+  +respond-to(large)
+    width: 600px
+  > figcaption
+    @extend %article-banner-featured
+    padding: 10px
+    padding-left: 0px
+    +respond-to(medium)
+      padding: 0px
+  margin-bottom: 100px
+  +respond-to(medium)
+    width: 100%
+
+%article-banner-featured
+  background-color: rgba(black, 0.875)
+  border-top: 5px solid $accent-med
+
+  > .container
+    .article-block-author
+      font-size: 1em
+      color: $accent-med
+      +respond-to(medium)
+        font-size: 0.7em
+    .article-block-published
+      color: lightgrey
+      font-size: 1em
+      +respond-to(medium)
+        font-size: 0.7em
+    .article-block-title
+      font-size: 1.8em
+      +respond-to(large)
+        font-size: 1.5em
+      +respond-to(medium)
+        font-size: 1em
+      margin-bottom: 10px
+      font-weight: 600
+      color: white

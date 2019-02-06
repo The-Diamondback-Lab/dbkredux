@@ -65,7 +65,20 @@ export default class ArticlePage extends React.Component {
     if (!article) {
       return <ErrorPage />;
     }
-
+    
+    var featuredImage = "";
+    if (article.featured_image) {
+      featuredImage = <React.Fragment>
+      <div className='image-area'>
+        <img
+          alt='Article Image'
+          className='article-image'
+          id={"image-" + article.id} src={article.featured_image.article}
+          onLoad={() => (loadImage("image-" + article.id))} />
+      </div>
+      <span className='article-caption' dangerouslySetInnerHTML={{ __html: article.featured_image.caption }}></span>
+      </React.Fragment>
+    }
     //injects article ads after window loads
     var article_body = <div id='article-text-before' className='article-text before-js' dangerouslySetInnerHTML={{ __html: article.content.rendered }}></div>;
     var article_body_ads = "";
@@ -86,7 +99,7 @@ export default class ArticlePage extends React.Component {
         <main className='page article-page'>
           <div className='container-narrow flex'>
             <div className='left-rail'>
-              <h2 className='category'>{this.generateCategories(article.categories)}</h2>
+              <div className='category'>{this.generateCategories(article.categories)}</div>
               <h1>{article.title}</h1>
               <div className='details'>
                 <span className='accent author'><Link href={article.author.link}><a>{article.author.name}</a></Link></span>
@@ -96,14 +109,7 @@ export default class ArticlePage extends React.Component {
                 {article.date.updated ? <span>{article.date.updated}</span> : ""}
               </div>
               <div className="addthis_inline_share_toolbox"></div>
-              <div className='image-area'>
-                <img
-                  alt='Article Image'
-                  className='article-image'
-                  id={"image-" + article.id} src={article.featured_image.article}
-                  onLoad={() => (loadImage("image-" + article.id))} />
-              </div>
-              <span className='article-caption' dangerouslySetInnerHTML={{ __html: article.featured_image.caption }}></span>
+              {featuredImage}
               {article_body}
               {article_body_ads}
             </div>

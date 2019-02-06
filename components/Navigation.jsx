@@ -11,6 +11,7 @@ import { request } from '../utilities/app.utilities.js';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
+import NoSSR from 'react-no-ssr';
 
 
 export default class Navigation extends React.Component {
@@ -35,7 +36,7 @@ export default class Navigation extends React.Component {
           <div className='navigation-links'>
             <NavigationButton mobile={mobile} scrolled={scrolled} />&nbsp;
             {/* don't show links if on mobile */}
-            {mobile ? null : <NavigationLinks menu={menu.items} />}
+            <NoSSR>{mobile ? null : <NavigationLinks menu={menu.items} />}</NoSSR>
           </div>
         </div>
       </nav>
@@ -91,10 +92,14 @@ class NavigationLinks extends React.Component {
             </Link>
           );
         })}
-        <button
-          className='special-nav disappear-on-mobile'>
+        <a
+          className='special-nav disappear-on-mobile'
+          href="https://dbknews.us9.list-manage.com/subscribe/post?u=589bc6727b2e01217b65a369e&id=bfdcfcc0db"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           Newsletter
-        </button>
+        </a>
         <a
           className='special-nav disappear-on-mobile'
           href="https://issuu.com/thediamondback"

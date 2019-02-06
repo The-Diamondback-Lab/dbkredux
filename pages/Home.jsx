@@ -42,15 +42,17 @@ export default class Home extends React.Component {
     ];
 
     let featuredData = parseDate(await request('/featured_article'));
+    let sponsoredContent = (await request('/pages/sponsored-content')).content.rendered;
 
     return {
       sections,
-      featuredData
+      featuredData,
+      sponsoredContent
     };
   }
 
   render() {
-    const { sections, featuredData } = this.props;
+    const { sections, featuredData, sponsoredContent } = this.props;
 
     return (
       <React.Fragment>
@@ -62,21 +64,57 @@ export default class Home extends React.Component {
           <div className='container'>
             <div className='homepage'>
               <div className="left-rail">
-                <FeaturedArticle data={featuredData} />
-
+                <div className = 'featured-story-area'>
+                  <FeaturedArticle data={featuredData} />
+                  <Articles category="latest" max={5} mode="text-only" />
+                </div>
                 <Articles category="campus" max={4} mode="major-articles-grid" />
+                <Articles category="sports" max={4} mode="major-articles-grid" />
+                <div className = 'homepage-row'>
+                  <Articles category="sports" max={7} mode="first-featured" />
+                  <Articles category="sports" max={7} mode="first-featured" />
+                </div>
+                <div className = 'homepage-row'>
+                  <Articles category="sports" max={7} mode="first-featured" />
+                  <Articles category="campus" max={7} mode="first-featured" />
+                  <Articles category="sports" max={7} mode="first-featured" />
+                </div>
               </div>
               <div className="right-rail-show">
                 <Advertisement path='300x250_Banner_B' size={[300, 250]} />
                 <br />
                 <Advertisement path='300x600_Banner_C' size={[300, 600]} mode="desktop" />
                 <br />
-                <Advertisement path='120x90_Banner_D' size={[120, 90]} />
+                <div className = 'ad-row'>
+                  <Advertisement path='120x90_Banner_D' size={[120, 90]} />
+                  <Advertisement path='120x90_Banner_F' size={[120, 90]} />
+                </div>
                 <br />
-                <Advertisement path='120x90_Banner_F' size={[120, 90]} />
+                <Articles category="womens-basketball" max={1} mode="single-article" />
+                <Articles category="football" max={1} mode="single-article" />
+                <Articles category="field-hockey" max={1} mode="single-article" />
                 <br />
                 <Advertisement path='300x250_Banner_G' size={[300, 250]} />
+                <br />
+                <div className='sponsored-content-homepage'>
+                  <h2>Sponsored</h2>
+                  <div dangerouslySetInnerHTML={{__html: sponsoredContent}} />
+                </div>
               </div>
+            </div>
+            <div className='homepage-bottom'>
+                <div className = 'homepage-row'>
+                  <Articles category="sports" max={1} mode="single-article" />
+                  <Articles category="campus" max={1} mode="single-article" />
+                  <Articles category="sports" max={1} mode="single-article" />
+                  <Articles category="sports" max={1} mode="single-article" />
+                </div>
+                <div className = 'homepage-row'>
+                  <Articles category="sports" max={1} mode="single-article" />
+                  <Articles category="campus" max={1} mode="single-article" />
+                  <Articles category="sports" max={1} mode="single-article" />
+                  <Articles category="sports" max={1} mode="single-article" />
+                </div>
             </div>
           </div>
         </main>

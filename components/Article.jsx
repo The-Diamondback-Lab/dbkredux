@@ -19,19 +19,46 @@ import { loadImage } from '../utilities/app.utilities';
 export default class Article extends React.Component {
 
   render() {
-    const { author, date, id, link, title, featured_image } = this.props;
+    const { author, date, id, link, title, featured_image, text_only } = this.props;
+    var featuredImage = <Link href={link}><a><div className='article-block-image'/></a></Link>;
+    if (featured_image) {
+      featuredImage = (<Link href={link}>
+      <a>
+        <img
+        alt='Article'
+        className='article-block-image'
+        id={`image-${id}`} src={featured_image.article}
+        onLoad={() => loadImage(`image-${id}`)}/>
+      </a>
+    </Link>);
+    }
 
+    if (text_only) {
+      return (
+        <div className='article-text-block'>
+            <Link href={link}>
+              <a dangerouslySetInnerHTML={{ __html: title }}
+              className='article-block-title'></a>
+            </Link>
+
+            <div className='article-info'>
+              <Link href = {author.link}>
+                <a dangerouslySetInnerHTML={{ __html: author.name }}
+                className='article-block-author'></a>
+              </Link>
+              <p
+                dangerouslySetInnerHTML={{
+                  __html: this._published(date.ago.published)
+                }}
+                className='article-block-published'
+              />
+            </div>
+        </div>
+      )
+    }
     return (
       <figure className='article-block fadeIn animated'>
-        <Link href={link}>
-          <a>
-            <img
-            alt='Article'
-            className='article-block-image'
-            id={`image-${id}`} src={featured_image.article}
-            onLoad={() => loadImage(`image-${id}`)}/>
-          </a>
-        </Link>
+        {featuredImage}
         <figcaption>
           <div className='container'>
             <Link href={link}>

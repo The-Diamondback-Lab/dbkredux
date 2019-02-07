@@ -38,5 +38,5 @@
       "dest": "/CustomPage?pageId=$1"
     }
   ],
-  "alias": ["dbk-production.now.sh", "www.dbk-production.now.sh"]
+  "alias": ["dbk-production.now.sh"]
 }

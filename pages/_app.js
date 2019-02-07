@@ -46,9 +46,13 @@ export default class MyApp extends App {
       return (
         <Container>
             <Head>
-                <title>{"The Diamondback"}</title>
+                <title>The Diamondback</title>
                 <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
                 <meta name="description" content={description} />
+                <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+                <meta property="og:title" content="The Diamondback" />
+                <meta property="og:description" content={description} />
+
                 <link rel="shortcut icon" href="/static/favicon.ico" />
             </Head>
             <NoSSR>

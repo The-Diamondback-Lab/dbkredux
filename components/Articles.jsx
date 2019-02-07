@@ -71,14 +71,17 @@ export default class Articles extends React.Component {
 
   render() {
     const { articles, category, loaded } = this.state;
-    const { mode } = this.props;
+    const { mode, no_loading } = this.props;
 
     let classes = [];
 
     if (loaded) {
       classes.push(mode);
-    } else {
+    } else if (!no_loading) {
       return (<Loading />);
+    }
+    else{
+      return "";
     }
 
     var header = "";

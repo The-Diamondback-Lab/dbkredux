@@ -15,17 +15,17 @@
     width: 100%
 
 %article-banner-featured
-  background-color: rgba(black, 0.875)
-  border-top: 5px solid $accent-med
+  background-color: rgba($accent-med, 0.95)
+  border-top: 5px solid white
 
   > .container
     .article-block-author
       font-size: 1em
-      color: $accent-med
+      color: black
       +respond-to(medium)
         font-size: 0.7em
     .article-block-published
-      color: lightgrey
+      color: white
       font-size: 1em
       +respond-to(medium)
         font-size: 0.7em
@@ -34,7 +34,11 @@
       +respond-to(large)
         font-size: 1.5em
       +respond-to(medium)
-        font-size: 1em
+        font-size: 1.2em
       margin-bottom: 10px
       font-weight: 600
       color: white
+    
+    &.article-block-image
+      respond-to(small)
+        height: 350px

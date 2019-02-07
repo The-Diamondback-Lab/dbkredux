@@ -18,47 +18,26 @@ import { request, parseDate } from '../utilities/app.utilities';
 
 export default class Home extends React.Component {
   static async getInitialProps() {
-    var sections = [
-      {
-        category: { name: 'campus', id: 'campus' },
-        max: 4,
-        section_type: 'major'
-      },
-      {
-        category: { name: 'music', slug: 'music', id: 'music' },
-        max: 1,
-        section_type: 'minor'
-      },
-      {
-        category: { name: 'sports', slug: 'sports', id: 'sports' },
-        max: 4,
-        section_type: 'major'
-      },
-      {
-        category: { name: 'science & tech', slug: 'science-and-tech', id: 'science-and-tech' },
-        max: 1,
-        section_type: 'minor'
-      }
-    ];
-
     let featuredData = parseDate(await request('/featured_article'));
     let sponsoredContent = (await request('/pages/sponsored-content')).content.rendered;
+    let description = "The Diamondback is the independent student-run newspaper at the University of Maryland. The Diamondback is updated online daily and can be accessed at dbknews.com. In print, it is published weekly on Thursday and is available at dozens of locations throughout the campus and around College Park.";
 
     return {
-      sections,
       featuredData,
-      sponsoredContent
+      sponsoredContent,
+      description
     };
   }
 
   render() {
-    const { sections, featuredData, sponsoredContent } = this.props;
+    const { featuredData, sponsoredContent, description } = this.props;
 
     return (
       <React.Fragment>
         <Head>
           <title>{"The Diamondback"}</title>
           <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+          <meta name="description" content={description} />
         </Head>
         <main className='page'>
           <div className='container'>
@@ -66,18 +45,18 @@ export default class Home extends React.Component {
               <div className="left-rail">
                 <div className = 'featured-story-area'>
                   <FeaturedArticle data={featuredData} />
-                  <Articles category="latest" max={5} mode="text-only" />
+                  <Articles category="latest" max={4} mode="text-only" no_loading={true} />
                 </div>
                 <Articles category="campus" max={4} mode="major-articles-grid" />
                 <Articles category="sports" max={4} mode="major-articles-grid" />
                 <div className = 'homepage-row'>
-                  <Articles category="sports" max={7} mode="first-featured" />
-                  <Articles category="sports" max={7} mode="first-featured" />
+                  <Articles category="sports" max={6} mode="first-featured" />
+                  <Articles category="sports" max={6} mode="first-featured" />
                 </div>
                 <div className = 'homepage-row'>
-                  <Articles category="sports" max={7} mode="first-featured" />
-                  <Articles category="campus" max={7} mode="first-featured" />
-                  <Articles category="sports" max={7} mode="first-featured" />
+                  <Articles category="sports" max={6} mode="first-featured" />
+                  <Articles category="campus" max={6} mode="first-featured" />
+                  <Articles category="sports" max={6} mode="first-featured" />
                 </div>
               </div>
               <div className="right-rail-show">

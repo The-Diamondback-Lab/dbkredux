@@ -89,11 +89,18 @@ export default class ArticlePage extends React.Component {
       </div>;
     }
 
+    var description = article.excerpt.rendered;
+    description = description.replace('<p>', '');
+    description = description.replace('</p>', '');
+    description = description.replace('\n', '');
+
     return (
       <React.Fragment>
         <Head>
           <title>{article.title + " - The Diamondback  "}</title>
           <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+          <meta name="description" content={description} />
+          <meta name="author" content={article.author.name} />
           <script async src="https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5c418704770faa57"></script>
         </Head>
         <main className='page article-page'>

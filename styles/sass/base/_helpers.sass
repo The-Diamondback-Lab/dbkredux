@@ -9,7 +9,7 @@ $columns: ('width': 1fr, 'gutter': map-get($major-rows, gutter), 'max': 20)
 
 %article-banner
   background-color: rgba($dark, 0.875)
-  border-top: 2px solid $accent-med
+  border-top: 2px solid white
 
   > .container
     .article-block-author
@@ -39,6 +39,7 @@ $columns: ('width': 1fr, 'gutter': map-get($major-rows, gutter), 'max': 20)
     > figure
       width: 100%
       height: 200px
+      margin-bottom: 10px
   > figure
     &:nth-of-type(4n+1),
     &:nth-of-type(4n+4)
@@ -48,7 +49,7 @@ $columns: ('width': 1fr, 'gutter': map-get($major-rows, gutter), 'max': 20)
     &:nth-of-type(4n+2),
     &:nth-of-type(4n+3)
       > figcaption
-        @extend %article-banner-alt
+        @extend %article-banner
 
     &:nth-of-type(4n+1)
       +grid_item(1, 1, 1, 9)
@@ -84,7 +85,7 @@ $columns: ('width': 1fr, 'gutter': map-get($major-rows, gutter), 'max': 20)
 
     &:nth-of-type(2)
       > figcaption
-        @extend %article-banner-alt
+        @extend %article-banner
 
     > figcaption
       height: 40%

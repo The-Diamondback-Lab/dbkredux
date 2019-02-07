@@ -8,6 +8,7 @@
       "use": "@now/next"
     }
   ],
+  "regions": ["iad1"],
   "routes": [
     {
       "src": "/",

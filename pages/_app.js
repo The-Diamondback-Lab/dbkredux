@@ -5,9 +5,6 @@ import NoSSR from 'react-no-ssr';
 import App, { Container } from 'next/app'
 import AdBlockDetect from 'react-ad-block-detect';
 
-import withGA from "next-ga";
-import Router from "next/router";
-
 import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
 import Advertisement from '../components/Advertisement.jsx';
@@ -21,7 +18,7 @@ import { request } from '../utilities/app.utilities.js';
 import '../styles/sass/app.sass';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 
-class MyApp extends App {
+export default class MyApp extends App {
     static async getInitialProps({ Component, ctx }) {
       let pageProps = {}
   
@@ -80,5 +77,3 @@ class MyApp extends App {
       );
     }
   }
-
-  export default withGA("UA-34401991-9", Router)(MyApp);

@@ -109,11 +109,8 @@ export default class ArticlePage extends React.Component {
             :
             <meta property="og:image" content="/static/images/the-diamondback-logo.svg" />
           }
-          { featuredImage ?
-            <meta name="twitter:card" content={article.featured_image.preview} />
-            :
-            <meta name="twitter:card" content="/static/images/the-diamondback-logo.svg" />
-          }
+          <meta name="twitter:card" content="summary_large_image" />
+
 
           <script async src="https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5c418704770faa57"></script>
         </Head>

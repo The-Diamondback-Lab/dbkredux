@@ -19,16 +19,26 @@ export default class FeaturedArticle extends React.Component {
   render() {
     const { author, date, id, link, title, featured_image } = this.props.data;
 
+    var featuredImage = "";
+    if (featured_image){
+      featuredImage = (<a>
+        <img
+        alt='Article'
+        className='article-block-image'
+        id={`image-${id}`} src={featured_image.article}
+        onLoad={() => loadImage(`image-${id}`)}/>
+      </a>);
+    }
+    else{
+      featuredImage = (<a>
+        <div
+        className='article-block-image' />
+        </a>)
+    }
     return (
       <figure className='article-block featured-article'>
         <Link href={link}>
-          <a>
-            <img
-            alt='Article'
-            className='article-block-image'
-            id={`image-${id}`} src={featured_image.article}
-            onLoad={() => loadImage(`image-${id}`)}/>
-          </a>
+          {featuredImage}
         </Link>
         <figcaption>
           <div className='container'>

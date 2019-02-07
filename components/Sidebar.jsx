@@ -6,6 +6,9 @@ import Searchbar from '../components/Searchbar.jsx';
 
 import { request } from '../utilities/app.utilities.js';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCaretDown } from '@fortawesome/free-solid-svg-icons'
+
 import $ from 'jquery';
 
 
@@ -88,6 +91,7 @@ const NestedMenu = (props) => {
                 <Link href={data.url}>
                     <a><p>{data.title}</p></a>
                 </Link>
+                <FontAwesomeIcon icon={faCaretDown} size="2x"/>
             </div>
             {inner}
         </div>

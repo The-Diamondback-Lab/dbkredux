@@ -50,7 +50,6 @@ export default class Advertisement extends React.Component {
       ? ""
       : (
         <div className={`advertisement ad-${mode}`} id={`ad-${path}`}>
-          {/* <AD path={`/123934970/${path}`} responsive={false} /> */}
           <DFPSlotsProvider dfpNetworkId={'123934970'} >
             <AdSlot adUnit={path} sizes={[ size ]} />
           </DFPSlotsProvider>

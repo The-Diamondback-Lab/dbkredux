@@ -3,12 +3,17 @@ import * as React from 'reactn';
 import Head from 'next/head';
 import NoSSR from 'react-no-ssr';
 import App, { Container } from 'next/app'
+import AdBlockDetect from 'react-ad-block-detect';
+
+import withGA from "next-ga";
+import Router from "next/router";
 
 import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
 import Advertisement from '../components/Advertisement.jsx';
 import Takeover from '../components/Takeover.jsx';
 import Sidekick from '../components/Sidekick.jsx';
+import AdBlockMessage from '../components/AdBlockMessage.jsx';
 
 import { request } from '../utilities/app.utilities.js';
 
@@ -16,7 +21,7 @@ import { request } from '../utilities/app.utilities.js';
 import '../styles/sass/app.sass';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 
-export default class MyApp extends App {
+class MyApp extends App {
     static async getInitialProps({ Component, ctx }) {
       let pageProps = {}
   
@@ -55,6 +60,9 @@ export default class MyApp extends App {
 
                 <link rel="shortcut icon" href="/static/favicon.ico" />
             </Head>
+            <AdBlockDetect>
+                <AdBlockMessage />
+            </AdBlockDetect> 
             <NoSSR>
                 <Takeover />
             </NoSSR>
@@ -72,3 +80,5 @@ export default class MyApp extends App {
       );
     }
   }
+
+  export default withGA("UA-34401991-9", Router)(MyApp);

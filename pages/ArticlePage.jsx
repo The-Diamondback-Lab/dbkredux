@@ -98,9 +98,23 @@ export default class ArticlePage extends React.Component {
       <React.Fragment>
         <Head>
           <title>{article.title + " - The Diamondback  "}</title>
+
           <meta name="viewport" content="initial-scale=1.0, width=device-width" />
           <meta name="description" content={description} />
           <meta name="author" content={article.author.name} />
+          <meta property="og:title" content={article.title + " - The Diamondback  "} />
+          <meta property="og:description" content={description} />
+          { featuredImage ?
+            <meta property="og:image" content={article.featured_image.preview} />
+            :
+            <meta property="og:image" content="/static/images/the-diamondback-logo.svg" />
+          }
+          { featuredImage ?
+            <meta name="twitter:card" content={article.featured_image.preview} />
+            :
+            <meta name="twitter:card" content="/static/images/the-diamondback-logo.svg" />
+          }
+
           <script async src="https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5c418704770faa57"></script>
         </Head>
         <main className='page article-page'>

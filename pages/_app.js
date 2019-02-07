@@ -27,22 +27,28 @@ export default class MyApp extends App {
       let footer = await request('/menu/footer');
       let social = await request('/menu/stay-connected');  
       let header = await request('/menu/header');
+      let description = "The Diamondback is the independent student-run newspaper at the University of Maryland. The Diamondback is updated online daily and can be accessed at dbknews.com. In print, it is published weekly on Thursday and is available at dozens of locations throughout the campus and around College Park.";
 
-      return { pageProps, menus: {
-          footer: footer,
-          social: social,
-          header: header
-      } }
+      return {
+          pageProps,
+          menus: {
+              footer: footer,
+              social: social,
+              header: header
+          },
+          description
+      }
     }
 
     render () {
-      const { Component, pageProps, menus } = this.props
+      const { Component, pageProps, menus, description } = this.props
   
       return (
         <Container>
             <Head>
+                <title>{"The Diamondback"}</title>
                 <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
-                <meta name="description" content="The Diamondack" />
+                <meta name="description" content={description} />
                 <link rel="shortcut icon" href="/static/favicon.ico" />
             </Head>
             <NoSSR>

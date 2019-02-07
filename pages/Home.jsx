@@ -20,12 +20,10 @@ export default class Home extends React.Component {
   static async getInitialProps() {
     let featuredData = parseDate(await request('/featured_article'));
     let sponsoredContent = (await request('/pages/sponsored-content')).content.rendered;
-    let description = "The Diamondback is the independent student-run newspaper at the University of Maryland. The Diamondback is updated online daily and can be accessed at dbknews.com. In print, it is published weekly on Thursday and is available at dozens of locations throughout the campus and around College Park.";
 
     return {
       featuredData,
-      sponsoredContent,
-      description
+      sponsoredContent
     };
   }
 
@@ -35,9 +33,7 @@ export default class Home extends React.Component {
     return (
       <React.Fragment>
         <Head>
-          <title>{"The Diamondback"}</title>
           <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-          <meta name="description" content={description} />
         </Head>
         <main className='page'>
           <div className='container'>

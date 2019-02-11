@@ -6,7 +6,7 @@ import Head from 'next/head';
 //sass
 import '../styles/sass/app.sass';
 
-import { ERRORS } from '../utilities/errors'
+import { ERRORS } from '../utilities/app.utilities'
 
 
 

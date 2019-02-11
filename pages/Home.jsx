@@ -11,8 +11,7 @@ import Advertisement from '../components/Advertisement';
 import ArticlesPreloaded from '../components/ArticlesPreloaded';
 import Articles from '../components/Articles';
 
-import { HOMEPAGE_REQUESTS } from '../utilities/homepage.config'; 
-import { request, parseDate, loadHomepageArticles } from '../utilities/app.utilities';
+import { request, parseDate, loadHomepageArticles, HOMEPAGE_REQUESTS } from '../utilities/app.utilities';
 
 export default class Home extends React.Component {
   static async getInitialProps() {

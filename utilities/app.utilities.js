@@ -257,6 +257,32 @@ export const loadHomepageArticles = async (config) => {
   return response;
 }
 
+export const HOMEPAGE_REQUESTS = [
+  {
+      category: 'latest',
+      max: 4
+  },
+  {
+      category: 'campus',
+      max: 4
+  },
+  {
+      category: 'sports',
+      max: 4
+  }
+]
+
+export const ERRORS = {
+  404: {
+      header: "404: Page Not Found",
+      message: "We couldn't find that page!"
+  },
+  500: {
+      header: '500: Internal Server Error',
+      message: "Something went wrong."
+  }
+}
+
 function formatDate(original, ago) {
   if (ago.days <= 10) { //if < 10 days ago, display "ago" format
     if (ago.hours < 24) {

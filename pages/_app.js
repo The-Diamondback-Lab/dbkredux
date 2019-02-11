@@ -5,12 +5,15 @@ import NoSSR from 'react-no-ssr';
 import App, { Container } from 'next/app'
 import withGA from "next-ga";
 import Router from "next/router";
+import AdBlockDetect from 'react-ad-block-detect';
 
 import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
 import Advertisement from '../components/Advertisement.jsx';
 import Takeover from '../components/Takeover.jsx';
 import Sidekick from '../components/Sidekick.jsx';
+import AdBlockMessage from '../components/AdBlockMessage.jsx';
+import DetectAdBlock from '../components/DetectAdBlock.jsx';
 
 import { request } from '../utilities/app.utilities.js';
 

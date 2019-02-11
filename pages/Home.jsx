@@ -6,7 +6,6 @@ import React from 'reactn';
 import Head from 'next/head';
 
 // components
-import Section from '../components/Section.jsx';
 import FeaturedArticle from '../components/FeaturedArticle';
 import Advertisement from '../components/Advertisement';
 import Articles from '../components/Articles';
@@ -14,21 +13,25 @@ import Articles from '../components/Articles';
 // components
 // import Advertisement from '../components/Advertisement.jsx';
 
-import { request, parseDate } from '../utilities/app.utilities';
+import { request, parseDate, loadHomepageArticles } from '../utilities/app.utilities';
+// import { HOMEPAGE_CONFIG } from '../utilities/homepage.config';
 
 export default class Home extends React.Component {
   static async getInitialProps() {
     let featuredData = parseDate(await request('/featured_article'));
     let sponsoredContent = (await request('/pages/sponsored-content')).content.rendered;
+    HOMEPAGE_CONFIG = require('../utilities/homepage.config');
+    let articlesData = await loadHomepageArticles(HOMEPAGE_CONFIG);
 
     return {
       featuredData,
+      articlesData,
       sponsoredContent
     };
   }
 
   render() {
-    const { featuredData, sponsoredContent, description } = this.props;
+    const { featuredData, articlesData, sponsoredContent } = this.props;
 
     return (
       <React.Fragment>
@@ -41,18 +44,18 @@ export default class Home extends React.Component {
               <div className="left-rail">
                 <div className = 'featured-story-area'>
                   <FeaturedArticle data={featuredData} />
-                  <Articles category="latest" max={4} mode="text-only" no_loading={true} />
+                  <Articles data={articlesData.textOnly.data[0]} mode="text-only" />
                 </div>
-                <Articles category="campus" max={4} mode="major-articles-grid" />
-                <Articles category="sports" max={4} mode="major-articles-grid" />
+                <Articles data={articlesData.majorArticlesGrid.data[0]} mode="major-articles-grid" />
+                <Articles data={articlesData.majorArticlesGrid.data[1]} mode="major-articles-grid" />
                 <div className = 'homepage-row'>
-                  <Articles category="sports" max={6} mode="first-featured" />
-                  <Articles category="sports" max={6} mode="first-featured" />
+                  <Articles data={articlesData.firstFeatured.data[0]} mode="first-featured" />
+                  <Articles data={articlesData.firstFeatured.data[1]} mode="first-featured" />
                 </div>
                 <div className = 'homepage-row'>
-                  <Articles category="sports" max={6} mode="first-featured" />
-                  <Articles category="campus" max={6} mode="first-featured" />
-                  <Articles category="sports" max={6} mode="first-featured" />
+                  <Articles data={articlesData.firstFeatured.data[2]} mode="first-featured" />
+                  <Articles data={articlesData.firstFeatured.data[3]} mode="first-featured" />
+                  <Articles data={articlesData.firstFeatured.data[4]} mode="first-featured" />
                 </div>
               </div>
               <div className="right-rail-show">
@@ -65,9 +68,9 @@ export default class Home extends React.Component {
                   <Advertisement path='120x90_Banner_F' size={[120, 90]} />
                 </div>
                 <br />
-                <Articles category="womens-basketball" max={1} mode="single-article" />
-                <Articles category="football" max={1} mode="single-article" />
-                <Articles category="field-hockey" max={1} mode="single-article" />
+                <Articles data={articlesData.singleArticle.data[0]} mode="single-article" />
+                <Articles data={articlesData.singleArticle.data[1]} mode="single-article" />
+                <Articles data={articlesData.singleArticle.data[2]} mode="single-article" />
                 <br />
                 <Advertisement path='300x250_Banner_G' size={[300, 250]} />
                 <br />
@@ -79,16 +82,16 @@ export default class Home extends React.Component {
             </div>
             <div className='homepage-bottom'>
                 <div className = 'homepage-row'>
-                  <Articles category="sports" max={1} mode="single-article" />
-                  <Articles category="campus" max={1} mode="single-article" />
-                  <Articles category="sports" max={1} mode="single-article" />
-                  <Articles category="sports" max={1} mode="single-article" />
+                  <Articles data={articlesData.singleArticle.data[3]} mode="single-article" />
+                  <Articles data={articlesData.singleArticle.data[4]} mode="single-article" />
+                  <Articles data={articlesData.singleArticle.data[5]} mode="single-article" />
+                  <Articles data={articlesData.singleArticle.data[6]} mode="single-article" />
                 </div>
                 <div className = 'homepage-row'>
-                  <Articles category="sports" max={1} mode="single-article" />
-                  <Articles category="campus" max={1} mode="single-article" />
-                  <Articles category="sports" max={1} mode="single-article" />
-                  <Articles category="sports" max={1} mode="single-article" />
+                  <Articles data={articlesData.singleArticle.data[7]} mode="single-article" />
+                  <Articles data={articlesData.singleArticle.data[8]} mode="single-article" />
+                  <Articles data={articlesData.singleArticle.data[9]} mode="single-article" />
+                  <Articles data={articlesData.singleArticle.data[10]} mode="single-article" />
                 </div>
             </div>
           </div>

@@ -5,6 +5,7 @@ import NoSSR from 'react-no-ssr';
 import App, { Container } from 'next/app'
 import withGA from "next-ga";
 import Router from "next/router";
+import NProgress from 'nprogress'
 
 import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
@@ -16,7 +17,16 @@ import { request } from '../utilities/app.utilities.js';
 
 //sass
 import '../styles/sass/app.sass';
+import '../styles/css/nprogress.css';
 import '@fortawesome/fontawesome-svg-core/styles.css';
+
+Router.events.on('routeChangeStart', url => {
+  console.log(`Loading: ${url}`)
+  NProgress.start()
+})
+Router.events.on('routeChangeComplete', () => NProgress.done())
+Router.events.on('routeChangeError', () => NProgress.done())
+
 
 class MyApp extends App {
     static async getInitialProps({ Component, ctx }) {

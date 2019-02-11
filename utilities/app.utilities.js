@@ -244,7 +244,6 @@ export const chooseArticleDates = (article) => {
   This function loads in the homepage configuration, makes all necessary API calls to /articles, and stores the resulting data
 */
 export const loadHomepageArticles = async (config) => {
-  console.log('starting');
   var articleRequests = []
   config.forEach(params => {
     if (params.category === 'latest'){
@@ -255,7 +254,6 @@ export const loadHomepageArticles = async (config) => {
     }
   })
   let response = await requestBatch(articleRequests);
-  console.log('done');
   return response;
 }
 

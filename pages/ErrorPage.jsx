@@ -6,20 +6,24 @@ import Head from 'next/head';
 //sass
 import '../styles/sass/app.sass';
 
+import { ERRORS } from '../utilities/errors'
+
 
 
 export default class ErrorPage extends React.Component {
   render() {
+    const { code } = this.props
+    let display = ERRORS[code];
     return <React.Fragment>
       <Head>
-        <title>{"404 - The Diamondback  "}</title>
+        <title>{`${code} - The Diamondback`}</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <main className='page error-page'>
         <div className='container-narrow'>
-          <h1>404: Page Not Found</h1>
+          <h1>{display.header}</h1>
           <hr />
-          <p>We couldn't find that page! You can <Link href={'/'}><a>return home</a></Link> if you'd like.</p>
+          <p>{display.message} You can <Link href={'/'}><a>return home</a></Link> if you'd like.</p>
         </div>
       </main>
     </React.Fragment>;

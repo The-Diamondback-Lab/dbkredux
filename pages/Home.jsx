@@ -11,17 +11,13 @@ import Advertisement from '../components/Advertisement';
 import ArticlesPreloaded from '../components/ArticlesPreloaded';
 import Articles from '../components/Articles';
 
-// components
-// import Advertisement from '../components/Advertisement.jsx';
-
+import { HOMEPAGE_REQUESTS } from '../utilities/homepage.config'; 
 import { request, parseDate, loadHomepageArticles } from '../utilities/app.utilities';
-// import { HOMEPAGE_CONFIG } from '../utilities/homepage.config';
 
 export default class Home extends React.Component {
   static async getInitialProps() {
     let featuredData = parseDate(await request('/featured_article'));
     let sponsoredContent = (await request('/pages/sponsored-content')).content.rendered;
-    HOMEPAGE_REQUESTS = require('../utilities/homepage.config');
     let articlesData = await loadHomepageArticles(HOMEPAGE_REQUESTS);
 
     return {

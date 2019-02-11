@@ -36,7 +36,7 @@ export default class CustomPage extends React.Component {
   render() {
     const { page } = this.props;
     if (!page){
-      return <ErrorPage />
+      return <ErrorPage code={"404"}/>
     }
     else {
       return <React.Fragment>

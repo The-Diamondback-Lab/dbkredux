@@ -20,46 +20,79 @@ import {
 } from '../utilities/app.utilities.js';
 
 export default class Articles extends React.Component {
-
   constructor(props) {
     super(props);
-    this.getArticles = this.getArticles.bind(this);
-
+    this.state = { articles: [], loaded: false, category: null };
   }
 
-  getArticles() {
-    const { mode, data } = this.props;
-    let articles =
-      data.articles_data
-        .sort((a, a2) => moment(a2.date).diff(a.date))
-        .map(a => parseDate(a))
-        .map((s, i) => {
-          if (mode === 'text-only' || (mode === 'first-featured' && i !== 0)) {
-            return <Article text_only={true} {...s} key={i} />;
-          }
-          else {
-            return <Article text_only={false} {...s} key={i} />;
-          }
-        });
-    return articles;
+  async componentDidMount() {
+    const { category, max, mode } = this.props;
+
+    try {
+      // request category articles
+      var articles_data = null;
+      var categories_data = null;
+      if (category === 'latest'){
+        articles_data = await request(`/articles?preview=true&per_page=${max}`);
+        categories_data = {
+          name: 'Latest',
+          id: 'latest'
+        };
+      }
+      else{
+        articles_data = await request(`/articles?category=${category}&preview=true&per_page=${max}`);
+        categories_data = await request(`/category/${category}`);  
+      }
+
+      /*
+       * NOTICE: articles_data is an array contaning article block components,
+       * NOT the article page components. below we sort the articles by date,
+       * and create Article (block) components
+       */
+      articles_data =
+        articles_data
+          .sort((a, a2) => moment(a2.date).diff(a.date))
+          .map(a => parseDate(a))
+          .map((s, i) => {
+            if (mode === 'text-only' || (mode === 'first-featured' && i !== 0)){
+              return <Article text_only={true} {...s} key={i} />;
+            }
+            else{
+              return <Article text_only={false} {...s} key={i} />;
+            }
+          });
+
+      this.setState({ articles: articles_data, loaded: true, category: categories_data });
+
+    } catch (error) {
+      handleError(error.message);
+    }
   }
 
   render() {
-    const { mode, data } = this.props;
-    let articles = this.getArticles();
-    let category = data.categories_data;
+    const { articles, category, loaded } = this.state;
+    const { mode, no_loading } = this.props;
 
     let classes = [];
 
-    classes.push(mode);
-    var header = "";
-    if (category.name === 'Latest') {
-      header = <h1>Latest</h1>;
+    if (loaded) {
+      classes.push(mode);
+    } else if (!no_loading) {
+      return (<div class={`grey-box ${mode}`}>
+      </div>);
     }
-    else {
-      header = <Link href={category.link}><a><h1 dangerouslySetInnerHTML={{ __html: category.name }}></h1></a></Link>;
+    else{
+      return "";
     }
 
+    var header = "";
+    if (category.name === 'Latest'){
+      header = <h1>Latest</h1>;
+    }
+    else{
+      header = <Link href={category.link}><a><h1 dangerouslySetInnerHTML={{ __html: category.name }}></h1></a></Link>;
+    }
+    
     return (
       <div className={`articles ${category.id}`}>
         {header}

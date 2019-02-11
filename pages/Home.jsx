@@ -8,6 +8,7 @@ import Head from 'next/head';
 // components
 import FeaturedArticle from '../components/FeaturedArticle';
 import Advertisement from '../components/Advertisement';
+import ArticlesPreloaded from '../components/ArticlesPreloaded';
 import Articles from '../components/Articles';
 
 // components
@@ -20,8 +21,8 @@ export default class Home extends React.Component {
   static async getInitialProps() {
     let featuredData = parseDate(await request('/featured_article'));
     let sponsoredContent = (await request('/pages/sponsored-content')).content.rendered;
-    HOMEPAGE_CONFIG = require('../utilities/homepage.config');
-    let articlesData = await loadHomepageArticles(HOMEPAGE_CONFIG);
+    HOMEPAGE_REQUESTS = require('../utilities/homepage.config');
+    let articlesData = await loadHomepageArticles(HOMEPAGE_REQUESTS);
 
     return {
       featuredData,
@@ -44,18 +45,18 @@ export default class Home extends React.Component {
               <div className="left-rail">
                 <div className = 'featured-story-area'>
                   <FeaturedArticle data={featuredData} />
-                  <Articles data={articlesData.textOnly.data[0]} mode="text-only" />
+                  <ArticlesPreloaded data={articlesData[0]} mode="text-only" category="latest" />
                 </div>
-                <Articles data={articlesData.majorArticlesGrid.data[0]} mode="major-articles-grid" />
-                <Articles data={articlesData.majorArticlesGrid.data[1]} mode="major-articles-grid" />
+                <ArticlesPreloaded data={articlesData[1]} mode="major-articles-grid" category="campus" />
+                <ArticlesPreloaded data={articlesData[2]} mode="major-articles-grid" category="sports" />
                 <div className = 'homepage-row'>
-                  <Articles data={articlesData.firstFeatured.data[0]} mode="first-featured" />
-                  <Articles data={articlesData.firstFeatured.data[1]} mode="first-featured" />
+                  <Articles category="sports" max={6} mode="first-featured" />
+                  <Articles category="sports" max={6} mode="first-featured" />
                 </div>
                 <div className = 'homepage-row'>
-                  <Articles data={articlesData.firstFeatured.data[2]} mode="first-featured" />
-                  <Articles data={articlesData.firstFeatured.data[3]} mode="first-featured" />
-                  <Articles data={articlesData.firstFeatured.data[4]} mode="first-featured" />
+                  <Articles category="sports" max={6} mode="first-featured" />
+                  <Articles category="campus" max={6} mode="first-featured" />
+                  <Articles category="sports" max={6} mode="first-featured" />
                 </div>
               </div>
               <div className="right-rail-show">
@@ -68,9 +69,9 @@ export default class Home extends React.Component {
                   <Advertisement path='120x90_Banner_F' size={[120, 90]} />
                 </div>
                 <br />
-                <Articles data={articlesData.singleArticle.data[0]} mode="single-article" />
-                <Articles data={articlesData.singleArticle.data[1]} mode="single-article" />
-                <Articles data={articlesData.singleArticle.data[2]} mode="single-article" />
+                <Articles category="womens-basketball" max={1} mode="single-article" />
+                <Articles category="football" max={1} mode="single-article" />
+                <Articles category="field-hockey" max={1} mode="single-article" />
                 <br />
                 <Advertisement path='300x250_Banner_G' size={[300, 250]} />
                 <br />
@@ -82,16 +83,16 @@ export default class Home extends React.Component {
             </div>
             <div className='homepage-bottom'>
                 <div className = 'homepage-row'>
-                  <Articles data={articlesData.singleArticle.data[3]} mode="single-article" />
-                  <Articles data={articlesData.singleArticle.data[4]} mode="single-article" />
-                  <Articles data={articlesData.singleArticle.data[5]} mode="single-article" />
-                  <Articles data={articlesData.singleArticle.data[6]} mode="single-article" />
+                  <Articles category="sports" max={1} mode="single-article" />
+                  <Articles category="campus" max={1} mode="single-article" />
+                  <Articles category="sports" max={1} mode="single-article" />
+                  <Articles category="sports" max={1} mode="single-article" />
                 </div>
                 <div className = 'homepage-row'>
-                  <Articles data={articlesData.singleArticle.data[7]} mode="single-article" />
-                  <Articles data={articlesData.singleArticle.data[8]} mode="single-article" />
-                  <Articles data={articlesData.singleArticle.data[9]} mode="single-article" />
-                  <Articles data={articlesData.singleArticle.data[10]} mode="single-article" />
+                  <Articles category="sports" max={1} mode="single-article" />
+                  <Articles category="campus" max={1} mode="single-article" />
+                  <Articles category="sports" max={1} mode="single-article" />
+                  <Articles category="sports" max={1} mode="single-article" />
                 </div>
             </div>
           </div>

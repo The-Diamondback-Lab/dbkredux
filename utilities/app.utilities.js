@@ -77,6 +77,19 @@ export const request = async (endpoint) => {
   }
 };
 
+export const requestBatch = async (endpoints) => {
+  try{
+    let promises = [];
+    endpoints.forEach(endpoint => promises.push(axios.get(`${API_URL}${endpoint}`)));
+    let req = await axios.all(promises);
+    req = req.map(resp => resp.data);
+    return req;
+  }
+  catch (e) {
+    handleError(`Error making request: ${e}`);
+  }
+}
+
 /**
  * This function takes an article preview object and parses its date values to be used later.
  *
@@ -231,49 +244,19 @@ export const chooseArticleDates = (article) => {
   This function loads in the homepage configuration, makes all necessary API calls to /articles, and stores the resulting data
 */
 export const loadHomepageArticles = async (config) => {
-  //Iterate through all the section types in the configuration (converts it into an array to do that)
-  console.log('start');
-  config = (Object.entries(config).map(
-    async ([sectionType, lst]) => {
-    return {
-      sectionType: sectionType,
-      data: await Promise.all(lst.map( //takes params (category, max) and returns a list of data objects
-      async (params) => {
-        var articles_data = null;
-        var categories_data = null;
-        if (params.category === 'latest'){ //Special case: get all latest articles
-          articles_data = await request(`/articles?preview=true&per_page=${params.max}`);
-          categories_data = {
-            name: 'Latest',
-            id: 'latest'
-          };
-        }
-        else{
-          articles_data = await request(`/articles?category=${params.category}&preview=true&per_page=${params.max}`);
-          categories_data = await request(`/category/${params.category}`);  
-        }
-        return {
-          articles_data: articles_data,
-          categories_data: categories_data
-        }
-      }
-    ))
+  console.log('starting');
+  var articleRequests = []
+  config.forEach(params => {
+    if (params.category === 'latest'){
+      articleRequests.push(`/articles?preview=true&per_page=${params.max}`);
     }
-  }
-  ));
-
-
-  config = await Promise.all(config);
-  
-  console.log('done with requests');
-
-  config = config.reduce((obj, item) => {
-    obj[item.sectionType] = item
-    return obj
-  }, {})
-
-  
-  return config;
+    else{
+      articleRequests.push(`/articles?category=${params.category}&preview=true&per_page=${params.max}`);
+    }
+  })
+  let response = await requestBatch(articleRequests);
+  console.log('done');
+  return response;
 }
 
 function formatDate(original, ago) {

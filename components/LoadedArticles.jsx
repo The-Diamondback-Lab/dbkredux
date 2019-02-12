@@ -5,9 +5,6 @@
 // NOTICE: importing reactn instead of react
 import React from 'reactn';
 
-// moment
-import moment from 'moment';
-
 // components
 import LoadedArticle from '../components/LoadedArticle';
 import Loading from '../components/Loading.jsx';
@@ -44,13 +41,20 @@ export default class LoadedArticles extends React.Component {
 
     try {
       var articles_data = [];
-      articles_data = await request(`/articles?${type}=${param}&preview=true&per_page=10&page=` + page);
-
-      articles_data =
+      if (type === 'search'){
+        articles_data = await request(`/articles?${type}=${param}&preview=true&per_page=10&page=${page}&orderby=relevance&order=desc`);
+        articles_data =
         articles_data
-          .sort((a, a2) => moment(a2.date).diff(a.date))
           .map(a => parseDate(a))
           .map((s, i) => <React.Fragment key={i}><LoadedArticle {...s} /><hr /></React.Fragment>);
+      }
+      else{
+        articles_data = await request(`/articles?${type}=${param}&preview=true&per_page=10&page=${page}&orderby=date&order=desc`); 
+        articles_data =
+        articles_data
+          .map(a => parseDate(a))
+          .map((s, i) => <React.Fragment key={i}><LoadedArticle {...s} /><hr /></React.Fragment>);
+      }
 
       articles = articles.concat(articles_data);
       this.setState({ articles: articles, loaded: true, page: page, no_more_posts: false });

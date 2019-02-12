@@ -13,8 +13,9 @@ import moment from 'moment';
 import Parser from 'html-react-parser';
 
 import Advertisement from '../components/Advertisement';
+import StoryGallery from '../components/StoryGallery';
 
-const API_URL = 'https://4v5ahulc28.execute-api.us-east-1.amazonaws.com/dev';
+const API_URL = 'https://jimcnlzkdg.execute-api.us-east-1.amazonaws.com/v0';
 
 /*
  * Application utility functions.
@@ -75,6 +76,19 @@ export const request = async (endpoint) => {
     handleError(`Error making request: ${e}`);
   }
 };
+
+export const requestBatch = async (endpoints) => {
+  try{
+    let promises = [];
+    endpoints.forEach(endpoint => promises.push(axios.get(`${API_URL}${endpoint}`)));
+    let req = await axios.all(promises);
+    req = req.map(resp => resp.data);
+    return req;
+  }
+  catch (e) {
+    handleError(`Error making request: ${e}`);
+  }
+}
 
 /**
  * This function takes an article preview object and parses its date values to be used later.
@@ -172,7 +186,10 @@ export const processArticleBody = (articleElement) => {
   }
 }
 
-export const injectArticleAds = (content) => {
+/*
+  Primary function is to inject ads, but also process any HTML for dynamic content
+*/
+export const loadDynamicArticleContent = (content) => {
   var parsed = Parser(content);
   var ad1 = <React.Fragment key={parsed.length+1}>
     <Advertisement path="300x250_Mobile_InStory_Top" size={[300, 250]} mode="mobile"></Advertisement>
@@ -192,6 +209,10 @@ export const injectArticleAds = (content) => {
     output.push(e);
     if (typeof e === 'object' && e.type === 'p'){
       paragraphs++;
+    }
+    if (typeof e === 'object' && e.type === 'div' && e.props.className.includes('gallery')){
+      let data = output.pop();
+      output.push(<StoryGallery data={data} />);
     }
     if (paragraphs === 2 && !ad1Pushed){
       output.push(ad1);
@@ -219,6 +240,49 @@ export const chooseArticleDates = (article) => {
   return article;
 }
 
+/*
+  This function loads in the homepage configuration, makes all necessary API calls to /articles, and stores the resulting data
+*/
+export const loadHomepageArticles = async (config) => {
+  var articleRequests = []
+  config.forEach(params => {
+    if (params.category === 'latest'){
+      articleRequests.push(`/articles?preview=true&per_page=${params.max}`);
+    }
+    else{
+      articleRequests.push(`/articles?category=${params.category}&preview=true&per_page=${params.max}`);
+    }
+  })
+  let response = await requestBatch(articleRequests);
+  return response;
+}
+
+export const HOMEPAGE_REQUESTS = [
+  {
+      category: 'latest',
+      max: 4
+  },
+  {
+      category: 'campus',
+      max: 4
+  },
+  {
+      category: 'sports',
+      max: 4
+  }
+]
+
+export const ERRORS = {
+  404: {
+      header: "404: Page Not Found",
+      message: "We couldn't find that page!"
+  },
+  500: {
+      header: '500: Internal Server Error',
+      message: "Something went wrong."
+  }
+}
+
 function formatDate(original, ago) {
   if (ago.days <= 10) { //if < 10 days ago, display "ago" format
     if (ago.hours < 24) {
@@ -242,4 +306,4 @@ function formatDate(original, ago) {
   else{
     return original;
   }
-}
+} 

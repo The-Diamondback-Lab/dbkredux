@@ -19,6 +19,7 @@ class Searchbar extends React.Component {
 
   searchClicked() {
     var searchTerm = $("#global-search-bar").val().toLowerCase().trim().replace(/\s\s+/g, ' ');
+    searchTerm = searchTerm.replace(/[^A-Za-z0-9_\040]/g,"");
     if (searchTerm.length < 1){
       return;
     }

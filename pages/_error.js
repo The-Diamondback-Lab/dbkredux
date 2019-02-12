@@ -8,8 +8,9 @@ export default class Error extends React.Component {
     }
   
     render () {
+      const { statusCode } = this.props;
       return (
-          <ErrorPage />
+          <ErrorPage code={String(statusCode)}/>
         )
     }
   }

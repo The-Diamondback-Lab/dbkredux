@@ -6,29 +6,28 @@ import React from 'reactn';
 import Head from 'next/head';
 
 // components
-import Section from '../components/Section.jsx';
 import FeaturedArticle from '../components/FeaturedArticle';
 import Advertisement from '../components/Advertisement';
+import ArticlesPreloaded from '../components/ArticlesPreloaded';
 import Articles from '../components/Articles';
 
-// components
-// import Advertisement from '../components/Advertisement.jsx';
-
-import { request, parseDate } from '../utilities/app.utilities';
+import { request, parseDate, loadHomepageArticles, HOMEPAGE_REQUESTS } from '../utilities/app.utilities';
 
 export default class Home extends React.Component {
   static async getInitialProps() {
     let featuredData = parseDate(await request('/featured_article'));
     let sponsoredContent = (await request('/pages/sponsored-content')).content.rendered;
+    let articlesData = await loadHomepageArticles(HOMEPAGE_REQUESTS);
 
     return {
       featuredData,
+      articlesData,
       sponsoredContent
     };
   }
 
   render() {
-    const { featuredData, sponsoredContent, description } = this.props;
+    const { featuredData, articlesData, sponsoredContent } = this.props;
 
     return (
       <React.Fragment>
@@ -41,10 +40,10 @@ export default class Home extends React.Component {
               <div className="left-rail">
                 <div className = 'featured-story-area'>
                   <FeaturedArticle data={featuredData} />
-                  <Articles category="latest" max={4} mode="text-only" no_loading={true} />
+                  <ArticlesPreloaded data={articlesData[0]} mode="text-only" category="latest" />
                 </div>
-                <Articles category="campus" max={4} mode="major-articles-grid" />
-                <Articles category="sports" max={4} mode="major-articles-grid" />
+                <ArticlesPreloaded data={articlesData[1]} mode="major-articles-grid" category="campus" />
+                <ArticlesPreloaded data={articlesData[2]} mode="major-articles-grid" category="sports" />
                 <div className = 'homepage-row'>
                   <Articles category="sports" max={6} mode="first-featured" />
                   <Articles category="sports" max={6} mode="first-featured" />

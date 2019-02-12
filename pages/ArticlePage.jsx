@@ -1,5 +1,6 @@
 // react
 import * as React from 'reactn';
+import { renderToString } from 'react-dom/server'
 import { Link } from '../routes';
 import Head from 'next/head';
 import Parser from 'html-react-parser';
@@ -13,7 +14,7 @@ import RelatedContent from '../components/RelatedContent.jsx';
 import Advertisement from '../components/Advertisement.jsx';
 
 import {
-  request, parseDate, loadImage, processArticleBody, injectArticleAds, chooseArticleDates
+  request, parseDate, loadImage, processArticleBody, loadDynamicArticleContent, chooseArticleDates
 } from '../utilities/app.utilities.js';
 
 
@@ -85,7 +86,7 @@ export default class ArticlePage extends React.Component {
     if (this.state.scriptjsLoaderEnabled) {
       $("#article-text-before").hide();
       article_body_ads = <div id='article-text' className='article-text after-js'>
-        {injectArticleAds(article.content.rendered)}
+        {loadDynamicArticleContent(article.content.rendered)}
       </div>;
     }
 

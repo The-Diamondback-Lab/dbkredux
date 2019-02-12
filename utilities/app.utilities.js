@@ -15,7 +15,7 @@ import Parser from 'html-react-parser';
 import Advertisement from '../components/Advertisement';
 import StoryGallery from '../components/StoryGallery';
 
-const API_URL = 'https://jimcnlzkdg.execute-api.us-east-1.amazonaws.com/v0';
+const API_URL = 'https://api.dbknews.com';
 
 /*
  * Application utility functions.

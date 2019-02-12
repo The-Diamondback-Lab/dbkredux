@@ -38,12 +38,48 @@ $content-width: 70%
     
 
 .article-text
+    display: flex
+    flex-direction: column
     width: 100%
     line-height: 1.6
     font-size: 1.1em
     > p
+        display: flex
+        flex-direction: column
         margin-bottom: 20px
         margin-top: 20px
+    > figure
+        max-width: 100% !important
+        > img
+            max-width: 100%
+            height: auto
+        > figcaption
+            font-style: italic
+            font-size: 0.8em
+    
+    > img
+        max-width: 100% !important
+        max-height: 100% !important
+
+    > .aligncenter
+        align-self: center
+    > .alignleft
+        align-self: left
+    > .alignright
+        align-self: end 
+
+    > ul
+        list-style-position: inside
+    > ol
+        list-style-position: inside
+
+    > blockquote 
+        > *
+            font-style: italic
+            color: #555555
+    
+    
+    
         
 .image-area
     width: 100%

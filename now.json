@@ -39,5 +39,5 @@
       "dest": "/CustomPage?pageId=$1"
     }
   ],
-  "alias": ["dbk-production.now.sh"]
+  "alias": ["alpha.dbknews.com"]
 }

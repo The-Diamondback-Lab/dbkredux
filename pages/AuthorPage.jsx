@@ -9,6 +9,9 @@ import LoadedArticles from '../components/LoadedArticles.jsx';
 
 import ErrorPage from './ErrorPage.jsx';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
+
 import {
   request, loadImage
 } from '..//utilities/app.utilities.js';
@@ -54,9 +57,14 @@ export default class AuthorPage extends React.Component {
               </div>
               <div className='author-info'>
                 <h1><Link href={author.link}><a>{author.name}</a></Link></h1>
-                <span dangerouslySetInnerHTML={{ __html: author.description }} />
               </div>
             </div>
+            <p dangerouslySetInnerHTML={{ __html: author.description }} />
+            <div class='links-row'>
+              <FontAwesomeIcon icon={faEnvelope} size='2x'/>
+              <a href={`mailto:${author.user_email}`} dangerouslySetInnerHTML={{__html: author.user_email}}></a>
+            </div>
+
           </div>
           <div className='container-narrow flex'>
             <div className='left-rail'>

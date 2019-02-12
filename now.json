@@ -39,5 +39,5 @@
       "dest": "/CustomPage?pageId=$1"
     }
   ],
-  "alias": ["alpha.dbknews.com"]
+  "alias": ["alpha.dbknews.com", "www.alpha.dbknews.com"]
 }

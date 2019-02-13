@@ -3,8 +3,9 @@ import * as React from 'reactn';
 import Head from 'next/head';
 
 // components
-import Advertisement from '../components/Advertisement.jsx';
-import LoadedArticles from '../components/LoadedArticles.jsx';
+import Advertisement from '../components/Advertisement';
+import LoadedArticles from '../components/LoadedArticles';
+import SponsoredLinks from '../components/SponsoredLinks';
 
 //layout
 import ErrorPage from '../pages/ErrorPage.jsx';
@@ -33,7 +34,7 @@ export default class SearchResults extends React.Component {
     const { search } = this.props;
 
     if (!search) {
-      return <ErrorPage />;
+      return <ErrorPage code={404}/>;
     }
     else {
       return <React.Fragment>
@@ -54,6 +55,8 @@ export default class SearchResults extends React.Component {
             <Advertisement path='300x250_Banner_B' size={[300, 250]} />
             <br />
             <Advertisement path='300x600_Banner_C' size={[300, 600]} />
+            <br />
+            <SponsoredLinks />
           </div>
         </div>
       </main>

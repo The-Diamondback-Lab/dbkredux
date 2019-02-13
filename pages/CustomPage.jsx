@@ -9,7 +9,8 @@ import {
 import ErrorPage from './ErrorPage.jsx';
 
 //components
-import Advertisement from '../components/Advertisement.jsx';
+import Advertisement from '../components/Advertisement';
+import SponsoredLinks from '../components/SponsoredLinks';
 
 
 /* eslint-disable space-before-function-paren */
@@ -57,6 +58,8 @@ export default class CustomPage extends React.Component {
               <Advertisement path='300x250_Banner_B' size={[300, 250]} mode="desktop" />
               <br />
               <Advertisement path='300x600_Banner_C' size={[300, 600]} mode="desktop" />
+              <br />
+              <SponsoredLinks />
             </div>
           </div>
         </main>

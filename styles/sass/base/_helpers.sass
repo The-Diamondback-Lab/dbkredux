@@ -139,7 +139,8 @@ $columns: ('width': 1fr, 'gutter': map-get($major-rows, gutter), 'max': 20)
   > figure
     height: 300px
     width: 100%
-    max-width: 400px
+    +respond-to(medium)
+      max-width: 400px
     > figcaption
       @extend %article-banner
 

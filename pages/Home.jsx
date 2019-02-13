@@ -10,24 +10,23 @@ import FeaturedArticle from '../components/FeaturedArticle';
 import Advertisement from '../components/Advertisement';
 import ArticlesPreloaded from '../components/ArticlesPreloaded';
 import Articles from '../components/Articles';
+import SponsoredLinks from '../components/SponsoredLinks';
 
 import { request, parseDate, loadHomepageArticles, HOMEPAGE_REQUESTS } from '../utilities/app.utilities';
 
 export default class Home extends React.Component {
   static async getInitialProps() {
     let featuredData = parseDate(await request('/featured_article'));
-    let sponsoredContent = (await request('/pages/sponsored-content')).content.rendered;
     let articlesData = await loadHomepageArticles(HOMEPAGE_REQUESTS);
 
     return {
       featuredData,
-      articlesData,
-      sponsoredContent
+      articlesData
     };
   }
 
   render() {
-    const { featuredData, articlesData, sponsoredContent } = this.props;
+    const { featuredData, articlesData } = this.props;
 
     return (
       <React.Fragment>
@@ -70,10 +69,7 @@ export default class Home extends React.Component {
                 <br />
                 <Advertisement path='300x250_Banner_G' size={[300, 250]} />
                 <br />
-                <div className='sponsored-content-homepage'>
-                  <h2>Sponsored</h2>
-                  <div dangerouslySetInnerHTML={{__html: sponsoredContent}} />
-                </div>
+                <SponsoredLinks />
               </div>
             </div>
             <div className='homepage-bottom'>

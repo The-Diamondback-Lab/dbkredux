@@ -137,6 +137,14 @@ export default class ArticlePage extends React.Component {
               <div className='details'>
                 <span className='accent author'><Link href={article.author.link}><a>{article.author.name}</a></Link></span>
                 <span className='dot'>·</span>
+                { 
+                  article.author.user_twitter ?  
+                  <React.Fragment>
+                    <span className='accent author twitter-link'><a href={`https://twitter.com/${article.author.user_twitter}`}>{`@${article.author.user_twitter}`}</a></span>
+                    <span className='dot'>·</span>
+                  </React.Fragment>
+                  : ''
+                }
                 <span>{article.date.published}</span>
                 {article.date.updated ? <span className='dot'>·</span> : ""}
                 {article.date.updated ? <span>{article.date.updated}</span> : ""}

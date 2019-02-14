@@ -18,10 +18,14 @@ $content-width: 70%
         color: white
         display: flex
         align-items: center
+    > a:hover
+        background-color: rgba($accent-med, 0.3)
+        color: $accent-med
 
     +respond-to(medium)
         font-size: 0.7em
         padding-top: 5px
+
 
 .details
     font-size: 1em
@@ -34,7 +38,12 @@ $content-width: 70%
         > .dot
             display: none
     > span
-        margin-right: 15px
+        margin-right: 10px
+
+    > .twitter-link > a
+        color: #1DA1F2
+    > .twitter-link > a:hover
+        color: $accent-dark
     
 
 .article-text

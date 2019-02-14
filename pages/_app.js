@@ -66,7 +66,6 @@ class MyApp extends App {
                 <meta name="viewport" content="initial-scale=1.0, width=device-width" />
                 <meta property="og:title" content="The Diamondback" />
                 <meta property="og:description" content={description} />
-
                 <link rel="shortcut icon" href="/static/favicon.ico" />
             </Head>
             <NoSSR>

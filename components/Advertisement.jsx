@@ -18,6 +18,10 @@ export default class Advertisement extends React.Component {
   }
 
   componentDidMount() {
+    if (typeof googletag !== 'undefined'){
+      googletag.pubads().refresh();
+      console.log('refresh');
+    }
     this._mounted = true;
 
     const { path, size, mode } = this.props;

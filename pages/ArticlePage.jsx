@@ -1,17 +1,18 @@
 // react
 import * as React from 'reactn';
-import { renderToString } from 'react-dom/server'
 import { Link } from '../routes';
 import Head from 'next/head';
 import Parser from 'html-react-parser';
+import Disqus from 'disqus-react';
 
 import ErrorPage from './ErrorPage.jsx';
 
 import $ from 'jquery';
 
 // components
-import RelatedContent from '../components/RelatedContent.jsx';
-import Advertisement from '../components/Advertisement.jsx';
+import RelatedContent from '../components/RelatedContent';
+import Advertisement from '../components/Advertisement';
+import SponsoredLinks from '../components/SponsoredLinks';
 
 import {
   request, parseDate, loadImage, processArticleBody, loadDynamicArticleContent, chooseArticleDates
@@ -41,8 +42,19 @@ export default class ArticlePage extends React.Component {
       };
     }
 
+    const disqusShortname = 'the-diamondback';
+    const disqusConfig = {
+        url: article_data.url,
+        identifier: article_data.id,
+        title: article_data.title,
+    };
+
     return {
-      article: article_data
+      article: article_data,
+      disqus: {
+        disqusShortname,
+        disqusConfig
+      }
     };
   }
 
@@ -62,7 +74,7 @@ export default class ArticlePage extends React.Component {
   }
 
   render() {
-    const { article } = this.props;
+    const { article, disqus } = this.props;
     if (!article) {
       return <ErrorPage />;
     }
@@ -111,7 +123,9 @@ export default class ArticlePage extends React.Component {
             <meta property="og:image" content="/static/images/the-diamondback-logo.svg" />
           }
           <meta name="twitter:card" content="summary_large_image" />
-
+          <script type="text/javascript">
+            var disqus_url = 'https://alpha.dbknews.com';
+          </script>
 
           <script async src="https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5c418704770faa57"></script>
         </Head>
@@ -123,6 +137,14 @@ export default class ArticlePage extends React.Component {
               <div className='details'>
                 <span className='accent author'><Link href={article.author.link}><a>{article.author.name}</a></Link></span>
                 <span className='dot'>·</span>
+                { 
+                  article.author.user_twitter ?  
+                  <React.Fragment>
+                    <span className='accent author twitter-link'><a href={`https://twitter.com/${article.author.user_twitter}`}>{`@${article.author.user_twitter}`}</a></span>
+                    <span className='dot'>·</span>
+                  </React.Fragment>
+                  : ''
+                }
                 <span>{article.date.published}</span>
                 {article.date.updated ? <span className='dot'>·</span> : ""}
                 {article.date.updated ? <span>{article.date.updated}</span> : ""}
@@ -131,6 +153,11 @@ export default class ArticlePage extends React.Component {
               {featuredImage}
               {article_body}
               {article_body_ads}
+              <hr />
+              <Disqus.CommentCount shortname={disqus.disqusShortname} config={disqus.disqusConfig}>
+                    <h2>Comments</h2>
+              </Disqus.CommentCount>
+              <Disqus.DiscussionEmbed shortname={disqus.disqusShortname} config={disqus.disqusConfig} />
             </div>
             <div className='right-rail'>
               <br />
@@ -138,6 +165,8 @@ export default class ArticlePage extends React.Component {
               <Advertisement path='300x250_Banner_B' size={[300, 250]} mode="desktop" />
               <br />
               <Advertisement path='300x600_Banner_C' size={[300, 600]} mode="desktop" />
+              <br />
+              <SponsoredLinks />
             </div>
           </div>
           <div className='container-narrow'>

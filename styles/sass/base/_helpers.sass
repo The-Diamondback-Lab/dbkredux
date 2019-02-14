@@ -8,12 +8,12 @@ $minor-rows: ('width': px-to-em(200), 'gutter': map-get($major-rows, gutter), 'm
 $columns: ('width': 1fr, 'gutter': map-get($major-rows, gutter), 'max': 20)
 
 %article-banner
-  background-color: rgba($dark, 0.875)
+  background-color: rgba($dark, 0.95)
   border-top: 2px solid white
 
   > .container
     .article-block-author
-      color: $accent-med
+      color: #e83950
 
     .article-block-published
       color: $light
@@ -58,10 +58,10 @@ $columns: ('width': 1fr, 'gutter': map-get($major-rows, gutter), 'max': 20)
       +grid_item(1, 1, 10, 11)
 
     &:nth-of-type(4n+3)
-      +grid_item(2, 1, 1, 8)
+      +grid_item(2, 1, 1, 11)
 
     &:nth-of-type(4n+4)
-      +grid_item(2, 1, 9, 12)
+      +grid_item(2, 1, 12, 9)
 
 %related-articles-list
   display: flex
@@ -139,7 +139,8 @@ $columns: ('width': 1fr, 'gutter': map-get($major-rows, gutter), 'max': 20)
   > figure
     height: 300px
     width: 100%
-    max-width: 400px
+    +respond-to(medium)
+      max-width: 400px
     > figcaption
       @extend %article-banner
 

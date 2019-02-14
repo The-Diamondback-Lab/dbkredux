@@ -6,6 +6,7 @@ import App, { Container } from 'next/app'
 import withGA from "next-ga";
 import Router from "next/router";
 import NProgress from 'nprogress'
+import { DFPManager } from 'react-dfp';
 
 import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
@@ -22,6 +23,7 @@ import '@fortawesome/fontawesome-svg-core/styles.css';
 
 Router.events.on('routeChangeStart', url => {
   console.log(`Loading: ${url}`)
+  DFPManager.refresh()
   NProgress.start()
 })
 Router.events.on('routeChangeComplete', () => NProgress.done())
@@ -64,7 +66,6 @@ class MyApp extends App {
                 <meta name="viewport" content="initial-scale=1.0, width=device-width" />
                 <meta property="og:title" content="The Diamondback" />
                 <meta property="og:description" content={description} />
-
                 <link rel="shortcut icon" href="/static/favicon.ico" />
             </Head>
             <NoSSR>

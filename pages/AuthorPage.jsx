@@ -4,13 +4,15 @@ import { Link } from '../routes';
 import Head from 'next/head';
 
 // components
-import Advertisement from '../components/Advertisement.jsx';
-import LoadedArticles from '../components/LoadedArticles.jsx';
+import Advertisement from '../components/Advertisement';
+import LoadedArticles from '../components/LoadedArticles';
+import SponsoredLinks from '../components/SponsoredLinks';
 
 import ErrorPage from './ErrorPage.jsx';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import { faTwitter } from '@fortawesome/free-brands-svg-icons';
 
 import {
   request, loadImage
@@ -50,31 +52,40 @@ export default class AuthorPage extends React.Component {
           <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         </Head>
         <main className='page author-page'>
-          <div className='container-narrow'>
-            <div className='author-section'>
-              <div id={`${author.slug}-image`} className='author-image' onLoad={() => loadImage(`${author.slug}-image`)}>
-                <img src={author.avatar_urls['96']} alt='Author Avatar' />
-              </div>
-              <div className='author-info'>
-                <h1><Link href={author.link}><a>{author.name}</a></Link></h1>
-              </div>
-            </div>
-            <p dangerouslySetInnerHTML={{ __html: author.description }} />
-            <div class='links-row'>
-              <FontAwesomeIcon icon={faEnvelope} size='2x'/>
-              <a href={`mailto:${author.user_email}`} dangerouslySetInnerHTML={{__html: author.user_email}}></a>
-            </div>
-
-          </div>
           <div className='container-narrow flex'>
             <div className='left-rail'>
+              <div className='author-section'>
+                <div id={`${author.slug}-image`} className='author-image' onLoad={() => loadImage(`${author.slug}-image`)}>
+                  <img src={author.avatar_urls['96']} alt='Author Avatar' />
+                </div>
+                <div className='author-info'>
+                  <h1><Link href={author.link}><a>{author.name}</a></Link></h1>
+                </div>
+              </div>
+              <p className='author-description' dangerouslySetInnerHTML={{ __html: author.description }} />
+              <div className='links-row'>
+                <FontAwesomeIcon icon={faEnvelope} size='lg' />
+                <a href={`mailto:${author.user_email}`} dangerouslySetInnerHTML={{ __html: author.user_email }} target='_blank'></a>
+              </div>
+              {author.user_twitter ? (
+                <div className='links-row'>
+                  <FontAwesomeIcon icon={faTwitter} size='lg' />
+                  <a href={`https://twitter.com/${author.user_twitter}`} dangerouslySetInnerHTML={{ __html: author.user_twitter }} target='_blank'></a>
+                </div>
+              )
+                : ""}
               <hr />
               <LoadedArticles type="author" param={author.slug}></LoadedArticles>
             </div>
             <div className='right-rail'>
+              <br />
+              <br />
+              <br />
               <Advertisement path='300x250_Banner_B' size={[300, 250]} mode="desktop" />
               <br />
               <Advertisement path='300x600_Banner_C' size={[300, 600]} mode="desktop" />
+              <br />
+              <SponsoredLinks />
             </div>
           </div>
         </main>

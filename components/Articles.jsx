@@ -79,6 +79,7 @@ export default class Articles extends React.Component {
       classes.push(mode);
     } else if (!no_loading) {
       return (<div className={`grey-box ${mode}`}>
+      <p>Loading...</p>
       </div>);
     }
     else{

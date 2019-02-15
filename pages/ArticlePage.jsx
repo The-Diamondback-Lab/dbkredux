@@ -123,9 +123,9 @@ export default class ArticlePage extends React.Component {
             <meta property="og:image" content="/static/images/the-diamondback-logo.svg" />
           }
           <meta name="twitter:card" content="summary_large_image" />
-          <script type="text/javascript">
+          {/* <script type="text/javascript">
             var disqus_url = 'https://alpha.dbknews.com';
-          </script>
+          </script> */}
 
           <script async src="https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5c418704770faa57"></script>
         </Head>
@@ -153,11 +153,11 @@ export default class ArticlePage extends React.Component {
               {featuredImage}
               {article_body}
               {article_body_ads}
-              <hr />
+              {/* <hr />
               <Disqus.CommentCount shortname={disqus.disqusShortname} config={disqus.disqusConfig}>
                     <h2>Comments</h2>
               </Disqus.CommentCount>
-              <Disqus.DiscussionEmbed shortname={disqus.disqusShortname} config={disqus.disqusConfig} />
+              <Disqus.DiscussionEmbed shortname={disqus.disqusShortname} config={disqus.disqusConfig} /> */}
             </div>
             <div className='right-rail'>
               <br />

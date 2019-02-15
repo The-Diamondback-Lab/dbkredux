@@ -8,14 +8,16 @@
       "use": "@now/next"
     }
   ],
-  "regions": ["iad1"],
+  "regions": [
+    "iad1"
+  ],
   "routes": [
     {
-      "src": "/",
+      "src": "^\\/(?:\\/)?$",
       "dest": "/Home"
     },
     {
-      "src": "/404",
+      "src": "^\\/404(?:\\/)?$",
       "dest": "/ErrorPage"
     },
     {
@@ -37,7 +39,14 @@
     {
       "src": "^\\/([^\\/]+?)(?:\\/)?$",
       "dest": "/CustomPage?pageId=$1"
+    },
+    {
+      "src": "^\\/_preview\\/([^\\/]+?)\\/([^\\/]+?)(?:\\/)?$",
+      "dest": "/ArticlePreview?postId=$1&wpnonce=$2"
     }
   ],
-  "alias": ["alpha.dbknews.com", "www.alpha.dbknews.com"]
+  "alias": [
+    "alpha.dbknews.com",
+    "www.alpha.dbknews.com"
+  ]
 }

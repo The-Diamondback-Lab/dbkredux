@@ -11,11 +11,6 @@ import { Link } from '../routes';
 // jquery
 import { loadImage } from '../utilities/app.utilities';
 
-/*
- * TODO: check if this.props.data.featured_media === 0
- * if so -> .article-block.text, otherwise .article-block.image
- */
-
 export default class Article extends React.Component {
 
   render() {

@@ -16,6 +16,8 @@ import Advertisement from '../components/Advertisement';
 import StoryGallery from '../components/StoryGallery';
 
 const API_URL = 'https://api.dbknews.com';
+const WP_URL = 'http://54.196.232.70/wp-json/wp/v2';
+const WP_ADDR = '54.196.232.70';
 
 /*
  * Application utility functions.
@@ -152,13 +154,6 @@ export const parseDate = object => {
   };
   return object;
 };
-
-export const replaceLink = object => {
-  object.link = object.link.replace('http://52.207.216.69', '');
-  object.author.link = object.author.link.replace('http://52.207.216.69', '');
-  object.categories.forEach(cat => {cat.link = cat.link.replace('http://52.207.216.69', '');});
-  return object;
-}
 
 /**
  * This is a simple wrapper function that detects if the user has scrolled the
@@ -307,3 +302,48 @@ function formatDate(original, ago) {
     return original;
   }
 } 
+
+export const getArticlePreviewData = async (wp_id, wp_nonce) => {
+  var article = await axios.get(
+    `${WP_URL}/posts/${wp_id}?_wpnonce=${wp_nonce}&_embed`,
+    { withCredentials: true }
+  );
+  var articleData = article.data;
+
+  var preview = await axios.get(
+    `${WP_URL}/posts/${wp_id}/revisions?_wpnonce=${wp_nonce}`,
+    { withCredentials: true } 
+  );
+  var previewData = preview.data[0];
+  articleData.title = previewData.title;
+  articleData.content = previewData.content;
+  articleData.excerpt = previewData.excerpt;
+  articleData.modified = previewData.modified;
+
+  var categories = articleData['_embedded']['wp:term'][0];
+  categories = categories.map(cat => {
+    cat.link = cat.link.replace(`http://${WP_ADDR}`, '');
+    return cat;
+  });
+  articleData.categories = categories;
+
+  var author = articleData['_embedded']['author'][0];
+  author.link = author.link.replace(`http://${WP_ADDR}`, '');
+  if (author.user_twitter) {
+    let handle = author.user_twitter;
+    handle = handle.trim();
+    handle = handle.replace('@', '');
+    author.user_twitter = handle;
+  }
+  articleData.author = author;
+
+  if (articleData['_embedded']['wp:featuredmedia']){
+    articleData.featured_image = {
+      link: articleData['_embedded']['wp:featuredmedia'][0]['source_url'],
+      caption: articleData['_embedded']['wp:featuredmedia'][0]['caption']
+    };
+  }
+
+
+  return articleData;
+}

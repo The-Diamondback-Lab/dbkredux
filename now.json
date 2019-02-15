@@ -37,6 +37,10 @@
     {
       "src": "^\\/([^\\/]+?)(?:\\/)?$",
       "dest": "/CustomPage?pageId=$1"
+    },
+    {
+      "src": "/_preview/:id/:wpnonce",
+      "dest": "/ArticlePreview?id=$1&wpnonce=$2" 
     }
   ],
   "alias": ["alpha.dbknews.com", "www.alpha.dbknews.com"]

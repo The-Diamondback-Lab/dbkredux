@@ -15,9 +15,9 @@ import Parser from 'html-react-parser';
 import Advertisement from '../components/Advertisement';
 import StoryGallery from '../components/StoryGallery';
 
-const API_URL = 'https://api.dbknews.com';
-const WP_URL = 'http://54.196.232.70/wp-json/wp/v2';
-const WP_ADDR = '54.196.232.70';
+const API_URL = 'https://dbk-api-fux5al3q7.now.sh';
+const WP_URL = 'https://wordpress.dbknews.com/wp-json/wp/v2';
+const WP_REPLACE = 'http://wordpress.dbknews.com';
 
 /*
  * Application utility functions.
@@ -304,6 +304,7 @@ function formatDate(original, ago) {
 } 
 
 export const getArticlePreviewData = async (wp_id, wp_nonce) => {
+  console.log(`${WP_URL}/posts/${wp_id}?_wpnonce=${wp_nonce}&_embed`);
   var article = await axios.get(
     `${WP_URL}/posts/${wp_id}?_wpnonce=${wp_nonce}&_embed`,
     { withCredentials: true }
@@ -322,13 +323,13 @@ export const getArticlePreviewData = async (wp_id, wp_nonce) => {
 
   var categories = articleData['_embedded']['wp:term'][0];
   categories = categories.map(cat => {
-    cat.link = cat.link.replace(`http://${WP_ADDR}`, '');
+    cat.link = cat.link.replace(`${WP_REPLACE}`, '');
     return cat;
   });
   articleData.categories = categories;
 
   var author = articleData['_embedded']['author'][0];
-  author.link = author.link.replace(`http://${WP_ADDR}`, '');
+  author.link = author.link.replace(`${WP_REPLACE}`, '');
   if (author.user_twitter) {
     let handle = author.user_twitter;
     handle = handle.trim();

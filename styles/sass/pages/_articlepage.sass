@@ -51,7 +51,13 @@ $content-width: 70%
     flex-direction: column
     width: 100%
     line-height: 1.6
-    font-size: 1.1em
+    & p, a, li, blockquote, i, b
+        font-family: Georgia, 'Times New Roman', Times, serif !important
+        font-size: 21px
+
+    +respond-to(medium)
+        & p, a, li, blockquote, i, b
+            font-size: 18px
     > p
         margin-bottom: 20px
         margin-top: 20px
@@ -85,6 +91,9 @@ $content-width: 70%
         > *
             font-style: italic
             color: #555555
+
+    & iframe
+        max-width: 100% !important
     
     
     

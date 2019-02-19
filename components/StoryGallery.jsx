@@ -5,8 +5,9 @@ export default class StoryGallery extends React.Component {
     constructor(props) {
         super(props);
         let images = []
+
         props.data.props.children.forEach(ele => {
-            if (!ele.props) {
+            if (!ele.props || !ele.props.children) {
                 return;
             }
             let url = ele.props.children[1].props.children[1].props.children.props.src;

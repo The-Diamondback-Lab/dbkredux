@@ -57,7 +57,7 @@ $content-width: 70%
         font-size: 21px
 
     +respond-to(medium)
-        & *
+        & p, a, li, blockquote
             font-size: 18px
     > p
         margin-bottom: 20px
@@ -92,6 +92,9 @@ $content-width: 70%
         > *
             font-style: italic
             color: #555555
+
+    & iframe
+        max-width: 100% !important
     
     
     

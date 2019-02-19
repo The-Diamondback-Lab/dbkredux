@@ -3,7 +3,6 @@ import * as React from 'reactn';
 import { Link } from '../routes';
 import Head from 'next/head';
 import Parser from 'html-react-parser';
-import Disqus from 'disqus-react';
 
 import ErrorPage from './ErrorPage.jsx';
 
@@ -30,7 +29,7 @@ export default class ArticlePage extends React.Component {
   }
 
   static async getInitialProps({ query }) {
-    var article_data = null;
+    let article_data = null;
     try {
       article_data = await request(`/articles/${query.slug}`);
       article_data = parseDate(article_data);
@@ -79,7 +78,7 @@ export default class ArticlePage extends React.Component {
       return <ErrorPage />;
     }
     
-    var featuredImage = "";
+    let featuredImage = "";
     if (article.featured_image) {
       featuredImage = <React.Fragment>
       <div className='image-area'>
@@ -93,8 +92,8 @@ export default class ArticlePage extends React.Component {
       </React.Fragment>
     }
     //injects article ads after window loads
-    var article_body = <div id='article-text-before' className='article-text before-js' dangerouslySetInnerHTML={{ __html: article.content.rendered }}></div>;
-    var article_body_ads = "";
+    let article_body = <div id='article-text-before' className='article-text before-js' dangerouslySetInnerHTML={{ __html: article.content.rendered }}></div>;
+    let article_body_ads = "";
     if (this.state.scriptjsLoaderEnabled) {
       $("#article-text-before").hide();
       article_body_ads = <div id='article-text' className='article-text after-js'>
@@ -102,7 +101,7 @@ export default class ArticlePage extends React.Component {
       </div>;
     }
 
-    var description = article.excerpt.rendered;
+    let description = article.excerpt.rendered;
     description = description.replace('<p>', '');
     description = description.replace('</p>', '');
     description = description.replace('\n', '');
@@ -123,9 +122,6 @@ export default class ArticlePage extends React.Component {
             <meta property="og:image" content="/static/images/the-diamondback-logo.svg" />
           }
           <meta name="twitter:card" content="summary_large_image" />
-          {/* <script type="text/javascript">
-            var disqus_url = 'https://alpha.dbknews.com';
-          </script> */}
 
           <script async src="https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5c418704770faa57"></script>
         </Head>
@@ -153,11 +149,6 @@ export default class ArticlePage extends React.Component {
               {featuredImage}
               {article_body}
               {article_body_ads}
-              {/* <hr />
-              <Disqus.CommentCount shortname={disqus.disqusShortname} config={disqus.disqusConfig}>
-                    <h2>Comments</h2>
-              </Disqus.CommentCount>
-              <Disqus.DiscussionEmbed shortname={disqus.disqusShortname} config={disqus.disqusConfig} /> */}
             </div>
             <div className='right-rail'>
               <br />

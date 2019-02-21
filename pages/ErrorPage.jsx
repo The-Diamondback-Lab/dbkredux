@@ -17,6 +17,7 @@ export default class ErrorPage extends React.Component {
     return <React.Fragment>
       <Head>
         <title>{`${code} - The Diamondback`}</title>
+        <meta property="og:title" content={`${code} - The Diamondback`} />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <main className='page error-page'>

@@ -44,14 +44,14 @@ export default class Home extends React.Component {
                 <ArticlesPreloaded data={articlesData[1]} mode="major-articles-grid" category="campus" />
                 <ArticlesPreloaded data={articlesData[2]} mode="major-articles-grid" category="sports" />
                 <div className = 'homepage-row'>
-                  <Articles category="sports" max={6} mode="first-featured" />
-                  <Articles category="sports" max={6} mode="first-featured" />
+                  <Articles category="local" max={6} mode="first-featured" />
+                  <Articles category="music" max={6} mode="first-featured" />
                 </div>
-                <div className = 'homepage-row'>
+                {/* <div className = 'homepage-row'>
                   <Articles category="sports" max={6} mode="first-featured" />
                   <Articles category="campus" max={6} mode="first-featured" />
                   <Articles category="sports" max={6} mode="first-featured" />
-                </div>
+                </div> */}
               </div>
               <div className="right-rail-show">
                 <Advertisement path='300x250_Banner_B' size={[300, 250]} />
@@ -63,9 +63,9 @@ export default class Home extends React.Component {
                   <Advertisement path='120x90_Banner_F' size={[120, 90]} />
                 </div>
                 <br />
-                <Articles category="womens-basketball" max={1} mode="single-article" />
-                <Articles category="football" max={1} mode="single-article" />
-                <Articles category="field-hockey" max={1} mode="single-article" />
+                <Articles category="staff-editorial" max={1} mode="single-article" />
+                <Articles category="opinion" max={3} mode="first-featured" />
+                {/* <Articles category="field-hockey" max={1} mode="single-article" /> */}
                 <br />
                 <Advertisement path='300x250_Banner_G' size={[300, 250]} />
                 <br />
@@ -74,16 +74,16 @@ export default class Home extends React.Component {
             </div>
             <div className='homepage-bottom'>
                 <div className = 'homepage-row'>
-                  <Articles category="sports" max={1} mode="single-article" />
-                  <Articles category="campus" max={1} mode="single-article" />
-                  <Articles category="sports" max={1} mode="single-article" />
-                  <Articles category="sports" max={1} mode="single-article" />
+                  <Articles category="culture" max={1} mode="single-article" />
+                  <Articles category="movies" max={1} mode="single-article" />
+                  <Articles category="tv" max={1} mode="single-article" />
+                  <Articles category="arts" max={1} mode="single-article" />
                 </div>
                 <div className = 'homepage-row'>
-                  <Articles category="sports" max={1} mode="single-article" />
-                  <Articles category="campus" max={1} mode="single-article" />
-                  <Articles category="sports" max={1} mode="single-article" />
-                  <Articles category="sports" max={1} mode="single-article" />
+                  <Articles category="campus-life" max={1} mode="single-article" />
+                  <Articles category="science-tech" max={1} mode="single-article" />
+                  <Articles category="state" max={1} mode="single-article" />
+                  <Articles category="nation" max={1} mode="single-article" />
                 </div>
             </div>
           </div>

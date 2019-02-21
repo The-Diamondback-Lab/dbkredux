@@ -43,6 +43,7 @@ export default class CustomPage extends React.Component {
       return <React.Fragment>
         <Head>
           <title>{page.title + " - The Diamondback  "}</title>
+          <meta property="og:title" content={page.title + " - The Diamondback  "} />
           <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         </Head>
         <main className='page custom-page'>

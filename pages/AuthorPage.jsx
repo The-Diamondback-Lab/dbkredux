@@ -50,6 +50,10 @@ export default class AuthorPage extends React.Component {
         <Head>
           <title>{author.name + " - The Diamondback  "}</title>
           <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+          <meta name="author" content={author.name} />
+          <meta property="og:title" content={author.name + " - The Diamondback  "} />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta property="og:image" content={author.avatar_urls['96']} />
         </Head>
         <main className='page author-page'>
           <div className='container-narrow flex'>

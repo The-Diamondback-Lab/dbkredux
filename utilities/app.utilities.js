@@ -15,7 +15,7 @@ import Parser from 'html-react-parser';
 import Advertisement from '../components/Advertisement';
 import StoryGallery from '../components/StoryGallery';
 
-const API_URL = 'https://dbk-api-fux5al3q7.now.sh';
+const API_URL = 'https://dbk-api-qtrl5pwrq.now.sh';
 const WP_URL = 'https://wordpress.dbknews.com/wp-json/wp/v2';
 const WP_REPLACE = 'http://wordpress.dbknews.com';
 

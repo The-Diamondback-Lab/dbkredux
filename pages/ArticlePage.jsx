@@ -129,7 +129,7 @@ export default class ArticlePage extends React.Component {
           <div className='container-narrow flex'>
             <div className='left-rail'>
               <div className='category'>{this.generateCategories(article.categories)}</div>
-              <h1>{article.title}</h1>
+              <h1 dangerouslySetInnerHTML={{__html: article.title}}></h1>
               <div className='details'>
                 <span className='accent author'><Link href={article.author.link}><a>{article.author.name}</a></Link></span>
                 <span className='dot'>·</span>

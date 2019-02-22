@@ -24,8 +24,9 @@ export default class Article extends React.Component {
         <LazyLoad>
           <img
           alt='Article'
-          className='article-block-image'
-          id={`image-${id}`} src={featured_image.article}/>
+          className='article-block-image preload'
+          id={`image-${id}`} src={featured_image.article}
+          onLoad={() => loadImage("image-"+id)} />
         </LazyLoad>
       </a>
     </Link>);

@@ -8,5 +8,7 @@ const compression = require('compression')
 // With express
 const express = require('express')
 app.prepare().then(() => {
-  express().use(compression()).use(handler).listen(3000)
+  const server = express()
+  server.use(compression())
+  server.use(handler).listen(3000)
 })

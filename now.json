@@ -47,8 +47,5 @@
   ],
   "alias": [
     "alpha.dbknews.com"
-  ],
-  "env": {
-    "TZ": "America/New_York"
-  }
+  ]
 }

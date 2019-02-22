@@ -9,6 +9,7 @@ import { DFPSlotsProvider, AdSlot } from 'react-dfp';
 // components
 import Loading from './Loading.jsx';
 
+
 export default class Advertisement extends React.Component {
   _mounted = false;
 
@@ -53,11 +54,11 @@ export default class Advertisement extends React.Component {
     return !loaded
       ? ""
       : (
-        <div className={`advertisement ad-${mode}`} id={`ad-${path}`}>
-          <DFPSlotsProvider dfpNetworkId={'123934970'} >
-            <AdSlot adUnit={path} sizes={[ size ]} />
-          </DFPSlotsProvider>
-        </div>
+          <div className={`advertisement ad-${mode}`} id={`ad-${path}`}>
+            <DFPSlotsProvider dfpNetworkId={'123934970'} >
+              <AdSlot adUnit={path} sizes={[ size ]} />
+            </DFPSlotsProvider>
+          </div>
       );
   }
 }

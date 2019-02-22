@@ -10,7 +10,6 @@ import { Link } from '../routes';
 
 // jquery
 import { loadImage } from '../utilities/app.utilities';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
 import LazyLoad from 'react-lazyload';
 
 export default class Article extends React.Component {

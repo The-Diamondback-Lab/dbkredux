@@ -9,8 +9,6 @@ import { DFPSlotsProvider, AdSlot } from 'react-dfp';
 // components
 import Loading from './Loading.jsx';
 
-import { LazyLoadComponent } from 'react-lazy-load-image-component';
-
 
 export default class Advertisement extends React.Component {
   _mounted = false;
@@ -56,13 +54,11 @@ export default class Advertisement extends React.Component {
     return !loaded
       ? ""
       : (
-        <LazyLoadComponent>
           <div className={`advertisement ad-${mode}`} id={`ad-${path}`}>
             <DFPSlotsProvider dfpNetworkId={'123934970'} >
               <AdSlot adUnit={path} sizes={[ size ]} />
             </DFPSlotsProvider>
           </div>
-        </LazyLoadComponent>
       );
   }
 }

@@ -16,6 +16,7 @@ export default class Article extends React.Component {
 
   render() {
     const { author, date, id, link, title, featured_image, text_only } = this.props;
+    var img_id = Math.random().toString(36).replace('0.', '');
     var featuredImage = <Link href={link}><a><div className='article-block-image'/></a></Link>;
     if (featured_image) {
       featuredImage = (<Link href={link}>
@@ -24,8 +25,8 @@ export default class Article extends React.Component {
           <img
           alt='Article'
           className='article-block-image preload'
-          id={`image-${id}`} src={featured_image.article}
-          onLoad={() => loadImage("image-"+id)} />
+          id={img_id} src={featured_image.article}
+          onLoad={() => loadImage(img_id)} />
         </LazyLoad>
       </a>
     </Link>);

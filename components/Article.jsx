@@ -23,8 +23,7 @@ export default class Article extends React.Component {
         <LazyLoadImage
         alt='Article'
         className='article-block-image'
-        id={`image-${id}`} src={featured_image.article}
-        onLoad={() => loadImage(`image-${id}`)}/>
+        id={`image-${id}`} src={featured_image.article}/>
       </a>
     </Link>);
     }

@@ -15,7 +15,6 @@ import {
 import LazyLoad from 'react-lazyload';
 
 
-
 export default class LoadedArticle extends React.Component {
 
   render() {

@@ -1,6 +1,9 @@
 /* ARTICLE PAGE STYLES - PAGES/ARTICLEPAGE.SASS
 $content-width: 70%
 
+$article-font-size-desktop: 20px
+$article-font-size-mobile: 18px
+
 .author
     font-weight: 600
 
@@ -53,11 +56,11 @@ $content-width: 70%
     line-height: 1.6
     & p, a, li, blockquote, i, b
         font-family: Georgia, 'Times New Roman', Times, serif !important
-        font-size: 21px
+        font-size: $article-font-size-desktop
 
     +respond-to(medium)
         & p, a, li, blockquote, i, b
-            font-size: 18px
+            font-size: $article-font-size-mobile
     > p
         margin-bottom: 20px
         margin-top: 20px

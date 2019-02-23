@@ -30,17 +30,22 @@ export default class Takeover extends React.Component {
 
   async componentDidMount() {
     //get takeover data from S3
-    let resp = await axios.get("https://s3.amazonaws.com/dbk-ads-s3/links.json");
-    var desktop = {
-      link: resp.data.takeover_desktop,
-      img: "https://s3.amazonaws.com/dbk-ads-s3/takeover-desktop.jpg"
-    };
-    var mobile = {
-      link: resp.data.takeover_mobile,
-      img: "https://s3.amazonaws.com/dbk-ads-s3/takeover-mobile.jpg"
-    };
-    this.setState( {desktop: desktop, mobile: mobile, loaded: true});
-    window.addEventListener('scroll', this.resizeHeaderOnScroll);
+    try {
+      let resp = await axios.get("https://s3.amazonaws.com/dbk-ads-s3/links.json");
+      var desktop = {
+        link: resp.data.takeover_desktop,
+        img: "https://s3.amazonaws.com/dbk-ads-s3/takeover-desktop.jpg"
+      };
+      var mobile = {
+        link: resp.data.takeover_mobile,
+        img: "https://s3.amazonaws.com/dbk-ads-s3/takeover-mobile.jpg"
+      };
+      this.setState( {desktop: desktop, mobile: mobile, loaded: true});
+      window.addEventListener('scroll', this.resizeHeaderOnScroll);  
+    }
+    catch (e) {
+      this.setState( {loaded: false })
+    }
   }
 
   getTakeover() {
@@ -100,13 +105,13 @@ export default class Takeover extends React.Component {
       this.resetTakeover();
     }
     if (!loaded) {
-      return <Loading />
+      return ""
     }
     const { link, img } = this.getTakeover();
 
     return (
         <div className='takeover' id='takeover'>
-          <button id='close-takeover' onClick={this.closeTakeover}><FontAwesomeIcon icon={faTimes} /><span>Close Ad</span></button>
+          <button id='close-takeover' onClick={this.closeTakeover}><FontAwesomeIcon icon={faTimes} /></button>
           <a href={link} target="_blank">
             <img
             alt='Takeover Ad' 

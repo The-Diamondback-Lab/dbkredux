@@ -2,8 +2,8 @@
 
 $navigation-font-size: px-to-em(14.5)
 $navigation-icon-font-size: px-to-em(24)
-$navigation-margin: px-to-em(9)
-$navigation-margin-medium: px-to-em(7.5)
+$navigation-margin: 15px
+$navigation-margin-medium: px-to-em(9)
 
 nav
   +flex(row, center, space-between)
@@ -26,7 +26,7 @@ nav
 .navigation-links > button:not(:last-of-type)
   margin: 0 $navigation-margin 0 0
   +respond-to(medium)
-    margin: 0 $navigation-margin-medium 0 0
+    margin: 0 $navigation-margin-medium 0 0 
 
 #menu-btn
   font-size: px-to-em(22)
@@ -80,12 +80,18 @@ nav
 .navigation-links-social
   > a
     +hocus
-      color: $accent-med
+      color: $accent-dark
 
 
-    color: darken($accent-light, 5%)
-    font-size: px-to-em(26)
+    color: grey
+    font-size: px-to-em(18)
     margin-left: $navigation-margin
+
+  +respond-to(medium)
+    > a
+      margin-left: $navigation-margin-medium
+  +respond-to(schmedium)
+    display: none
 
 .nav-sticky
   position: fixed

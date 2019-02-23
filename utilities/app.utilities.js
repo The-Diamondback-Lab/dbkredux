@@ -8,7 +8,7 @@ import $ from 'jquery';
 import axios from 'axios';
 
 // moment
-import moment from 'moment';
+import moment from 'moment-timezone';
 
 import Parser from 'html-react-parser';
 
@@ -104,11 +104,13 @@ export const parseDate = object => {
   // capture current date, article publish date, and article modified date
   let original_date = object.date;
 
+
   let dates = {
-    now: moment(moment(), 'MM/DD/YYYY'),
-    published: moment(moment(original_date), 'MM/DD/YYYY'),
-    updated: moment(moment(object.modified), 'MM/DD/YYYY')
+    now: moment.tz('America/New_York'),
+    published: moment.tz(original_date, 'America/New_York'),
+    updated: moment.tz(object.modified, 'America/New_York')
   };
+
 
   /*
    * NOTICE: disabling radix below because the ago function is valid

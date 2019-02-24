@@ -28,6 +28,7 @@
     "i": "^0.3.6",
     "jquery": "^3.3.1",
     "moment": "^2.24.0",
+    "moment-timezone": "^0.5.23",
     "next": "^7.0.2",
     "next-ga": "^2.3.4",
     "next-routes": "^1.4.2",

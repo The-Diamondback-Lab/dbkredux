@@ -11,6 +11,10 @@ import { request } from '../utilities/app.utilities.js';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
+import { faFacebook } from '@fortawesome/free-brands-svg-icons';
+import { faTwitter } from '@fortawesome/free-brands-svg-icons';
+import { faInstagram } from '@fortawesome/free-brands-svg-icons';
+import { faYoutube } from '@fortawesome/free-brands-svg-icons';
 import NoSSR from 'react-no-ssr';
 
 
@@ -38,6 +42,21 @@ export default class Navigation extends React.Component {
             {/* don't show links if on mobile */}
             <NoSSR>{mobile ? null : <NavigationLinks menu={menu.items} />}</NoSSR>
           </div>
+          <div className='navigation-links-social'>
+            <a href = "https://www.facebook.com/TheDiamondback/" target="_blank">
+              <FontAwesomeIcon icon={faFacebook} size='lg' />
+            </a>
+            <a href = "https://twitter.com/thedbk" target="_blank">
+              <FontAwesomeIcon icon={faTwitter} size='lg' />
+            </a>
+            <a href = "https://www.instagram.com/thedbk/" target="_blank">
+              <FontAwesomeIcon icon={faInstagram} size='lg' />
+            </a>
+            <a href = "https://www.youtube.com/user/DiamondbackVideo" target="_blank">
+              <FontAwesomeIcon icon={faYoutube} size='lg' />
+            </a>
+          </div>
+          
         </div>
       </nav>
     );

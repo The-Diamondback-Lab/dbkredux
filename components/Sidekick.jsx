@@ -27,13 +27,19 @@ export default class Sidekick extends React.Component {
   }
 
   async componentDidMount() {
-    let resp = await axios.get("https://s3.amazonaws.com/dbk-ads-s3/links.json");
+    try {
+      let resp = await axios.get("https://s3.amazonaws.com/dbk-ads-s3/links.json");
+      let sk = await axios.get("https://s3.amazonaws.com/dbk-ads-s3/sidekick.gif");
 
-    var data = {
-      link: resp.data.sidekick,
-      img: "https://s3.amazonaws.com/dbk-ads-s3/sidekick.gif"
+      var data = {
+        link: resp.data.sidekick,
+        img: "https://s3.amazonaws.com/dbk-ads-s3/sidekick.gif"
+      }
+      this.setState( {link: data.link, img: data.img, loaded: true} );  
     }
-    this.setState( {link: data.link, img: data.img, loaded: true} );
+    catch (e) {
+      this.setState( {loaded: false} );
+    }
   }
 
   visitedSidekick(){
@@ -64,10 +70,10 @@ export default class Sidekick extends React.Component {
     else{
       this.resetSidekick();
     }
-    return !loaded ? <Loading /> :
+    return !loaded ? '' :
     (
         <div className='sidekick animated fadeIn' id='sidekick'>
-          <button id='close-sidekick' onClick={this.closeSidekick}><FontAwesomeIcon icon={faTimes} /><span>Close Ad</span></button>
+          <button id='close-sidekick' onClick={this.closeSidekick}><FontAwesomeIcon icon={faTimes} /></button>
           <a href={link} target="_blank">
             <img 
             alt='Sidekick Ad'

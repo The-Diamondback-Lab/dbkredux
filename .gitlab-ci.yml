@@ -1,0 +1,33 @@
+image: node:10.5.0
+
+cache:
+  paths:
+    - node_modules/
+
+stages:
+  - setup
+  # - test
+  - deploy
+
+setup:
+  stage: setup
+  script: 
+    - npm install now
+
+# test:
+#   stage: test
+#   script: npm test
+
+deploy_staging:
+  stage: deploy
+  script:
+    - ./node_modules/.bin/now --team=the-diamondback-lab --token=$NOW_TOKEN
+
+deploy_prod:
+  stage: deploy
+  script:
+    - ./node_modules/.bin/now --team=the-diamondback-lab --token=$NOW_TOKEN
+    - ./node_modules/.bin/now alias $PRODUCTION_URL --team=the-diamondback-lab --token=$NOW_TOKEN
+  when: manual
+  only:
+    - master

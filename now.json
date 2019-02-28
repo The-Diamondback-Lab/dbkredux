@@ -44,8 +44,5 @@
       "src": "^\\/_preview\\/([^\\/]+?)\\/([^\\/]+?)(?:\\/)?$",
       "dest": "/ArticlePreview?postId=$1&wpnonce=$2"
     }
-  ],
-  "alias": [
-    "alpha.dbknews.com"
   ]
 }

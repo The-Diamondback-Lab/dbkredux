@@ -7,7 +7,8 @@ cache:
 stages:
   - setup
   # - test
-  - deploy
+  - staging
+  - production
 
 setup:
   stage: setup
@@ -18,16 +19,16 @@ setup:
 #   stage: test
 #   script: npm test
 
-deploy_staging:
-  stage: deploy
+staging:
+  stage: staging
   script:
-    - ./node_modules/.bin/now --team=the-diamondback-lab --token=$NOW_TOKEN
+    - ./node_modules/.bin/now --team=$TEAM_ID --token=$NOW_TOKEN
 
-deploy_prod:
-  stage: deploy
+production:
+  stage: production
   script:
-    - ./node_modules/.bin/now --team=the-diamondback-lab --token=$NOW_TOKEN
-    - ./node_modules/.bin/now alias $PRODUCTION_URL --team=the-diamondback-lab --token=$NOW_TOKEN
+    - ./node_modules/.bin/now --team=$TEAM_ID --token=$NOW_TOKEN
+    - ./node_modules/.bin/now alias $PRODUCTION_URL --team=$TEAM_ID --token=$NOW_TOKEN
   when: manual
   only:
     - master

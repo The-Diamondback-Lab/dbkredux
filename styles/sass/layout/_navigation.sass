@@ -30,19 +30,20 @@ nav
 
 #menu-btn
   font-size: px-to-em(22)
+  +respond-to(schmedium)
+    // margin-right: 10px
 
 .navigation-links
   +flex(row, center)
 
   > div
     +flex(row, center)
-
     > a
-      color: black !important
-      font-family: dbkFont
-      font:
-        weight: 500 !important
-        size: px-to-em(35)
+      > img
+        width: 150px
+        vertical-align: middle
+
+
 
   > a,
   > button

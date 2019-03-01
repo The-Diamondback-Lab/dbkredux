@@ -74,7 +74,7 @@ class NavigationButton extends React.Component {
         </button>
         {
           /* only show small dbk logo if scrolled or mobile */
-          mobile ? <Link href='/'><a className='mobile-dbk-logo'>DBK</a></Link> : null
+          mobile ? <Link href='/'><a className='mobile-dbk-logo'><img src="/static/images/the-diamondback-logo.svg" alt='The Diamondback' /></a></Link> : null
         }
       </div>
     );

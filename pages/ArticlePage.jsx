@@ -33,7 +33,6 @@ export default class ArticlePage extends React.Component {
     try {
       article_data = await request(`/articles/${query.slug}`);
       article_data = parseDate(article_data);
-      article_data = chooseArticleDates(article_data);
     } catch (error) {
       console.log(error);
       return {
@@ -43,9 +42,9 @@ export default class ArticlePage extends React.Component {
 
     const disqusShortname = 'the-diamondback';
     const disqusConfig = {
-        url: article_data.url,
-        identifier: article_data.id,
-        title: article_data.title,
+      url: article_data.url,
+      identifier: article_data.id,
+      title: article_data.title,
     };
 
     return {
@@ -77,18 +76,18 @@ export default class ArticlePage extends React.Component {
     if (!article) {
       return <ErrorPage />;
     }
-    
+
     let featuredImage = "";
     if (article.featured_image) {
       featuredImage = <React.Fragment>
-      <div className='image-area'>
-        <img
-          alt='Article Image'
-          className='article-image'
-          id={"image-" + article.id} src={article.featured_image.article}
-          onLoad={() => (loadImage("image-" + article.id))} />
-      </div>
-      <span className='article-caption' dangerouslySetInnerHTML={{ __html: article.featured_image.caption }}></span>
+        <div className='image-area'>
+          <img
+            alt='Article Image'
+            className='article-image'
+            id={"image-" + article.id} src={article.featured_image.article}
+            onLoad={() => (loadImage("image-" + article.id))} />
+        </div>
+        <span className='article-caption' dangerouslySetInnerHTML={{ __html: article.featured_image.caption }}></span>
       </React.Fragment>
     }
     //injects article ads after window loads
@@ -116,7 +115,7 @@ export default class ArticlePage extends React.Component {
           <meta name="author" content={article.author.name} />
           <meta property="og:title" content={article.title + " - The Diamondback  "} />
           <meta property="og:description" content={description} />
-          { featuredImage ?
+          {featuredImage ?
             <meta property="og:image" content={article.featured_image.preview} />
             :
             <meta property="og:image" content="/static/images/the-diamondback-logo.svg" />
@@ -129,21 +128,21 @@ export default class ArticlePage extends React.Component {
           <div className='container-narrow flex'>
             <div className='left-rail'>
               <div className='category'>{this.generateCategories(article.categories)}</div>
-              <h1 dangerouslySetInnerHTML={{__html: article.title}}></h1>
+              <h1 dangerouslySetInnerHTML={{ __html: article.title }}></h1>
               <div className='details'>
                 <span className='accent author'><Link href={article.author.link}><a>{article.author.name}</a></Link></span>
                 <span className='dot'>·</span>
-                { 
-                  article.author.user_twitter ?  
-                  <React.Fragment>
-                    <span className='accent author twitter-link'><a href={`https://twitter.com/${article.author.user_twitter}`}>{`@${article.author.user_twitter}`}</a></span>
-                    <span className='dot'>·</span>
-                  </React.Fragment>
-                  : ''
+                {
+                  article.author.user_twitter ?
+                    <React.Fragment>
+                      <span className='accent author twitter-link'><a href={`https://twitter.com/${article.author.user_twitter}`}>{`@${article.author.user_twitter}`}</a></span>
+                      <span className='dot'>·</span>
+                    </React.Fragment>
+                    : ''
                 }
-                <span>{article.date.published}</span>
-                {article.date.updated ? <span className='dot'>·</span> : ""}
-                {article.date.updated ? <span>{article.date.updated}</span> : ""}
+                <span
+                  dangerouslySetInnerHTML={{ __html: article.date.ago }}
+                />
               </div>
               <div className="addthis_inline_share_toolbox"></div>
               {featuredImage}

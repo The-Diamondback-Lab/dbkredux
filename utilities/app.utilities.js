@@ -80,7 +80,7 @@ export const request = async (endpoint) => {
 };
 
 export const requestBatch = async (endpoints) => {
-  try{
+  try {
     let promises = [];
     endpoints.forEach(endpoint => promises.push(axios.get(`${API_URL}${endpoint}`)));
     let req = await axios.all(promises);
@@ -93,67 +93,52 @@ export const requestBatch = async (endpoints) => {
 }
 
 /**
- * This function takes an article preview object and parses its date values to be used later.
+ * This function takes an article preview object and parses its date values to
+ * be used later.
  *
  * @param {object} object - article object to parse
  * @returns {object} article object with parsed dates
  */
 export const parseDate = object => {
   const { duration } = moment;
+  const { abs, floor } = Math
+
+  const ONE_HOUR = 60
+  const ONE_DAY = 1440
+  const ONE_WEEK = 10080
 
   // capture current date, article publish date, and article modified date
   let original_date = object.date;
+  let formatted = moment(original_date).format('MMMM DD, YYYY')
+
+  let current_date = moment.tz('America/New_York')
+  let publish_date = moment.tz(original_date, 'America/New_York')
+
+  let ago = floor(abs(duration(current_date.diff(publish_date)).asMinutes()))
 
 
-  let dates = {
-    now: moment.tz('America/New_York'),
-    published: moment.tz(original_date, 'America/New_York'),
-    updated: moment.tz(object.modified, 'America/New_York')
-  };
-
-
-  /*
-   * NOTICE: disabling radix below because the ago function is valid
-   * when callling d.diff(d2). re-enabled after function defintion.
-   */
-
-  /* eslint-disable radix */
-
-  /**
-   * Function that returns how many hours or days ago the article was
-   * published or modified.
-   *
-   * @param {Date} d current date
-   * @param {Date} d2 published or modified date
-   * @param {string} type hours | days
-   * @returns {number} how many hours or days ago the article was
-   * published or modified
-   */
-  let ago = (d, d2, type) => parseInt(type === 'hours'
-    ? duration(d.diff(d2)).asHours() : duration(d.diff(d2)).asDays()
-  );
-
-  /*
-   * NOTICE: re-enabling radix below
-   */
-
-  /* eslint-enable radix */
+  if (ago >= ONE_WEEK) {
+    ago = formatted
+  } else if (ago === ONE_DAY || parseInt(ago / ONE_DAY) === 1) {
+    ago = '1 day ago'
+  } else if (ago > ONE_DAY && ago < ONE_WEEK) {
+    ago = `${parseInt(ago / ONE_DAY)} days ago`
+  } else if (ago === ONE_HOUR || parseInt(ago / ONE_HOUR) === 1) {
+    ago = '1 hour ago'
+  } else if (ago > ONE_HOUR && ago < ONE_DAY) {
+    ago = `${parseInt(ago / ONE_HOUR)} hours ago`
+  } else if (ago > 5) {
+    ago = `${ago} minutes ago`
+  } else {
+    ago = 'Just Now'
+  }
 
   // updated article object with published info
   object.date = {
-    ago: {
-      published: {
-        hours: ago(dates.now, dates.published, 'hours'),
-        days: ago(dates.now, dates.published, 'days')
-      },
-      updated: {
-        hours: ago(dates.now, dates.updated, 'hours'),
-        days: ago(dates.now, dates.updated, 'days')
-      }
-    },
-    formatted: moment(original_date).format('MMMM DD, YYYY'),
-    updated: moment(dates.updated).format('MMMM DD, YYYY')
+    ago: ago,
+    formatted: formatted
   };
+
   return object;
 };
 
@@ -175,10 +160,10 @@ export const loadImage = (id) => {
   Do any processing for an article body (like loading social media widgets, etc).
 */
 export const processArticleBody = (articleElement) => {
-  if (window.instgrm){
+  if (window.instgrm) {
     window.instgrm.Embeds.process();
   }
-  if (window.twttr){
+  if (window.twttr) {
     window.twttr.widgets.load();
   }
 }
@@ -188,14 +173,14 @@ export const processArticleBody = (articleElement) => {
 */
 export const loadDynamicArticleContent = (content) => {
   var parsed = Parser(content);
-  var ad1 = <React.Fragment key={parsed.length+1}>
+  var ad1 = <React.Fragment key={parsed.length + 1}>
     <Advertisement path="300x250_Mobile_InStory_Top" size={[300, 250]} mode="mobile"></Advertisement>
     <Advertisement path="300x250_Desktop_InStory_Top" size={[300, 250]} mode="desktop"></Advertisement>
-    </React.Fragment>;
-  
-  var ad2 = <React.Fragment key={parsed.length+2}>
-  <Advertisement path="300x250_Mobile_InStory_Bottom" size={[300, 250]} mode="mobile"></Advertisement>
-  <Advertisement path="300x250_Desktop_InStory_Bottom" size={[300, 250]} mode="desktop"></Advertisement>
+  </React.Fragment>;
+
+  var ad2 = <React.Fragment key={parsed.length + 2}>
+    <Advertisement path="300x250_Mobile_InStory_Bottom" size={[300, 250]} mode="mobile"></Advertisement>
+    <Advertisement path="300x250_Desktop_InStory_Bottom" size={[300, 250]} mode="desktop"></Advertisement>
   </React.Fragment>;
 
   var output = [];
@@ -204,18 +189,18 @@ export const loadDynamicArticleContent = (content) => {
   var ad2Pushed = false;
   parsed.forEach(e => {
     output.push(e);
-    if (typeof e === 'object' && e.type === 'p'){
+    if (typeof e === 'object' && e.type === 'p') {
       paragraphs++;
     }
-    if (typeof e === 'object' && e.type === 'div' && e.props.className.includes('gallery')){
+    if (typeof e === 'object' && e.type === 'div' && e.props.className.includes('gallery')) {
       let data = output.pop();
       output.push(<StoryGallery data={data} />);
     }
-    if (paragraphs === 2 && !ad1Pushed){
+    if (paragraphs === 2 && !ad1Pushed) {
       output.push(ad1);
       ad1Pushed = true;
     }
-    if (paragraphs === 6 && !ad2Pushed){
+    if (paragraphs === 6 && !ad2Pushed) {
       output.push(ad2);
       ad2Pushed = true;
     }
@@ -226,7 +211,7 @@ export const loadDynamicArticleContent = (content) => {
 
 export const chooseArticleDates = (article) => {
   var date = article.date;
-  if (date.ago.updated.hours === date.ago.published.hours){
+  if (date.ago.updated.hours === date.ago.published.hours) {
     date.updated = "";
     date.published = "Published " + formatDate(date.formatted, date.ago.published);
   }
@@ -243,10 +228,10 @@ export const chooseArticleDates = (article) => {
 export const loadHomepageArticles = async (config) => {
   var articleRequests = []
   config.forEach(params => {
-    if (params.category === 'latest'){
+    if (params.category === 'latest') {
       articleRequests.push(`/articles?preview=true&per_page=${params.max}`);
     }
-    else{
+    else {
       articleRequests.push(`/articles?category=${params.category}&preview=true&per_page=${params.max}`);
     }
   })
@@ -256,27 +241,27 @@ export const loadHomepageArticles = async (config) => {
 
 export const HOMEPAGE_REQUESTS = [
   {
-      category: 'latest',
-      max: 4
+    category: 'latest',
+    max: 4
   },
   {
-      category: 'campus',
-      max: 4
+    category: 'campus',
+    max: 4
   },
   {
-      category: 'sports',
-      max: 4
+    category: 'sports',
+    max: 4
   }
 ]
 
 export const ERRORS = {
   404: {
-      header: "404: Page Not Found",
-      message: "We couldn't find that page!"
+    header: "404: Page Not Found",
+    message: "We couldn't find that page!"
   },
   500: {
-      header: '500: Internal Server Error',
-      message: "Something went wrong."
+    header: '500: Internal Server Error',
+    message: "Something went wrong."
   }
 }
 
@@ -285,25 +270,25 @@ function formatDate(original, ago) {
     if (ago.hours < 24) {
       if (ago.hours === 0) {
         return "today";
-      } 
+      }
       else if (ago.hours === 1) {
         return ago.hours + " hour ago";
-      } 
+      }
       else {
         return ago.hours + " hours ago";
       }
-    } 
+    }
     else if (ago.days === 1) {
       return ago.days + " day ago";
-    } 
+    }
     else {
-     return ago.days + " days ago";
+      return ago.days + " days ago";
     }
   }
-  else{
+  else {
     return original;
   }
-} 
+}
 
 export const getArticlePreviewData = async (wp_id, wp_nonce) => {
   console.log(`${WP_URL}/posts/${wp_id}?_wpnonce=${wp_nonce}&_embed`);
@@ -315,7 +300,7 @@ export const getArticlePreviewData = async (wp_id, wp_nonce) => {
 
   var preview = await axios.get(
     `${WP_URL}/posts/${wp_id}/revisions?_wpnonce=${wp_nonce}`,
-    { withCredentials: true } 
+    { withCredentials: true }
   );
   var previewData = preview.data[0];
   articleData.title = previewData.title;
@@ -340,7 +325,7 @@ export const getArticlePreviewData = async (wp_id, wp_nonce) => {
   }
   articleData.author = author;
 
-  if (articleData['_embedded']['wp:featuredmedia']){
+  if (articleData['_embedded']['wp:featuredmedia']) {
     articleData.featured_image = {
       link: articleData['_embedded']['wp:featuredmedia'][0]['source_url'],
       caption: articleData['_embedded']['wp:featuredmedia'][0]['caption']

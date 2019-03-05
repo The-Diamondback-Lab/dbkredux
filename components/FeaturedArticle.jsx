@@ -20,20 +20,20 @@ export default class FeaturedArticle extends React.Component {
     const { author, date, id, link, title, featured_image } = this.props.data;
 
     var featuredImage = "";
-    if (featured_image){
+    if (featured_image) {
       featuredImage = (<a>
         <img
-        alt='Article'
-        className='article-block-image'
-        id={`image-${id}`} src={featured_image.article}
-        onLoad={() => loadImage(`image-${id}`)}/>
+          alt='Article'
+          className='article-block-image'
+          id={`image-${id}`} src={featured_image.article}
+          onLoad={() => loadImage(`image-${id}`)} />
       </a>);
     }
-    else{
+    else {
       featuredImage = (<a>
         <div
-        className='article-block-image' />
-        </a>)
+          className='article-block-image' />
+      </a>)
     }
     return (
       <figure className='article-block featured-article'>
@@ -44,18 +44,16 @@ export default class FeaturedArticle extends React.Component {
           <div className='container'>
             <Link href={link}>
               <a dangerouslySetInnerHTML={{ __html: title }}
-              className='article-block-title'></a>
+                className='article-block-title'></a>
             </Link>
 
             <div className='article-info'>
-              <Link href = {author.link}>
+              <Link href={author.link}>
                 <a dangerouslySetInnerHTML={{ __html: author.name }}
-                className='article-block-author'></a>
+                  className='article-block-author'></a>
               </Link>
               <p
-                dangerouslySetInnerHTML={{
-                  __html: this._published(date.ago.published)
-                }}
+                dangerouslySetInnerHTML={{ __html: date.ago }}
                 className='article-block-published'
               />
             </div>
@@ -63,32 +61,5 @@ export default class FeaturedArticle extends React.Component {
         </figcaption>
       </figure>
     );
-  }
-
-  _published = (object) => {
-    let published;
-
-    if (object.hours < 24) {
-      published = object.hours === 1
-        ? '1 hour ago' : `${object.hours} hours ago`;
-    } else {
-      // NOTICE: disabling radix below because object.days is valid
-      /* eslint-disable radix */
-
-      let possible_weeks = parseInt(object.days / 7);
-
-      // NOTICE: re-enabling radix below
-      /* eslint-enable radix */
-
-      published = object.days === 1
-        ? '1 day ago'
-        : object.days < 7
-          ? `${object.days} days ago`
-          : possible_weeks === 1
-            ? '1 week ago'
-            : `${possible_weeks} weeks ago`;
-    }
-
-    return published;
   }
 }

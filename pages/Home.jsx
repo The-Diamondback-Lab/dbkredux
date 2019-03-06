@@ -11,6 +11,7 @@ import Advertisement from '../components/Advertisement';
 import ArticlesPreloaded from '../components/ArticlesPreloaded';
 import Articles from '../components/Articles';
 import SponsoredLinks from '../components/SponsoredLinks';
+import SponsoredArticles from '../components/SponsoredArticles';
 
 import { request, parseDate, loadHomepageArticles, HOMEPAGE_REQUESTS } from '../utilities/app.utilities';
 
@@ -41,17 +42,13 @@ export default class Home extends React.Component {
                   <FeaturedArticle data={featuredData} />
                   <ArticlesPreloaded data={articlesData[0]} mode="text-only" category="latest" />
                 </div>
+                <SponsoredArticles />
                 <ArticlesPreloaded data={articlesData[1]} mode="major-articles-grid" category="campus" />
                 <ArticlesPreloaded data={articlesData[2]} mode="major-articles-grid" category="sports" />
                 <div className = 'homepage-row'>
                   <Articles category="local" max={6} mode="first-featured" />
                   <Articles category="music" max={6} mode="first-featured" />
                 </div>
-                {/* <div className = 'homepage-row'>
-                  <Articles category="sports" max={6} mode="first-featured" />
-                  <Articles category="campus" max={6} mode="first-featured" />
-                  <Articles category="sports" max={6} mode="first-featured" />
-                </div> */}
               </div>
               <div className="right-rail-show">
                 <Advertisement path='300x250_Banner_B' size={[300, 250]} />

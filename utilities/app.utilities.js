@@ -116,9 +116,10 @@ export const parseDate = object => {
 
   let ago = floor(abs(duration(current_date.diff(publish_date)).asMinutes()))
 
-
+  let longAgo = false
   if (ago >= ONE_WEEK) {
     ago = formatted
+    longAgo = true
   } else if (ago === ONE_DAY || parseInt(ago / ONE_DAY) === 1) {
     ago = '1 day ago'
   } else if (ago > ONE_DAY && ago < ONE_WEEK) {
@@ -135,6 +136,7 @@ export const parseDate = object => {
 
   // updated article object with published info
   object.date = {
+    longAgo: longAgo,
     ago: ago,
     formatted: formatted
   };
@@ -239,6 +241,9 @@ export const loadHomepageArticles = async (config) => {
   return response;
 }
 
+/*
+  Configuration for requests made on the homepage - these get created server side.
+*/
 export const HOMEPAGE_REQUESTS = [
   {
     category: 'latest',
@@ -254,6 +259,9 @@ export const HOMEPAGE_REQUESTS = [
   }
 ]
 
+/*
+  Error codes with corresponding messages
+*/
 export const ERRORS = {
   404: {
     header: "404: Page Not Found",

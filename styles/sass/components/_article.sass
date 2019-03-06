@@ -26,6 +26,10 @@
         color: $white
         font-weight: 600
 
+  &.sponsored
+    > figcaption
+      @extend %article-banner-sponsored
+
 .article-block-image
   object-fit: cover
   width: 100%
@@ -58,3 +62,15 @@
 
 .article-block-published
   margin: 0
+
+%article-banner-sponsored
+  background-color: rgba($dark, 0.95)
+  border-top: 2px solid gold
+
+  > .container
+    .article-block-author
+      color: yellow
+
+    .article-block-published
+      color: $light
+

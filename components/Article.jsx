@@ -15,7 +15,7 @@ import LazyLoad from 'react-lazyload';
 export default class Article extends React.Component {
 
   render() {
-    const { author, date, id, link, title, featured_image, text_only } = this.props;
+    const { author, categories, date, id, link, title, featured_image, text_only } = this.props;
     var img_id = Math.random().toString(36).replace('0.', '');
     var featuredImage = <Link href={link}><a><div className='article-block-image' /></a></Link>;
     if (featured_image) {
@@ -54,7 +54,7 @@ export default class Article extends React.Component {
       )
     }
     return (
-      <figure className='article-block fadeIn animated'>
+      <figure className={`article-block fadeIn animated ${categories.map(cat => cat.id).join(" ")}`}>
         {featuredImage}
         <figcaption>
           <div className='container'>

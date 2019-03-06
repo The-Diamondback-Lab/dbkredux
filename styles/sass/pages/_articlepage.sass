@@ -120,3 +120,24 @@ h1
     width: 100%
     +respond-to(medium)
         font-size: 1.7em
+
+
+.sponsored-page
+    & .category
+        > a
+            background-color: rgba(gold, 1)
+            color: black
+        > a:hover
+            background-color: rgba(gold, 0.3)
+    
+    // & .author > a
+    //     color: darken(gold, 5)
+
+    & .image-area > .article-image
+        border-color: darken(gold, 10)
+
+    & .article-text
+        & *
+            font-family: 'IBM Plex Sans' !important
+
+        

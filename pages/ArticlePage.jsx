@@ -124,7 +124,7 @@ export default class ArticlePage extends React.Component {
 
           <script async src="https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5c418704770faa57"></script>
         </Head>
-        <main className='page article-page'>
+        <main className={`page article-page${article.categories.find(cat => cat.id === 'sponsored') ? ' sponsored-page' : ''}`}>
           <div className='container-narrow flex'>
             <div className='left-rail'>
               <div className='category'>{this.generateCategories(article.categories)}</div>

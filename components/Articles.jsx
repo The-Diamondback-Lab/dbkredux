@@ -39,9 +39,9 @@ export default class Articles extends React.Component {
           id: 'latest'
         };
       }
-      else{
+      else {
         articles_data = await request(`/articles?category=${category}&preview=true&per_page=${max}`);
-        categories_data = await request(`/category/${category}`);  
+        categories_data = articles_data[0].categories.find(cat => cat.id === category);  
       }
 
       /*

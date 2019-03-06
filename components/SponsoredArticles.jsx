@@ -40,20 +40,23 @@ export default class SponsoredArticles extends React.Component {
 
   render() {
     const { articles, category, loaded } = this.state;
+    const { mode } = this.props;
 
     if (!loaded){
       return '';
     }
 
-    header = <Link href={category.link}><a><h1 dangerouslySetInnerHTML={{ __html: category.name }}></h1></a></Link>;
+    let header = <Link href={category.link}><a><h1 dangerouslySetInnerHTML={{ __html: category.name }}></h1></a></Link>;
     
     return (
-      <div className={`articles ${category.id}`}>
-        {header}
-        <div className='single-article' >
-          {
-            articles
-          }
+      <div className={mode}>
+        <div className={`articles ${category.id}`}>
+          {header}
+          <div className='single-article' >
+            {
+              articles
+            }
+          </div>
         </div>
       </div>
     );

@@ -42,15 +42,17 @@ export default class Home extends React.Component {
                   <FeaturedArticle data={featuredData} />
                   <ArticlesPreloaded data={articlesData[0]} mode="text-only" category="latest" />
                 </div>
-                <SponsoredArticles />
                 <ArticlesPreloaded data={articlesData[1]} mode="major-articles-grid" category="campus" />
                 <ArticlesPreloaded data={articlesData[2]} mode="major-articles-grid" category="sports" />
+                <SponsoredArticles mode='tablet-and-below-only'/>
                 <div className = 'homepage-row'>
                   <Articles category="local" max={6} mode="first-featured" />
                   <Articles category="music" max={6} mode="first-featured" />
                 </div>
               </div>
               <div className="right-rail-show">
+                <SponsoredArticles mode='desktop-only'/>
+                <br />
                 <Advertisement path='300x250_Banner_B' size={[300, 250]} />
                 <br />
                 <Advertisement path='300x600_Banner_C' size={[300, 600]} mode="desktop" />

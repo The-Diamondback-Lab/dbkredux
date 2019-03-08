@@ -1,4 +1,4 @@
-import * as React from 'reactn';
+import * as React from 'react';
 import ErrorPage from './ErrorPage';
 
 export default class Error extends React.Component {

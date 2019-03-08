@@ -1,4 +1,4 @@
-import React from 'reactn';
+import React from 'react';
 
 // moment
 import moment from 'moment';

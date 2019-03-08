@@ -1,13 +1,10 @@
 /* eslint-disable space-before-function-paren */
 /* eslint-disable camelcase */
 
-// NOTICE: importing reactn instead of react
-import React from 'reactn';
+import React from 'react';
 
 // react router
 import { Link } from '../routes';
-
-import { request } from '../utilities/app.utilities.js';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
@@ -20,6 +17,13 @@ import NoSSR from 'react-no-ssr';
 
 export default class Navigation extends React.Component {
 
+  shouldComponentUpdate(nextProps, _) {
+    if (nextProps.mobile !== this.props.mobile || nextProps.scrolled !== this.props.scrolled) {
+      return true;
+    }
+    return false;
+  }
+
   render() {
     const { menu } = this.props;
     if (menu === null){
@@ -30,15 +34,16 @@ export default class Navigation extends React.Component {
     </div>
 ;
     }
-    const { mobile } = this.global;
 
-    const { scrolled } = this.props;
+    const { scrolled, mobile } = this.props;
+
+    // console.log(scrolled);
 
     return (
       <nav id="nav-bar" className={`${scrolled ? 'nav-sticky' : ''} ${mobile ? 'nav-mobile' : ''}`}>
         <div className="container"> 
           <div className='navigation-links'>
-            <NavigationButton mobile={mobile} scrolled={scrolled} />&nbsp;
+            <NavigationButton mobile={mobile} scrolled={scrolled} toggleSidebar={this.props.toggleSidebar} />&nbsp;
             {/* don't show links if on mobile */}
             <NoSSR>{mobile ? null : <NavigationLinks menu={menu.items} />}</NoSSR>
           </div>
@@ -81,7 +86,7 @@ class NavigationButton extends React.Component {
   }
 
   _onClick = e => {
-    this.global.toggleSidebar();
+    this.props.toggleSidebar();
   }
 }
 

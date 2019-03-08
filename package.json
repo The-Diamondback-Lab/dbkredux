@@ -45,7 +45,6 @@
     "react-lazyload": "^2.5.0",
     "react-load-script": "0.0.6",
     "react-no-ssr": "^1.1.0",
-    "reactn": "^0.1.9",
     "serverless-http": "^1.9.0",
     "styled-jsx": "^3.2.0",
     "url-loader": "^1.1.2"

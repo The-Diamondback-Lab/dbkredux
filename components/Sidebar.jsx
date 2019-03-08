@@ -1,5 +1,4 @@
-// NOTICE: importing reactn instead of react
-import React from 'reactn';
+import React from 'react';
 import { Link } from '../routes';
 
 import Searchbar from '../components/Searchbar.jsx';
@@ -13,24 +12,46 @@ import $ from 'jquery';
 
 
 export default class Sidebar extends React.Component {
+
+    _mounted = false;
+
     constructor(props) {
         super(props);
-        this.state = { scrolled: this.props.scrolled, menu: null };
+        this.state = { menu: null };
     }
 
     async componentDidMount() {
         const sidebar = await request('/menu/sidebar');
         var nestedMenus = sidebar.items.map((ele, i) => <NestedMenu data={ele} key={i} level={0} />);
-        this.setState ({ scrolled: this.props.scrolled, menu: nestedMenus });
+        this.setState ({ menu: nestedMenus });
+        this._mounted = true;
     }
 
-    componentWillReceiveProps(newProps) {
-        this.setState({ show: false, scrolled: newProps.scrolled });
+    shouldComponentUpdate(nextProps, _) {
+        if (!this._mounted) {
+            return true;
+        }
+        else if (nextProps.mobile !== this.props.mobile || nextProps.scrolled !== this.props.scrolled) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
+
+    // componentWillReceiveProps(newProps) {
+    //     this.setState({ show: false, scrolled: newProps.scrolled });
+    // }
+
+    componentWillUnmount() {
+        this._mounted = false;
+    }
+
+
 
     render() {
-        const { mobile } = this.global;
-        const { scrolled, menu } = this.state;
+        const { menu } = this.state;
+        const { mobile, scrolled } = this.props;
 
         if (menu === null){
             return "";
@@ -40,7 +61,7 @@ export default class Sidebar extends React.Component {
 
         if (mobile){
             searchBar = (<div className="search-section">
-                <Searchbar />
+                <Searchbar mobile={true} />
             </div>);
         }
 

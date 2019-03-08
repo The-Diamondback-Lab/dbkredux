@@ -1,5 +1,5 @@
 // react
-import * as React from 'reactn';
+import * as React from 'react';
 import Head from 'next/head';
 
 // components

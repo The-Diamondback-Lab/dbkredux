@@ -25,7 +25,7 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import React, { Component } from 'reactn';
+import React, { Component } from 'react';
 
 class DetectAdBlock extends Component {
 

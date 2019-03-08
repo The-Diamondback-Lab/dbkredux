@@ -1,10 +1,6 @@
 /* eslint-disable space-before-function-paren */
 
-// NOTICE: importing reactn instead of react
-import React from 'reactn';
-
-// components
-import Loading from '../components/Loading.jsx';
+import React from 'react';
 
 // axios
 import axios from 'axios';

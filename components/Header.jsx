@@ -1,7 +1,6 @@
 /* eslint-disable space-before-function-paren */
 
-// NOTICE: importing reactn instead of react
-import React, { setGlobal } from 'reactn';
+import React from 'react';
 
 import NoSSR from 'react-no-ssr';
 
@@ -14,6 +13,7 @@ import $ from 'jquery';
 import Navigation from '../components/Navigation.jsx';
 import Sidebar from '../components/Sidebar.jsx';
 import Searchbar from '../components/Searchbar.jsx';
+import Takeover from '../components/Takeover.jsx';
 
 // constants
 import {
@@ -35,10 +35,10 @@ export default class Header extends React.Component {
 
   constructor(props){
     super(props);
-    this.state = { scrolled: false};
+    this.state = { scrolled: false, mobileState: false };    
   }
 
-  toggleSidebar() {
+  toggleSidebar = () => {
     if ($("#sidebar").css("left") !== '0px'){
       $("#sidebar").css("left", '0px');
     }
@@ -47,40 +47,25 @@ export default class Header extends React.Component {
     }
   }
 
-  resetSidebar() {
-    $("#sidebar").css("left", "-100%");
-    $(".sidebar-item").removeClass("active");
-  }
 
-
-  async componentDidMount() {
+  componentDidMount() {
     var mobile = responsive(BREAKPOINTS.schmedium, 'less_eq');
-    setGlobal( {toggleSidebar: this.toggleSidebar, resetSidebar: this.resetSidebar, mobile: !!mobile} );
     //forces re-render
-    this.setState( {scrolled: this.state.scrolled });
+    this.setState( {scrolled: false, mobileState: mobile });
 
     $(window).resize(() => {
       var mobile = responsive(BREAKPOINTS.schmedium, 'less_eq');
-      setGlobal( {toggleSidebar: this.toggleSidebar, resetSidebar: this.resetSidebar, mobile: !!mobile} );
       //forces re-render
-      this.setState( {scrolled: this.state.scrolled} );
+      this.setState( {scrolled: this.state.scrolled, mobileState: mobile} );
     });
 
     $(window).scroll(event => {
       const { scrolled } = this.state;
-      const offset = 0;
-      var header = document.getElementById("masthead");
-      if (!header) {
-        return;
-      }
-      const check = header.getBoundingClientRect().bottom-2;
-      var scrolledState = !((check + offset) >= 0 && (check - offset) <= window.innerHeight);
+      let scrolledState = this.getScrolledState();
       if (scrolledState !== scrolled){
-        this.setState( {scrolled: scrolledState} );
+        this.setState( {scrolled: scrolledState} ); 
       }
     });
-
-    // $("#header").fadeIn();
   }
 
   componentWillUnmount() {
@@ -88,34 +73,47 @@ export default class Header extends React.Component {
     $(window).unbind('scroll');
   }
 
+  getScrolledState = () => {
+    const offset = 0;
+    let header = document.getElementById("masthead");
+    if (!header) {
+      return;
+    }
+    const check = header.getBoundingClientRect().bottom-2;
+    return !((check + offset) >= 0 && (check - offset) <= window.innerHeight);    
+  }
+
   render() {
-    const { mobile } = this.global;
-    const { scrolled } = this.state;
+    const { scrolled, mobileState } = this.state;
     const { menu } = this.props;
-    // var mobile = responsive(BREAKPOINTS.schmedium, 'less_eq');
     var searchBar = "";
-    if (!mobile){
-      searchBar = <Searchbar />
+    if (!mobileState){
+      searchBar = <Searchbar mobile={false} />
     }
 
 
     return (
-      <header id="header" className={`${scrolled ? 'pad-bottom' : ''}`} >
-        <div id="masthead" className={`container${mobile ? ' disappear' : ''}`}>
-          <React.Fragment>
-            <NoSSR>
-              <Link to="/">
-                <a><img src="/static/images/the-diamondback-logo.svg" alt='The Diamondback' /></a>
-              </Link>
-              {searchBar}
-            </NoSSR>
-          </React.Fragment>
-        </div>
+      <React.Fragment>
+        <NoSSR>
+          <Takeover mobile={mobileState} />
+        </NoSSR>
+        <header id="header" className={`${scrolled ? 'pad-bottom' : ''}`} >
+          <div id="masthead" className={`container${mobileState ? ' disappear' : ''}`}>
+            <React.Fragment>
+              <NoSSR>
+                <Link to="/">
+                  <a><img src="/static/images/the-diamondback-logo.svg" alt='The Diamondback' /></a>
+                </Link>
+                {searchBar}
+              </NoSSR>
+            </React.Fragment>
+          </div>
 
-        {/* navigation */}
-        <Navigation menu={menu} scrolled={scrolled} />
-        <Sidebar scrolled={scrolled}/>
-      </header>
+          {/* navigation */}
+          <Navigation menu={menu} scrolled={scrolled} toggleSidebar={this.toggleSidebar} mobile={mobileState} />
+          <Sidebar scrolled={scrolled} mobile={mobileState} />
+        </header>
+      </React.Fragment>
     );
   }
 }

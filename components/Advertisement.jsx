@@ -1,7 +1,6 @@
 /* eslint-disable space-before-function-paren */
 
-// NOTICE: importing reactn instead of react
-import React from 'reactn';
+import React from 'react';
 
 // google ad manager
 import { DFPSlotsProvider, AdSlot } from 'react-dfp';

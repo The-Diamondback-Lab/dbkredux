@@ -1,8 +1,7 @@
 /* eslint-disable space-before-function-paren */
 /* eslint-disable camelcase */
 
-// NOTICE: importing reactn instead of react
-import React from 'reactn';
+import React from 'react';
 import Head from 'next/head';
 
 // components
@@ -64,7 +63,6 @@ export default class Home extends React.Component {
                 <br />
                 <Articles category="staff-editorial" max={1} mode="single-article" />
                 <Articles category="opinion" max={3} mode="first-featured" />
-                {/* <Articles category="field-hockey" max={1} mode="single-article" /> */}
                 <br />
                 <Advertisement path='300x250_Banner_G' size={[300, 250]} />
                 <br />

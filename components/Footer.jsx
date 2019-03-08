@@ -1,10 +1,7 @@
-// NOTICE: importing reactn instead of react
-import React from 'reactn';
+import React from 'react';
 
 // react router
 import { Link } from '../routes';
-
-import { request } from '../utilities/app.utilities.js';
 
 /* eslint-disable space-before-function-paren */
 /* eslint-disable prefer-promise-reject-errors */

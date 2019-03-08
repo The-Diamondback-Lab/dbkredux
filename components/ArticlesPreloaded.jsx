@@ -2,8 +2,7 @@
 /* eslint-disable array-callback-return */
 /* eslint-disable camelcase */
 
-// NOTICE: importing reactn instead of react
-import React from 'reactn';
+import React from 'react';
 
 // moment
 import moment from 'moment';

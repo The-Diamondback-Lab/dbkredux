@@ -1,5 +1,4 @@
-// NOTICE: importing reactn instead of react
-import React from 'reactn';
+import React from 'react';
 import Router from 'next/router';
 
 import $ from 'jquery';
@@ -36,7 +35,7 @@ class Searchbar extends React.Component {
   }
 
   render() {
-    const { mobile } = this.global;
+    const { mobile } = this.props;
     return (
       <div className={`searchbar ${(mobile ? "searchbar-mobile" : "")}`}>
         <input id='global-search-bar' type='text' placeholder='Search' onKeyUp={this.keyPressed} />

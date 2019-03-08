@@ -1,5 +1,5 @@
 // react
-import * as React from 'reactn';
+import * as React from 'react';
 import Head from 'next/head';
 import NoSSR from 'react-no-ssr';
 import App, { Container } from 'next/app'
@@ -11,7 +11,6 @@ import { DFPManager } from 'react-dfp';
 import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
 import Advertisement from '../components/Advertisement.jsx';
-import Takeover from '../components/Takeover.jsx';
 import Sidekick from '../components/Sidekick.jsx';
 
 import { request } from '../utilities/app.utilities.js';
@@ -68,12 +67,9 @@ class MyApp extends App {
                 <meta property="og:description" content={description} />
                 <link rel="shortcut icon" href="/static/favicon.ico" />
             </Head>
-            <NoSSR>
-                <Takeover />
-            </NoSSR>
-                <Header menu={menus.header}/>
-                <Advertisement path='728x90_Banner_A' size={[728, 90]} mode="desktop" />
-                <Advertisement path='300x50_Mobile_Header' size={[300, 50]} mode="mobile" />
+              <Header menu={menus.header}/>
+              <Advertisement path='728x90_Banner_A' size={[728, 90]} mode="desktop" />
+              <Advertisement path='300x50_Mobile_Header' size={[300, 50]} mode="mobile" />
             <Component {...pageProps} />
                 <Advertisement path='300x50_Mobile_Footer' size={[300, 50]} mode="mobile" />
                 <Advertisement path='728x90_Banner_E' size={[728, 90]} mode="desktop" />

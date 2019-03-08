@@ -1,10 +1,6 @@
 /* eslint-disable space-before-function-paren */
 
-// NOTICE: importing reactn instead of react
-import React from 'reactn';
-
-// components
-import Loading from '../components/Loading.jsx';
+import React from 'react';
 
 // axios
 import axios from 'axios';
@@ -20,6 +16,8 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
 
 export default class Takeover extends React.Component {
+
+  _mounted = false;
 
   constructor(props) {
     super(props);
@@ -42,18 +40,31 @@ export default class Takeover extends React.Component {
       };
       this.setState( {desktop: desktop, mobile: mobile, loaded: true});
       window.addEventListener('scroll', this.resizeHeaderOnScroll);  
+      this._mounted = true;
     }
     catch (e) {
       this.setState( {loaded: false })
     }
   }
 
+  shouldComponentUpdate(nextProps, _) {
+    if (!this._mounted){
+      return true;
+    }
+    else if (nextProps.mobile !== this.props.mobile) {
+      return true;
+    }
+    else{
+      return false;
+    }
+  }  
+
   getTakeover() {
     const { desktop, mobile } = this.state;
     var link = desktop.link;
     var img = desktop.img;
 
-    if (this.global.mobile) {
+    if (this.props.mobile) {
       link = mobile.link;
       img = mobile.img;
     }

@@ -1,5 +1,5 @@
 // react
-import * as React from 'reactn';
+import * as React from 'react';
 import { Link } from "../routes";
 import Router from 'next/router';
 import Head from 'next/head';

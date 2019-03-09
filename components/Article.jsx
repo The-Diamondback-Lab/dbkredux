@@ -6,7 +6,7 @@
 import * as React from 'react';
 
 // react router
-import { Link } from '../routes';
+import Link from 'next/link';
 
 // jquery
 import { loadImage } from '../utilities/app.utilities';

@@ -21,13 +21,11 @@ import '../styles/css/nprogress.css';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 
 Router.events.on('routeChangeStart', url => {
-  console.log(`Loading: ${url}`)
   DFPManager.refresh()
   NProgress.start()
 })
 Router.events.on('routeChangeComplete', () => {
   NProgress.done()
-  console.log('done')
 })
 Router.events.on('routeChangeError', () => NProgress.done())
 

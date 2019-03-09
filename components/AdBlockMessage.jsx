@@ -22,15 +22,15 @@ export default class AdBlockMessage extends React.Component {
 
     closeAdBlockMessage() {
         this.setState({ show: false });
-        var cookie = document.cookie; 
+        let cookie = document.cookie; 
         if (cookie.indexOf('adBlockDetected\x3d', 0) === -1) {
           document.cookie = 'adBlockDetected\x3d1;max-age\x3d360;path\x3d/';
         }    
     }
 
     adMessageShown(){
-        var cookie=document.cookie;
-        var seen = (cookie.indexOf('adBlockDetected',0) !== -1);
+        let cookie=document.cookie;
+        let seen = (cookie.indexOf('adBlockDetected',0) !== -1);
         return seen;
     }
 

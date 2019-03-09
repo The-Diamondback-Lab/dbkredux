@@ -9,6 +9,8 @@ nav
   +flex(row, center, space-between)
 
   height: 56px
+  +respond-to(schmedium)
+    height: 75px
 
   border:
     bottom: $border
@@ -20,6 +22,9 @@ nav
 
   background-color: white
   transition: background-color .5s linear
+  top: 0
+  z-index: 10001
+  overflow-x: auto !important
 
 #menu-btn,
 .navigation-links > a,
@@ -94,14 +99,14 @@ nav
   +respond-to(schmedium)
     display: none
 
-.nav-sticky
-  position: fixed
-  top: 0
-  width: 100%
-  z-index: 1000
-  background-color: rgba(255, 255, 255, 0.95)
+.mobile-dbk-logo 
+  display: none
+  +respond-to(schmedium)
+    display: block
 
-.nav-mobile
-  height: 75px
+.disappear-on-mobile
+  display: block
+  +respond-to(schmedium)
+    display: none
   
 

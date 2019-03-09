@@ -8,8 +8,6 @@ import '../styles/sass/app.sass';
 
 import { ERRORS } from '../utilities/app.utilities'
 
-
-
 export default class ErrorPage extends React.Component {
   render() {
     const { code } = this.props

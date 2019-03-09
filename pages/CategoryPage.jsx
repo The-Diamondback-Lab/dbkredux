@@ -23,10 +23,10 @@ import {
 export default class CategoryPage extends React.Component {
 
   static async getInitialProps({ query }) {
-    var categorypath = query.categorypath;
-    var categoryId = categorypath.substring(categorypath.lastIndexOf('/') + 1);
+    let categorypath = query.categorypath;
+    let categoryId = categorypath.substring(categorypath.lastIndexOf('/') + 1);
     try {
-      var category_data = await request(`/category/${categoryId}`);
+      let category_data = await request(`/category/${categoryId}`);
       /*
         If the navigated URL has a valid category at the end of the path but is not the correct URL, redirect it to the correct URL
       */

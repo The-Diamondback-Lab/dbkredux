@@ -13,61 +13,29 @@ import $ from 'jquery';
 
 export default class Sidebar extends React.Component {
 
-    _mounted = false;
-
-    constructor(props) {
-        super(props);
-        this.state = { menu: null };
-    }
+    state = { menu: null };
 
     async componentDidMount() {
         const sidebar = await request('/menu/sidebar');
-        var nestedMenus = sidebar.items.map((ele, i) => <NestedMenu data={ele} key={i} level={0} />);
+        let nestedMenus = sidebar.items.map((ele, i) => <NestedMenu data={ele} key={i} level={0} />);
         this.setState ({ menu: nestedMenus });
-        this._mounted = true;
     }
-
-    shouldComponentUpdate(nextProps, _) {
-        if (!this._mounted) {
-            return true;
-        }
-        else if (nextProps.mobile !== this.props.mobile || nextProps.scrolled !== this.props.scrolled) {
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
-
-    // componentWillReceiveProps(newProps) {
-    //     this.setState({ show: false, scrolled: newProps.scrolled });
-    // }
-
-    componentWillUnmount() {
-        this._mounted = false;
-    }
-
-
 
     render() {
         const { menu } = this.state;
-        const { mobile, scrolled } = this.props;
 
         if (menu === null){
             return "";
         }
 
-        var searchBar = "";
+        let searchBar = "";
 
-        if (mobile){
-            searchBar = (<div className="search-section">
-                <Searchbar mobile={true} />
-            </div>);
-        }
-
+        searchBar = (<div className="search-section">
+            <Searchbar mobile={true} />
+        </div>);
 
         return (
-            <div id="sidebar" className={`sidebar ${scrolled ? 'sidebar-sticky' : ''} ${mobile ? 'sidebar-mobile' : ''}`} >
+            <div id="sidebar" className={`sidebar`} >
                 {searchBar}
                 {menu}
             </div>
@@ -78,7 +46,7 @@ export default class Sidebar extends React.Component {
 const NestedMenu = (props) => {
     const { data, level } = props;
     const id = "sidebar-item-"+data.id;
-    var inner = "";
+    let inner = "";
     if (typeof data.children !== 'undefined') {
         inner = data.children.map((ele, i) => <NestedMenu data={ele} key={i} level={level+1} />);
     }

@@ -3,10 +3,8 @@ import React from 'react';
 import { request } from '../utilities/app.utilities';
 
 export default class SponsoredLinks extends React.Component {
-    constructor(props){
-        super(props);
-        this.state = ({ content: null });
-    }
+
+    state = ({ content: null });
 
     async componentDidMount() {
         try {

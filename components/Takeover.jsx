@@ -7,10 +7,6 @@ import axios from 'axios';
 
 import $ from 'jquery';
 
-import {
-  loadImage
-} from '../utilities/app.utilities.js';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
@@ -19,27 +15,22 @@ export default class Takeover extends React.Component {
 
   _mounted = false;
 
-  constructor(props) {
-    super(props);
-    this.state = { desktop: null, mobile: null, loaded: false };
-    this.closeTakeover = this.closeTakeover.bind(this);
-    this.resizeHeaderOnScroll = this.resizeHeaderOnScroll.bind(this);
-  }
+  state = { desktop: null, mobile: null, loaded: false };
 
   async componentDidMount() {
     //get takeover data from S3
     try {
       let resp = await axios.get("https://s3.amazonaws.com/dbk-ads-s3/links.json");
-      var desktop = {
+      let desktop = {
         link: resp.data.takeover_desktop,
         img: "https://s3.amazonaws.com/dbk-ads-s3/takeover-desktop.jpg"
       };
-      var mobile = {
+      let mobile = {
         link: resp.data.takeover_mobile,
         img: "https://s3.amazonaws.com/dbk-ads-s3/takeover-mobile.jpg"
       };
       this.setState( {desktop: desktop, mobile: mobile, loaded: true});
-      window.addEventListener('scroll', this.resizeHeaderOnScroll);  
+      // window.addEventListener('scroll', this.resizeHeaderOnScroll);  
       this._mounted = true;
     }
     catch (e) {
@@ -47,91 +38,71 @@ export default class Takeover extends React.Component {
     }
   }
 
-  shouldComponentUpdate(nextProps, _) {
-    if (!this._mounted){
-      return true;
-    }
-    else if (nextProps.mobile !== this.props.mobile) {
-      return true;
-    }
-    else{
-      return false;
-    }
-  }  
-
-  getTakeover() {
-    const { desktop, mobile } = this.state;
-    var link = desktop.link;
-    var img = desktop.img;
-
-    if (this.props.mobile) {
-      link = mobile.link;
-      img = mobile.img;
-    }
-    return {
-      link: link,
-      img: img
-    };
+  componentWillUnmount() {
+    // window.removeEventListener('scroll', this.resizeHeaderOnScroll);
   }
+  
 
-  visitedTakeover(){
-    var cookie=document.cookie;
-    var seen = (cookie.indexOf('visitedTakeover',0) !== -1);
+  visitedTakeover = () =>{
+    let cookie=document.cookie;
+    let seen = (cookie.indexOf('visitedTakeover',0) !== -1);
     return seen;
   }
 
-  closeTakeover() {
-    $("#takeover").hide();
-    var cookie = document.cookie; 
+  closeTakeover = () => {
+    $("#takeover-desktop").hide();
+    $("#takeover-mobile").hide();
+    let cookie = document.cookie; 
     if (cookie.indexOf('visitedTakeover\x3d', 0) === -1) {
       document.cookie = 'visitedTakeover\x3d1;max-age\x3d360;path\x3d/';
     }
   }
 
-  resetTakeover() {
-    if ($("#takeover").length){
-      $("#takeover").fadeIn();
-    }
-  }
-
-  resizeHeaderOnScroll() { 
-    if (!$('#takeover').length){
+  resizeHeaderOnScroll = () => { 
+    if (!$('.takeover').length){
       return;
     }
     const distanceY = window.pageYOffset || document.documentElement.scrollTop, shrinkOn = 50;
     if (distanceY > shrinkOn) { 
-      $("#takeover").css('opacity', '0');
+      $("#takeover-desktop").css('opacity', '0');
+      $("#takeover-mobile").css('opacity', '0');
+      window.setTimeout(1000); 
     } 
     else { 
-      $("#takeover").css('opacity', '1');
-    } 
+      $("#takeover-desktop").css('opacity', '1');
+      $("#takeover-mobile").css('opacity', '1');
+      window.setTimeout(1000);       
+    }
   } 
 
   render() {
-    const { loaded } = this.state;
-    if (this.visitedTakeover()){
+    const { loaded, desktop, mobile } = this.state;
+    if (this.visitedTakeover() || !loaded){
       return "";
     }
-    else{
-      this.resetTakeover();
-    }
-    if (!loaded) {
-      return ""
-    }
-    const { link, img } = this.getTakeover();
 
     return (
-        <div className='takeover' id='takeover'>
+      <React.Fragment>
+        <div className='takeover' id='takeover-desktop'>
           <button id='close-takeover' onClick={this.closeTakeover}><FontAwesomeIcon icon={faTimes} /></button>
-          <a href={link} target="_blank">
+          <a href={desktop.link} target="_blank">
             <img
             alt='Takeover Ad' 
-            className='preload' 
             id='takeover-image' 
-            src={img} 
-            onLoad={() => loadImage('takeover-image')} />
+            src={desktop.img}  />
           </a>
         </div>
+
+        <div className='takeover' id='takeover-mobile'>
+        <button id='close-takeover' onClick={this.closeTakeover}><FontAwesomeIcon icon={faTimes} /></button>
+        <a href={mobile.link} target="_blank">
+          <img
+          alt='Takeover Ad' 
+          id='takeover-image' 
+          src={mobile.img} />
+        </a>
+      </div>
+      </React.Fragment>        
       );
   }
 }

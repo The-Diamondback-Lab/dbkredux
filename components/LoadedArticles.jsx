@@ -18,11 +18,7 @@ import {
 */
 export default class LoadedArticles extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = { articles: [], loaded: false, page: 1, no_more_posts: false };
-    this.loadNext = this.loadNext.bind(this);
-  }
+  state = { articles: [], loaded: false, page: 1, no_more_posts: false };
 
   async componentDidMount() {
     const { type, param } = this.props;
@@ -36,10 +32,10 @@ export default class LoadedArticles extends React.Component {
 
   async load(type, param) {
     const page = this.state.page;
-    var articles = this.state.articles;
+    let articles = this.state.articles;
 
     try {
-      var articles_data = [];
+      let articles_data = [];
       if (type === 'search'){
         articles_data = await request(`/articles?${type}=${param}&preview=true&per_page=10&page=${page}&orderby=relevance&order=desc`);
         articles_data =
@@ -64,9 +60,9 @@ export default class LoadedArticles extends React.Component {
     }
   }
 
-  loadNext() {
+  loadNext = () => {
     const { type, param } = this.props;
-    var { articles, loaded, page, no_more_posts } = this.state;
+    const { articles, loaded, page, no_more_posts } = this.state;
     this.setState({ articles: articles, loaded: loaded, page: page + 1, no_more_posts: no_more_posts }, () => this.load(type, param));
   }
 
@@ -77,7 +73,7 @@ export default class LoadedArticles extends React.Component {
       return <Loading />
     }
     else {
-      var button = <button className='loadmore' onClick={this.loadNext}>Load More Posts</button>;
+      let button = <button className='loadmore' onClick={this.loadNext}>Load More Posts</button>;
       if (articles.length === 0) {
         return <h3>No posts found.</h3>;
       }

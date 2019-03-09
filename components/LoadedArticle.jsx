@@ -20,7 +20,7 @@ export default class LoadedArticle extends React.Component {
   render() {
     const { author, date, id, link, title, excerpt, featured_image } = this.props;
 
-    var featuredImage = <Link href={link}>
+    let featuredImage = <Link href={link}>
       <div className="loaded-article-picture"></div>
     </Link>;
 

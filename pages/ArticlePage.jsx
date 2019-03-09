@@ -23,10 +23,7 @@ import {
 
 export default class ArticlePage extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = { scriptjsLoaderEnabled: false };
-  }
+  state = { scriptjsLoaderEnabled: false };
 
   static async getInitialProps({ query }) {
     let article_data = null;

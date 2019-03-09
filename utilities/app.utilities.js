@@ -174,21 +174,21 @@ export const processArticleBody = (articleElement) => {
   Primary function is to inject ads, but also process any HTML for dynamic content
 */
 export const loadDynamicArticleContent = (content) => {
-  var parsed = Parser(content);
-  var ad1 = <React.Fragment key={parsed.length + 1}>
+  let parsed = Parser(content);
+  let ad1 = <React.Fragment key={parsed.length + 1}>
     <Advertisement path="300x250_Mobile_InStory_Top" size={[300, 250]} mode="mobile"></Advertisement>
     <Advertisement path="300x250_Desktop_InStory_Top" size={[300, 250]} mode="desktop"></Advertisement>
   </React.Fragment>;
 
-  var ad2 = <React.Fragment key={parsed.length + 2}>
+  let ad2 = <React.Fragment key={parsed.length + 2}>
     <Advertisement path="300x250_Mobile_InStory_Bottom" size={[300, 250]} mode="mobile"></Advertisement>
     <Advertisement path="300x250_Desktop_InStory_Bottom" size={[300, 250]} mode="desktop"></Advertisement>
   </React.Fragment>;
 
-  var output = [];
-  var paragraphs = 0;
-  var ad1Pushed = false;
-  var ad2Pushed = false;
+  let output = [];
+  let paragraphs = 0;
+  let ad1Pushed = false;
+  let ad2Pushed = false;
   parsed.forEach(e => {
     output.push(e);
     if (typeof e === 'object' && e.type === 'p') {
@@ -212,7 +212,7 @@ export const loadDynamicArticleContent = (content) => {
 }
 
 export const chooseArticleDates = (article) => {
-  var date = article.date;
+  let date = article.date;
   if (date.ago.updated.hours === date.ago.published.hours) {
     date.updated = "";
     date.published = "Published " + formatDate(date.formatted, date.ago.published);
@@ -228,7 +228,7 @@ export const chooseArticleDates = (article) => {
   This function loads in the homepage configuration, makes all necessary API calls to /articles, and stores the resulting data
 */
 export const loadHomepageArticles = async (config) => {
-  var articleRequests = []
+  let articleRequests = []
   config.forEach(params => {
     if (params.category === 'latest') {
       articleRequests.push(`/articles?preview=true&per_page=${params.max}`);
@@ -300,30 +300,30 @@ function formatDate(original, ago) {
 
 export const getArticlePreviewData = async (wp_id, wp_nonce) => {
   console.log(`${WP_URL}/posts/${wp_id}?_wpnonce=${wp_nonce}&_embed`);
-  var article = await axios.get(
+  let article = await axios.get(
     `${WP_URL}/posts/${wp_id}?_wpnonce=${wp_nonce}&_embed`,
     { withCredentials: true }
   );
-  var articleData = article.data;
+  let articleData = article.data;
 
-  var preview = await axios.get(
+  let preview = await axios.get(
     `${WP_URL}/posts/${wp_id}/revisions?_wpnonce=${wp_nonce}`,
     { withCredentials: true }
   );
-  var previewData = preview.data[0];
+  let previewData = preview.data[0];
   articleData.title = previewData.title;
   articleData.content = previewData.content;
   articleData.excerpt = previewData.excerpt;
   articleData.modified = previewData.modified;
 
-  var categories = articleData['_embedded']['wp:term'][0];
+  let categories = articleData['_embedded']['wp:term'][0];
   categories = categories.map(cat => {
     cat.link = cat.link.replace(`${WP_REPLACE}`, '');
     return cat;
   });
   articleData.categories = categories;
 
-  var author = articleData['_embedded']['author'][0];
+  let author = articleData['_embedded']['author'][0];
   author.link = author.link.replace(`${WP_REPLACE}`, '');
   if (author.user_twitter) {
     let handle = author.user_twitter;

@@ -25,7 +25,10 @@ Router.events.on('routeChangeStart', url => {
   DFPManager.refresh()
   NProgress.start()
 })
-Router.events.on('routeChangeComplete', () => NProgress.done())
+Router.events.on('routeChangeComplete', () => {
+  NProgress.done()
+  console.log('done')
+})
 Router.events.on('routeChangeError', () => NProgress.done())
 
 

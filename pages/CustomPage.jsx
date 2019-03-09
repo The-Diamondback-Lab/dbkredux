@@ -19,9 +19,9 @@ import SponsoredLinks from '../components/SponsoredLinks';
 export default class CustomPage extends React.Component {
 
   static async getInitialProps({ query }) {
-    var pageId = query.pageId;
+    let pageId = query.pageId;
     try {
-      var page_data = await request(`/pages/${pageId}`);
+      let page_data = await request(`/pages/${pageId}`);
       return {
         page: page_data
       }

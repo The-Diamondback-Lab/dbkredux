@@ -10,14 +10,9 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons'
 /* eslint-disable no-undef */
 
 class Searchbar extends React.Component {
-  constructor(props) {
-    super(props);
-    this.searchClicked = this.searchClicked.bind(this);
-    this.keyPressed = this.keyPressed.bind(this);
-  }
 
-  searchClicked() {
-    var searchTerm = $("#global-search-bar").val().toLowerCase().trim().replace(/\s\s+/g, ' ');
+  searchClicked = () => {
+    let searchTerm = $("#global-search-bar").val().toLowerCase().trim().replace(/\s\s+/g, ' ');
     searchTerm = searchTerm.replace(/[^A-Za-z0-9_\040]/g,"");
     if (searchTerm.length < 1){
       return;
@@ -28,7 +23,7 @@ class Searchbar extends React.Component {
     Router.push(`/search?q=${searchTerm}`);
   }
 
-  keyPressed(e) {
+  keyPressed = (e) => {
     if (e.key === 'Enter') {
       this.searchClicked();
     }

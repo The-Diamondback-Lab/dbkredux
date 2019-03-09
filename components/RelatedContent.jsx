@@ -13,15 +13,12 @@ import {
 
 export default class RelatedContent extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.state = { articles: [], loaded: false };
-    }
+    state = { articles: [], loaded: false };
 
     async componentDidMount() {
         const { categories, story_id } = this.props;
 
-        var category = categories[0]; //JUST GET RECOMMENDED ARTICLES BY FIRST CATEGORY FOR NOW
+        let category = categories[0]; //JUST GET RECOMMENDED ARTICLES BY FIRST CATEGORY FOR NOW
         try {
             // request category articles
             let articles_data = await request(`/articles?category=${category.id}&preview=true&per_page=4`);

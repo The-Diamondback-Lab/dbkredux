@@ -29,7 +29,6 @@ export default class SearchResults extends React.Component {
     }
   }
 
-
   render() {
     const { search } = this.props;
 

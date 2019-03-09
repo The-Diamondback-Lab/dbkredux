@@ -19,13 +19,7 @@ import {
 
 export default class ArticlesPreloaded extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.getArticles = this.getArticles.bind(this);
-
-  }
-
-  getArticles() {
+  getArticles = () => {
     const { mode, data, category } = this.props;
     let categoryData = {};
     if (category === 'latest'){
@@ -61,7 +55,7 @@ export default class ArticlesPreloaded extends React.Component {
     let classes = [];
 
     classes.push(mode);
-    var header = "";
+    let header = "";
     if (categoryData.name === 'Latest') {
       header = <h1>Latest</h1>;
     }

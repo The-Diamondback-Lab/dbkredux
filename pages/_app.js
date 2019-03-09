@@ -71,6 +71,7 @@ class MyApp extends App {
                 <link rel="shortcut icon" href="/static/favicon.ico" />
             </Head>
               <Header menu={menus.header}/>
+              <br />
               <Advertisement path='728x90_Banner_A' size={[728, 90]} mode="desktop" />
               <Advertisement path='300x50_Mobile_Header' size={[300, 50]} mode="mobile" />
             <Component {...pageProps} />

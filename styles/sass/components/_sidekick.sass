@@ -12,7 +12,7 @@
         flex-direction: column
         align-items: center
         background-color: rgba(#FFFFFF, 0.7)
-        border-top: 2px solid rgba(#84e4ff, 0.7)
+        border-top: 2px solid rgba(lightgrey, 0.7)
         > a
             height: 100% 
             > img
@@ -30,6 +30,9 @@
         right: 0
         background-color: white
         color: #84e4ff
+        +respond-to(medium)
+            background-color: black
+            color: white
         padding: 0.2em
         width: 20px
         height: 20px

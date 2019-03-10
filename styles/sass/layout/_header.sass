@@ -7,7 +7,7 @@ $nav-height: 56px
 $nav-height-mobile: 75px
 
 header
-  padding-bottom: $row-width
+  // padding-bottom: $row-width
   width: 100vw
 
   > .container
@@ -24,8 +24,14 @@ header
 
     padding: $row-width 0 px-to-em(20)
 
-header.pad-bottom
-  margin-bottom: $nav-height
+.sticky-on-scroll
+  position: sticky
+  top: 0
+  max-height: 100%
+  z-index: 10000
+
+#masthead
   +respond-to(schmedium)
-    margin-bottom: $nav-height-mobile
+    display: none
+
 

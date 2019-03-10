@@ -6,7 +6,7 @@
 import * as React from 'react';
 
 // react router
-import { Link } from '../routes';
+import Link from 'next/link';
 
 // jquery
 import { loadImage } from '../utilities/app.utilities';
@@ -16,8 +16,8 @@ export default class Article extends React.Component {
 
   render() {
     const { author, categories, date, id, link, title, featured_image, text_only } = this.props;
-    var img_id = Math.random().toString(36).replace('0.', '');
-    var featuredImage = <Link href={link}><a><div className='article-block-image' /></a></Link>;
+    let img_id = Math.random().toString(36).replace('0.', '');
+    let featuredImage = <Link href={link}><a><div className='article-block-image' /></a></Link>;
     if (featured_image) {
       featuredImage = (<Link href={link}>
         <a>

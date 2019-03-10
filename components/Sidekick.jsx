@@ -16,18 +16,13 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
 export default class Sidekick extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = { img: null, link: null, loaded: false };
-    this.closeSidekick = this.closeSidekick.bind(this);
-  }
+  state = { img: null, link: null, loaded: false };
 
   async componentDidMount() {
     try {
       let resp = await axios.get("https://s3.amazonaws.com/dbk-ads-s3/links.json");
-      let sk = await axios.get("https://s3.amazonaws.com/dbk-ads-s3/sidekick.gif");
 
-      var data = {
+      let data = {
         link: resp.data.sidekick,
         img: "https://s3.amazonaws.com/dbk-ads-s3/sidekick.gif"
       }
@@ -38,15 +33,15 @@ export default class Sidekick extends React.Component {
     }
   }
 
-  visitedSidekick(){
-    var cookie=document.cookie;
-    var seen = (cookie.indexOf("visitedSidekick",0) !== -1);
+  visitedSidekick = () => {
+    let cookie=document.cookie;
+    let seen = (cookie.indexOf("visitedSidekick",0) !== -1);
     return seen;
   }
 
-  closeSidekick() {
+  closeSidekick = () => {
     $("#sidekick").hide();
-    var cookie = document.cookie; 
+    let cookie = document.cookie; 
     if (cookie.indexOf("visitedSidekick\x3d", 0) === -1) {
       document.cookie = "visitedSidekick\x3d1;max-age\x3d360;path\x3d/" 
     }

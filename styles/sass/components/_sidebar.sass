@@ -3,30 +3,27 @@ $nav-height-mobile: 75px
     
 .sidebar
     position: absolute
-    z-index: 999
     left: -100%
     min-width: 300px
     display: flex
     flex-direction: column
     background-color: white
-    border: 0.01562em solid rgba(151, 151, 151, 0.5)
     border-top: none
     transition: left 0.5s ease-in-out
     font-size: 0.8em
-    height: 94%
+    overflow-y: auto
+    height: calc(100vh - 56px) //ensures that the sidebar goes to the bottom of the page and not past it
+    +respond-to(schmedium)
+        height: calc(100vh - 75px) //use mobile nav bar height
+        width: 70%
+        > .search-section
+            width: 100%
+            padding: 50px
+            height: 50px
+            border-bottom: $border
 
 .sidebar.open
     left: 0
-
-.sidebar-mobile
-    width: 70%
-    height: 70%
-    > .search-section
-        width: 100%
-        padding: 50px
-        height: 50px
-        border-bottom: 0.01562em solid rgba(151, 151, 151, 0.5)
-
 
 .sidebar-link
     display: flex
@@ -39,7 +36,8 @@ $nav-height-mobile: 75px
     > p
         text-align: left
     > svg
-        margin-left: auto    
+        margin-left: auto   
+    background-color: white 
 
 .sidebar-link:hover
     background-color: #DDDDDD
@@ -47,7 +45,7 @@ $nav-height-mobile: 75px
 
 .sidebar-item
     overflow: visible
-    border-bottom: 0.01562em solid rgba(151, 151, 151, 0.5)
+    border-bottom: $border
 
 
 .sidebar-item
@@ -60,7 +58,10 @@ $nav-height-mobile: 75px
 .sidebar-item.active
     > .sidebar-item
         display: block
-        background-color: #f1f1f1
+        > .sidebar-link
+            background-color: #f1f1f1 
+        > .sidebar-link:hover
+            background-color: #DDDDDD
     > .sidebar-link
         background-color: #CCCCCC !important
         > svg
@@ -75,15 +76,15 @@ $nav-height-mobile: 75px
 
 
 .sidebar-sticky
-    position: fixed
-    top: $nav-height
-    bottom: 0
-    height: auto
+    // position: fixed
+    // top: $nav-height
+    // bottom: 0
+    // height: auto
 
 .sidebar-sticky.sidebar-mobile
-    top: $nav-height-mobile
-    bottom: 0
-    height: auto
+    // top: $nav-height-mobile
+    // bottom: 0
+    // height: auto
 
 .sidebar a 
     color: black

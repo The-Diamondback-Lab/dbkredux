@@ -18,14 +18,11 @@ import {
 
 class ArticlePreview extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = { article: null };
-  }
+  state = { article: null };
 
   async componentDidMount() {
     const { postId, wpnonce } = this.props.router.query;
-    var article = await getArticlePreviewData(postId, wpnonce);
+    let article = await getArticlePreviewData(postId, wpnonce);
     this.setState({ article: article });
   }
 
@@ -40,7 +37,7 @@ render() {
       return '';
     }
     
-    var featuredImage = "";
+    let featuredImage = "";
     if (article.featured_image) {
       featuredImage = <React.Fragment>
       <div className='image-area'>

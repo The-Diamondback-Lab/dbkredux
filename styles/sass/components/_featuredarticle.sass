@@ -1,18 +1,15 @@
 /* FEATURED ARTICLE COMPONENT STYLES - COMPONENTS/FEATUREDARTICLE
 
 .featured-article
-  width: 800px
-  +respond-to(large)
-    width: 600px
   > figcaption
     @extend %article-banner-featured
     padding: 10px
     padding-left: 0px
     +respond-to(medium)
       padding: 0px
-  margin-bottom: 100px
   +respond-to(medium)
     width: 100%
+    height: 400px
 
 %article-banner-featured
   background-color: rgba($accent-med, 0.95)

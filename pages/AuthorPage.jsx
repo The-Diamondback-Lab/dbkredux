@@ -25,9 +25,9 @@ import {
 export default class AuthorPage extends React.Component {
 
   static async getInitialProps({ query }) {
-    var authorId = query.authorId;
+    let authorId = query.authorId;
     try {
-      var author_data = await request(`/author/${authorId}`);
+      let author_data = await request(`/author/${authorId}`);
       return {
         author: author_data
       }

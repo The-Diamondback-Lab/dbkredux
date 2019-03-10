@@ -19,7 +19,7 @@ export default class FeaturedArticle extends React.Component {
   render() {
     const { author, date, id, link, title, featured_image } = this.props.data;
 
-    var featuredImage = "";
+    let featuredImage = "";
     if (featured_image) {
       featuredImage = (<a>
         <img

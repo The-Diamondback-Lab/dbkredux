@@ -14,15 +14,7 @@ import { faInstagram } from '@fortawesome/free-brands-svg-icons';
 import { faYoutube } from '@fortawesome/free-brands-svg-icons';
 import NoSSR from 'react-no-ssr';
 
-
 export default class Navigation extends React.Component {
-
-  shouldComponentUpdate(nextProps, _) {
-    if (nextProps.mobile !== this.props.mobile || nextProps.scrolled !== this.props.scrolled) {
-      return true;
-    }
-    return false;
-  }
 
   render() {
     const { menu } = this.props;
@@ -31,21 +23,16 @@ export default class Navigation extends React.Component {
       <div className='navigation-links'>
 
       </div>
-    </div>
-;
+    </div>;
     }
 
-    const { scrolled, mobile } = this.props;
-
-    // console.log(scrolled);
-
     return (
-      <nav id="nav-bar" className={`${scrolled ? 'nav-sticky' : ''} ${mobile ? 'nav-mobile' : ''}`}>
+      <nav id="nav-bar">
         <div className="container"> 
           <div className='navigation-links'>
-            <NavigationButton mobile={mobile} scrolled={scrolled} toggleSidebar={this.props.toggleSidebar} />&nbsp;
+            <NavigationButton toggleSidebar={this.props.toggleSidebar} />&nbsp;
             {/* don't show links if on mobile */}
-            <NoSSR>{mobile ? null : <NavigationLinks menu={menu.items} />}</NoSSR>
+            <NoSSR><NavigationLinks menu={menu.items} /></NoSSR>
           </div>
           <div className='navigation-links-social'>
             <a href = "https://www.facebook.com/TheDiamondback/" target="_blank">
@@ -61,7 +48,6 @@ export default class Navigation extends React.Component {
               <FontAwesomeIcon icon={faYoutube} size='lg' />
             </a>
           </div>
-          
         </div>
       </nav>
     );
@@ -70,16 +56,13 @@ export default class Navigation extends React.Component {
 
 class NavigationButton extends React.Component {
   render() {
-    const { mobile } = this.props;
-
     return (
       <div>
         <button id='menu-btn' onClick={e => this._onClick(e)}>
           <FontAwesomeIcon icon={faBars} />
         </button>
         {
-          /* only show small dbk logo if scrolled or mobile */
-          mobile ? <Link href='/'><a className='mobile-dbk-logo'><img src="/static/images/the-diamondback-logo.svg" alt='The Diamondback' /></a></Link> : null
+          <Link href='/'><a className='mobile-dbk-logo'><img src="/static/images/the-diamondback-logo.svg" alt='The Diamondback' /></a></Link>
         }
       </div>
     );
@@ -99,7 +82,7 @@ class NavigationLinks extends React.Component {
           if (item.type === 'custom'){
             return (
             <a 
-              className='dissapear-on-mobile' 
+              className='disappear-on-mobile' 
               href={item.url} 
               key={`link-${i}`}
               target='_blank'

@@ -21,11 +21,12 @@ import '../styles/css/nprogress.css';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 
 Router.events.on('routeChangeStart', url => {
-  console.log(`Loading: ${url}`)
   DFPManager.refresh()
   NProgress.start()
 })
-Router.events.on('routeChangeComplete', () => NProgress.done())
+Router.events.on('routeChangeComplete', () => {
+  NProgress.done()
+})  
 Router.events.on('routeChangeError', () => NProgress.done())
 
 
@@ -68,6 +69,7 @@ class MyApp extends App {
                 <link rel="shortcut icon" href="/static/favicon.ico" />
             </Head>
               <Header menu={menus.header}/>
+              <br />
               <Advertisement path='728x90_Banner_A' size={[728, 90]} mode="desktop" />
               <Advertisement path='300x50_Mobile_Header' size={[300, 50]} mode="mobile" />
             <Component {...pageProps} />

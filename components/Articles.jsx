@@ -19,18 +19,16 @@ import {
 } from '../utilities/app.utilities.js';
 
 export default class Articles extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { articles: [], loaded: false, category: null };
-  }
+
+  state = { articles: [], loaded: false, category: null };
 
   async componentDidMount() {
     const { category, max, mode } = this.props;
 
     try {
       // request category articles
-      var articles_data = null;
-      var categories_data = null;
+      let articles_data = null;
+      let categories_data = null;
       if (category === 'latest'){
         articles_data = await request(`/articles?preview=true&per_page=${max}`);
         categories_data = {
@@ -85,7 +83,7 @@ export default class Articles extends React.Component {
       return "";
     }
 
-    var header = "";
+    let header = "";
     if (category.name === 'Latest'){
       header = <h1>Latest</h1>;
     }

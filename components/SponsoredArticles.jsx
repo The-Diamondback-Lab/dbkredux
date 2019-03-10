@@ -15,10 +15,8 @@ import {
 } from '../utilities/app.utilities.js';
 
 export default class SponsoredArticles extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { articles: [], loaded: false, category: null };
-  }
+
+  state = { articles: [], loaded: false, category: null };
 
   async componentDidMount() {
     try {

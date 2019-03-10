@@ -5,29 +5,19 @@ import React from 'react';
 // google ad manager
 import { DFPSlotsProvider, AdSlot } from 'react-dfp';
 
-// components
-import Loading from './Loading.jsx';
-
 import LazyLoad from 'react-lazyload';
 
 
 export default class Advertisement extends React.Component {
   _mounted = false;
 
-  constructor(props) {
-    super(props);
-    this.state = { path: props.path, size: props.size, mode: null, loaded: false };
-  }
-
+  state = { path: this.props.path, size: this.props.size, mode: null, loaded: false };
+  
   componentDidMount() {
-    // if (typeof googletag !== 'undefined'){
-    //   googletag.pubads().refresh();
-    //   console.log('refresh');
-    // }
     this._mounted = true;
 
     const { path, size, mode } = this.props;
-    var displayMode = mode;
+    let displayMode = mode;
 
     if (typeof mode === 'undefined'){
       displayMode = "";

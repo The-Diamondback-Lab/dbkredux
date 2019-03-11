@@ -12,6 +12,7 @@ import $ from 'jquery';
 import RelatedContent from '../components/RelatedContent';
 import Advertisement from '../components/Advertisement';
 import SponsoredLinks from '../components/SponsoredLinks';
+import DonateBar from '../components/DonateBar';
 
 import {
   request, parseDate, loadImage, processArticleBody, loadDynamicArticleContent, chooseArticleDates
@@ -145,6 +146,7 @@ export default class ArticlePage extends React.Component {
               {featuredImage}
               {article_body}
               {article_body_ads}
+              <DonateBar />
             </div>
             <div className='right-rail'>
               <br />

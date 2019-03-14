@@ -54,12 +54,14 @@ $article-font-size-mobile: 18px
     flex-direction: column
     width: 100%
     line-height: 1.6
-    & p, a, li, blockquote, i, b
-        font-family: Georgia, 'Times New Roman', Times, serif !important
+    & p, a, li, blockquote
         font-size: $article-font-size-desktop
+    
+    & *
+        font-family: Georgia, 'Times New Roman', Times, serif !important
 
     +respond-to(medium)
-        & p, a, li, blockquote, i, b
+        & p, a, li, blockquote
             font-size: $article-font-size-mobile
     > p
         margin-bottom: 20px

@@ -12,6 +12,7 @@ import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
 import Advertisement from '../components/Advertisement.jsx';
 import Sidekick from '../components/Sidekick.jsx';
+import FeedbackBar from '../components/FeedbackBar';
 
 import { request } from '../utilities/app.utilities.js';
 
@@ -68,6 +69,7 @@ class MyApp extends App {
                 <meta property="og:description" content={description} />
                 <link rel="shortcut icon" href="/static/favicon.ico" />
             </Head>
+              <FeedbackBar />
               <Header menu={menus.header}/>
               <br />
               <Advertisement path='728x90_Banner_A' size={[728, 90]} mode="desktop" />

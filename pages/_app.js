@@ -16,6 +16,8 @@ import FeedbackBar from '../components/FeedbackBar';
 
 import { request } from '../utilities/app.utilities.js';
 
+import ascii from '../utilities/ascii';
+
 //sass
 import '../styles/sass/app.sass';
 import '../styles/css/nprogress.css';
@@ -55,9 +57,12 @@ class MyApp extends App {
       }
     }
 
+    componentDidMount() {
+      console.log("%c"+ascii, "color: rgba(229, 29, 55, 1);"); 
+    }
+
     render () {
       const { Component, pageProps, menus, description } = this.props
-  
       return (
         <Container>
             <Head>

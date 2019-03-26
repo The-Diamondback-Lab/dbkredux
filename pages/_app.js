@@ -26,20 +26,20 @@ Router.events.on('routeChangeStart', url => {
 })
 Router.events.on('routeChangeComplete', () => {
   NProgress.done()
-})  
+})
 Router.events.on('routeChangeError', () => NProgress.done())
 
 
 class MyApp extends App {
     static async getInitialProps({ Component, ctx }) {
       let pageProps = {}
-  
+
       if (Component.getInitialProps) {
         pageProps = await Component.getInitialProps(ctx)
       }
-      
+
       let footer = await request('/menu/footer');
-      let social = await request('/menu/stay-connected');  
+      let social = await request('/menu/stay-connected');
       let header = await request('/menu/header');
       let description = "The Diamondback is the independent student-run newspaper at the University of Maryland. The Diamondback is updated online daily and can be accessed at dbknews.com. In print, it is published weekly on Thursday and is available at dozens of locations throughout the campus and around College Park.";
 
@@ -56,7 +56,7 @@ class MyApp extends App {
 
     render () {
       const { Component, pageProps, menus, description } = this.props
-  
+
       return (
         <Container>
             <Head>

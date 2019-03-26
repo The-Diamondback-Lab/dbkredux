@@ -19,7 +19,7 @@ export default class Navigation extends React.Component {
   render() {
     const { menu } = this.props;
     if (menu === null){
-      return <div className="container"> 
+      return <div className="container">
       <div className='navigation-links'>
 
       </div>
@@ -28,7 +28,7 @@ export default class Navigation extends React.Component {
 
     return (
       <nav id="nav-bar">
-        <div className="container"> 
+        <div className="container">
           <div className='navigation-links'>
             <NavigationButton toggleSidebar={this.props.toggleSidebar} />&nbsp;
             {/* don't show links if on mobile */}
@@ -55,12 +55,27 @@ export default class Navigation extends React.Component {
 }
 
 class NavigationButton extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      hamburgerActive: false
+    };
+  }
   render() {
+    let ha = this.state.hamburgerActive;
+    let hamburgerClass = "hamburger hamburger--slider " + (ha ? 'is-active' : '');
+    console.log(hamburgerClass);
     return (
       <div>
-        <button id='menu-btn' onClick={e => this._onClick(e)}>
-          <FontAwesomeIcon icon={faBars} />
+        <button id="menu-btn" className={hamburgerClass} type="button" onClick={e => this._onClick(e,ha)}>
+          <span className="hamburger-box">
+            <span className="hamburger-inner"></span>
+          </span>
         </button>
+        {/* <button id='menu-btn' onClick={e => this._onClick(e)}>
+          <FontAwesomeIcon icon={faBars} />
+        </button> */}
         {
           <Link href='/'><a className='mobile-dbk-logo'><img src="/static/images/the-diamondback-logo.svg" alt='The Diamondback' /></a></Link>
         }
@@ -68,8 +83,13 @@ class NavigationButton extends React.Component {
     );
   }
 
-  _onClick = e => {
+  /**
+   * @param {boolean} ha current hamburger active state property
+   */
+  _onClick = (e,ha) => {
     this.props.toggleSidebar();
+    this.setState({hamburgerActive: !ha});
+    // this.props.toggleSidebar();
   }
 }
 
@@ -81,9 +101,9 @@ class NavigationLinks extends React.Component {
         {menu.map((item, i) => {
           if (item.type === 'custom'){
             return (
-            <a 
-              className='disappear-on-mobile' 
-              href={item.url} 
+            <a
+              className='disappear-on-mobile'
+              href={item.url}
               key={`link-${i}`}
               target='_blank'
               rel="noopener noreferrer"

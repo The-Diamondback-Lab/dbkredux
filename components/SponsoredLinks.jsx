@@ -19,10 +19,7 @@ export default class SponsoredLinks extends React.Component {
     render() {
         const { content } = this.state;
         if (!content){
-            return (
-            <div className='sponsored-links'>
-                <h2>Sponsored</h2>
-            </div>);
+            return "";
         }
         return (
         <div className='sponsored-links'>

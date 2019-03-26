@@ -194,7 +194,7 @@ export const loadDynamicArticleContent = (content) => {
     if (typeof e === 'object' && e.type === 'p') {
       paragraphs++;
     }
-    if (typeof e === 'object' && e.type === 'div' && e.props.className.includes('gallery')) {
+    if (typeof e === 'object' && e.type === 'div' && e.props.className && e.props.className.includes('gallery')) {
       let data = output.pop();
       output.push(<StoryGallery data={data} />);
     }

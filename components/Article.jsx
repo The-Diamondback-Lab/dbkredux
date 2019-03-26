@@ -20,8 +20,8 @@ export default class Article extends React.Component {
     let featuredImage = <Link href={link}><a><div className='article-block-image' /></a></Link>;
     if (featured_image) {
       featuredImage = (<Link href={link}>
-        <a>
-          <LazyLoad>
+        <a> 
+          <LazyLoad offset={200}>
             <img
               alt='Article'
               className='article-block-image preload'

@@ -12,8 +12,11 @@ import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
 import Advertisement from '../components/Advertisement.jsx';
 import Sidekick from '../components/Sidekick.jsx';
+import FeedbackBar from '../components/FeedbackBar';
 
 import { request } from '../utilities/app.utilities.js';
+
+import ascii from '../utilities/ascii';
 
 //sass
 import '../styles/sass/app.sass';
@@ -54,6 +57,10 @@ class MyApp extends App {
       }
     }
 
+    componentDidMount() {
+      console.log("%c"+ascii, "color: rgba(229, 29, 55, 1);");
+    }
+
     render () {
       const { Component, pageProps, menus, description } = this.props
 
@@ -68,6 +75,7 @@ class MyApp extends App {
                 <meta property="og:description" content={description} />
                 <link rel="shortcut icon" href="/static/favicon.ico" />
             </Head>
+              <FeedbackBar />
               <Header menu={menus.header}/>
               <br />
               <Advertisement path='728x90_Banner_A' size={[728, 90]} mode="desktop" />

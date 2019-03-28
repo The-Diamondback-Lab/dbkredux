@@ -35,16 +35,16 @@ export default class Navigation extends React.Component {
             <NoSSR><NavigationLinks menu={menu.items} /></NoSSR>
           </div>
           <div className='navigation-links-social'>
-            <a href = "https://www.facebook.com/TheDiamondback/" target="_blank">
+            <a href = "https://www.facebook.com/TheDiamondback/" target="_blank"  rel="noopener">
               <FontAwesomeIcon icon={faFacebook} size='lg' />
             </a>
-            <a href = "https://twitter.com/thedbk" target="_blank">
+            <a href = "https://twitter.com/thedbk" target="_blank" rel="noopener">
               <FontAwesomeIcon icon={faTwitter} size='lg' />
             </a>
-            <a href = "https://www.instagram.com/thedbk/" target="_blank">
+            <a href = "https://www.instagram.com/thedbk/" target="_blank" rel="noopener">
               <FontAwesomeIcon icon={faInstagram} size='lg' />
             </a>
-            <a href = "https://www.youtube.com/user/DiamondbackVideo" target="_blank">
+            <a href = "https://www.youtube.com/user/DiamondbackVideo" target="_blank" rel="noopener">
               <FontAwesomeIcon icon={faYoutube} size='lg' />
             </a>
           </div>

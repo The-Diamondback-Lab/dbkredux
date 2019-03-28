@@ -3,7 +3,7 @@
 $navigation-font-size: px-to-em(14.5)
 $navigation-icon-font-size: px-to-em(24)
 $navigation-margin: 15px
-$navigation-margin-medium: px-to-em(9)
+$navigation-margin-medium: px-to-em(12)
 
 nav
   +flex(row, center, space-between)
@@ -49,13 +49,12 @@ nav
 
   > a,
   > button
-    +respond-to(large)
-      font-size: px-to-em(13) !important
+    font-size: 0.85vw
     +respond-to(medium)
-      font-size: px-to-em(11) !important
+      font-size: 1vw !important
 
 
-    font-size: $navigation-font-size
+    // font-size: $navigation-font-size
     text-transform: uppercase
 
   > a
@@ -65,7 +64,7 @@ nav
 
     color: $dark
     font:
-      size: $navigation-font-size
+      // size: $navigation-font-size
       weight: 400
 
   > .special-nav

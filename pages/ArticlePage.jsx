@@ -38,19 +38,8 @@ export default class ArticlePage extends React.Component {
       };
     }
 
-    const disqusShortname = 'the-diamondback';
-    const disqusConfig = {
-      url: article_data.url,
-      identifier: article_data.id,
-      title: article_data.title,
-    };
-
     return {
       article: article_data,
-      disqus: {
-        disqusShortname,
-        disqusConfig
-      }
     };
   }
 
@@ -70,7 +59,7 @@ export default class ArticlePage extends React.Component {
   }
 
   render() {
-    const { article, disqus } = this.props;
+    const { article } = this.props;
     if (!article) {
       return <ErrorPage />;
     }

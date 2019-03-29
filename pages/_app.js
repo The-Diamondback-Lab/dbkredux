@@ -44,7 +44,7 @@ class MyApp extends App {
       let footer = await request('/menu/footer');
       let social = await request('/menu/stay-connected');
       let header = await request('/menu/header');
-      let description = "The Diamondback is the independent student-run newspaper at the University of Maryland. The Diamondback is updated online daily and can be accessed at dbknews.com. In print, it is published weekly on Thursday and is available at dozens of locations throughout the campus and around College Park.";
+      let description = "The Diamondback is the independent student-run newspaper at the University of Maryland.";
 
       return {
           pageProps,

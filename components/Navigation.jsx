@@ -30,7 +30,7 @@ export default class Navigation extends React.Component {
       <nav id="nav-bar">
         <div className="container">
           <div className='navigation-links'>
-            <NavigationButton toggleSidebar={this.props.toggleSidebar} />&nbsp;
+            <NoSSR><NavigationButton toggleSidebar={this.props.toggleSidebar} /></NoSSR>&nbsp;
             {/* don't show links if on mobile */}
             <NoSSR><NavigationLinks menu={menu.items} /></NoSSR>
           </div>

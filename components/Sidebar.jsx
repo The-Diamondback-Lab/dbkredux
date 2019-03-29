@@ -55,7 +55,7 @@ const NestedMenu = (props) => {
         if (data.type === 'custom'){
             return ( 
             <div id={id} className="sidebar-item">
-                <a href={data.url} className="sidebar-link" target="_blank" >
+                <a href={data.url} className="sidebar-link" target="_blank" rel="noopener">
                     <p>{data.title}</p>
                 </a>
             </div>);

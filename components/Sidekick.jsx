@@ -65,7 +65,7 @@ export default class Sidekick extends React.Component {
     (
         <div className='sidekick animated fadeIn' id='sidekick'>
           <button id='close-sidekick' onClick={this.closeSidekick}><FontAwesomeIcon icon={faTimes} /></button>
-          <a href={link} target="_blank">
+          <a href={link} target="_blank" rel="noopener">
             <img 
             alt='Sidekick Ad'
             className='preload' 

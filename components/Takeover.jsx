@@ -85,7 +85,7 @@ export default class Takeover extends React.Component {
       <React.Fragment>
         <div className='takeover' id='takeover-desktop'>
           <button id='close-takeover' onClick={this.closeTakeover}><FontAwesomeIcon icon={faTimes} /></button>
-          <a href={desktop.link} target="_blank">
+          <a href={desktop.link} target="_blank" rel="noopener">
             <img
             alt='Takeover Ad' 
             id='takeover-image' 
@@ -95,7 +95,7 @@ export default class Takeover extends React.Component {
 
         <div className='takeover' id='takeover-mobile'>
         <button id='close-takeover' onClick={this.closeTakeover}><FontAwesomeIcon icon={faTimes} /></button>
-        <a href={mobile.link} target="_blank">
+        <a href={mobile.link} target="_blank" rel="noopener">
           <img
           alt='Takeover Ad' 
           id='takeover-image' 

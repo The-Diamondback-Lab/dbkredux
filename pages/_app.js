@@ -29,20 +29,20 @@ Router.events.on('routeChangeStart', url => {
 })
 Router.events.on('routeChangeComplete', () => {
   NProgress.done()
-})  
+})
 Router.events.on('routeChangeError', () => NProgress.done())
 
 
 class MyApp extends App {
     static async getInitialProps({ Component, ctx }) {
       let pageProps = {}
-  
+
       if (Component.getInitialProps) {
         pageProps = await Component.getInitialProps(ctx)
       }
-      
+
       let footer = await request('/menu/footer');
-      let social = await request('/menu/stay-connected');  
+      let social = await request('/menu/stay-connected');
       let header = await request('/menu/header');
       let description = "The Diamondback is the independent student-run newspaper at the University of Maryland.";
 
@@ -58,11 +58,12 @@ class MyApp extends App {
     }
 
     componentDidMount() {
-      console.log("%c"+ascii, "color: rgba(229, 29, 55, 1);"); 
+      console.log("%c"+ascii, "color: rgba(229, 29, 55, 1);");
     }
 
     render () {
       const { Component, pageProps, menus, description } = this.props
+
       return (
         <Container>
             <Head>

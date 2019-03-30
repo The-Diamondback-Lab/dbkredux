@@ -1,6 +1,6 @@
 $nav-height: 56px
 $nav-height-mobile: 75px
-    
+
 .sidebar
     position: absolute
     left: -100%
@@ -9,7 +9,6 @@ $nav-height-mobile: 75px
     flex-direction: column
     background-color: white
     border-right: $border
-    transition: left 0.5s ease-in-out
     font-size: 0.8em
     overflow-y: auto
     height: calc(100vh - 56px) //ensures that the sidebar goes to the bottom of the page and not past it
@@ -36,8 +35,8 @@ $nav-height-mobile: 75px
     > p
         text-align: left
     > svg
-        margin-left: auto   
-    background-color: white 
+        margin-left: auto
+    background-color: white
 
 .sidebar-link:hover
     background-color: #DDDDDD
@@ -59,7 +58,7 @@ $nav-height-mobile: 75px
     > .sidebar-item
         display: block
         > .sidebar-link
-            background-color: #f1f1f1 
+            background-color: #f1f1f1
         > .sidebar-link:hover
             background-color: #DDDDDD
     > .sidebar-link
@@ -80,4 +79,3 @@ $nav-height-mobile: 75px
 
 .sidebar button
     width: 100%
-    

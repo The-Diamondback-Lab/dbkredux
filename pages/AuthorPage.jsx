@@ -59,9 +59,9 @@ export default class AuthorPage extends React.Component {
           <div className='container-narrow flex'>
             <div className='left-rail'>
               <div className='author-section'>
-                <div id={`${author.slug}-image`} className='author-image' onLoad={() => loadImage(`${author.slug}-image`)}>
+                {/* <div id={`${author.slug}-image`} className='author-image' onLoad={() => loadImage(`${author.slug}-image`)}>
                   <img src={author.avatar_urls['96']} alt='Author Avatar' />
-                </div>
+                </div> */}
                 <div className='author-info'>
                   <h1><Link href={author.link}><a>{author.name}</a></Link></h1>
                 </div>

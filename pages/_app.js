@@ -81,9 +81,9 @@ class MyApp extends App {
             </Head>
               {/* <FeedbackBar /> */}
               <DFPSlotsProvider dfpNetworkId={'123934970'} >
-              {/* <NoSSR>
+              <NoSSR>
                 <Takeover />
-              </NoSSR>               */}
+              </NoSSR>              
               <Header menu={menus.header}/>
               <br />
               <Advertisement path='728x90_Banner_A' size={[728, 90]} mode="desktop" />
@@ -92,9 +92,9 @@ class MyApp extends App {
                 <Advertisement path='300x50_Mobile_Footer' size={[300, 50]} mode="mobile" />
                 <Advertisement path='728x90_Banner_E' size={[728, 90]} mode="desktop" />
                 <Footer footer={menus.footer} social={menus.social} />
-            {/* <NoSSR>
+            <NoSSR>
                 <Sidekick />
-            </NoSSR> */}
+            </NoSSR>
             </DFPSlotsProvider>
         </Container>
       );

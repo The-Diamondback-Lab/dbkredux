@@ -2,35 +2,19 @@
 
 import React from 'react';
 
-// axios
-import axios from 'axios';
-
-import {
-  loadImage
-} from '../utilities/app.utilities.js';
-
 import $ from 'jquery';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
+import Advertisement from '../components/Advertisement'
+
 export default class Sidekick extends React.Component {
 
-  state = { img: null, link: null, loaded: false };
+  state = { loaded: false };
 
   async componentDidMount() {
-    try {
-      let resp = await axios.get("https://s3.amazonaws.com/dbk-ads-s3/links.json");
-
-      let data = {
-        link: resp.data.sidekick,
-        img: "https://s3.amazonaws.com/dbk-ads-s3/sidekick.gif"
-      }
-      this.setState( {link: data.link, img: data.img, loaded: true} );  
-    }
-    catch (e) {
-      this.setState( {loaded: false} );
-    }
+    this.setState( {loaded: true} );
   }
 
   visitedSidekick = () => {
@@ -54,7 +38,7 @@ export default class Sidekick extends React.Component {
   }
 
   render() {
-    const { img, link, loaded } = this.state;
+    const { loaded } = this.state;
     if (this.visitedSidekick()){
       return "";
     }
@@ -63,16 +47,9 @@ export default class Sidekick extends React.Component {
     }
     return !loaded ? '' :
     (
-        <div className='sidekick animated fadeIn' id='sidekick'>
+        <div className='sidekick' id='sidekick'>
           <button id='close-sidekick' onClick={this.closeSidekick}><FontAwesomeIcon icon={faTimes} /></button>
-          <a href={link} target="_blank" rel="noopener">
-            <img 
-            alt='Sidekick Ad'
-            className='preload' 
-            id='sidekick-image' 
-            src={img} 
-            onLoad={() => loadImage('sidekick-image')} />
-          </a>
+          <Advertisement path='250x120_Sidekick' size={[250, 120]}  />
         </div>
       );
   }

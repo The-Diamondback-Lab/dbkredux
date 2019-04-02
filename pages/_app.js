@@ -7,6 +7,8 @@ import withGA from "next-ga";
 import Router from "next/router";
 import NProgress from 'nprogress'
 import { DFPManager } from 'react-dfp';
+import { DFPSlotsProvider, AdSlot } from 'react-dfp';
+
 
 import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
@@ -22,9 +24,9 @@ import ascii from '../utilities/ascii';
 import '../styles/sass/app.sass';
 import '../styles/css/nprogress.css';
 import '@fortawesome/fontawesome-svg-core/styles.css';
+import Takeover from '../components/Takeover.jsx';
 
 Router.events.on('routeChangeStart', url => {
-  DFPManager.refresh()
   NProgress.start()
 })
 Router.events.on('routeChangeComplete', () => {
@@ -59,6 +61,8 @@ class MyApp extends App {
 
     componentDidMount() {
       console.log("%c"+ascii, "color: rgba(229, 29, 55, 1);");
+      DFPManager.refresh()
+      DFPManager.setCollapseEmptyDivs(true);
     }
 
     render () {
@@ -75,7 +79,11 @@ class MyApp extends App {
                 <meta property="og:description" content={description} />
                 <link rel="shortcut icon" href="/static/favicon.ico" />
             </Head>
-              <FeedbackBar />
+              {/* <FeedbackBar /> */}
+              <DFPSlotsProvider dfpNetworkId={'123934970'} >
+              {/* <NoSSR>
+                <Takeover />
+              </NoSSR>               */}
               <Header menu={menus.header}/>
               <br />
               <Advertisement path='728x90_Banner_A' size={[728, 90]} mode="desktop" />
@@ -84,9 +92,10 @@ class MyApp extends App {
                 <Advertisement path='300x50_Mobile_Footer' size={[300, 50]} mode="mobile" />
                 <Advertisement path='728x90_Banner_E' size={[728, 90]} mode="desktop" />
                 <Footer footer={menus.footer} social={menus.social} />
-            <NoSSR>
+            {/* <NoSSR>
                 <Sidekick />
-            </NoSSR>
+            </NoSSR> */}
+            </DFPSlotsProvider>
         </Container>
       );
     }

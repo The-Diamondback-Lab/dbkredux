@@ -46,11 +46,9 @@ export default class Advertisement extends React.Component {
       ? ""
       : (
           <LazyLoad>
-            <div className={`advertisement ad-${mode}`} id={`ad-${path}`}>
-              <DFPSlotsProvider dfpNetworkId={'123934970'} >
-                <AdSlot adUnit={path} sizes={[ size ]} />
-              </DFPSlotsProvider>
-            </div>
+          <div className={`advertisement ad-${mode}`} id={`ad-${path}`}>
+            <AdSlot adUnit={path} sizes={[ size ]} />
+          </div>
           </LazyLoad>
       );
   }

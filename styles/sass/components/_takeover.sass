@@ -1,4 +1,4 @@
-.takeover
+#takeover
     > button
         position: absolute
         top: 1px
@@ -12,16 +12,17 @@
         justify-content: center
     width: 100%
     transition: opacity 0.5s ease-out
+    overflow-x: hidden
 
-.takeover img
+#takeover img
     width: 100%
 
-#takeover-desktop
-    +respond-to(schmedium)
-        display: none 
+// #takeover-desktop
+//     +respond-to(schmedium)
+//         display: none 
 
-#takeover-mobile
-    display: none
-    +respond-to(schmedium)
-        display: block
+// #takeover-mobile
+//     display: none
+//     +respond-to(schmedium)
+//         display: block
 

@@ -46,7 +46,7 @@ export default class Takeover extends React.Component {
     <div className='takeover' id='takeover'>
       <button id='close-takeover' onClick={this.closeTakeover}><FontAwesomeIcon icon={faTimes} /></button>
       <Advertisement path='1920x300_Billboard' size={[1920, 300]} mode="desktop" />
-      <Advertisement path='640x200_Billboard' size={[640, 200]} mode="mobile" />
+      <Advertisement path='400x200_Billboard_Mobile' size={[400, 200]} mode="mobile" />
       </div>
     );
   }

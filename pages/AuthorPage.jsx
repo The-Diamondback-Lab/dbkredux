@@ -52,16 +52,13 @@ export default class AuthorPage extends React.Component {
           <meta name="viewport" content="initial-scale=1.0, width=device-width" />
           <meta name="author" content={author.name} />
           <meta property="og:title" content={author.name + " - The Diamondback  "} />
-          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:card" content="summary_large_image" />  
           <meta property="og:image" content={author.avatar_urls['96']} />
         </Head>
         <main className='page author-page'>
           <div className='container-narrow flex'>
             <div className='left-rail'>
               <div className='author-section'>
-                {/* <div id={`${author.slug}-image`} className='author-image' onLoad={() => loadImage(`${author.slug}-image`)}>
-                  <img src={author.avatar_urls['96']} alt='Author Avatar' />
-                </div> */}
                 <div className='author-info'>
                   <h1><Link href={author.link}><a>{author.name}</a></Link></h1>
                 </div>

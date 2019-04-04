@@ -42,9 +42,9 @@ export default class CustomPage extends React.Component {
     else {
       return <React.Fragment>
         <Head>
-          <title dangerouslySetInnerHTML={{__html: page.title + " - The Diamondback  "}}></title>
-          <meta property="og:title" content={page.title + " - The Diamondback  "} />
-          <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+          <title key="title" dangerouslySetInnerHTML={{__html: page.title + " - The Diamondback  "}}></title>
+          <meta key="og:title" property="og:title" content={page.title + " - The Diamondback  "} />
+          <meta key="viewport" name="viewport" content="initial-scale=1.0, width=device-width" />
         </Head>
         <main className='page custom-page'>
           <div className='container-narrow'>

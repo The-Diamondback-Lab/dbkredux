@@ -63,9 +63,9 @@ export default class CategoryPage extends React.Component {
       return <React.Fragment>
         <main className='page category-page'>
           <Head>
-            <title dangerouslySetInnerHTML={{__html: category.name + " - The Diamondback  "}}></title>
-            <meta property="og:title" content={category.name + " - The Diamondback  "} />
-            <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+            <title key="title" dangerouslySetInnerHTML={{__html: category.name + " - The Diamondback  "}}></title>
+            <meta key="og:title" property="og:title" content={category.name + " - The Diamondback  "} />
+            <meta key="viewport" name="viewport" content="initial-scale=1.0, width=device-width" />
           </Head>
           <div className='container-narrow'>
             <h1><Link href={category.link}><a dangerouslySetInnerHTML={{ __html: category.name }}></a></Link></h1>

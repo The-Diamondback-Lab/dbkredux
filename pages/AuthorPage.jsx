@@ -43,12 +43,12 @@ export default class AuthorPage extends React.Component {
   render() {
     const { author } = this.props;
     if (!author) {
-      return <ErrorPage />
+      return <ErrorPage code={"404"} />
     }
     else {
       return <React.Fragment>
         <Head>
-          <title>{author.name + " - The Diamondback  "}</title>
+          <title dangerouslySetInnerHTML={{__html: author.name + " - The Diamondback  "}}></title>
           <meta name="viewport" content="initial-scale=1.0, width=device-width" />
           <meta name="author" content={author.name} />
           <meta property="og:title" content={author.name + " - The Diamondback  "} />

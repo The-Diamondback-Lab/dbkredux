@@ -61,7 +61,7 @@ export default class ArticlePage extends React.Component {
   render() {
     const { article } = this.props;
     if (!article) {
-      return <ErrorPage />;
+      return <ErrorPage code={"404"}/>;
     }
 
     let featuredImage = "";
@@ -95,7 +95,7 @@ export default class ArticlePage extends React.Component {
     return (
       <React.Fragment>
         <Head>
-          <title>{article.title + " - The Diamondback  "}</title>
+          <title dangerouslySetInnerHTML={{__html: article.title + " - The Diamondback  "}}></title>
 
           <meta name="viewport" content="initial-scale=1.0, width=device-width" />
           <meta name="description" content={description} />

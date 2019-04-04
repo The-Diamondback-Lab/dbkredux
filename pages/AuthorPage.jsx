@@ -17,6 +17,7 @@ import { faTwitter } from '@fortawesome/free-brands-svg-icons';
 import {
   request, loadImage
 } from '..//utilities/app.utilities.js';
+import * as uss from 'underscore.string';
 
 
 /* eslint-disable space-before-function-paren */
@@ -50,8 +51,8 @@ export default class AuthorPage extends React.Component {
         <Head>
           <title dangerouslySetInnerHTML={{__html: author.name + " - The Diamondback  "}}></title>
           <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-          <meta name="author" content={author.name} />
-          <meta property="og:title" content={author.name + " - The Diamondback  "} />
+          <meta name="author" content={uss.unescapeHTML(author.name)} />
+          <meta property="og:title" content={uss.unescapeHTML(author.name + " - The Diamondback  ")} />
           <meta name="twitter:card" content="summary_large_image" />
           <meta property="og:image" content={author.avatar_urls['96']} />
         </Head>
@@ -76,7 +77,7 @@ export default class AuthorPage extends React.Component {
                   <FontAwesomeIcon icon={faTwitter} size='lg' />
                   <a href={`https://twitter.com/${author.user_twitter}`} dangerouslySetInnerHTML={{ __html: author.user_twitter }} target='_blank' rel="noopener"></a>
                 </div>
-              )
+              ) 
                 : ""}
               <hr />
               <LoadedArticles type="author" param={author.slug}></LoadedArticles>

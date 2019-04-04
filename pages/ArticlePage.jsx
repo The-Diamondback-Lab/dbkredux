@@ -3,6 +3,7 @@ import * as React from 'react';
 import { Link } from '../routes';
 import Head from 'next/head';
 import Parser from 'html-react-parser';
+import * as uss from 'underscore.string';
 
 import ErrorPage from './ErrorPage.jsx';
 
@@ -98,10 +99,10 @@ export default class ArticlePage extends React.Component {
           <title dangerouslySetInnerHTML={{__html: article.title + " - The Diamondback  "}}></title>
 
           <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-          <meta name="description" content={description} />
-          <meta name="author" content={article.author.name} />
-          <meta property="og:title" content={article.title + " - The Diamondback  "} />
-          <meta property="og:description" content={description} />
+          <meta name="description" content={uss.unescapeHTML(description)} />
+          <meta name="author" content={uss.unescapeHTML(article.author.name)} />
+          <meta property="og:title" content={uss.unescapeHTML(article.title + " - The Diamondback  ")} />
+          <meta property="og:description" content={uss.unescapeHTML(description)} />
           {featuredImage ?
             <meta property="og:image" content={article.featured_image.preview} />
             :

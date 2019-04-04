@@ -57,13 +57,13 @@ export default class CategoryPage extends React.Component {
   render() {
     const { category } = this.props;
     if (!category) {
-      return <ErrorPage />;
+      return <ErrorPage code={"404"} />;
     }
     else {
       return <React.Fragment>
         <main className='page category-page'>
           <Head>
-            <title>{category.name + " - The Diamondback  "}</title>
+            <title dangerouslySetInnerHTML={{__html: category.name + " - The Diamondback  "}}></title>
             <meta property="og:title" content={category.name + " - The Diamondback  "} />
             <meta name="viewport" content="initial-scale=1.0, width=device-width" />
           </Head>

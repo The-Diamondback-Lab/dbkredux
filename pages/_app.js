@@ -7,6 +7,8 @@ import withGA from "next-ga";
 import Router from "next/router";
 import NProgress from 'nprogress'
 import { DFPManager } from 'react-dfp';
+import { DFPSlotsProvider, AdSlot } from 'react-dfp';
+
 
 import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
@@ -22,9 +24,9 @@ import ascii from '../utilities/ascii';
 import '../styles/sass/app.sass';
 import '../styles/css/nprogress.css';
 import '@fortawesome/fontawesome-svg-core/styles.css';
+import Takeover from '../components/Takeover.jsx';
 
 Router.events.on('routeChangeStart', url => {
-  DFPManager.refresh()
   NProgress.start()
 })
 Router.events.on('routeChangeComplete', () => {
@@ -44,7 +46,7 @@ class MyApp extends App {
       let footer = await request('/menu/footer');
       let social = await request('/menu/stay-connected');
       let header = await request('/menu/header');
-      let description = "The Diamondback is the independent student-run newspaper at the University of Maryland. The Diamondback is updated online daily and can be accessed at dbknews.com. In print, it is published weekly on Thursday and is available at dozens of locations throughout the campus and around College Park.";
+      let description = "The Diamondback is the independent student-run newspaper at the University of Maryland.";
 
       return {
           pageProps,
@@ -59,6 +61,8 @@ class MyApp extends App {
 
     componentDidMount() {
       console.log("%c"+ascii, "color: rgba(229, 29, 55, 1);");
+      DFPManager.refresh()
+      DFPManager.setCollapseEmptyDivs(true);
     }
 
     render () {
@@ -75,7 +79,11 @@ class MyApp extends App {
                 <meta property="og:description" content={description} />
                 <link rel="shortcut icon" href="/static/favicon.ico" />
             </Head>
-              <FeedbackBar />
+              {/* <FeedbackBar /> */}
+              <DFPSlotsProvider dfpNetworkId={'123934970'} >
+              <NoSSR>
+                <Takeover />
+              </NoSSR>              
               <Header menu={menus.header}/>
               <br />
               <Advertisement path='728x90_Banner_A' size={[728, 90]} mode="desktop" />
@@ -87,6 +95,7 @@ class MyApp extends App {
             <NoSSR>
                 <Sidekick />
             </NoSSR>
+            </DFPSlotsProvider>
         </Container>
       );
     }

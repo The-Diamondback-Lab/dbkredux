@@ -16,8 +16,8 @@ import Advertisement from '../components/Advertisement';
 import StoryGallery from '../components/StoryGallery';
 
 const API_URL = 'https://api.dbknews.com';
-const WP_URL = 'https://wordpress.dbknews.com/wp-json/wp/v2';
-const WP_REPLACE = 'http://wordpress.dbknews.com';
+const WP_URL = 'http://wp.dbknews.com/wp-json/wp/v2';
+const WP_REPLACE = 'http://wp.dbknews.com';
 
 /*
  * Application utility functions.
@@ -299,7 +299,6 @@ function formatDate(original, ago) {
 }
 
 export const getArticlePreviewData = async (wp_id, wp_nonce) => {
-  console.log(`${WP_URL}/posts/${wp_id}?_wpnonce=${wp_nonce}&_embed`);
   let article = await axios.get(
     `${WP_URL}/posts/${wp_id}?_wpnonce=${wp_nonce}&_embed`,
     { withCredentials: true }

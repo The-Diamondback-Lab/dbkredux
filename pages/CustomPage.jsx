@@ -37,12 +37,12 @@ export default class CustomPage extends React.Component {
   render() {
     const { page } = this.props;
     if (!page){
-      return <ErrorPage code={"404"}/>
+      return <ErrorPage code={"404"} />
     }
     else {
       return <React.Fragment>
         <Head>
-          <title>{page.title + " - The Diamondback  "}</title>
+          <title dangerouslySetInnerHTML={{__html: page.title + " - The Diamondback  "}}></title>
           <meta property="og:title" content={page.title + " - The Diamondback  "} />
           <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         </Head>

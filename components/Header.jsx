@@ -13,7 +13,6 @@ import $ from 'jquery';
 import Navigation from '../components/Navigation.jsx';
 import Sidebar from '../components/Sidebar.jsx';
 import Searchbar from '../components/Searchbar.jsx';
-import Takeover from '../components/Takeover.jsx';
 
 
 /**
@@ -39,9 +38,6 @@ export default class Header extends React.Component {
 
     return (
       <React.Fragment>
-        <NoSSR>
-          <Takeover mobile={false} />
-        </NoSSR>
         <header id="header">
           <div id="masthead" className="container">
             <React.Fragment>

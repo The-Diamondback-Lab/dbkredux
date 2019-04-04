@@ -7,7 +7,6 @@ import React from 'react';
 import { Link } from '../routes';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars } from '@fortawesome/free-solid-svg-icons'
 import { faFacebook } from '@fortawesome/free-brands-svg-icons';
 import { faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { faInstagram } from '@fortawesome/free-brands-svg-icons';
@@ -30,21 +29,21 @@ export default class Navigation extends React.Component {
       <nav id="nav-bar">
         <div className="container">
           <div className='navigation-links'>
-            <NavigationButton toggleSidebar={this.props.toggleSidebar} />&nbsp;
+            <NoSSR><NavigationButton toggleSidebar={this.props.toggleSidebar} /></NoSSR>&nbsp;
             {/* don't show links if on mobile */}
             <NoSSR><NavigationLinks menu={menu.items} /></NoSSR>
           </div>
           <div className='navigation-links-social'>
-            <a href = "https://www.facebook.com/TheDiamondback/" target="_blank">
+            <a href = "https://www.facebook.com/TheDiamondback/" target="_blank"  rel="noopener">
               <FontAwesomeIcon icon={faFacebook} size='lg' />
             </a>
-            <a href = "https://twitter.com/thedbk" target="_blank">
+            <a href = "https://twitter.com/thedbk" target="_blank" rel="noopener">
               <FontAwesomeIcon icon={faTwitter} size='lg' />
             </a>
-            <a href = "https://www.instagram.com/thedbk/" target="_blank">
+            <a href = "https://www.instagram.com/thedbk/" target="_blank" rel="noopener">
               <FontAwesomeIcon icon={faInstagram} size='lg' />
             </a>
-            <a href = "https://www.youtube.com/user/DiamondbackVideo" target="_blank">
+            <a href = "https://www.youtube.com/user/DiamondbackVideo" target="_blank" rel="noopener">
               <FontAwesomeIcon icon={faYoutube} size='lg' />
             </a>
           </div>
@@ -65,7 +64,6 @@ class NavigationButton extends React.Component {
   render() {
     let ha = this.state.hamburgerActive;
     let hamburgerClass = "hamburger hamburger--slider " + (ha ? 'is-active' : '');
-    console.log(hamburgerClass);
     return (
       <div>
         <button id="menu-btn" className={hamburgerClass} type="button" onClick={e => this._onClick(e,ha)}>
@@ -73,9 +71,6 @@ class NavigationButton extends React.Component {
             <span className="hamburger-inner"></span>
           </span>
         </button>
-        {/* <button id='menu-btn' onClick={e => this._onClick(e)}>
-          <FontAwesomeIcon icon={faBars} />
-        </button> */}
         {
           <Link href='/'><a className='mobile-dbk-logo'><img src="/static/images/the-diamondback-logo.svg" alt='The Diamondback' /></a></Link>
         }

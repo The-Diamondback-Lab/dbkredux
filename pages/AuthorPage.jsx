@@ -44,12 +44,12 @@ export default class AuthorPage extends React.Component {
   render() {
     const { author } = this.props;
     if (!author) {
-      return <ErrorPage />
+      return <ErrorPage code={"404"} />
     }
     else {
       return <React.Fragment>
         <Head>
-          <title>{author.name + " - The Diamondback  "}</title>
+          <title dangerouslySetInnerHTML={{__html: author.name + " - The Diamondback  "}}></title>
           <meta name="viewport" content="initial-scale=1.0, width=device-width" />
           <meta name="author" content={uss.unescapeHTML(author.name)} />
           <meta property="og:title" content={uss.unescapeHTML(author.name + " - The Diamondback  ")} />
@@ -60,9 +60,9 @@ export default class AuthorPage extends React.Component {
           <div className='container-narrow flex'>
             <div className='left-rail'>
               <div className='author-section'>
-                <div id={`${author.slug}-image`} className='author-image' onLoad={() => loadImage(`${author.slug}-image`)}>
+                {/* <div id={`${author.slug}-image`} className='author-image' onLoad={() => loadImage(`${author.slug}-image`)}>
                   <img src={author.avatar_urls['96']} alt='Author Avatar' />
-                </div>
+                </div> */}
                 <div className='author-info'>
                   <h1><Link href={author.link}><a>{author.name}</a></Link></h1>
                 </div>
@@ -70,12 +70,12 @@ export default class AuthorPage extends React.Component {
               <p className='author-description' dangerouslySetInnerHTML={{ __html: author.description }} />
               <div className='links-row'>
                 <FontAwesomeIcon icon={faEnvelope} size='lg' />
-                <a href={`mailto:${author.user_email}`} dangerouslySetInnerHTML={{ __html: author.user_email }} target='_blank'></a>
+                <a href={`mailto:${author.user_email}`} dangerouslySetInnerHTML={{ __html: author.user_email }} target='_blank' rel="noopener"></a>
               </div>
               {author.user_twitter ? (
                 <div className='links-row'>
                   <FontAwesomeIcon icon={faTwitter} size='lg' />
-                  <a href={`https://twitter.com/${author.user_twitter}`} dangerouslySetInnerHTML={{ __html: author.user_twitter }} target='_blank'></a>
+                  <a href={`https://twitter.com/${author.user_twitter}`} dangerouslySetInnerHTML={{ __html: author.user_twitter }} target='_blank' rel="noopener"></a>
                 </div>
               ) 
                 : ""}

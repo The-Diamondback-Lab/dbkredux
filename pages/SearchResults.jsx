@@ -33,7 +33,7 @@ export default class SearchResults extends React.Component {
     const { search } = this.props;
 
     if (!search) {
-      return <ErrorPage code={404}/>;
+      return <ErrorPage code={"404"}/>;
     }
     else {
       return <React.Fragment>

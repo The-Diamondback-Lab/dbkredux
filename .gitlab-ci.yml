@@ -22,13 +22,13 @@ setup:
 staging:
   stage: staging
   script:
-    - ./node_modules/.bin/now --team=$TEAM_ID --token=$NOW_TOKEN
+    - ./node_modules/.bin/now --scope=$TEAM_ID --token=$NOW_TOKEN
 
 production:
   stage: production
   script:
-    - ./node_modules/.bin/now --team=$TEAM_ID --token=$NOW_TOKEN
-    - ./node_modules/.bin/now alias $PRODUCTION_URL --team=$TEAM_ID --token=$NOW_TOKEN
+    - ./node_modules/.bin/now --scope=$TEAM_ID --token=$NOW_TOKEN
+    - ./node_modules/.bin/now alias $PRODUCTION_URL --scope=$TEAM_ID --token=$NOW_TOKEN
   when: manual
   only:
     - master

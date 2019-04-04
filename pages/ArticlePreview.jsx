@@ -34,7 +34,7 @@ class ArticlePreview extends React.Component {
 render() {
     const { article } = this.state;
     if (!article) {
-      return '';
+      return <h1>Error - can't display preview!</h1>;
     }
     
     let featuredImage = "";

@@ -37,10 +37,10 @@ export default class SearchResults extends React.Component {
     }
     else {
       return <React.Fragment>
-        <Head>
-        <title>{`${search} - The Diamondback  `}</title>
-        <meta property="og:title" content={`Search Results - The Diamondback`} />
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      <Head>
+        <title key="title">{`${search} - The Diamondback  `}</title>
+        <meta key="og:title" property="og:title" content={`Search Results - The Diamondback`} />
+        <meta key="viewport" name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <main className='page search-results'>
         <div className='container-narrow'>

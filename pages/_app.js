@@ -71,13 +71,13 @@ class MyApp extends App {
       return (
         <Container>
             <Head>
-                <title>The Diamondback</title>
-                <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
-                <meta name="description" content={description} />
-                <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-                <meta property="og:title" content="The Diamondback" />
-                <meta property="og:description" content={description} />
+                <title key="title">The Diamondback</title>
+                <meta key="description" name="description" content={description} />
+                <meta key="viewport" name="viewport" content="initial-scale=1.0, width=device-width" />
+                <meta key="og:title" property="og:title" content="The Diamondback" />
+                <meta key="og:description" property="og:description" content={description} />
                 <link rel="shortcut icon" href="/static/favicon.ico" />
+                <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
             </Head>
               {/* <FeedbackBar /> */}
               <DFPSlotsProvider dfpNetworkId={'123934970'} >

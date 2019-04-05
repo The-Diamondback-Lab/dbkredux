@@ -31,7 +31,7 @@ export default class Home extends React.Component {
     return (
       <React.Fragment>
         <Head>
-          <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+          <meta key="viewport" name="viewport" content="initial-scale=1.0, width=device-width" />
         </Head>
         <main className='page'>
           <div className='container'>

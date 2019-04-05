@@ -14,9 +14,9 @@ export default class ErrorPage extends React.Component {
     let display = ERRORS[code];
     return <React.Fragment>
       <Head>
-        <title>{`${code} - The Diamondback`}</title>
-        <meta property="og:title" content={`${code} - The Diamondback`} />
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <title key="title">{`${code} - The Diamondback`}</title>
+        <meta key="og:title" property="og:title" content={`${code} - The Diamondback`} />
+        <meta key="viewport" name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <main className='page error-page'>
         <div className='container-narrow'>

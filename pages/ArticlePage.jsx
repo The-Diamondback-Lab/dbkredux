@@ -96,19 +96,18 @@ export default class ArticlePage extends React.Component {
     return (
       <React.Fragment>
         <Head>
-          <title dangerouslySetInnerHTML={{__html: article.title + " - The Diamondback  "}}></title>
-
-          <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-          <meta name="description" content={uss.unescapeHTML(description)} />
-          <meta name="author" content={uss.unescapeHTML(article.author.name)} />
-          <meta property="og:title" content={uss.unescapeHTML(article.title + " - The Diamondback  ")} />
-          <meta property="og:description" content={uss.unescapeHTML(description)} />
+          <title key="title" dangerouslySetInnerHTML={{__html: article.title + " - The Diamondback  "}}></title>
+          <meta key="viewport" name="viewport" content="initial-scale=1.0, width=device-width" />
+          <meta key="description" name="description" content={uss.unescapeHTML(description)} />
+          <meta key="author" name="author" content={uss.unescapeHTML(article.author.name)} />
+          <meta key="og:title" property="og:title" content={uss.unescapeHTML(article.title + " - The Diamondback  ")} />
+          <meta key="og:description" property="og:description" content={uss.unescapeHTML(description)} />
           {featuredImage ?
-            <meta property="og:image" content={article.featured_image.preview} />
+            <meta key="og:image" property="og:image" content={article.featured_image.preview} />
             :
-            <meta property="og:image" content="/static/images/the-diamondback-logo.svg" />
+            <meta key="og:image" property="og:image" content="/static/images/the-diamondback-logo.svg" />
           }
-          <meta name="twitter:card" content="summary_large_image" />
+          <meta key="twitter:card" name="twitter:card" content="summary_large_image" />
 
           <script async src="https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5c418704770faa57"></script>
         </Head>

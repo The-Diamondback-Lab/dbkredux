@@ -49,20 +49,17 @@ export default class AuthorPage extends React.Component {
     else {
       return <React.Fragment>
         <Head>
-          <title dangerouslySetInnerHTML={{__html: author.name + " - The Diamondback  "}}></title>
-          <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-          <meta name="author" content={uss.unescapeHTML(author.name)} />
-          <meta property="og:title" content={uss.unescapeHTML(author.name + " - The Diamondback  ")} />
-          <meta name="twitter:card" content="summary_large_image" />
+          <title key="title" dangerouslySetInnerHTML={{__html: author.name + " - The Diamondback  "}}></title>
+          <meta key="viewport" name="viewport" content="initial-scale=1.0, width=device-width" />
+          <meta key="author" name="author" content={uss.unescapeHTML(author.name)} />
+          <meta key="og:title" property="og:title" content={uss.unescapeHTML(author.name + " - The Diamondback  ")} />
+          <meta key="twitter:card" name="twitter:card" content="summary_large_image" />
           <meta property="og:image" content={author.avatar_urls['96']} />
         </Head>
         <main className='page author-page'>
           <div className='container-narrow flex'>
             <div className='left-rail'>
               <div className='author-section'>
-                {/* <div id={`${author.slug}-image`} className='author-image' onLoad={() => loadImage(`${author.slug}-image`)}>
-                  <img src={author.avatar_urls['96']} alt='Author Avatar' />
-                </div> */}
                 <div className='author-info'>
                   <h1><Link href={author.link}><a>{author.name}</a></Link></h1>
                 </div>

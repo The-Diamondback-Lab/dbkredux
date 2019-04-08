@@ -174,6 +174,7 @@ export const processArticleBody = (articleElement) => {
   Primary function is to inject ads, but also process any HTML for dynamic content
 */
 export const loadDynamicArticleContent = (content) => {
+  // console.log(content);
   let parsed = Parser(content);
   let ad1 = <React.Fragment key={parsed.length + 1}>
     <Advertisement path="300x250_Mobile_InStory_Top" size={[300, 250]} mode="mobile"></Advertisement>

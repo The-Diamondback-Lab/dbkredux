@@ -10,7 +10,7 @@ import { Link } from '../routes';
 
 import {
   loadImage
-} from '../utilities/app.utilities.js';
+} from '../utilities/app.utilities.js'; 
 
 import LazyLoad from 'react-lazyload';
 
@@ -20,24 +20,23 @@ export default class LoadedArticle extends React.Component {
   render() {
     const { author, date, id, link, title, excerpt, featured_image } = this.props;
 
-    let featuredImage = <Link href={link}>
-      <div className="loaded-article-picture"></div>
-    </Link>;
-
+    let featured_image_link = "/static/images/article-fallback.png";
     if (featured_image) {
-      featuredImage = <Link href={link}>
+      featured_image_link = featured_image.preview;
+    }
+
+    let featuredImage = <Link href={link}>
         <a className="loaded-article-picture" >
           <LazyLoad>
             <img
               alt="Article"
               className="picture preload"
               id={`image-${id}`}
-              src={featured_image.preview}
+              src={featured_image_link}
               onLoad={() => loadImage("image-" + id)} />
           </LazyLoad>
         </a>
       </Link>;
-    }
 
     return (
       <div className="loaded-article-block fadeIn animated">

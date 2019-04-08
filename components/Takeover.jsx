@@ -7,7 +7,8 @@ import $ from 'jquery';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
-import Advertisement from '../components/Advertisement'
+// import Advertisement from '../components/Advertisement'
+import { AdSlot } from 'react-dfp';
 
 
 export default class Takeover extends React.Component {
@@ -38,16 +39,21 @@ export default class Takeover extends React.Component {
   }
 
   render() {
-    const { loaded, desktop, mobile } = this.state;
+    const { loaded } = this.state;
     if (!loaded){
       return ''
     }
     return (
     <div className='takeover' id='takeover'>
       <button id='close-takeover' onClick={this.closeTakeover}><FontAwesomeIcon icon={faTimes} /></button>
-      <Advertisement path='1920x300_Billboard' size={[1920, 300]} mode="desktop" />
-      <Advertisement path='400x200_Billboard_Mobile' size={[400, 200]} mode="mobile" />
+      <div className='advertisement ad-desktop' id='ad-takeover-desktop'>
+        <AdSlot adUnit="1920x300_Billboard" sizes={[1920, 300]} onSlotRender={eventData => { if (eventData.event.isEmpty) { document.getElementById("takeover").style.display = 'none'} } } />
       </div>
+      <div className='advertisement ad-mobile' id='ad-takeover-mobile'>
+        <AdSlot adUnit="400x200_Billboard_Mobile" sizes={[400, 200]} onSlotRender={eventData => { if (eventData.event.isEmpty) { document.getElementById("takeover").style.display = 'none'} } } />
+      </div>          
+
+    </div>
     );
   }
 }

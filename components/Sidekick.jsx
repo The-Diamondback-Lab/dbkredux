@@ -7,7 +7,8 @@ import $ from 'jquery';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
-import Advertisement from '../components/Advertisement'
+// import Advertisement from '../components/Advertisement'
+import { AdSlot } from 'react-dfp';
 
 export default class Sidekick extends React.Component {
 
@@ -49,7 +50,9 @@ export default class Sidekick extends React.Component {
     (
         <div className='sidekick' id='sidekick'>
           <button id='close-sidekick' onClick={this.closeSidekick}><FontAwesomeIcon icon={faTimes} /></button>
-          <Advertisement path='250x120_Sidekick' size={[250, 120]}  />
+          <div className='advertisement' id='ad-sidekick'>
+            <AdSlot adUnit="250x120_Sidekick" sizes={[250, 120]} onSlotRender={eventData => { if (eventData.event.isEmpty) { document.getElementById("sidekick").style.display = 'none'} } } />
+          </div>
         </div>
       );
   }

@@ -103,9 +103,9 @@ export default class ArticlePage extends React.Component {
           <meta key="og:title" property="og:title" content={uss.unescapeHTML(article.title + " - The Diamondback  ")} />
           <meta key="og:description" property="og:description" content={uss.unescapeHTML(description)} />
           {featuredImage ?
-            <meta key="og:image" property="og:image" content={article.featured_image.preview} />
+            <meta key="og:image" property="og:image" content={article.featured_image.article} />
             :
-            <meta key="og:image" property="og:image" content="/static/images/the-diamondback-logo.svg" />
+            <meta key="og:image" property="og:image" content="/static/images/article-fallback.png" />
           }
           <meta key="twitter:card" name="twitter:card" content="summary_large_image" />
 

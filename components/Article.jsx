@@ -17,20 +17,22 @@ export default class Article extends React.Component {
   render() {
     const { author, categories, date, id, link, title, featured_image, text_only } = this.props;
     let img_id = Math.random().toString(36).replace('0.', '');
-    let featuredImage = <Link href={link}><a><div className='article-block-image' /></a></Link>;
+    let featured_image_link = "/static/images/article-fallback.png";
     if (featured_image) {
-      featuredImage = (<Link href={link}>
-        <a> 
-          <LazyLoad offset={200}>
-            <img
-              alt='Article'
-              className='article-block-image preload'
-              id={img_id} src={featured_image.article}
-              onLoad={() => loadImage(img_id)} />
-          </LazyLoad>
-        </a>
-      </Link>);
+      featured_image_link = featured_image.article;
     }
+    let featuredImage = (<Link href={link}>
+      <a>
+        <LazyLoad offset={200}>
+          <img
+            alt='Article'
+            className='article-block-image preload'
+            id={img_id} src={featured_image_link}
+            onLoad={() => loadImage(img_id)} />
+        </LazyLoad>
+      </a>
+    </Link>);
+
 
     if (text_only) {
       return (

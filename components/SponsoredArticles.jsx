@@ -28,7 +28,7 @@ export default class SponsoredArticles extends React.Component {
       let category_data = raw_article.categories.find(cat => cat.id === 'sponsored');
       this.setState({ articles: article, category: category_data, loaded: true });
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   }
 

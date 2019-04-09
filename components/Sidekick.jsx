@@ -48,10 +48,10 @@ export default class Sidekick extends React.Component {
     }
     return !loaded ? '' :
     (
-        <div className='sidekick' id='sidekick'>
+        <div className='sidekick display-none' id='sidekick'>
           <button id='close-sidekick' onClick={this.closeSidekick}><FontAwesomeIcon icon={faTimes} /></button>
           <div className='advertisement' id='ad-sidekick'>
-            <AdSlot adUnit="250x120_Sidekick" sizes={[250, 120]} onSlotRender={eventData => { if (eventData.event.isEmpty) { document.getElementById("sidekick").style.display = 'none'} } } />
+            <AdSlot adUnit="250x120_Sidekick" sizes={[[250, 120]]} onSlotRender={eventData => { if (!eventData.event.isEmpty) { $("#sidekick").removeClass("display-none"); } } } />
           </div>
         </div>
       );

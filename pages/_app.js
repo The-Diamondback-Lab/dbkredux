@@ -76,6 +76,8 @@ class MyApp extends App {
                 <meta key="viewport" name="viewport" content="initial-scale=1.0, width=device-width" />
                 <meta key="og:title" property="og:title" content="The Diamondback" />
                 <meta key="og:description" property="og:description" content={description} />
+                <meta key="og:image" property="og:image" content="/static/images/article-fallback.png" />
+                <meta key="twitter:card" name="twitter:card" content="summary_large_image" />
                 <link rel="shortcut icon" href="/static/favicon.ico" />
                 <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
             </Head>

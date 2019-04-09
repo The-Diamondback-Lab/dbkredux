@@ -44,13 +44,13 @@ export default class Takeover extends React.Component {
       return ''
     }
     return (
-    <div className='takeover' id='takeover'>
+    <div className='takeover display-none' id='takeover'>
       <button id='close-takeover' onClick={this.closeTakeover}><FontAwesomeIcon icon={faTimes} /></button>
       <div className='advertisement ad-desktop' id='ad-takeover-desktop'>
-        <AdSlot adUnit="1920x300_Billboard" sizes={[1920, 300]} onSlotRender={eventData => { if (eventData.event.isEmpty) { document.getElementById("takeover").style.display = 'none'} } } />
+        <AdSlot adUnit="1920x300_Billboard" sizes={[[1920, 300]]} onSlotRender={eventData => { if (!eventData.event.isEmpty) { $("#takeover").removeClass("display-none"); } } } />
       </div>
       <div className='advertisement ad-mobile' id='ad-takeover-mobile'>
-        <AdSlot adUnit="400x200_Billboard_Mobile" sizes={[400, 200]} onSlotRender={eventData => { if (eventData.event.isEmpty) { document.getElementById("takeover").style.display = 'none'} } } />
+        <AdSlot adUnit="400x200_Billboard_Mobile" sizes={[[400, 200]]} onSlotRender={eventData => { if (!eventData.event.isEmpty) { $("#takeover").removeClass("display-none"); } } } />
       </div>          
 
     </div>

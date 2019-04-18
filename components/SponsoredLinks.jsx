@@ -23,7 +23,7 @@ export default class SponsoredLinks extends React.Component {
         }
         return (
         <div className='sponsored-links'>
-            <h2>Sponsored</h2>
+            <h2>Sponsored Links</h2>
             <div dangerouslySetInnerHTML={{__html: content}} />
         </div>);
     }

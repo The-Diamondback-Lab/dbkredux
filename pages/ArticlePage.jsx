@@ -144,6 +144,9 @@ export default class ArticlePage extends React.Component {
               <Advertisement path='300x600_Banner_C' size={[300, 600]} mode="desktop" />
               <br />
               <SponsoredLinks />
+              <br />
+              <h3>SOCIAL FEED</h3>
+              <iframe className='social-feed' src="https://dbknews.friends2follow.com/f2f/widget/html/socialstack/50/0/12/140/1/1/0/9/0/1" width="100%" height="606px" frameborder="0" scrolling="no"></iframe>
             </div>
           </div>
           <div className='container-narrow'>

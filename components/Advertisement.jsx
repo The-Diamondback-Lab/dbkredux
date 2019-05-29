@@ -12,14 +12,14 @@ export default class Advertisement extends React.Component {
   _mounted = false;
 
   state = { path: this.props.path, size: this.props.size, mode: null, loaded: false };
-  
+
   componentDidMount() {
     this._mounted = true;
 
     const { path, size, mode } = this.props;
     let displayMode = mode;
 
-    if (typeof mode === 'undefined'){
+    if (typeof mode === 'undefined') {
       displayMode = "";
     }
 
@@ -28,7 +28,7 @@ export default class Advertisement extends React.Component {
       this.setState({ path: path, size: size, mode: displayMode, loaded: true });
     }
   }
-  
+
   componentWillUnmount() {
     this._mounted = false;
   }
@@ -45,11 +45,11 @@ export default class Advertisement extends React.Component {
     return !loaded
       ? ""
       : (
-          <LazyLoad>
+        <LazyLoad>
           <div className={`advertisement ad-${mode}`} id={`ad-${path}`}>
-            <AdSlot adUnit={path} sizes={[ size ]} onSlotRender={eventData => { if (eventData.event.isEmpty) { document.getElementById("ad-"+path).style.display = 'none'} } } />
+            <AdSlot adUnit={path} sizes={[size]} onSlotRender={eventData => { if (eventData.event.isEmpty) { document.getElementById("ad-" + path).style.display = 'none' } }} />
           </div>
-          </LazyLoad>
+        </LazyLoad>
       );
   }
 }

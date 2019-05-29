@@ -26,7 +26,7 @@ footer
   .footer-column
     line-height: px-to-em(20px)
 
-    +respond-to(schmedium)
+    +respond-to($breakpoint-schmedium)
       line-height: px-to-em(22px)
       margin-bottom: 1em
 
@@ -50,7 +50,7 @@ footer
   padding-bottom: $row-width
 
 .footer-title
-  +respond-to(schmedium)
+  +respond-to($breakpoint-schmedium)
     height: auto
     opacity: 1
     margin: 0 0 0.5em 0
@@ -85,7 +85,7 @@ footer
 .stay-connected
   +flex(row, baseline, flex-start)
 
-  +respond-to(schmedium)
+  +respond-to($breakpoint-schmedium)
     flex-direction: column
     align-items: stretch
 
@@ -96,14 +96,14 @@ footer
 
   p,
   .nav-link
-    +respond-to(schmedium)
+    +respond-to($breakpoint-schmedium)
       margin: 0
 
   p
     font-weight: 700
 
 .copyright
-  +respond-to(schmedium)
+  +respond-to($breakpoint-schmedium)
     margin-top: 1em
 
 

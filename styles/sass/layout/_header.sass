@@ -7,14 +7,21 @@ $nav-height: 56px
 $nav-height-mobile: 75px
 
 header
-  // padding-bottom: $row-width
   width: 100vw
+
+.header-main
+  +respond-to($breakpoint-schmedium)
+    display: none
+    opacity: 0
+    width: 0%
+
 
   > .container
     +flex(row, flex-end, space-between)
-    +respond-to(schmedium)
+    +respond-to($breakpoint-schmedium)
       padding: 0
-      
+
+
     > a
       width: 17.5%
       min-width: 200px
@@ -32,7 +39,5 @@ header
   z-index: 10000
 
 #masthead
-  +respond-to(schmedium)
+  +respond-to($breakpoint-schmedium)
     display: none
-
-

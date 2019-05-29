@@ -1,19 +1,48 @@
 /* ARTICLE BLOCK COMPONENT STYLES - COMPONENTS/ARTICLE
 
 .article-block
+  +respond-to($breakpoint-small)
+    figure
+      height: px-to-em(325px)
+      min-height: px-to-em(325px)
+
+    figcaption
+      background-color: rgba($dark, 0.95)
+      border-top: 2px solid white
+
+      > .container
+        .article-block-title
+          font-size: px-to-em(14)
+
+        .article-block-author,
+        .article-block-published
+          font-size: px-to-em(13)
+
+        .article-block-author
+          color: #e83950
+
+        .article-block-published
+          color: $light
+
+
   margin: 0
   position: relative
   overflow: hidden
 
-  > div,
+  > a,
   > figcaption
     width: 100%
 
-  > div
+  > a
     height: 100%
 
   > figcaption
+    +respond-to($breakpoint-large)
+      height: 37.5%
+
+
     bottom: 0
+    height: 32.5%
     position: absolute
     z-index: 2
 
@@ -39,7 +68,7 @@
 .article-block-title
   color: $white
   font:
-    size: px-to-em(18)
+    size: px-to-em(16)
     weight: 700
 
 .article-info
@@ -74,3 +103,22 @@
     .article-block-published
       color: $light
 
+.article-text-block
+  width: $max-width
+  display: flex
+  flex-direction: column
+  justify-content: center
+
+  > .article-block-title
+    color: black
+
+    &:hover
+      color: $accent-dark
+
+  > .article-info
+    > .article-block-published
+      color: grey
+
+  border-bottom: px-to-em(0.5px) solid lightgrey
+  margin-top: px-to-em(20px)
+  padding-bottom: px-to-em(20px)

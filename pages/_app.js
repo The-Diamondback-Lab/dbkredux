@@ -36,71 +36,76 @@ Router.events.on('routeChangeError', () => NProgress.done())
 
 
 class MyApp extends App {
-    static async getInitialProps({ Component, ctx }) {
-      let pageProps = {}
+  static async getInitialProps({ Component, ctx }) {
+    let pageProps = {}
 
-      if (Component.getInitialProps) {
-        pageProps = await Component.getInitialProps(ctx)
-      }
-
-      let footer = await request('/menu/footer');
-      let social = await request('/menu/stay-connected');
-      let header = await request('/menu/header');
-      let description = "The Diamondback is the independent student-run newspaper at the University of Maryland.";
-
-      return {
-          pageProps,
-          menus: {
-              footer: footer,
-              social: social,
-              header: header
-          },
-          description
-      }
+    if (Component.getInitialProps) {
+      pageProps = await Component.getInitialProps(ctx)
     }
 
-    componentDidMount() {
-      console.log("%c"+ascii, "color: rgba(229, 29, 55, 1);");
-      DFPManager.refresh()
-      DFPManager.setCollapseEmptyDivs(true);
-    }
+    let footer = await request('/menu/footer');
+    let social = await request('/menu/stay-connected');
+    let header = await request('/menu/header');
+    let description = "The Diamondback is the independent student-run newspaper at the University of Maryland.";
 
-    render () {
-      const { Component, pageProps, menus, description } = this.props
-
-      return (
-        <Container>
-            <Head>
-                <title key="title">The Diamondback</title>
-                <meta key="description" name="description" content={description} />
-                <meta key="viewport" name="viewport" content="initial-scale=1.0, width=device-width" />
-                <meta key="og:title" property="og:title" content="The Diamondback" />
-                <meta key="og:description" property="og:description" content={description} />
-                <meta key="og:image" property="og:image" content="/static/images/article-fallback.png" />
-                <meta key="twitter:card" name="twitter:card" content="summary_large_image" />
-                <link rel="shortcut icon" href="/static/favicon.ico" />
-                <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
-            </Head>
-              {/* <FeedbackBar /> */}
-              <DFPSlotsProvider dfpNetworkId={'123934970'} >
-              <NoSSR>
-                <Takeover />
-              </NoSSR>              
-              <Header menu={menus.header}/>
-              <br />
-              <Advertisement path='728x90_Banner_A' size={[728, 90]} mode="desktop" />
-              <Advertisement path='300x50_Mobile_Header' size={[300, 50]} mode="mobile" />
-            <Component {...pageProps} />
-                <Advertisement path='300x50_Mobile_Footer' size={[300, 50]} mode="mobile" />
-                <Advertisement path='728x90_Banner_E' size={[728, 90]} mode="desktop" />
-                <Footer footer={menus.footer} social={menus.social} />
-            <NoSSR>
-                <Sidekick />
-            </NoSSR>
-            </DFPSlotsProvider>
-        </Container>
-      );
+    return {
+      pageProps,
+      menus: {
+        footer: footer,
+        social: social,
+        header: header
+      },
+      description
     }
   }
 
-  export default withGA("UA-34401991-9", Router)(MyApp);
+  componentDidMount() {
+    console.log("%c" + ascii, "color: rgba(229, 29, 55, 1);");
+    DFPManager.refresh()
+    DFPManager.setCollapseEmptyDivs(true);
+  }
+
+  render() {
+    const { Component, pageProps, menus, description } = this.props
+
+    return (
+      <Container>
+        <Head>
+          <title key="title">The Diamondback</title>
+          <meta key="description" name="description" content={description} />
+          <meta key="viewport" name="viewport" content="initial-scale=1.0, width=device-width" />
+          <meta key="og:title" property="og:title" content="The Diamondback" />
+          <meta key="og:description" property="og:description" content={description} />
+          <meta key="og:image" property="og:image" content="/static/images/article-fallback.png" />
+          <meta key="twitter:card" name="twitter:card" content="summary_large_image" />
+          <link rel="shortcut icon" href="/static/favicon.ico" />
+          <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
+        </Head>
+        {/* <FeedbackBar /> */}
+        <DFPSlotsProvider dfpNetworkId={'123934970'} >
+          <NoSSR>
+            <Takeover />
+          </NoSSR>
+          <Header menu={menus.header} />
+          <br />
+          <div className="advertisments">
+            <div className="container">
+              <Advertisement path='728x90_Banner_A' size={[728, 90]} mode="desktop" />
+              <Advertisement path='300x50_Mobile_Header' size={[300, 50]} mode="mobile" />
+            </div>
+          </div>
+
+          <Component {...pageProps} />
+          <Advertisement path='300x50_Mobile_Footer' size={[300, 50]} mode="mobile" />
+          <Advertisement path='728x90_Banner_E' size={[728, 90]} mode="desktop" />
+          <Footer footer={menus.footer} social={menus.social} />
+          <NoSSR>
+            <Sidekick />
+          </NoSSR>
+        </DFPSlotsProvider>
+      </Container>
+    );
+  }
+}
+
+export default withGA("UA-34401991-9", Router)(MyApp);

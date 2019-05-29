@@ -1,4 +1,7 @@
-/* SEARCHBAR COMPONENT STYLES - COMPONENTS/SEARCHBAR
+////
+/// Searchbar styles
+/// @group molecules-searchbar
+////
 
 .searchbar
   +flex(row, center, space-between)
@@ -31,11 +34,14 @@
 
 .searchbar-mobile
   display: none
-  +respond-to(schmedium)
+
+  +respond-to($breakpoint-schmedium)
     display: block
+
+
   > button
     width: 10% !important
-  
-  >input
+
+  > input
     background-color: transparent
     width: 90%

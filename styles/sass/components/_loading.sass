@@ -1,7 +1,9 @@
-/* LOADING SCREEN COMPONENT STYLES - COMPONENT/LOADING.SASS
+////
+/// Loading styles
+/// @group molecules-loading
+////
 
 .loading
-
   > .container .fa-spinner,
   .fa-spinner
     color: $accent-med
@@ -14,6 +16,7 @@
 
     > div
       +flex(column, center, center)
+
       overflow: hidden
 
       > p
@@ -21,9 +24,9 @@
         font-weight: 600
         margin: map-get($rows_config, gutter) 0
         text-transform: uppercase
+
       > h1
         font-weight: 500
-        
 
 #app
   > .loading
@@ -37,10 +40,3 @@
 .fadeInOut
   opacity: 1
   animation: fadeInOut 2s infinite
-
-@keyframes fadeInOut
-  0%,100%  
-    opacity: 0 
-  50% 
-    opacity: 1
-

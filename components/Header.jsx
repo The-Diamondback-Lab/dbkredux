@@ -24,10 +24,10 @@ export default class Header extends React.Component {
    */
 
   toggleSidebar = () => {
-    if ($("#sidebar").css("left") !== '0px'){
+    if ($("#sidebar").css("left") !== '0px') {
       $("#sidebar").css("left", '0px');
     }
-    else{
+    else {
       $("#sidebar").css("left", "-100%");
     }
   }
@@ -38,7 +38,7 @@ export default class Header extends React.Component {
 
     return (
       <React.Fragment>
-        <header id="header">
+        <header id="header" className='header-main'>
           <div id="masthead" className="container">
             <React.Fragment>
               <NoSSR>
@@ -52,10 +52,10 @@ export default class Header extends React.Component {
 
           {/* navigation */}
         </header>
-        <div className='sticky-on-scroll'>
+        <header className='sticky-on-scroll'>
           <Navigation menu={menu} toggleSidebar={this.toggleSidebar} />
           <Sidebar />
-        </div>
+        </header>
       </React.Fragment>
     );
   }

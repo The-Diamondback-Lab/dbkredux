@@ -1,41 +1,73 @@
 /* FEATURED ARTICLE COMPONENT STYLES - COMPONENTS/FEATUREDARTICLE
 
 .featured-article
+  +respond-to($breakpoint-xxlarge, min)
+    max-width: 65%
+
+
+  +respond-to($breakpoint-large)
+    max-width: 100%
+
+
+  +respond-to($breakpoint-medium)
+    height: px-to-em(550)
+
+
+  max-width: 67.5%
+  width: 100%
+
   > figcaption
     @extend %article-banner-featured
+
     padding: 10px
     padding-left: 0px
-    +respond-to(medium)
+
+    +respond-to($breakpoint-medium)
       padding: 0px
-  +respond-to(medium)
-    width: 100%
-    height: 400px
 
 %article-banner-featured
+  +respond-to($breakpoint-xxlarge, min)
+    height: 27.5%
+
+
+  +respond-to($breakpoint-large)
+    height: 32.5%
+
+
+  +respond-to($breakpoint-medium)
+    height: 27.5%
+
+
   background-color: rgba($accent-med, 0.95)
   border-top: 5px solid white
+  height: 25%
 
   > .container
-    .article-block-author
-      font-size: 1em
-      color: black
-      +respond-to(medium)
-        font-size: 0.7em
+    .article-block-author,
     .article-block-published
-      color: white
-      font-size: 1em
-      +respond-to(medium)
-        font-size: 0.7em
+      +respond-to($breakpoint-small)
+        font-size: px-to-em(15)
+
+
+      font-size: px-to-em(16)
+
+    .article-block-author
+      color: black
+
+    .article-block-published,
     .article-block-title
-      font-size: 1.8em
-      +respond-to(large)
-        font-size: 1.5em
-      +respond-to(medium)
-        font-size: 1.2em
-      margin-bottom: 10px
-      font-weight: 600
       color: white
-    
+
+    .article-block-title
+      +respond-to($breakpoint-small)
+        font-size: px-to-em(16)
+
+
+      font:
+        size: px-to-em(18)
+        weight: 600
+      margin-bottom: 10px
+
     &.article-block-image
-      respond-to(small)
+      +respond-to($breakpoint-small)
         height: 350px

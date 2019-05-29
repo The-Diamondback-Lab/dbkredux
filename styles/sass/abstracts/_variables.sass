@@ -1,95 +1,114 @@
-// GLOBAL SASS VARIABLES
+////
+/// Global variables
+/// @group variables
+////
 
-// colors
-/// black
+/// Colors
+
+/// Dark base color
 /// @type color
-$dark: rgba(0, 0, 0, 1)
+$dark: #151515
 
-/// grey
+/// Grey
 /// @type color
 $grey: rgba(151, 151, 151, 1)
 
-/// off white
+/// Off white
 /// @type color
 $light: rgba(249, 250, 252, 1)
 
-/// white
+/// White
 /// @type color
 $white: rgba(255, 255, 255, 1)
 
-/// blue
+/// Diamondback blue
 /// @type color
-$accent-dark: rgba(38, 94, 167, 1)
+$accent-dark: #3468AC
 
-/// dbk red
+/// Diamondback red
 /// @type color
-$accent-med: rgba(229, 29, 55, 1)
+$accent-med: #E51D37
+
+/// Diamondback yellow
+/// @type color
+$accent-med-2: #FFD700
 
 /// off white blue
 /// @type color
 $accent-light: rgba(237, 241, 246, 1)
 
-// fonts
-/// regular font family
+/// Fonts
+
+/// Regular text font stack
 /// @type List
 $font-stack: 'IBM Plex Sans', Helvetica, Helvetica Neue, Open Sans, Arial, sans-serif !default
 
-/// code (monospace) font family
+/// Serif font family
+/// @type List
+$serif-font-stack: Georgia, Times, Times New Roman, serif !default
+
+/// Code (monospace) font family
 /// @type List
 $code-font-stack: Courier New, DejaVu Sans Mono, Bitstream Vera Sans Mono, Monaco, monospace !default
 
-$serif-font-stack: Georgia, Times, Times New Roman, serif !default
+/// Constants
 
-// elements
-/// container's maximum width
+/// Url where all assets are served from
+/// @type string
+$base-url: '../../assets/'
+
+/// Layout
+
+/// Maxium container width
 /// @type percentage
 $max-width: 87.5% !default
 
-/// border
+/// Default border style
 /// @type percentage
 $border: 1px solid rgba($grey, 0.5)
 
-/// columns map
+/// Columns map
 /// @type {Map}
 /// @prop {string} keys - identifiers mapped to a given length
 /// @prop {number} values - width and gutter width expressed in ems + max cols
 $columns_config: ('width': px-to-em(85), 'gutter': px-to-em(20), 'max': 12)
 
-/// rows map
+/// Rows map
 /// @type {Map}
 /// @prop {string} keys - identifiers mapped to a given length
 /// @prop {number} values - width and gutter width expressed in ems
 $rows_config: ('width': px-to-em(42.5), 'gutter': px-to-em(8.5), 'max': 12)
 
-// paths
-/// url where all assets are served from
-/// @type string
-$base-url: '../../assets/'
+/// Breakpoints
+/// Breakpoints will be converted to ems when used respond-to mixin
 
-// breakpoints
-/// xsmall breakpoint
-/// @type length
+/// Extra small device breakpoint
+/// @type number
 $breakpoint-xsmall: 320px
 
-/// small breakpoint
-/// @type length
+/// Small device breakpoint
+/// @type number
 $breakpoint-small: 480px
 
-/// medium breakpoint
-/// @type length
+/// Tablet size device breakpoint
+/// @type number
 $breakpoint-schmedium: 768px
 
-/// second medium breakpoint
-/// @type length
+///  Desktop / laptop size breakpoint
+/// @type number
 $breakpoint-medium: 980px
 
-/// large breakpoint
-/// @type length
+///  Desktop / laptop size breakpoint
+/// @type number
 $breakpoint-large: 1200px
 
-/// xlarge breakpoint
-/// @type length
+/// Desktop / laptop size breakpoint
+/// @type number
 $breakpoint-xlarge: 1440px
+
+/// Widescreen breakpoint
+/// @type number
+$breakpoint-xxlarge: 1920px
 
 /// breakpoints map
 /// @type {Map}

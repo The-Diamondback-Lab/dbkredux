@@ -36,4 +36,14 @@
 
 @function map-set($map, $key, $value)
   $new: ($key: $value)
+
   @return map-merge($map, $new)
+
+/// Convert pixels to ems
+/// @param {number | string} $px - pixels to convert
+/// @return {string}
+@function size($px)
+  @if unitless($px)
+    $px: $px * 1px
+
+  @return #{$px / 16px}em

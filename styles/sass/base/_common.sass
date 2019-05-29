@@ -11,7 +11,6 @@ html
   scroll-behavior: smooth
   text-rendering: optimizeLegibility
 
-
 html
   overflow-x: hidden
 
@@ -40,38 +39,3 @@ input
 
 button
   background-color: transparent
-
-.display-none
-  display: none !important
-
-.preload
-  opacity: 0
-
-.postload
-  opacity: 1
-  transition: opacity 0.5s
-
-.page
-  margin-bottom: 30px
-
-  hr
-    display: block
-    height: 1px
-    border: 0
-    border-top: 1px solid #ccc
-    margin: 1em 0
-    padding: 0
-
-.desktop-only
-  +respond-to(medium)
-    display: none
-
-.mobile-only
-  +respond-to(schmedium)
-    display: block
-
-.tablet-and-below-only
-  display: none
-  +respond-to(medium)
-    display: block
-

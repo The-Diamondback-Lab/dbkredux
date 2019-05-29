@@ -1,23 +1,26 @@
 /* LOADED ARTICLES STYLES - LAYOUT/LOADEDARTICLES
+
 .loadmore
-    width: 300px
-    font-size: 1.5em
-    font-weight: 600
-    padding: 10px
-    border: 1px grey solid
-    border-radius: 20px
-    outline: none
-    +respond-to(medium)
-        width: 100%
-.loadmore:hover
-    background-color: grey
+  +respond-to($breakpoint-medium)
+    width: 100%
+
+
+  border: 1px grey solid
+  border-radius: 20px
+  font:
+    size: 1.5em
+    weight: 600
+  padding: 10px
+  outline: none
+  width: 300px
+
+  &:active,
+  &:hover
     color: white
-.loadmore:active
+
+  &:active
     background-color: #444444
-    color: white
-    outline: none    
+    outline: none
 
-    
-
-
-
+  &:hover
+    background-color: grey

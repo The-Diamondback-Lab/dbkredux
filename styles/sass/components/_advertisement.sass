@@ -2,20 +2,18 @@
 
 .advertisement
   +flex(column, center, center)
+
+  margin: px-to-em(16) 0
+
   > div
     background-color: lightgrey
 
-  // & iframe
-  //   max-width: 100vw
-  //   display: block
-  //   margin: 0 auto
-
 .ad-desktop
-  +respond-to(medium)
+  +respond-to($breakpoint-medium)
     display: none
 
 .ad-mobile
   display: none
-  +respond-to(medium)
-    display: flex
 
+  +respond-to($breakpoint-medium)
+    display: flex

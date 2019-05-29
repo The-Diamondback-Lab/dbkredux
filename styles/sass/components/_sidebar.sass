@@ -1,81 +1,98 @@
+////
+/// Sidebar styles
+/// @group organism-sidebar
+////
+
 $nav-height: 56px
 $nav-height-mobile: 75px
 
 .sidebar
-    position: absolute
-    left: -100%
-    min-width: 300px
-    display: flex
-    flex-direction: column
-    background-color: white
-    border-right: $border
-    font-size: 0.8em
-    overflow-y: auto
-    height: calc(100vh - 56px) //ensures that the sidebar goes to the bottom of the page and not past it
-    +respond-to(schmedium)
-        height: calc(100vh - 75px) //use mobile nav bar height
-        width: 70%
-        > .search-section
-            width: 100%
-            padding: 50px
-            height: 50px
-            border-bottom: $border
+  position: absolute
+  left: -100%
+  min-width: 300px
+  display: flex
+  flex-direction: column
+  background-color: white
+  border-right: $border
+  font-size: 0.8em
+  overflow-y: auto
+
+  // ensures that the sidebar goes to the bottom of the page and not past it
+  height: calc(100vh - 56px)
+
+  +respond-to($breakpoint-schmedium)
+    // use mobile nav bar height
+    height: calc(100vh - 75px)
+    width: 70%
+
+    > .search-section
+      width: 100%
+      padding: 50px
+      height: 50px
+      border-bottom: $border
 
 .sidebar.open
-    left: 0
+  left: 0
 
 .sidebar-link
-    display: flex
-    align-content: center
-    align-items: center
-    padding: 10px
-    padding-left: 30px
-    padding-right: 30px
-    cursor: pointer
-    > p
-        text-align: left
-    > svg
-        margin-left: auto
-    background-color: white
+  display: flex
+  align-content: center
+  align-items: center
+  padding: 10px
+  padding-left: 30px
+  padding-right: 30px
+  cursor: pointer
+
+  > p
+    text-align: left
+
+  > svg
+    margin-left: auto
+
+  background-color: white
 
 .sidebar-link:hover
-    background-color: #DDDDDD
-
-
-.sidebar-item
-    overflow: visible
-    border-bottom: $border
-
+  background-color: #DDDDDD
 
 .sidebar-item
-    > .sidebar-item
-        display: none
-        >div
-            width: 100%
-            height: 100%
+  overflow: visible
+  border-bottom: $border
+
+.sidebar-item
+  > .sidebar-item
+    display: none
+
+    > div
+      width: 100%
+      height: 100%
 
 .sidebar-item.active
-    > .sidebar-item
-        display: block
-        > .sidebar-link
-            background-color: #f1f1f1
-        > .sidebar-link:hover
-            background-color: #DDDDDD
+  > .sidebar-item
+    display: block
+
     > .sidebar-link
-        background-color: #CCCCCC !important
-        > svg
-            transform: rotate(180deg)
-    // border-left: 3px solid $accent-med
+      background-color: #f1f1f1
+
+    > .sidebar-link:hover
+      background-color: #DDDDDD
+
+  > .sidebar-link
+    background-color: #CCCCCC !important
+
+    > svg
+      transform: rotate(180deg)
+
+  // border-left: 3px solid $accent-med
 
 .sidebar-item.has-children
-    > .sidebar-link > a > p
-        font-weight: 600
+  > .sidebar-link > a > p
+    font-weight: 600
 
-.sidebar a 
-    color: black
-    font-size: 1em
-    font-weight: 400
-    text-transform: uppercase
+.sidebar a
+  color: black
+  font-size: 1em
+  font-weight: 400
+  text-transform: uppercase
 
 .sidebar button
-    width: 100%
+  width: 100%

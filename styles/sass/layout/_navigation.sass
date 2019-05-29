@@ -9,8 +9,10 @@ nav
   +flex(row, center, space-between)
 
   height: 56px
-  +respond-to(schmedium)
+
+  +respond-to($breakpoint-schmedium)
     height: 75px
+
 
   border:
     bottom: $border
@@ -21,7 +23,7 @@ nav
     +flex(row, center, space-between)
 
   background-color: rgba(#FFFFFF, 0.95)
-  transition: background-color .5s linear
+  transition: background-color 0.5s linear
   top: 0
   overflow-x: auto !important
 
@@ -29,12 +31,14 @@ nav
 .navigation-links > a,
 .navigation-links > button:not(:last-of-type)
   margin: 0 $navigation-margin 0 0
-  +respond-to(medium)
-    margin: 0 $navigation-margin-medium 0 0 
+
+  +respond-to($breakpoint-medium)
+    margin: 0 $navigation-margin-medium 0 0
 
 #menu-btn
   font-size: px-to-em(22)
-  +respond-to(schmedium)
+
+  +respond-to($breakpoint-schmedium)
     // margin-right: 10px
 
 .navigation-links
@@ -42,6 +46,7 @@ nav
 
   > div
     +flex(row, center)
+
     > a
       > img
         width: 150px
@@ -49,12 +54,15 @@ nav
 
   > a,
   > button
-    font-size: 0.85vw
-    +respond-to(medium)
-      font-size: 1vw !important
+    +respond-to($breakpoint-large)
+      font-size: px-to-em(11) !important
 
 
-    // font-size: $navigation-font-size
+    +respond-to($breakpoint-medium)
+      font-size: 1.125vw !important
+
+
+    font-size: px-to-em(14)
     text-transform: uppercase
 
   > a
@@ -85,24 +93,34 @@ nav
       color: $accent-dark
 
 
+    +respond-to($breakpoint-large)
+      font-size: px-to-em(16)
+
+
+    +respond-to($breakpoint-medium)
+      font-size: px-to-em(14)
+
+
     color: grey
     font-size: px-to-em(18)
     margin-left: $navigation-margin
 
-  +respond-to(medium)
+  +respond-to($breakpoint-medium)
     > a
       margin-left: $navigation-margin-medium
-  +respond-to(schmedium)
+
+
+  +respond-to($breakpoint-schmedium)
     display: none
 
-.mobile-dbk-logo 
+.mobile-dbk-logo
   display: none
-  +respond-to(schmedium)
+
+  +respond-to($breakpoint-schmedium)
     display: block
 
 .disappear-on-mobile
   display: block
-  +respond-to(schmedium)
-    display: none
-  
 
+  +respond-to($breakpoint-schmedium)
+    display: none

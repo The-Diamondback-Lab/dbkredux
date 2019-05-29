@@ -1,44 +1,43 @@
 /* AUTHOR PAGE STYLES - PAGES/AUTHORPAGE.SASS
 .author-page h1
-    font-size: 2.5em
-    text-transform: normal
-    > a
-        color: black
-    > a:hover
-        color: $accent-dark
-    +respond-to(medium)
-        font-size: 2em
+  font-size: 2.5em
+  text-transform: normal
+
+  > a
+    color: black
+
+  > a:hover
+    color: $accent-dark
+
+  +respond-to($breakpoint-medium)
+    font-size: 2em
 
 .links-row
-    display: flex
-    align-items: flex-end
-    margin-bottom: 10px
-    > svg
-        margin-right: 10px
-    
-    > .fa-twitter
-        color: #1DA1F2
-    
-    > .fa-envelope
-        color: rgba($accent-med, 0.8)
-    
+  display: flex
+  align-items: flex-end
+  margin-bottom: 10px
+
+  > svg
+    margin-right: 10px
+
+  > .fa-twitter
+    color: #1DA1F2
+
+  > .fa-envelope
+    color: rgba($accent-med, 0.8)
+
 .author-section
-    margin-top: 30px
+  margin-top: 30px
+  display: flex
+  align-items: center
+
+  > .author-info
     display: flex
+    flex-direction: column
     align-items: center
-    > .author-info
-        display: flex
-        flex-direction: column
-        align-items: center
-        > h1
-            margin-bottom: 0
+
+    > h1
+      margin-bottom: 0
 
 .author-description
-    line-height: 1.6
-
-
-
-
-
-        
-
+  line-height: 1.6

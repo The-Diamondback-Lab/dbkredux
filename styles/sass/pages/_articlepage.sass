@@ -5,145 +5,160 @@ $article-font-size-desktop: 20px
 $article-font-size-mobile: 18px
 
 .author
-    font-weight: 600
+  font-weight: 600
 
 .category
-    text-transform: uppercase
+  text-transform: uppercase
+  display: flex
+  flex-direction: row
+  margin-top: 10px
+
+  > a
+    margin-right: 15px
+    background-color: rgba($accent-med, 0.85)
+    padding: 10px
+    font-size: 1em
+    font-weight: 600
+    color: white
     display: flex
-    flex-direction: row
-    margin-top: 10px
-    > a
-        margin-right: 15px
-        background-color: rgba($accent-med, 0.85)
-        padding: 10px
-        font-size: 1em
-        font-weight: 600
-        color: white
-        display: flex
-        align-items: center
-    > a:hover
-        background-color: rgba($accent-med, 0.3)
-        color: $accent-med
+    align-items: center
 
-    +respond-to(medium)
-        font-size: 0.7em
-        padding-top: 5px
+  > a:hover
+    background-color: rgba($accent-med, 0.3)
+    color: $accent-med
 
+  +respond-to($breakpoint-medium)
+    font-size: 0.7em
+    padding-top: 5px
 
 .details
-    font-size: 1em
-    margin-bottom: 20px
+  font-size: 1em
+  margin-bottom: 20px
 
-    +flex(row, flex-start, flex-start)
-    width: 100%
-    +respond-to(medium)
-        flex-direction: column
-        > .dot
-            display: none
-    > span
-        margin-right: 10px
+  +flex(row, flex-start, flex-start)
 
-    > .twitter-link > a
-        color: #1DA1F2
-    > .twitter-link > a:hover
-        color: $accent-dark
-    
+  width: 100%
+
+  +respond-to($breakpoint-medium)
+    flex-direction: column
+
+    > .dot
+      display: none
+
+
+  > span
+    margin-right: 10px
+
+  > .twitter-link > a
+    color: #1DA1F2
+
+  > .twitter-link > a:hover
+    color: $accent-dark
 
 .article-text
-    display: flex
-    flex-direction: column
-    width: 100%
-    line-height: 1.6
+  display: flex
+  flex-direction: column
+  width: 100%
+  line-height: 1.6
+
+  & p, a, li, blockquote
+    font-size: $article-font-size-desktop
+
+  & *
+    font-family: Georgia, 'Times New Roman', Times, serif !important
+    max-width: 100%
+
+  +respond-to($breakpoint-medium)
     & p, a, li, blockquote
-        font-size: $article-font-size-desktop
-    
-    & *
-        font-family: Georgia, 'Times New Roman', Times, serif !important
-        max-width: 100%
+      font-size: $article-font-size-mobile
 
-    +respond-to(medium)
-        & p, a, li, blockquote
-            font-size: $article-font-size-mobile
-    > p
-        margin-bottom: 20px
-        margin-top: 20px
-    > .wp-caption
-        max-width: 100% !important
-        > img
-            max-width: 100%
-            height: auto
-        > p
-            margin-top: 0px
-            font-style: italic
-            font-size: 0.8em
-    
+
+  > p
+    margin-bottom: 20px
+    margin-top: 20px
+
+  > .wp-caption
+    max-width: 100% !important
+
     > img
-        max-width: 100% !important
-        max-height: 100% !important
+      max-width: 100%
+      height: auto
 
-    > .aligncenter
-        align-self: center
-    > .alignleft
-        align-self: left
-    > .alignright
-        align-self: end 
-
-    > ul
-        list-style-position: inside
-    > ol
-        list-style-position: inside
-
-    > blockquote 
-        > *
-            font-style: italic
-            color: #555555
-
-    > twitter-widget
-        align-self: center
-
-    & iframe
-        max-width: 100% !important
-    
-    
-    
-        
-.image-area
-    width: 100%
-    > .article-image
-        width: 100%
-        max-height: 500px
-        border-bottom: 4px solid $accent-med
-        border-top: 4px solid $accent-med
-        object-fit: cover
-    +respond-to(medium)
-        width: 100%
-    
-.article-caption
-    font-size: 0.8em
     > p
-        margin-top: 0
-h1
-    width: 100%
-    +respond-to(medium)
-        font-size: 1.7em
+      margin-top: 0px
+      font-style: italic
+      font-size: 0.8em
 
+  > img
+    max-width: 100% !important
+    max-height: 100% !important
+
+  > .aligncenter
+    align-self: center
+
+  > .alignleft
+    align-self: left
+
+  > .alignright
+    align-self: end
+
+  > ul
+    list-style-position: inside
+
+  > ol
+    list-style-position: inside
+
+  > blockquote
+    > *
+      font-style: italic
+      color: #555555
+
+  > twitter-widget
+    align-self: center
+
+  & iframe
+    max-width: 100% !important
+
+.image-area
+  width: 100%
+
+  > .article-image
+    width: 100%
+    max-height: 500px
+    border-bottom: 4px solid $accent-med
+    border-top: 4px solid $accent-med
+    object-fit: cover
+
+  +respond-to($breakpoint-medium)
+    width: 100%
+
+.article-caption
+  font-size: 0.8em
+
+  > p
+    margin-top: 0
+
+h1
+  width: 100%
+
+  +respond-to($breakpoint-medium)
+    font-size: 1.7em
 
 .sponsored-page
-    & .category
-        > a
-            background-color: rgba(gold, 1)
-            color: black
-        > a:hover
-            background-color: rgba(gold, 0.3)
-    
-    // & .author > a
-    //     color: darken(gold, 5)
+  & .category
+    > a
+      background-color: rgba(gold, 1)
+      color: black
 
-    & .image-area > .article-image
-        border-color: darken(gold, 10)
+    > a:hover
+      background-color: rgba(gold, 0.3)
 
-    & .article-text
-        & *
-            font-family: 'IBM Plex Sans' !important
+  // & .author > a
+  //     color: darken(gold, 5)
 
-        
+  & .image-area > .article-image
+    border-color: darken(gold, 10)
+
+  & .article-text
+    & *
+      font-family: 'IBM Plex Sans' !important

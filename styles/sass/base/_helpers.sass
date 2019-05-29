@@ -1,9 +1,9 @@
 /* HELPER CLASSES - BASE/HELPERS
 
-$major-rows: ('width': px-to-em(300), 'gutter': map-get($rows_config, gutter), 'max': 2)
+$major-rows: ('width': px-to-em(360), 'gutter': map-get($rows_config, gutter), 'max': 2)
 $major-rows-short: map-set($major-rows, max, 1)
 
-$minor-rows: ('width': px-to-em(200), 'gutter': map-get($major-rows, gutter), 'max': 1)
+$minor-rows: ('width': px-to-em(260), 'gutter': map-get($major-rows, gutter), 'max': 1)
 
 $columns: ('width': 1fr, 'gutter': map-get($major-rows, gutter), 'max': 20)
 
@@ -31,15 +31,20 @@ $columns: ('width': 1fr, 'gutter': map-get($major-rows, gutter), 'max': 20)
 
 %major-articles-grid
   +grid(grid, $major-rows, $columns)
+
   width: 100%
-  +respond-to(small)
+
+  +respond-to($breakpoint-small)
     //stack the grid on mobile
     display: flex
     flex-direction: column
+
     > figure
       height: 300px
       width: 100%
       margin-bottom: 10px
+
+
   > figure
     &:nth-of-type(4n+1),
     &:nth-of-type(4n+4)
@@ -65,17 +70,22 @@ $columns: ('width': 1fr, 'gutter': map-get($major-rows, gutter), 'max': 20)
 
 %related-articles-list
   display: flex
-  +respond-to(medium)
+
+  +respond-to($breakpoint-medium)
     flex-direction: column
 
+
   > figure
-      width: 500px
-      height: 300px
-      margin-right: 10px
-      +respond-to(medium)
-        margin-bottom: 10px
-      +respond-to(small)
-        width: 100%
+    width: 500px
+    height: 300px
+    margin-right: 10px
+
+    +respond-to($breakpoint-medium)
+      margin-bottom: 10px
+
+
+    +respond-to($breakpoint-small)
+      width: 100%
 
   > figure
     &:first-of-type,
@@ -89,9 +99,9 @@ $columns: ('width': 1fr, 'gutter': map-get($major-rows, gutter), 'max': 20)
 
     > figcaption
       height: 40%
+
       > .container > a
         font-size: 1em
-
 
 %minor-articles-grid
   +grid(grid, $minor-rows, $columns)
@@ -103,46 +113,56 @@ $columns: ('width': 1fr, 'gutter': map-get($major-rows, gutter), 'max': 20)
       @extend %article-banner
 
 %single-article
-    display: flex
-    flex-direction: column
-    figure
-      height: 300px
-      +respond-to(medium)
-        width: 100%
-        // max-width: 400px
-
-    figcaption
-      @extend %article-banner
-
-
-  
-.article-text-block
-  width: $max-width
   display: flex
   flex-direction: column
-  justify-content: center
-  > .article-block-title
-    color: black
-  > .article-block-title:hover
-    color: $accent-dark
-  > .article-info > .article-block-published
-    color: grey
-  border-bottom: 0.5px solid lightgrey
-  margin-top: 20px
-  padding-bottom: 20px
 
-.first-featured
-  display: flex
-  flex-direction: column
-  align-items: center
-  min-height: 300px
-  > figure
-    height: 300px
-    width: 100%
-    +respond-to(medium)
-      // max-width: 400px
-    > figcaption
-      @extend %article-banner
+  figure
+    height: px-to-em(325px)
+    min-height: px-to-em(325px)
+
+    +respond-to($breakpoint-medium)
+      width: 100%
+
+  figcaption
+    @extend %article-banner
+
+    > .container
+      .article-block-title
+        font-size: px-to-em(14)
+
+      .article-block-author,
+      .article-block-published
+        font-size: px-to-em(13)
+
+%right-rail
+  +flex(column, center, flex-start)
+
+  max-width: 27.5%
+  margin-left: px-to-em(45px)
+  min-width: min-content
+
+  > div
+    margin-bottom: px-to-em(32px)
+
+  > .advertisement
+    max-width: min-content
+
+  > .articles
+    min-width: 100%
+
+    &.opinion
+      .first-featured
+        > .article-block
+          @extend %single-article
+
+// ! FIXME
+.advertisments
+  > .container
+    +respond-to(px-to-em(832))
+      .ad-desktop
+        +flex(row, center, center)
+
+        max-width: 100%
 
 .center
   +flex(row, center, center)
@@ -163,41 +183,42 @@ $columns: ('width': 1fr, 'gutter': map-get($major-rows, gutter), 'max': 20)
   margin: 0 auto
   width: 1200px
   max-width: $max-width
-  // +respond-to(medium)
-  //   width: 100%
-
-.homepage
-  padding-top: 20px
-  display: flex
-  width: 100%
-  // align stuff in a row
-  flex-direction: row
-  +respond-to(medium)
-    // align in a single column
-    flex-direction: column
 
 .flex
   display: flex
 
-.left-rail
-  width: 70%
-  +respond-to(medium)
+.first-featured
+  display: flex
+  flex-direction: column
+  align-items: center
+
+  > .article-block
+    @extend %single-article
+
+    figcaption
+      +respond-to($breakpoint-small)
+        height: 47.5%
+
     width: 100%
+
+.left-rail
+  max-width: 72.5%
+  width: 100%
+
+  +respond-to($breakpoint-medium)
+    max-width: 100%
 
 .right-rail
-  width: 30%
-  margin-left: 100px
-  +respond-to(medium)
+  @extend %right-rail
+
+  +respond-to($breakpoint-medium)
     display: none
-  align-items: center
 
 .right-rail-show
-  width: 30%
-  margin-left: 100px
-  +respond-to(medium)
-    width: 100%
+  @extend %right-rail
+
+  +respond-to($breakpoint-medium)
     margin-left: 0px
-  align-items: center
 
 .disappear
   height: 0 !important
@@ -210,6 +231,7 @@ $columns: ('width': 1fr, 'gutter': map-get($major-rows, gutter), 'max': 20)
 
 .major-articles-grid.short-grid
   @extend %major-articles-grid
+
   +grid(grid, $major-rows-short, $columns)
 
 .minor-articles-grid
@@ -223,9 +245,44 @@ $columns: ('width': 1fr, 'gutter': map-get($major-rows, gutter), 'max': 20)
 
 .row
   +flex
-  +respond-to(schmedium)
+  +respond-to($breakpoint-schmedium)
     flex-direction: column
 
 .scrolled
   position: fixed
   z-index: 5
+
+.display-none
+  display: none !important
+
+.preload
+  opacity: 0
+
+.postload
+  opacity: 1
+  transition: opacity 0.5s
+
+.page
+  margin-bottom: 30px
+
+  hr
+    display: block
+    height: 1px
+    border: 0
+    border-top: 1px solid #ccc
+    margin: 1em 0
+    padding: 0
+
+.desktop-only
+  +respond-to($breakpoint-medium)
+    display: none
+
+.mobile-only
+  +respond-to($breakpoint-schmedium)
+    display: block
+
+.tablet-and-below-only
+  display: none
+
+  +respond-to($breakpoint-medium)
+    display: block

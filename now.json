@@ -13,6 +13,11 @@
   ],
   "routes": [
     {
+      "src": "/orientation-guide",
+      "status": 301,
+      "headers": { "Location": "https://d3gx1wgrn4cpnk.cloudfront.net/uploads/2019/06/orientation19.pdf" }
+    },
+    {
       "src": "^\\/(?:\\/)?$",
       "dest": "/Home"
     },
@@ -43,11 +48,6 @@
     {
       "src": "^\\/_preview\\/([^\\/]+?)\\/([^\\/]+?)(?:\\/)?$",
       "dest": "/ArticlePreview?postId=$1&wpnonce=$2"
-    },
-    {
-      "src": "/orientation-guide",
-      "status": 301,
-      "headers": { "Location": "https://d3gx1wgrn4cpnk.cloudfront.net/uploads/2019/06/orientation19.pdf" }
     }
   ]
 }

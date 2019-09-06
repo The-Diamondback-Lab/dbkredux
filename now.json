@@ -15,7 +15,9 @@
     {
       "src": "/orientation",
       "status": 301,
-      "headers": { "Location": "https://d3gx1wgrn4cpnk.cloudfront.net/uploads/2019/06/orientation19.pdf" }
+      "headers": {
+        "Location": "https://d3gx1wgrn4cpnk.cloudfront.net/uploads/2019/06/orientation19.pdf"
+      }
     },
     {
       "src": "^\\/(?:\\/)?$",

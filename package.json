@@ -1,11 +1,10 @@
 {
   "name": "@dbklab/dbknews",
   "version": "1.0.0",
-  "description": "",
+  "description": "The front-end to The DBK's main website - powered by React and Next.js.",
   "author": "The Diamondback Lab <thedbklab@gmail.com>",
   "main": "Home.jsx",
   "scripts": {
-    "preinstall": "rm -rf node_modules",
     "dev": "NODE_ENV=development node server.js",
     "test": "jest --detectOpenHandles",
     "build": "next build",

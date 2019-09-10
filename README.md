@@ -26,8 +26,8 @@ React.js and is server side rendered using Next.js. It can be viewed [here][2].
 
 ## Usage
 
-After installing the project dependenices, run `npm run dev` to view the site
-locally. The site will be available at **http://localhost:3000**.
+After installing the project dependenices, run `npm run dev` to view the site locally.  
+The site will be available at **http://localhost:3000**.
 
 ## Built With
 

@@ -22,14 +22,14 @@ export default class ArticlesPreloaded extends React.Component {
   getArticles = () => {
     const { mode, data, category } = this.props;
     let categoryData = {};
-    if (category === 'latest'){
+    if (category === 'latest') {
       categoryData = {
         name: "Latest",
         id: 'latest',
         link: ''
       }
     }
-    else{
+    else {
       categoryData = data[0].categories.find(cat => cat.id === category);
     }
     let articles =
@@ -44,7 +44,7 @@ export default class ArticlesPreloaded extends React.Component {
             return <Article text_only={false} {...s} key={i} />;
           }
         });
-    
+
     return { articles, categoryData };
   }
 
@@ -56,15 +56,16 @@ export default class ArticlesPreloaded extends React.Component {
 
     classes.push(mode);
     let header = "";
-    if (categoryData.name === 'Latest') {
+    if (categoryData && categoryData.name === 'Latest') {
       header = <h1>Latest</h1>;
-    }
-    else {
+    } else if (categoryData && categoryData.link) {
       header = <Link href={categoryData.link}><a><h1 dangerouslySetInnerHTML={{ __html: categoryData.name }}></h1></a></Link>;
     }
 
+    const style = `articles ${categoryData ? categoryData.id : ''}`
+
     return (
-      <div className={`articles ${categoryData.id}`}>
+      <div className={style.trim()}>
         {header}
         <div className={classes.join(' ')} >
           {

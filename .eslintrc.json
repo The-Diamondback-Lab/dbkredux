@@ -1,0 +1,37 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true,
+    "jest": true,
+    "jquery": true
+  },
+  "extends": [
+    "plugin:jest/recommended",
+    "plugin:jsx-a11y/recommended",
+    "plugin:react/recommended",
+    "standard",
+    "standard-react",
+    "standard-jsx"
+  ],
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "impliedStrict": true,
+      "jsx": true
+    },
+    "ecmaVersion": 6,
+    "requireConfigFile": true,
+    "sourceType": "module"
+  },
+  "plugins": [
+    "jsx-a11y"
+  ],
+  "root": true,
+  "rules": {
+    "camelcase": 0,
+    "react/jsx-fragments": 0,
+    "react/prop-types": 0,
+    "space-before-function-paren": 0
+  }
+}

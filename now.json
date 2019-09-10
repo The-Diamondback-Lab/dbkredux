@@ -2,6 +2,7 @@
   "name": "dbk-frontend",
   "version": 2,
   "public": true,
+  "alias": "dbknews.com",
   "builds": [
     {
       "src": "package.json",
@@ -15,7 +16,9 @@
     {
       "src": "/orientation",
       "status": 301,
-      "headers": { "Location": "https://d3gx1wgrn4cpnk.cloudfront.net/uploads/2019/06/orientation19.pdf" }
+      "headers": {
+        "Location": "https://d3gx1wgrn4cpnk.cloudfront.net/uploads/2019/06/orientation19.pdf"
+      }
     },
     {
       "src": "^\\/(?:\\/)?$",

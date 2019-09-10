@@ -1,0 +1,5 @@
+# ESLint Ignore - https://eslint.org/docs/user-guide/configuring#eslintignore
+# Ignore build files, design files, and assets
+
+./build/*
+./src/assets/*

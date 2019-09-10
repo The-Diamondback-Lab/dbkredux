@@ -7,7 +7,7 @@ Below you'll find instructions on how to deploy to Zeit Now.
 ## Overview
 
 [Prerequisites](#prerequisites)  
-[Deploy to Firebase](#deploy-to-zeit-now)  
+[Deploy to Zeit Now](#deploy-to-zeit-now)  
 
 ## Prerequisites
 

@@ -8,6 +8,7 @@
     "dev": "NODE_ENV=development node server.js",
     "test": "jest --detectOpenHandles",
     "build": "next build",
+    "now-build": "next build",
     "start": "NODE_ENV=production node server.js"
   },
   "keywords": [
@@ -35,7 +36,7 @@
     "jquery": "^3.3.1",
     "moment": "^2.24.0",
     "moment-timezone": "^0.5.23",
-    "next": "^7.0.3",
+    "next": "^9.0.5",
     "next-ga": "^2.3.4",
     "next-routes": "^1.4.2",
     "node-sass": "^4.12.0",

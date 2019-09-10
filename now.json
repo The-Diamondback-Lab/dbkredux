@@ -2,6 +2,7 @@
   "name": "dbk-frontend",
   "version": 2,
   "public": true,
+  "alias": "dbknews.com",
   "builds": [
     {
       "src": "package.json",

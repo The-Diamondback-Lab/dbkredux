@@ -22,23 +22,25 @@ Maryland's student run newspaper.
 
 Previously, the site was built using [Arc Publishing][1], but eventually the
 need for a custom built site was clear. The newly designed site was built using
-React.js and is server side rendered using Next.js.It can be viewed [here][2].
+React.js and is server side rendered using Next.js. It can be viewed [here][2].
 
 ## Usage
 
-**Attention: This section is under construction.**
+After installing the project dependenices, run `npm run dev` to view the site
+locally. The site will be available at **http://localhost:3000**.
 
 ## Built With
 
-- [React.js][2] - JavaScript library for building user interfaces
-- [Babel][3] - JavaScript compiler to convert ECMAScript 2015+ code into a backwards compatible JS
-- [Sass][4] - CSS extension
-- [Google Analytics][5] - Analytics tracking
+- [Next.js][3] - JavaScript library for building user interfaces
+- [React.js][4] - JavaScript library for building user interfaces
+- [Babel][5] - JavaScript compiler to convert ECMAScript 2015+ code into a backwards compatible JS
+- [Sass][6] - CSS extension
+- [Google Analytics][7] - Analytics tracking
 
 [1]: https://www.arcpublishing.com
-[4]: https://nextjs.org/
-[3]: https://reactjs.com/
-[4]: https://nextjs.org/
-[5]: https://babeljs.io/docs/en/#jsx-and-react
-[6]: https://sass-lang.com
+[2]: https://dbknews.com
+[3]: https://nextjs.org/
+[4]: https://reactjs.com/
+[5]: https://sass-lang.com
+[6]: https://babeljs.io/docs/en/#jsx-and-react
 [7]: https://github.com/fknussel/react-router-ga

@@ -17,12 +17,12 @@ export default class Navigation extends React.Component {
 
   render() {
     const { menu } = this.props;
-    if (menu === null){
+    if (menu === null) {
       return <div className="container">
-      <div className='navigation-links'>
+        <div className='navigation-links'>
 
-      </div>
-    </div>;
+        </div>
+      </div>;
     }
 
     return (
@@ -34,16 +34,16 @@ export default class Navigation extends React.Component {
             <NoSSR><NavigationLinks menu={menu.items} /></NoSSR>
           </div>
           <div className='navigation-links-social'>
-            <a href = "https://www.facebook.com/TheDiamondback/" target="_blank"  rel="noopener">
+            <a href="https://www.facebook.com/TheDiamondback/" target="_blank" rel="noopener">
               <FontAwesomeIcon icon={faFacebook} size='lg' />
             </a>
-            <a href = "https://twitter.com/thedbk" target="_blank" rel="noopener">
+            <a href="https://twitter.com/thedbk" target="_blank" rel="noopener">
               <FontAwesomeIcon icon={faTwitter} size='lg' />
             </a>
-            <a href = "https://www.instagram.com/thedbk/" target="_blank" rel="noopener">
+            <a href="https://www.instagram.com/thedbk/" target="_blank" rel="noopener">
               <FontAwesomeIcon icon={faInstagram} size='lg' />
             </a>
-            <a href = "https://www.youtube.com/user/DiamondbackVideo" target="_blank" rel="noopener">
+            <a href="https://www.youtube.com/user/DiamondbackVideo" target="_blank" rel="noopener">
               <FontAwesomeIcon icon={faYoutube} size='lg' />
             </a>
           </div>
@@ -66,7 +66,7 @@ class NavigationButton extends React.Component {
     let hamburgerClass = "hamburger hamburger--slider " + (ha ? 'is-active' : '');
     return (
       <div>
-        <button id="menu-btn" className={hamburgerClass} type="button" onClick={e => this._onClick(e,ha)}>
+        <button id="menu-btn" className={hamburgerClass} type="button" onClick={e => this._onClick(e, ha)}>
           <span className="hamburger-box">
             <span className="hamburger-inner"></span>
           </span>
@@ -81,9 +81,9 @@ class NavigationButton extends React.Component {
   /**
    * @param {boolean} ha current hamburger active state property
    */
-  _onClick = (e,ha) => {
+  _onClick = (e, ha) => {
     this.props.toggleSidebar();
-    this.setState({hamburgerActive: !ha});
+    this.setState({ hamburgerActive: !ha });
     // this.props.toggleSidebar();
   }
 }
@@ -94,26 +94,32 @@ class NavigationLinks extends React.Component {
     return (
       <React.Fragment>
         {menu.map((item, i) => {
-          if (item.type === 'custom'){
+          if (item.type === 'custom') {
             return (
-            <a
-              className='disappear-on-mobile'
-              href={item.url}
-              key={`link-${i}`}
-              target='_blank'
-              rel="noopener noreferrer"
-            >
-              {item.title}
-            </a>);
+              <a
+                className='disappear-on-mobile'
+                href={item.url}
+                key={`link-${i}`}
+                target='_blank'
+                rel="noopener noreferrer"
+              >
+                {item.title}
+              </a>);
           }
           return (
-            <Link
-              href={item.url} key={`link-${i}`}
-            >
+            <Link href={item.url} key={`link-${i}`}>
               <a className='disappear-on-mobile'>{item.title}</a>
             </Link>
           );
         })}
+        <a
+          className='special-nav disappear-on-mobile'
+          href="https://dbknews.com/donate"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Donate
+        </a>
         <a
           className='special-nav disappear-on-mobile'
           href="https://dbknews.us9.list-manage.com/subscribe/post?u=589bc6727b2e01217b65a369e&id=bfdcfcc0db"

@@ -2,7 +2,7 @@
 
 $navigation-font-size: px-to-em(14.5)
 $navigation-icon-font-size: px-to-em(24)
-$navigation-margin: 15px
+$navigation-margin: px-to-em(13.5)
 $navigation-margin-medium: px-to-em(12)
 
 nav
@@ -10,7 +10,7 @@ nav
 
   height: 56px
 
-  +respond-to($breakpoint-schmedium)
+  +respond-to($breakpoint-medium)
     height: 75px
 
 
@@ -32,14 +32,11 @@ nav
 .navigation-links > button:not(:last-of-type)
   margin: 0 $navigation-margin 0 0
 
-  +respond-to($breakpoint-medium)
-    margin: 0 $navigation-margin-medium 0 0
+  // +respond-to($breakpoint-medium)
+  //   margin: 0 $navigation-margin-medium 0 0
 
 #menu-btn
   font-size: px-to-em(22)
-
-  +respond-to($breakpoint-schmedium)
-    // margin-right: 10px
 
 .navigation-links
   +flex(row, center)
@@ -55,14 +52,9 @@ nav
   > a,
   > button
     +respond-to($breakpoint-large)
-      font-size: px-to-em(11) !important
+      font-size: px-to-em(10.75) !important
 
-
-    +respond-to($breakpoint-medium)
-      font-size: 1.125vw !important
-
-
-    font-size: px-to-em(14)
+    font-size: px-to-em(13)
     text-transform: uppercase
 
   > a
@@ -71,9 +63,7 @@ nav
 
 
     color: $dark
-    font:
-      // size: $navigation-font-size
-      weight: 400
+    font-weight: 400
 
   > .special-nav
     +hocus
@@ -92,17 +82,11 @@ nav
     +hocus
       color: $accent-dark
 
-
     +respond-to($breakpoint-large)
-      font-size: px-to-em(16)
-
-
-    +respond-to($breakpoint-medium)
-      font-size: px-to-em(14)
-
+      font-size: px-to-em(12)
 
     color: grey
-    font-size: px-to-em(18)
+    font-size: px-to-em(15)
     margin-left: $navigation-margin
 
   +respond-to($breakpoint-medium)
@@ -110,17 +94,17 @@ nav
       margin-left: $navigation-margin-medium
 
 
-  +respond-to($breakpoint-schmedium)
+  +respond-to($breakpoint-medium)
     display: none
 
 .mobile-dbk-logo
   display: none
 
-  +respond-to($breakpoint-schmedium)
+  +respond-to($breakpoint-medium)
     display: block
 
 .disappear-on-mobile
   display: block
 
-  +respond-to($breakpoint-schmedium)
+  +respond-to($breakpoint-medium)
     display: none

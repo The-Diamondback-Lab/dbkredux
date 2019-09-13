@@ -21,7 +21,7 @@ export default class SponsoredArticles extends React.Component {
   async componentDidMount() {
     try {
       let raw_article = parseDate((await request(`/articles?category=sponsored&preview=true&per_page=1`))[0]);
-      if (raw_article.date.longAgo){
+      if (raw_article.date.longAgo) {
         return
       }
       let article = <Article text_only={false} {...raw_article} />;
@@ -36,16 +36,20 @@ export default class SponsoredArticles extends React.Component {
     const { articles, category, loaded } = this.state;
     const { mode } = this.props;
 
-    if (!loaded){
+    if (!loaded) {
       return '';
     }
 
     let header = <Link href={category.link}><a><h1 dangerouslySetInnerHTML={{ __html: category.name }}></h1></a></Link>;
-    
+
     return (
       <div className={mode}>
         <div className={`articles ${category.id}`}>
-          {header}
+          <Link href={category.link}>
+            <a>
+              <h1 dangerouslySetInnerHTML={{ __html: category.name }}></h1>
+            </a>
+          </Link>
           <div className='single-article' >
             {
               articles

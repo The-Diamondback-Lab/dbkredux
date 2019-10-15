@@ -32,3 +32,14 @@ production:
   when: manual
   only:
     - master
+    
+deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to Firebase
+        uses: w9jds/firebase-action@master
+        with:
+          args: deploy --only hosting:prod
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}

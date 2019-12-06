@@ -1,4 +1,9 @@
 {
+  "functions": {
+    "api/test.js": {
+      "memory": 500,
+    }
+  },
   "name": "dbk-frontend",
   "version": 2,
   "public": true,

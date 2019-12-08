@@ -1,13 +1,10 @@
 language: node_js
-
 node_js:
  - "11.6.0"
-
- branches:
+branches:
   only:
   - staging
   - master
-
 deploy:
   - provider: elasticbeanstalk
     access_key_id: ${AWS_ACCESS_KEY_ID}
@@ -28,6 +25,5 @@ deploy:
     bucket_name: ${AWS_S3_BUCKET}
     on:
       branch: "master"
-
 after_deploy:
   - echo "Application Deployed!"

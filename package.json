@@ -8,10 +8,8 @@
     "dev": "cross-env NODE_ENV=development node ./server.js",
     "build": "next build",
     "start": "next start",
-    "predeploy-staging": "cross-env NODE_ENV=staging next build",
-    "deploy-staging": "cross-env NODE_ENV=staging node ./server.js",
-    "predeploy-production": "cross-env NODE_ENV=production next build",
-    "deploy-production": "cross-env NODE_ENV=production node ./server.js"
+    "deploystage": "cross-env NODE_ENV=staging next build && cross-env NODE_ENV=staging node ./server.js",
+    "deployprod": "cross-env NODE_ENV=production next build && cross-env NODE_ENV=production node ./server.js"
   },
   "keywords": [
     "nextjs",

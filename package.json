@@ -5,12 +5,13 @@
   "author": "The Diamondback Lab <thedbklab@gmail.com>",
   "main": "Home.jsx",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development node server.js",
-    "test": "jest --detectOpenHandles",
+    "dev": "cross-env NODE_ENV=development node ./server.js",
     "build": "next build",
-    "now-build": "next build",
-    "start": "cross-env NODE_ENV=production node server.js",
-    "deploy": "now --target prod"
+    "start": "next start",
+    "predeploy-staging": "cross-env NODE_ENV=staging next build",
+    "deploy-staging": "cross-env NODE_ENV=staging node ./server.js",
+    "predeploy-production": "cross-env NODE_ENV=production next build",
+    "deploy-production": "cross-env NODE_ENV=production node ./server.js"
   },
   "keywords": [
     "nextjs",

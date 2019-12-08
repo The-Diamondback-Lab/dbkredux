@@ -4,3 +4,5 @@ jspm_packages
 
 # Next files
 .next
+
+.env

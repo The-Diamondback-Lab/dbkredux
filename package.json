@@ -5,11 +5,11 @@
   "author": "The Diamondback Lab <thedbklab@gmail.com>",
   "main": "Home.jsx",
   "scripts": {
-    "dev": "NODE_ENV=development node server.js",
+    "dev": "cross-env NODE_ENV=development node server.js",
     "test": "jest --detectOpenHandles",
     "build": "next build",
     "now-build": "next build",
-    "start": "NODE_ENV=production node server.js",
+    "start": "cross-env NODE_ENV=production node server.js",
     "deploy": "now --target prod"
   },
   "keywords": [
@@ -69,6 +69,7 @@
     "@babel/preset-react": "^7.0.0",
     "babel-eslint": "^11.0.0-beta.0",
     "babel-jest": "^24.9.0",
+    "cross-env": "^6.0.3",
     "eslint": "^6.2.1",
     "eslint-config-standard": "^12.0.0",
     "eslint-config-standard-jsx": "^7.0.0",

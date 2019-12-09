@@ -1,9 +1,10 @@
 // server.js
 const express = require('express');
 const next = require('next');
+const routes = require('./routes');
 const port = process.env.PORT || 3000;
-const app = next({ dev });
-const handle = app.getRequestHandler();
+const app = next({ dev: process.env.NODE_ENV !== 'production' });
+const handle = routes.getRequestHandler(app);
 
 app.prepare()
   .then(() => {
@@ -13,7 +14,7 @@ app.prepare()
       return handle(req, res);
     });
 
-    server.listen(por, err => {
+    server.listen(port, err => {
       if (err) throw err;
       console.log(`> Ready on http://localhost:${port}`);
     });

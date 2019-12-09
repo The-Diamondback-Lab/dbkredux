@@ -12,6 +12,11 @@
   "regions": [
     "iad1"
   ],
+  "functions": {
+    "api/test.js": {
+      "memory": 500
+    }
+  },
   "routes": [
     {
       "src": "/orientation",

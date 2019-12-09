@@ -7,9 +7,11 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development node ./server.js",
     "build": "next build",
-    "start": "cross-env NODE_ENV=production next start",
+    "prestart": "npm run build",
+    "start": "cross-env NODE_ENV=production node ./server.js",
     "deploystage": "cross-env NODE_ENV=staging next build && cross-env NODE_ENV=staging node ./server.js",
-    "deployprod": "cross-env NODE_ENV=production next build && cross-env NODE_ENV=production node ./server.js"
+    "predeployprod": "npm run build",
+    "deployprod": "cross-env NODE_ENV=production node ./server.js"
   },
   "keywords": [
     "nextjs",

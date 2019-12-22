@@ -8,10 +8,10 @@ Diamondback's main news website.
 
 ## Overview
 
-[Getting Started](#getting-started)  
-[Usage](#usage)  
-[Contributing](CONTRIBUTING.md)  
-[Deployment](docs/DEPLOYMENT.md)  
+[Getting Started](#getting-started)
+[Usage](#usage)
+[Contributing](CONTRIBUTING.md)
+[Deployment](docs/DEPLOYMENT.md)
 [Built With](#built-with)
 
 ## Getting Started
@@ -26,7 +26,7 @@ React.js and is server side rendered using Next.js. It can be viewed [here][2].
 
 ## Usage
 
-After installing the project dependenices, run `npm run dev` to view the site locally.  
+After installing the project dependenices, run `npm run dev` to view the site locally.
 The site will be available at **http://localhost:3000**.
 
 ## Built With
@@ -38,7 +38,7 @@ The site will be available at **http://localhost:3000**.
 - [Google Analytics][7] - Analytics tracking
 
 [1]: https://www.arcpublishing.com
-[2]: https://dbknews.com
+[2]: http://dbknews.com
 [3]: https://nextjs.org/
 [4]: https://reactjs.com/
 [5]: https://sass-lang.com

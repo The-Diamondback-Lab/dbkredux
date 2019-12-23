@@ -3,27 +3,16 @@ node_js:
  - "10.17.0"
 branches:
   only:
-  - staging
   - master
 deploy:
-  - provider: elasticbeanstalk
-    access_key_id: ${AWS_ACCESS_KEY_ID}
-    secret_access_key: ${AWS_SECRET_ACCESS_KEY}
-    region: "us-east-1"
-    app: "dbknews-elastic-beanstalk"
-    env: "dbknews-staging"
-    bucket_name: ${AWS_S3_BUCKET}
-    on:
-      branch: "staging"
-
-  - provider: elasticbeanstalk
-    access_key_id: ${AWS_ACCESS_KEY_ID}
-    secret_access_key: ${AWS_SECRET_ACCESS_KEY}
-    region: "us-east-1"
-    app: "dbknews-elastic-beanstalk"
-    env: "dbknews-production"
-    bucket_name: ${AWS_S3_BUCKET}
-    on:
-      branch: "master"
+  provider: elasticbeanstalk
+  access_key_id: ${AWS_ACCESS_KEY_ID}
+  secret_access_key: ${AWS_SECRET_ACCESS_KEY}
+  region: "us-east-1"
+  app: "dbknews-elastic-beanstalk"
+  env: "dbknews-production"
+  bucket_name: ${AWS_S3_BUCKET}
+  on:
+    branch: "master"
 after_deploy:
   - echo "Application Deployed!"

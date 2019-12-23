@@ -21,7 +21,7 @@ deploy:
     secret_access_key: ${AWS_SECRET_ACCESS_KEY}
     region: "us-east-1"
     app: "dbknews-elastic-beanstalk"
-    env: "dbknews-prod"
+    env: "dbknews-production"
     bucket_name: ${AWS_S3_BUCKET}
     on:
       branch: "master"

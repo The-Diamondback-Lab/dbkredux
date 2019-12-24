@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "The front-end to The DBK's main website - powered by React and Next.js.",
   "author": "The Diamondback Lab <thedbklab@gmail.com>",
-  "main": "Home.jsx",
   "scripts": {
     "dev": "cross-env NODE_ENV=development node ./server.js",
     "build": "next build",
@@ -18,8 +17,7 @@
   "keywords": [
     "nextjs",
     "reactjs",
-    "sass",
-    "zeit now"
+    "sass"
   ],
   "license": "ISC",
   "dependencies": {

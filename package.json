@@ -9,8 +9,8 @@
     "build": "next build",
     "prestart": "npm run build",
     "start": "cross-env NODE_ENV=production node ./server.js",
-    "predeployprod": "next build",
-    "deployprod": "cross-env NODE_ENV=production node ./server.js"
+    "predeploy": "npm run build",
+    "deploy": "cross-env NODE_ENV=production node ./server.js"
   },
   "engines": {
     "node": ">=10.16.3"

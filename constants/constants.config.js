@@ -10,7 +10,7 @@
 
 // api url
 const API_URL = process.env.NODE_ENV === 'development'
-  ? 'http://localhost:8080' : 'http://dbknews.com/developer';
+  ? 'http://localhost:8080' : 'https://dbknews.com/developer';
 
 // google analytics
 const GOOGLE_ANALYTICS_ID = 'UA-130746753-2';

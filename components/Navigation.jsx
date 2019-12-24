@@ -114,7 +114,7 @@ class NavigationLinks extends React.Component {
         })}
         <a
           className='special-nav disappear-on-mobile'
-          href="http://dbknews.com/donate"
+          href="/donate"
           target="_blank"
           rel="noopener noreferrer"
         >

@@ -9,7 +9,6 @@ import moment from 'moment';
 
 // components
 import Article from '../components/Article.jsx';
-import Loading from '../components/Loading.jsx';
 
 import { Link } from '../routes';
 
@@ -38,7 +37,7 @@ export default class Articles extends React.Component {
       }
       else {
         articles_data = await request(`/articles?category=${category}&preview=true&per_page=${max}`);
-        categories_data = articles_data[0].categories.find(cat => cat.id === category);  
+        categories_data = articles_data[0].categories.find(cat => cat.id === category);
       }
 
       /*
@@ -90,7 +89,7 @@ export default class Articles extends React.Component {
     else{
       header = <Link href={category.link}><a><h1 dangerouslySetInnerHTML={{ __html: category.name }}></h1></a></Link>;
     }
-    
+
     return (
       <div className={`articles ${category.id}`}>
         {header}

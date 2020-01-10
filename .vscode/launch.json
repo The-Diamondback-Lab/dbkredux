@@ -7,7 +7,8 @@
       "name": "Launch Site",
       "program": "${workspaceFolder}/server.js",
       "env": {
-        "NODE_ENV": "development"
+        "NODE_ENV": "development",
+        "API_URL": "http://localhost:8080"
       },
       "skipFiles": [
         "<node_internals>/**"

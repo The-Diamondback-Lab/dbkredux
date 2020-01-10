@@ -3,13 +3,10 @@
 
 // jquery
 import $ from 'jquery';
-
 // axios
 import axios from 'axios';
-
 // moment
 import moment from 'moment-timezone';
-
 import Parser from 'html-react-parser';
 
 import Advertisement from '../components/Advertisement';

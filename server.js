@@ -1,4 +1,4 @@
-// server.js
+const fs = require('fs').promises;
 const express = require('express');
 const next = require('next');
 const routes = require('./routes');
@@ -9,6 +9,11 @@ const handle = routes.getRequestHandler(app);
 app.prepare()
   .then(() => {
     const server = express();
+    const adsTxtPromise = fs.readFile('./ads.txt', { encoding: 'utf-8' });
+
+    server.get('/ads.txt', (_, res) => {
+      adsTxtPromise.then(data => res.send(data));
+    });
 
     server.get('*', (req, res) => {
       return handle(req, res);

@@ -1,5 +1,5 @@
 const routes = module.exports = require('next-routes')()
- 
+
 routes
 .add({name: 'Home', pattern: '/', page: 'Home'})
 .add({name: '404', pattern: '/404', page: 'ErrorPage'})

@@ -62,6 +62,7 @@
     "react-lazyload": "^2.5.0",
     "react-load-script": "0.0.6",
     "react-no-ssr": "^1.1.0",
+    "react-twitter-widgets": "^1.7.1",
     "serverless-http": "^1.9.0",
     "styled-jsx": "^3.2.0",
     "underscore.string": "^3.3.5",

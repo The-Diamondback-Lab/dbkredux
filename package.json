@@ -51,7 +51,7 @@
     "next-routes": "^1.4.2",
     "node-sass": "^4.13.1",
     "node-sass-chokidar": "^1.3.4",
-    "npm": "^6.13.6",
+    "npm": "^6.13.7",
     "nprogress": "^0.2.0",
     "react": "^16.9.0",
     "react-ad-block-detect": "^1.0.1",

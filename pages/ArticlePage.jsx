@@ -20,7 +20,6 @@ import {
   request, parseDate, loadImage, processArticleBody, loadDynamicArticleContent, chooseArticleDates
 } from '../utilities/app.utilities.js';
 
-
 /* eslint-disable space-before-function-paren */
 /* eslint-disable camelcase */
 
@@ -152,8 +151,8 @@ export default class ArticlePage extends React.Component {
                 }}
                 options={{
                   username: 'thedbk',
-                  height: '400',
-                  tweetLimit: '5'
+                  width: '100%',
+                  height: '606px',
                 }}
               />
               <br />

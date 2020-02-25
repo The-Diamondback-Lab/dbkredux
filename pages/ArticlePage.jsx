@@ -4,6 +4,7 @@ import { Link } from '../routes';
 import Head from 'next/head';
 import Parser from 'html-react-parser';
 import * as uss from 'underscore.string';
+import { Timeline } from 'react-twitter-widgets';
 
 import ErrorPage from './ErrorPage.jsx';
 
@@ -18,7 +19,6 @@ import DonateBar from '../components/DonateBar';
 import {
   request, parseDate, loadImage, processArticleBody, loadDynamicArticleContent, chooseArticleDates
 } from '../utilities/app.utilities.js';
-
 
 /* eslint-disable space-before-function-paren */
 /* eslint-disable camelcase */
@@ -144,7 +144,17 @@ export default class ArticlePage extends React.Component {
               <Advertisement path='300x600_Banner_C' size={[300, 600]} mode="desktop" />
               <br />
               <h3>Latest Tweets</h3>
-              <iframe className='social-feed' src="https://dbknews.friends2follow.com/f2f/widget/html/socialstack/50/0/12/140/1/1/0/9/0/1" width="100%" height="606px" frameBorder="0" scrolling="no"></iframe>
+              <Timeline
+                dataSource={{
+                  sourceType: 'profile',
+                  screenName: 'twitterdev'
+                }}
+                options={{
+                  username: 'thedbk',
+                  width: '100%',
+                  height: '606px',
+                }}
+              />
               <br />
               <br />
               <SponsoredLinks />

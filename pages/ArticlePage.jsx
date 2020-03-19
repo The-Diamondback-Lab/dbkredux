@@ -17,7 +17,11 @@ import SponsoredLinks from '../components/SponsoredLinks';
 import DonateBar from '../components/DonateBar';
 
 import {
-  request, parseDate, loadImage, processArticleBody, loadDynamicArticleContent, chooseArticleDates
+  request,
+  parseDate,
+  loadImage,
+  processArticleBody,
+  loadDynamicArticleContent
 } from '../utilities/app.utilities.js';
 
 /* eslint-disable space-before-function-paren */

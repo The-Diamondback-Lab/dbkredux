@@ -340,3 +340,36 @@ export const getArticlePreviewData = async (wp_id, wp_nonce) => {
 
   return articleData;
 }
+
+const monthLookup = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December'
+]
+
+/**
+ * Humanizes a date object into the following format: `Month Day, Year`.
+ *
+ * i.e. can return "March 20, 2020"
+ * @param {Date} dateObj
+ */
+export function humanizeDate(dateObj) {
+  let month = monthLookup[dateObj.getMonth()];
+  let date = dateObj.getDate();
+  let year = dateObj.getFullYear();
+
+  return `${month} ${date}, ${year}`
+}
+
+export function getArticleDateDisplay(article) {
+
+}

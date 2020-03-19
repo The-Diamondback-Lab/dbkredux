@@ -21,7 +21,8 @@ import {
   parseDate,
   loadImage,
   processArticleBody,
-  loadDynamicArticleContent
+  loadDynamicArticleContent,
+  humanizeDate
 } from '../utilities/app.utilities.js';
 
 /* eslint-disable space-before-function-paren */
@@ -184,31 +185,4 @@ export default class ArticlePage extends React.Component {
       </React.Fragment>
     );
   }
-}
-
-let monthLookup = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December'
-]
-
-/**
- *
- * @param {Date} dateObj
- */
-function humanizeDate(dateObj) {
-  let month = monthLookup[dateObj.getMonth()];
-  let date = dateObj.getDate();
-  let year = dateObj.getFullYear();
-
-  return `${month} ${date}, ${year}`
 }

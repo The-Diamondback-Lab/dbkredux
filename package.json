@@ -4,6 +4,7 @@
   "description": "The front-end to The DBK's main website - powered by React and Next.js.",
   "author": "The Diamondback Lab <thedbklab@gmail.com>",
   "scripts": {
+    "lint": "eslint **/*.js **/*.jsx",
     "dev": "cross-env NODE_ENV=development API_URL=\"http://localhost:8080\" node ./server.js",
     "build": "next build",
     "prestart": "npm run build",

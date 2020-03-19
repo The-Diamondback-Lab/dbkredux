@@ -360,7 +360,9 @@ const monthLookup = [
  * Humanizes a date object into the following format: `Month Day, Year`.
  *
  * i.e. can return "March 20, 2020"
+ *
  * @param {Date} dateObj
+ * @returns {string}
  */
 export function humanizeDate(dateObj) {
   let month = monthLookup[dateObj.getMonth()];

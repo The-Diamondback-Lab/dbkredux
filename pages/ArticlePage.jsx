@@ -101,7 +101,7 @@ export default class ArticlePage extends React.Component {
     let dateString = null;
     let dateToShow = article.acf['date-to-show'];
 
-    if (true || dateToShow === 'last_updated') {
+    if (dateToShow === 'last_updated') {
       let parsed = new Date(Date.parse(article.modified));
       dateString = `Last updated ${humanizeDate(parsed)}`;
     } else if (dateToShow === 'no_date') {

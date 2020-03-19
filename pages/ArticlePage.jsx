@@ -24,7 +24,6 @@ import {
 /* eslint-disable camelcase */
 
 export default class ArticlePage extends React.Component {
-
   state = { scriptjsLoaderEnabled: false };
 
   static async getInitialProps({ query }) {
@@ -93,6 +92,20 @@ export default class ArticlePage extends React.Component {
     description = description.replace('</p>', '');
     description = description.replace('\n', '');
 
+    let dot = '·';
+    let dateString = null;
+    let dateToShow = article.acf['date-to-show'];
+
+    if (true || dateToShow === 'last_updated') {
+      let parsed = new Date(Date.parse(article.modified));
+      dateString = `Last updated ${humanizeDate(parsed)}`;
+    } else if (dateToShow === 'no_date') {
+      dateString = '';
+      dot = '';
+    } else { // Default to original published date
+      dateString = article.date.ago;
+    }
+
     return (
       <React.Fragment>
         <Head>
@@ -117,7 +130,7 @@ export default class ArticlePage extends React.Component {
               <h1 dangerouslySetInnerHTML={{ __html: article.title }}></h1>
               <div className='details'>
                 <span className='accent author'><Link href={article.author.link}><a>{article.author.name}</a></Link></span>
-                <span className='dot'>·</span>
+                <span className='dot'>{dot}</span>
                 {
                   article.author.user_twitter ?
                     <React.Fragment>
@@ -127,7 +140,7 @@ export default class ArticlePage extends React.Component {
                     : ''
                 }
                 <span
-                  dangerouslySetInnerHTML={{ __html: article.date.ago }}
+                  dangerouslySetInnerHTML={{ __html: dateString }}
                 />
               </div>
               <div className="addthis_inline_share_toolbox"></div>
@@ -167,4 +180,31 @@ export default class ArticlePage extends React.Component {
       </React.Fragment>
     );
   }
+}
+
+let monthLookup = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December'
+]
+
+/**
+ *
+ * @param {Date} dateObj
+ */
+function humanizeDate(dateObj) {
+  let month = monthLookup[dateObj.getMonth()];
+  let date = dateObj.getDate();
+  let year = dateObj.getFullYear();
+
+  return `${month} ${date}, ${year}`
 }

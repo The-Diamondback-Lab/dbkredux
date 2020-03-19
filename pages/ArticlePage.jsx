@@ -22,7 +22,7 @@ import {
   loadImage,
   processArticleBody,
   loadDynamicArticleContent,
-  humanizeDate
+  getArticleDateDisplay
 } from '../utilities/app.utilities.js';
 
 /* eslint-disable space-before-function-paren */
@@ -97,19 +97,8 @@ export default class ArticlePage extends React.Component {
     description = description.replace('</p>', '');
     description = description.replace('\n', '');
 
-    let dot = '·';
-    let dateString = null;
-    let dateToShow = article.acf['date-to-show'];
-
-    if (dateToShow === 'last_updated') {
-      let parsed = new Date(Date.parse(article.modified));
-      dateString = `Last updated ${humanizeDate(parsed)}`;
-    } else if (dateToShow === 'no_date') {
-      dateString = '';
-      dot = '';
-    } else { // Default to original published date
-      dateString = article.date.ago;
-    }
+    let dateString = getArticleDateDisplay(article);
+    let dot = article.acf['date-to-show'] === 'no_date' ? '' : '·';
 
     return (
       <React.Fragment>

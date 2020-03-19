@@ -372,6 +372,22 @@ export function humanizeDate(dateObj) {
   return `${month} ${date}, ${year}`
 }
 
+/**
+ * Gets the date string to display for a given article. An article should have the
+ * advanced custom field "date-to-show"
+ *
+ * @param {Object} article
+ * @returns {string}
+ */
 export function getArticleDateDisplay(article) {
+  let dateToShow = article.acf['date-to-show'];
 
+  if (dateToShow === 'last_updated') {
+    let parsed = new Date(Date.parse(article.modified));
+    return `Last updated ${humanizeDate(parsed)}`;
+  } else if (dateToShow === 'no_date') {
+    return '';
+  } else { // Default to original published date
+    return article.date.ago;
+  }
 }

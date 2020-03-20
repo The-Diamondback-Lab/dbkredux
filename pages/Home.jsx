@@ -16,8 +16,12 @@ import { request, parseDate, loadHomepageArticles, HOMEPAGE_REQUESTS } from '../
 
 export default class Home extends React.Component {
   static async getInitialProps() {
-    let featuredData = parseDate(await request('/featured_article'));
-    let articlesData = await loadHomepageArticles(HOMEPAGE_REQUESTS);
+    let dataPromises = await Promise.all([
+      request('/featured_article'),
+      await loadHomepageArticles(HOMEPAGE_REQUESTS)
+    ]);
+    let featuredData = parseDate(dataPromises[0]);
+    let articlesData = dataPromises[1];
 
     return {
       featuredData,

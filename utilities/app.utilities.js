@@ -226,15 +226,13 @@ export const chooseArticleDates = (article) => {
   This function loads in the homepage configuration, makes all necessary API calls to /articles, and stores the resulting data
 */
 export const loadHomepageArticles = async (config) => {
-  let articleRequests = []
-  config.forEach(params => {
+  let articleRequests = config.map(params => {
     if (params.category === 'latest') {
-      articleRequests.push(`/articles?preview=true&per_page=${params.max}`);
+      return `/articles?preview=true&per_page=${params.max}`;
+    } else {
+      return `/articles?category=${params.category}&preview=true&per_page=${params.max}`;
     }
-    else {
-      articleRequests.push(`/articles?category=${params.category}&preview=true&per_page=${params.max}`);
-    }
-  })
+  });
   let response = await requestBatch(articleRequests);
   return response;
 }

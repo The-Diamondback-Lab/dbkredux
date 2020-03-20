@@ -5,6 +5,7 @@
   "author": "The Diamondback Lab <thedbklab@gmail.com>",
   "scripts": {
     "dev": "cross-env NODE_ENV=development API_URL=\"http://localhost:8080\" node ./server.js",
+    "devWithApi": "cross-env NODE_ENV=developerment API_URL=\"https://api.dbknews.com\" node ./server.js",
     "build": "next build",
     "prestart": "npm run build",
     "start": "cross-env NODE_ENV=production node ./server.js",

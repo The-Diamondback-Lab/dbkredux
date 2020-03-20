@@ -147,7 +147,7 @@ export default class ArticlePage extends React.Component {
               <Timeline
                 dataSource={{
                   sourceType: 'profile',
-                  screenName: 'twitterdev'
+                  screenName: 'thedbk'
                 }}
                 options={{
                   username: 'thedbk',

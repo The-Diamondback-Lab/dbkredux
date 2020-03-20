@@ -15,7 +15,7 @@ import LazyLoad from 'react-lazyload';
 export default class Article extends React.Component {
 
   render() {
-    const { author, categories, date, id, link, title, featured_image, text_only } = this.props;
+    const { author, categories, date, link, title, featured_image, text_only } = this.props;
     let img_id = Math.random().toString(36).replace('0.', '');
     let featured_image_link = "/static/images/article-fallback.png";
     if (featured_image) {

@@ -9,8 +9,8 @@ import * as React from 'react';
 import { Link } from '../routes';
 
 import {
-  loadImage
-} from '../utilities/app.utilities.js'; 
+  loadImage, getArticleDateDisplay
+} from '../utilities/app.utilities.js';
 
 import LazyLoad from 'react-lazyload';
 
@@ -46,11 +46,10 @@ export default class LoadedArticle extends React.Component {
           <Link href={link}><a dangerouslySetInnerHTML={{ __html: excerpt }}></a></Link>
           <div className="loaded-article-author-date">
             <Link href={author.link}><a><p className="author">{author.name}</p></a></Link>
-            <p>{date.ago}</p>
+            <p>{getArticleDateDisplay(this.props)}</p>
           </div>
         </div>
       </div>
     );
   }
 }
-

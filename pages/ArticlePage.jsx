@@ -17,14 +17,18 @@ import SponsoredLinks from '../components/SponsoredLinks';
 import DonateBar from '../components/DonateBar';
 
 import {
-  request, parseDate, loadImage, processArticleBody, loadDynamicArticleContent, chooseArticleDates
+  request,
+  parseDate,
+  loadImage,
+  processArticleBody,
+  loadDynamicArticleContent,
+  getArticleDateDisplay
 } from '../utilities/app.utilities.js';
 
 /* eslint-disable space-before-function-paren */
 /* eslint-disable camelcase */
 
 export default class ArticlePage extends React.Component {
-
   state = { scriptjsLoaderEnabled: false };
 
   static async getInitialProps({ query }) {
@@ -93,6 +97,9 @@ export default class ArticlePage extends React.Component {
     description = description.replace('</p>', '');
     description = description.replace('\n', '');
 
+    let dateString = getArticleDateDisplay(article);
+    let dot = article.acf['date-to-show'] === 'no_date' ? '' : '·';
+
     return (
       <React.Fragment>
         <Head>
@@ -117,7 +124,7 @@ export default class ArticlePage extends React.Component {
               <h1 dangerouslySetInnerHTML={{ __html: article.title }}></h1>
               <div className='details'>
                 <span className='accent author'><Link href={article.author.link}><a>{article.author.name}</a></Link></span>
-                <span className='dot'>·</span>
+                <span className='dot'>{dot}</span>
                 {
                   article.author.user_twitter ?
                     <React.Fragment>
@@ -127,7 +134,7 @@ export default class ArticlePage extends React.Component {
                     : ''
                 }
                 <span
-                  dangerouslySetInnerHTML={{ __html: article.date.ago }}
+                  dangerouslySetInnerHTML={{ __html: dateString }}
                 />
               </div>
               <div className="addthis_inline_share_toolbox"></div>

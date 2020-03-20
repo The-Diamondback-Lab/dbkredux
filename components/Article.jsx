@@ -9,13 +9,13 @@ import * as React from 'react';
 import Link from 'next/link';
 
 // jquery
-import { loadImage } from '../utilities/app.utilities';
+import { loadImage, getArticleDateDisplay } from '../utilities/app.utilities';
 import LazyLoad from 'react-lazyload';
 
 export default class Article extends React.Component {
 
   render() {
-    const { author, categories, date, id, link, title, featured_image, text_only } = this.props;
+    const { author, categories, link, title, featured_image, text_only } = this.props;
     let img_id = Math.random().toString(36).replace('0.', '');
     let featured_image_link = "/static/images/article-fallback.png";
     if (featured_image) {
@@ -48,7 +48,7 @@ export default class Article extends React.Component {
                 className='article-block-author'></a>
             </Link>
             <p
-              dangerouslySetInnerHTML={{ __html: date.ago }}
+              dangerouslySetInnerHTML={{ __html: getArticleDateDisplay(this.props) }}
               className='article-block-published'
             />
           </div>
@@ -71,7 +71,7 @@ export default class Article extends React.Component {
                   className='article-block-author'></a>
               </Link>
               <p
-                dangerouslySetInnerHTML={{ __html: date.ago }}
+                dangerouslySetInnerHTML={{ __html: getArticleDateDisplay(this.props) }}
                 className='article-block-published'
               />
             </div>

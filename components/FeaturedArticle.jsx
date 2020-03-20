@@ -9,7 +9,7 @@ import * as React from 'react';
 import { Link } from '../routes';
 
 // jquery
-import { loadImage } from '../utilities/app.utilities';
+import { loadImage, getArticleDateDisplay } from '../utilities/app.utilities';
 /*
  * TODO: check if this.props.data.featured_media === 0
  * if so -> .article-block.text, otherwise .article-block.image
@@ -17,13 +17,13 @@ import { loadImage } from '../utilities/app.utilities';
 
 export default class FeaturedArticle extends React.Component {
   render() {
-    const { author, date, id, link, title, featured_image } = this.props.data;
+    const { author, id, link, title, featured_image } = this.props.data;
 
     let featured_image_link = "/static/images/article-fallback.png";
     if (featured_image) {
       featured_image_link = featured_image.article;
     }
-    
+
     let featuredImage = (<a>
         <img
           alt='Article'
@@ -31,7 +31,7 @@ export default class FeaturedArticle extends React.Component {
           id={`image-${id}`} src={featured_image_link}
           onLoad={() => loadImage(`image-${id}`)} />
       </a>);
-    
+
     return (
       <figure className='article-block featured-article'>
         <Link href={link}>
@@ -50,7 +50,7 @@ export default class FeaturedArticle extends React.Component {
                   className='article-block-author'></a>
               </Link>
               <p
-                dangerouslySetInnerHTML={{ __html: date.ago }}
+                dangerouslySetInnerHTML={{ __html: getArticleDateDisplay(this.props.data) }}
                 className='article-block-published'
               />
             </div>

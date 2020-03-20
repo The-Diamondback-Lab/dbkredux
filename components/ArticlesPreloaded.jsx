@@ -18,7 +18,6 @@ import {
 } from '../utilities/app.utilities.js';
 
 export default class ArticlesPreloaded extends React.Component {
-
   getArticles = () => {
     const { mode, data, category } = this.props;
     let categoryData = {};
@@ -28,10 +27,10 @@ export default class ArticlesPreloaded extends React.Component {
         id: 'latest',
         link: ''
       }
-    }
-    else {
+    } else {
       categoryData = data[0].categories.find(cat => cat.id === category);
     }
+
     let articles =
       data
         .sort((a, a2) => moment(a2.date).diff(a.date))

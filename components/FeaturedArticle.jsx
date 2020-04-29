@@ -3,13 +3,13 @@
 /* eslint-disable camelcase */
 
 // react
-import * as React from 'react';
+import * as React from 'react'
 
 // react router
-import { Link } from '../routes';
+import { Link } from '../routes'
 
 // jquery
-import { loadImage } from '../utilities/app.utilities';
+import { loadImage } from '../utilities/app.utilities'
 /*
  * TODO: check if this.props.data.featured_media === 0
  * if so -> .article-block.text, otherwise .article-block.image
@@ -17,21 +17,22 @@ import { loadImage } from '../utilities/app.utilities';
 
 export default class FeaturedArticle extends React.Component {
   render() {
-    const { author, date, id, link, title, featured_image } = this.props.data;
+    const { author, date, id, link, title, featured_image } = this.props.data
 
-    let featured_image_link = "/static/images/article-fallback.png";
+    let featured_image_link = '/static/images/article-fallback.png'
     if (featured_image) {
-      featured_image_link = featured_image.article;
+      featured_image_link = featured_image.article
     }
-    
+
     let featuredImage = (<a>
-        <img
-          alt='Article'
-          className='article-block-image'
-          id={`image-${id}`} src={featured_image_link}
-          onLoad={() => loadImage(`image-${id}`)} />
-      </a>);
-    
+      <img
+        alt='Article'
+        className='article-block-image'
+        id={`image-${id}`} src={featured_image_link}
+        onLoad={() => loadImage(`image-${id}`)}
+      />
+    </a>)
+
     return (
       <figure className='article-block featured-article'>
         <Link href={link}>
@@ -40,14 +41,18 @@ export default class FeaturedArticle extends React.Component {
         <figcaption>
           <div className='container'>
             <Link href={link}>
-              <a dangerouslySetInnerHTML={{ __html: title }}
-                className='article-block-title'></a>
+              <a
+                dangerouslySetInnerHTML={{ __html: title }}
+                className='article-block-title'
+              />
             </Link>
 
             <div className='article-info'>
               <Link href={author.link}>
-                <a dangerouslySetInnerHTML={{ __html: author.name }}
-                  className='article-block-author'></a>
+                <a
+                  dangerouslySetInnerHTML={{ __html: author.name }}
+                  className='article-block-author'
+                />
               </Link>
               <p
                 dangerouslySetInnerHTML={{ __html: date.ago }}
@@ -57,6 +62,6 @@ export default class FeaturedArticle extends React.Component {
           </div>
         </figcaption>
       </figure>
-    );
+    )
   }
 }

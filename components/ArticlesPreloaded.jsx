@@ -2,35 +2,33 @@
 /* eslint-disable array-callback-return */
 /* eslint-disable camelcase */
 
-import React from 'react';
+import React from 'react'
 
 // moment
-import moment from 'moment';
+import moment from 'moment'
 
 // components
-import Article from './Article.jsx';
+import Article from './Article.jsx'
 
-import { Link } from '../routes';
+import { Link } from '../routes'
 
 // utility functions
 import {
   parseDate
-} from '../utilities/app.utilities.js';
+} from '../utilities/app.utilities.js'
 
 export default class ArticlesPreloaded extends React.Component {
-
   getArticles = () => {
-    const { mode, data, category } = this.props;
-    let categoryData = {};
+    const { mode, data, category } = this.props
+    let categoryData = {}
     if (category === 'latest') {
       categoryData = {
-        name: "Latest",
+        name: 'Latest',
         id: 'latest',
         link: ''
       }
-    }
-    else {
-      categoryData = data[0].categories.find(cat => cat.id === category);
+    } else {
+      categoryData = data[0].categories.find(cat => cat.id === category)
     }
     let articles =
       data
@@ -38,28 +36,27 @@ export default class ArticlesPreloaded extends React.Component {
         .map(a => parseDate(a))
         .map((s, i) => {
           if (mode === 'text-only' || (mode === 'first-featured' && i !== 0)) {
-            return <Article text_only={true} {...s} key={i} />;
+            return <Article text_only {...s} key={i} />
+          } else {
+            return <Article text_only={false} {...s} key={i} />
           }
-          else {
-            return <Article text_only={false} {...s} key={i} />;
-          }
-        });
+        })
 
-    return { articles, categoryData };
+    return { articles, categoryData }
   }
 
   render() {
-    const { mode } = this.props;
-    let { articles, categoryData } = this.getArticles();
+    const { mode } = this.props
+    let { articles, categoryData } = this.getArticles()
 
-    let classes = [];
+    let classes = []
 
-    classes.push(mode);
-    let header = "";
+    classes.push(mode)
+    let header = ''
     if (categoryData && categoryData.name === 'Latest') {
-      header = <h1>Latest</h1>;
+      header = <h1>Latest</h1>
     } else if (categoryData && categoryData.link) {
-      header = <Link href={categoryData.link}><a><h1 dangerouslySetInnerHTML={{ __html: categoryData.name }}></h1></a></Link>;
+      header = <Link href={categoryData.link}><a><h1 dangerouslySetInnerHTML={{ __html: categoryData.name }} /></a></Link>
     }
 
     const style = `articles ${categoryData ? categoryData.id : ''}`
@@ -73,6 +70,6 @@ export default class ArticlesPreloaded extends React.Component {
           }
         </div>
       </div>
-    );
+    )
   }
 }

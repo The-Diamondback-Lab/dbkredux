@@ -21,7 +21,6 @@
       "jsx": true
     },
     "ecmaVersion": 6,
-    "requireConfigFile": true,
     "sourceType": "module"
   },
   "plugins": [

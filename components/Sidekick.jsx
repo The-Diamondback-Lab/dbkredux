@@ -23,7 +23,7 @@ export default class Sidekick extends React.Component {
     return seen
   }
 
-  closeSidekick = () => {
+  handleCloseSidekick = () => {
     $('#sidekick').hide()
     let cookie = document.cookie
     if (cookie.indexOf('visitedSidekick\x3d', 0) === -1) {
@@ -47,7 +47,7 @@ export default class Sidekick extends React.Component {
     return !loaded ? ''
       : (
         <div className='sidekick display-none' id='sidekick'>
-          <button id='close-sidekick' onClick={this.closeSidekick}><FontAwesomeIcon icon={faTimes} /></button>
+          <button id='close-sidekick' onClick={this.handleCloseSidekick}><FontAwesomeIcon icon={faTimes} /></button>
           <div className='advertisement' id='ad-sidekick'>
             <AdSlot adUnit='250x120_Sidekick' sizes={[[250, 120]]} onSlotRender={eventData => { if (!eventData.event.isEmpty) { $('#sidekick').removeClass('display-none') } }} />
           </div>

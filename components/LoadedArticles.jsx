@@ -57,7 +57,7 @@ export default class LoadedArticles extends React.Component {
     }
   }
 
-  loadNext = () => {
+  handleLoadNext = () => {
     const { type, param } = this.props
     const { articles, loaded, page, no_more_posts } = this.state
     this.setState({ articles: articles, loaded: loaded, page: page + 1, no_more_posts: no_more_posts }, () => this.load(type, param))
@@ -69,7 +69,7 @@ export default class LoadedArticles extends React.Component {
     if (!loaded) {
       return <Loading />
     } else {
-      let button = <button className='loadmore' onClick={this.loadNext}>Load More Posts</button>
+      let button = <button className='loadmore' onClick={this.handleLoadNext}>Load More Posts</button>
       if (articles.length === 0) {
         return <h3>No posts found.</h3>
       }

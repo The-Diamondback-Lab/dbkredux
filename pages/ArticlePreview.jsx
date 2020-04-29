@@ -33,6 +33,7 @@ class ArticlePreview extends React.Component {
   render() {
     const { article } = this.state
     if (!article) {
+      // TODO check this escaping
       return <h1>Error - can't display preview!</h1>
     }
 
@@ -41,7 +42,7 @@ class ArticlePreview extends React.Component {
       featuredImage = <React.Fragment>
         <div className='image-area'>
           <img
-            alt='Article Image'
+            alt='Article'
             className='article-image'
             id={'image-' + article.id} src={article.featured_image.link}
             onLoad={() => (loadImage('image-' + article.id))}
@@ -69,7 +70,7 @@ class ArticlePreview extends React.Component {
                     ? <React.Fragment>
                       <span className='dot'>·</span>
                       <span className='accent author twitter-link'><a href={`https://twitter.com/${article.author.user_twitter}`}>{`@${article.author.user_twitter}`}</a></span>
-                      </React.Fragment>
+                    </React.Fragment>
                     : ''
                 }
               </div>

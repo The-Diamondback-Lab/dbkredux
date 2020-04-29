@@ -22,7 +22,7 @@ export default class ErrorPage extends React.Component {
         <div className='container-narrow'>
           <h1>{display.header}</h1>
           <hr />
-          <p>{display.message} You can <Link href='/'><a>return home</a></Link> if you'd like.</p>
+          <p>{display.message} You can <Link href='/'><a>return home</a></Link> if you&apos;d like.</p>
         </div>
       </main>
     </React.Fragment>

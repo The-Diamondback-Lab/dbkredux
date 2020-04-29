@@ -9,7 +9,7 @@ export default class AdBlockMessage extends React.Component {
   constructor(props) {
     super(props)
     this.state = { show: true }
-    this.closeAdBlockMessage = this.closeAdBlockMessage.bind(this)
+    this.closeAdBlockMessage = this.handleCloseAdBlockMessage.bind(this)
   }
 
   componentDidMount() {
@@ -17,7 +17,7 @@ export default class AdBlockMessage extends React.Component {
     // SEND TO GOOGLE ANALYTICS
   }
 
-  closeAdBlockMessage() {
+  handleCloseAdBlockMessage() {
     this.setState({ show: false })
     let cookie = document.cookie
     if (cookie.indexOf('adBlockDetected\x3d', 0) === -1) {
@@ -37,7 +37,7 @@ export default class AdBlockMessage extends React.Component {
     let showMessage = show && !this.adMessageShown()
     return showMessage ? <div className='ad-block-message animated fadeIn'>
       <div>
-        <button id='close-ad-block-message' onClick={this.closeAdBlockMessage}><FontAwesomeIcon icon={faTimes} /><span>Close</span></button>
+        <button id='close-ad-block-message' onClick={this.handleCloseAdBlockMessage}><FontAwesomeIcon icon={faTimes} /><span>Close</span></button>
         <img alt='Ad Block Message' src='/static/images/adblocker.jpg' />
       </div>
     </div> : ''

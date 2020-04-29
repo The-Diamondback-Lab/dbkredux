@@ -10,7 +10,7 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons'
 /* eslint-disable no-undef */
 
 class Searchbar extends React.Component {
-  searchClicked = () => {
+  handleSearchClicked = () => {
     const { mobile } = this.props
     let id = '#global-search-bar-desktop'
     if (mobile) {
@@ -27,9 +27,9 @@ class Searchbar extends React.Component {
     Router.push(`/search?q=${searchTerm}`)
   }
 
-  keyPressed = (e) => {
+  handleKeyPressed = (e) => {
     if (e.key === 'Enter') {
-      this.searchClicked()
+      this.handleSearchClicked()
     }
   }
 
@@ -37,8 +37,8 @@ class Searchbar extends React.Component {
     const { mobile } = this.props
     return (
       <div className={`searchbar ${(mobile ? 'searchbar-mobile' : '')}`}>
-        <input id={`global-search-bar-${(mobile ? 'mobile' : 'desktop')}`} type='text' placeholder='Search' onKeyUp={this.keyPressed} />
-        <button onClick={this.searchClicked} >
+        <input id={`global-search-bar-${(mobile ? 'mobile' : 'desktop')}`} type='text' placeholder='Search' onKeyUp={this.handleKeyPressed} />
+        <button onClick={this.handleSearchClicked} >
           <FontAwesomeIcon icon={faSearch} />
         </button>
       </div>

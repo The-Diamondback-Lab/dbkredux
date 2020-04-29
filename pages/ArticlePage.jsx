@@ -74,7 +74,7 @@ export default class ArticlePage extends React.Component {
       featuredImage = <React.Fragment>
         <div className='image-area'>
           <img
-            alt='Article Image'
+            alt='Article'
             className='article-image'
             id={'image-' + article.id} src={article.featured_image.article}
             onLoad={() => (loadImage('image-' + article.id))}

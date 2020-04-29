@@ -35,18 +35,18 @@ class DetectAdBlock extends Component {
       adBlockDetected: false
     }
 
-    this.detectAdBlocker = this.detectAdBlocker.bind(this)
+    this.detectAdBlocker = this.handleDetectAdBlocker.bind(this)
   }
 
   componentDidMount() {
-    this.detectAdBlocker()
+    this.handleDetectAdBlocker()
   }
 
   componentWillUpdate(nextProps, nextState) {
     // this.detectAdBlocker();
   }
 
-  detectAdBlocker() {
+  handleDetectAdBlocker() {
     const head = document.getElementsByTagName('head')[0]
 
     const noAdBlockDetected = () => {
@@ -87,7 +87,7 @@ class DetectAdBlock extends Component {
           <h3>Hey, you!</h3>
           <p>Your adblocker is on again.</p>
           <button
-            onClick={this.detectAdBlocker}
+            onClick={this.handleDetectAdBlocker}
           >
                         Check for Adblocker again
           </button>

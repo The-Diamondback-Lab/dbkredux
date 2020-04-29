@@ -28,9 +28,12 @@
   ],
   "root": true,
   "rules": {
-    "camelcase": 0,
+    "no-warning-comments": 1,
     "react/jsx-fragments": 0,
     "react/prop-types": 0,
+    "react/jsx-closing-tag-location": 0,
+    "jsx-a11y/anchor-is-valid": 0,
+    "camelcase": 0,
     "space-before-function-paren": 0
   }
 }

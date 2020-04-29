@@ -17,7 +17,7 @@ app.prepare()
 
     server.get('/looking-back-2020', (_, res) => {
       res.redirect('https://wps3.dbknews.com/uploads/2020/04/Looking_Back_2020.pdf');
-    });
+    })
 
     server.get('*', (req, res) => {
       return handle(req, res)

@@ -28,7 +28,7 @@ export default class Takeover extends React.Component {
     return seen
   }
 
-  closeTakeover = () => {
+  handleCloseTakeover = () => {
     $('#takeover').hide()
     let cookie = document.cookie
     if (cookie.indexOf('visitedTakeover\x3d', 0) === -1) {
@@ -43,7 +43,7 @@ export default class Takeover extends React.Component {
     }
     return (
       <div className='takeover display-none' id='takeover'>
-        <button id='close-takeover' onClick={this.closeTakeover}><FontAwesomeIcon icon={faTimes} /></button>
+        <button id='close-takeover' onClick={this.handleCloseTakeover}><FontAwesomeIcon icon={faTimes} /></button>
         <div className='advertisement ad-desktop' id='ad-takeover-desktop'>
           <AdSlot adUnit='1920x300_Billboard' sizes={[[1920, 300]]} onSlotRender={eventData => { if (!eventData.event.isEmpty) { $('#takeover').removeClass('display-none') } }} />
         </div>

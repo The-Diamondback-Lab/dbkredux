@@ -62,12 +62,12 @@ export default class AuthorPage extends React.Component {
               <p className='author-description' dangerouslySetInnerHTML={{ __html: author.description }} />
               <div className='links-row'>
                 <FontAwesomeIcon icon={faEnvelope} size='lg' />
-                <a href={`mailto:${author.user_email}`} dangerouslySetInnerHTML={{ __html: author.user_email }} target='_blank' rel='noopener' />
+                <a href={`mailto:${author.user_email}`} dangerouslySetInnerHTML={{ __html: author.user_email }} target='_blank' rel='noopener noreferrer' />
               </div>
               {author.user_twitter ? (
                 <div className='links-row'>
                   <FontAwesomeIcon icon={faTwitter} size='lg' />
-                  <a href={`https://twitter.com/${author.user_twitter}`} dangerouslySetInnerHTML={{ __html: author.user_twitter }} target='_blank' rel='noopener' />
+                  <a href={`https://twitter.com/${author.user_twitter}`} dangerouslySetInnerHTML={{ __html: author.user_twitter }} target='_blank' rel='noopener noreferrer' />
                 </div>
               )
                 : ''}

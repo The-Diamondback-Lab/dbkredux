@@ -30,6 +30,7 @@ export default class ArticlesPreloaded extends React.Component {
     } else {
       categoryData = data[0].categories.find(cat => cat.id === category)
     }
+
     let articles =
       data
         .sort((a, a2) => moment(a2.date).diff(a.date))

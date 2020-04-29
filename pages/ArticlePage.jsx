@@ -4,6 +4,7 @@ import { Link } from '../routes'
 import Head from 'next/head'
 import Parser from 'html-react-parser'
 import * as uss from 'underscore.string'
+import { Timeline } from 'react-twitter-widgets'
 
 import ErrorPage from './ErrorPage.jsx'
 
@@ -16,7 +17,12 @@ import SponsoredLinks from '../components/SponsoredLinks'
 import DonateBar from '../components/DonateBar'
 
 import {
-  request, parseDate, loadImage, processArticleBody, loadDynamicArticleContent, chooseArticleDates
+  request,
+  parseDate,
+  loadImage,
+  processArticleBody,
+  loadDynamicArticleContent,
+  getArticleDateDisplay
 } from '../utilities/app.utilities.js'
 
 /* eslint-disable space-before-function-paren */
@@ -92,6 +98,9 @@ export default class ArticlePage extends React.Component {
     description = description.replace('</p>', '')
     description = description.replace('\n', '')
 
+    let dateString = getArticleDateDisplay(article)
+    let dot = article.acf['date-to-show'] === 'no_date' ? '' : '·'
+
     return (
       <React.Fragment>
         <Head>
@@ -115,17 +124,17 @@ export default class ArticlePage extends React.Component {
               <h1 dangerouslySetInnerHTML={{ __html: article.title }} />
               <div className='details'>
                 <span className='accent author'><Link href={article.author.link}><a>{article.author.name}</a></Link></span>
-                <span className='dot'>·</span>
+                <span className='dot'>{dot}</span>
                 {
                   article.author.user_twitter
                     ? <React.Fragment>
                       <span className='accent author twitter-link'><a href={`https://twitter.com/${article.author.user_twitter}`}>{`@${article.author.user_twitter}`}</a></span>
                       <span className='dot'>·</span>
-                      </React.Fragment>
+                    </React.Fragment>
                     : ''
                 }
                 <span
-                  dangerouslySetInnerHTML={{ __html: article.date.ago }}
+                  dangerouslySetInnerHTML={{ __html: dateString }}
                 />
               </div>
               <div className='addthis_inline_share_toolbox' />
@@ -142,7 +151,17 @@ export default class ArticlePage extends React.Component {
               <Advertisement path='300x600_Banner_C' size={[300, 600]} mode='desktop' />
               <br />
               <h3>Latest Tweets</h3>
-              <iframe className='social-feed' src='https://dbknews.friends2follow.com/f2f/widget/html/socialstack/50/0/12/140/1/1/0/9/0/1' width='100%' height='606px' frameBorder='0' scrolling='no' />
+              <Timeline
+                dataSource={{
+                  sourceType: 'profile',
+                  screenName: 'thedbk'
+                }}
+                options={{
+                  username: 'thedbk',
+                  width: '100%',
+                  height: '606px'
+                }}
+              />
               <br />
               <br />
               <SponsoredLinks />

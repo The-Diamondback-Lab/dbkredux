@@ -9,14 +9,14 @@ import * as React from 'react'
 import { Link } from '../routes'
 
 import {
-  loadImage
+  loadImage, getArticleDateDisplay
 } from '../utilities/app.utilities.js'
 
 import LazyLoad from 'react-lazyload'
 
 export default class LoadedArticle extends React.Component {
   render() {
-    const { author, date, id, link, title, excerpt, featured_image } = this.props
+    const { author, id, link, title, excerpt, featured_image } = this.props
 
     let featured_image_link = '/static/images/article-fallback.png'
     if (featured_image) {
@@ -41,11 +41,11 @@ export default class LoadedArticle extends React.Component {
       <div className='loaded-article-block fadeIn animated'>
         {featuredImage}
         <div className='loaded-article-details'>
-          <Link href={link}><a><h2 dangerouslySetInnerHTML={{ __html: title }} /></a></Link>
-          <Link href={link}><a dangerouslySetInnerHTML={{ __html: excerpt }} /></Link>
+          <Link href={link}><a><h2 dangerouslySetInnerHTML={{ __html: title }}></h2></a></Link>
+          <Link href={link}><a dangerouslySetInnerHTML={{ __html: excerpt }}></a></Link>
           <div className='loaded-article-author-date'>
             <Link href={author.link}><a><p className='author'>{author.name}</p></a></Link>
-            <p>{date.ago}</p>
+            <p>{getArticleDateDisplay(this.props)}</p>
           </div>
         </div>
       </div>

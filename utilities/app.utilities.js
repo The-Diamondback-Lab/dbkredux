@@ -225,12 +225,11 @@ export const chooseArticleDates = (article) => {
   This function loads in the homepage configuration, makes all necessary API calls to /articles, and stores the resulting data
 */
 export const loadHomepageArticles = async (config) => {
-  let articleRequests = []
-  config.forEach(params => {
+  let articleRequests = config.map(params => {
     if (params.category === 'latest') {
-      articleRequests.push(`/articles?preview=true&per_page=${params.max}`)
+      return `/articles?preview=true&per_page=${params.max}`
     } else {
-      articleRequests.push(`/articles?category=${params.category}&preview=true&per_page=${params.max}`)
+      return `/articles?category=${params.category}&preview=true&per_page=${params.max}`
     }
   })
   let response = await requestBatch(articleRequests)
@@ -331,4 +330,55 @@ export const getArticlePreviewData = async (wp_id, wp_nonce) => {
   }
 
   return articleData
+}
+
+const monthLookup = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December'
+]
+
+/**
+ * Humanizes a date object into the following format: `Month Day, Year`.
+ *
+ * i.e. can return "March 20, 2020"
+ *
+ * @param {Date} dateObj
+ * @returns {string}
+ */
+export function humanizeDate(dateObj) {
+  let month = monthLookup[dateObj.getMonth()]
+  let date = dateObj.getDate()
+  let year = dateObj.getFullYear()
+
+  return `${month} ${date}, ${year}`
+}
+
+/**
+ * Gets the date string to display for a given article. An article should have the
+ * advanced custom field "date-to-show"
+ *
+ * @param {Object} article
+ * @returns {string}
+ */
+export function getArticleDateDisplay(article) {
+  let dateToShow = article.acf['date-to-show']
+
+  if (dateToShow === 'last_updated') {
+    let parsed = new Date(Date.parse(article.modified))
+    return `Last updated ${humanizeDate(parsed)}`
+  } else if (dateToShow === 'no_date') {
+    return ''
+  } else { // Default to original published date
+    return article.date.ago
+  }
 }

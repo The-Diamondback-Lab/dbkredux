@@ -40,7 +40,7 @@ export default class SearchResults extends React.Component {
         </Head>
         <main className='page search-results'>
           <div className='container-narrow'>
-            <h1>Search: {`"${search}"`}</h1>
+            <h1>Search: &quot;{search}&quot;</h1>
           </div>
           <div className='container-narrow flex'>
             <div className='left-rail'>

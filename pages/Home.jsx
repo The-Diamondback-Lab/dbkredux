@@ -18,8 +18,7 @@ export default class Home extends React.Component {
   static async getInitialProps() {
     let dataPromises = await Promise.all([
       request('/featured_article'),
-      // TODO Does this await do any good?
-      await loadHomepageArticles(HOMEPAGE_REQUESTS)
+      loadHomepageArticles(HOMEPAGE_REQUESTS)
     ])
 
     let featuredData = parseDate(dataPromises[0])

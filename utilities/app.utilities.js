@@ -64,7 +64,7 @@ export const responsive = (breakpoint, operator) => {
  * Makes a request.
  *
  * @param {string} endpoint - url to request
- * @return {*} specified data
+ * @return {Promise<any>} specified data
  */
 export const request = async (endpoint) => {
   try {

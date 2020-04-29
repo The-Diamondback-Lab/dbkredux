@@ -10,8 +10,7 @@ export default class SponsoredLinks extends React.Component {
       const sponsoredContent = await request('/pages/sponsored-content')
       this.setState({ content: sponsoredContent.content.rendered })
     } catch (e) {
-      // TODO should "err" be "e"?
-      console.error('Error getting Sponsored Content:', err.message, err)
+      console.error('Error getting Sponsored Content:', e.message, e)
       this.setState({ content: null })
     }
   }

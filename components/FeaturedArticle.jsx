@@ -30,7 +30,8 @@ export default class FeaturedArticle extends React.Component {
         alt='Article'
         className='article-block-image'
         id={`image-${id}`} src={featured_image_link}
-        onLoad={() => loadImage(`image-${id}`)} />
+        onLoad={() => loadImage(`image-${id}`)}
+      />
     </a>)
 
     return (

@@ -33,8 +33,7 @@ class ArticlePreview extends React.Component {
   render() {
     const { article } = this.state
     if (!article) {
-      // TODO check this escaping
-      return <h1>Error - can't display preview!</h1>
+      return <h1>Error - can&quot;t display preview!</h1>
     }
 
     let featuredImage = ''

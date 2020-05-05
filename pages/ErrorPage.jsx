@@ -3,9 +3,6 @@ import * as React from 'react';
 import { Link } from '../routes';
 import Head from 'next/head';
 
-//sass
-import '../styles/sass/app.sass';
-
 import { ERRORS } from '../utilities/app.utilities'
 
 export default class ErrorPage extends React.Component {

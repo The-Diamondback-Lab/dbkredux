@@ -13,8 +13,9 @@ import Advertisement from '../components/Advertisement';
 import StoryGallery from '../components/StoryGallery';
 
 const API_URL = process.env.API_URL || 'https://api.dbknews.com';
-const WP_URL = 'http://wp.dbknews.com/wp-json/wp/v2';
-const WP_REPLACE = 'http://wp.dbknews.com';
+const BASE_WP_URL = process.env.WP_URL || 'http://wp.dbknews.com';
+const WP_URL = `${BASE_WP_URL}/wp-json/wp/v2`;
+const WP_REPLACE = BASE_WP_URL;
 
 /*
  * Application utility functions.
@@ -72,7 +73,8 @@ export const request = async (endpoint) => {
 
     return req.data;
   } catch (e) {
-    handleError(`Error making request: ${e}`);
+    console.log(endpoint);
+    handleError(e);
   }
 };
 
@@ -85,7 +87,7 @@ export const requestBatch = async (endpoints) => {
     return req;
   }
   catch (e) {
-    handleError(`Error making request: ${e}`);
+    handleError(e);
   }
 }
 

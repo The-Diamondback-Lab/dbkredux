@@ -4,8 +4,8 @@
   "description": "The front-end to The DBK's main website - powered by React and Next.js.",
   "author": "The Diamondback Lab <thedbklab@gmail.com>",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development API_URL=\"http://localhost:8080\" node ./server.js",
-    "devWithApi": "cross-env NODE_ENV=developerment API_URL=\"https://api.dbknews.com\" node ./server.js",
+    "dev": "cross-env NODE_ENV=development node ./server.js",
+    "devWithApi": "cross-env NODE_ENV=developerment node ./server.js",
     "build": "next build",
     "prestart": "npm run build",
     "start": "cross-env NODE_ENV=production node ./server.js",

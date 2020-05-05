@@ -6,10 +6,7 @@
       "request": "launch",
       "name": "Launch Site",
       "program": "${workspaceFolder}/server.js",
-      "env": {
-        "NODE_ENV": "development",
-        "API_URL": "http://localhost:8080"
-      },
+      "envFile": "${workspaceFolder}/.env.development",
       "skipFiles": [
         "<node_internals>/**"
       ]

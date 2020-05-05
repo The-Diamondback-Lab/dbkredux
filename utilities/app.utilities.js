@@ -12,8 +12,8 @@ import Parser from 'html-react-parser';
 import Advertisement from '../components/Advertisement';
 import StoryGallery from '../components/StoryGallery';
 
-const API_URL = process.env.API_URL || 'https://api.dbknews.com';
-const BASE_WP_URL = process.env.WP_URL || 'http://wp.dbknews.com';
+const API_URL = process.env.API_URL;
+const BASE_WP_URL = process.env.WP_URL;
 const WP_URL = `${BASE_WP_URL}/wp-json/wp/v2`;
 const WP_REPLACE = BASE_WP_URL;
 

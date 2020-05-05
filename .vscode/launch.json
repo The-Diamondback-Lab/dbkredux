@@ -6,7 +6,9 @@
       "request": "launch",
       "name": "Launch Site",
       "program": "${workspaceFolder}/server.js",
-      "envFile": "${workspaceFolder}/.env.development",
+      "env": {
+        "NODE_ENV": "development"
+      },
       "skipFiles": [
         "<node_internals>/**"
       ]

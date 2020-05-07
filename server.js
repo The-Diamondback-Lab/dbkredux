@@ -19,6 +19,10 @@ app.prepare()
       res.redirect('https://wps3.dbknews.com/uploads/2020/04/Looking_Back_2020.pdf')
     })
 
+    server.get('/coloring-book-2020', (_, res) => {
+      res.redirect('https://wps3.dbknews.com/uploads/2020/04/DBK-ColoringBook-2020.pdf');
+    })
+
     server.get('*', (req, res) => {
       return handle(req, res)
     })

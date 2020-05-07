@@ -12,7 +12,6 @@ import ErrorPage from './ErrorPage.jsx'
 import Advertisement from '../components/Advertisement'
 import SponsoredLinks from '../components/SponsoredLinks'
 
-/* eslint-disable space-before-function-paren */
 /* eslint-disable camelcase */
 
 export default class CustomPage extends React.Component {

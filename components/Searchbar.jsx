@@ -6,7 +6,6 @@ import $ from 'jquery'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
-/* eslint-disable space-before-function-paren */
 /* eslint-disable no-undef */
 
 class Searchbar extends React.Component {

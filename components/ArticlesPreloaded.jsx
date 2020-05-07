@@ -1,4 +1,3 @@
-/* eslint-disable space-before-function-paren */
 /* eslint-disable array-callback-return */
 /* eslint-disable camelcase */
 

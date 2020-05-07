@@ -25,7 +25,6 @@ import {
   getArticleDateDisplay
 } from '../utilities/app.utilities.js'
 
-/* eslint-disable space-before-function-paren */
 /* eslint-disable camelcase */
 
 export default class ArticlePage extends React.Component {

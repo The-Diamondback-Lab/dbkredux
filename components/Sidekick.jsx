@@ -1,5 +1,3 @@
-/* eslint-disable space-before-function-paren */
-
 import React from 'react'
 
 import $ from 'jquery'

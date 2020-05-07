@@ -1,6 +1,3 @@
-/* eslint-disable space-before-function-paren */
-/* eslint-disable camelcase */
-
 import React from 'react'
 import Head from 'next/head'
 

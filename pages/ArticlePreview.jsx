@@ -13,7 +13,6 @@ import {
   loadImage, loadDynamicArticleContent, getArticlePreviewData
 } from '../utilities/app.utilities.js'
 
-/* eslint-disable space-before-function-paren */
 /* eslint-disable camelcase */
 
 class ArticlePreview extends React.Component {

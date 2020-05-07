@@ -15,7 +15,6 @@ import {
   request
 } from '../utilities/app.utilities.js'
 
-/* eslint-disable space-before-function-paren */
 /* eslint-disable camelcase */
 
 export default class CategoryPage extends React.Component {

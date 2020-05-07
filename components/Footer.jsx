@@ -3,7 +3,6 @@ import React from 'react'
 // react router
 import { Link } from '../routes'
 
-/* eslint-disable space-before-function-paren */
 /* eslint-disable prefer-promise-reject-errors */
 /* eslint-disable no-unused-vars */
 

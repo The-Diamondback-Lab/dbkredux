@@ -19,7 +19,6 @@ import {
 } from '..//utilities/app.utilities.js'
 import * as uss from 'underscore.string'
 
-/* eslint-disable space-before-function-paren */
 /* eslint-disable camelcase */
 
 export default class AuthorPage extends React.Component {

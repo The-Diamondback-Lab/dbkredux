@@ -10,7 +10,6 @@ import SponsoredLinks from '../components/SponsoredLinks'
 // layout
 import ErrorPage from '../pages/ErrorPage.jsx'
 
-/* eslint-disable space-before-function-paren */
 /* eslint-disable camelcase */
 
 export default class SearchResults extends React.Component {

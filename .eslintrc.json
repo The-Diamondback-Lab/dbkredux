@@ -30,7 +30,7 @@
   "rules": {
     "brace-style": [
       1,
-      "stroustrup"
+      "1tbs"
     ],
     "no-warning-comments": 1,
     "react/jsx-fragments": 0,

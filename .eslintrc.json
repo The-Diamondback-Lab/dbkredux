@@ -28,6 +28,10 @@
   ],
   "root": true,
   "rules": {
+    "brace-style": [
+      1,
+      "stroustrup"
+    ],
     "no-warning-comments": 1,
     "react/jsx-fragments": 0,
     "react/prop-types": 0,

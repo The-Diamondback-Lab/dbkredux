@@ -1,7 +1,7 @@
 const { PHASE_DEVELOPMENT_SERVER, PHASE_PRODUCTION_BUILD } = require('next/constants') // Get values from `next` package when building locally
 
 module.exports = (phase, { defaultConfig }) => {
-  if (phase === PHASE_DEVELOPMENT_SERVER) {
+  if (phase === PHASE_DEVELOPMENT_SERVER || process.env.PRODUCTION_BACKEND.toLowerCase() === 'true') {
     return {
       env: {
         API_URL: 'http://localhost:8080',

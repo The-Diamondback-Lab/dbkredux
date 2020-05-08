@@ -6,8 +6,8 @@
   "scripts": {
     "lint": "eslint **/*.js **/*.jsx",
     "lint-auto-fix": "eslint **/*.js **/*.jsx --fix",
-    "dev": "cross-env NODE_ENV=development node ./server.js",
-    "devWithApi": "cross-env NODE_ENV=developerment node ./server.js",
+    "local": "cross-env NODE_ENV=development node ./server.js",
+    "dev": "cross-env NODE_ENV=development PRODUCTION_BACKEND=true node ./server.js",
     "build": "next build",
     "prestart": "npm run build",
     "start": "cross-env NODE_ENV=production node ./server.js",

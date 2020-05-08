@@ -35,6 +35,12 @@ export default class Sidekick extends React.Component {
     }
   }
 
+  handleOnSlotRender = (eventData) => {
+    if (!eventData.event.isEmpty) {
+      $('#sidekick').removeClass('display-none')
+    }
+  }
+
   render() {
     const { loaded } = this.state
     if (this.visitedSidekick()) {
@@ -47,7 +53,7 @@ export default class Sidekick extends React.Component {
         <div className='sidekick display-none' id='sidekick'>
           <button id='close-sidekick' onClick={this.handleCloseSidekick}><FontAwesomeIcon icon={faTimes} /></button>
           <div className='advertisement' id='ad-sidekick'>
-            <AdSlot adUnit='250x120_Sidekick' sizes={[[250, 120]]} onSlotRender={eventData => { if (!eventData.event.isEmpty) { $('#sidekick').removeClass('display-none') } }} />
+            <AdSlot adUnit='250x120_Sidekick' sizes={[[250, 120]]} onSlotRender={this.handleOnSlotRender} />
           </div>
         </div>
       )

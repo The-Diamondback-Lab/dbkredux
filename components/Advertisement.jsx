@@ -30,6 +30,14 @@ export default class Advertisement extends React.Component {
     this._mounted = false
   }
 
+  handleOnSlotRender = (eventData) => {
+    const { path } = this.state
+
+    if (eventData.event.isEmpty) {
+      document.getElementById('ad-' + path).style.display = 'none'
+    }
+  }
+
   /**
    * Based on this.state.path and this.state.size, this function renders an
    * advertisement component.
@@ -44,7 +52,7 @@ export default class Advertisement extends React.Component {
       : (
         <LazyLoad>
           <div className={`advertisement ad-${mode}`} id={`ad-${path}`}>
-            <AdSlot adUnit={path} sizes={[size]} onSlotRender={eventData => { if (eventData.event.isEmpty) { document.getElementById('ad-' + path).style.display = 'none' } }} />
+            <AdSlot adUnit={path} sizes={[size]} onSlotRender={this.handleOnSlotRender} />
           </div>
         </LazyLoad>
       )

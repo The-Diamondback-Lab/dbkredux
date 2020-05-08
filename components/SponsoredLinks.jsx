@@ -10,7 +10,7 @@ export default class SponsoredLinks extends React.Component {
       const sponsoredContent = await request('/pages/sponsored-content')
       this.setState({ content: sponsoredContent.content.rendered })
     } catch (e) {
-      console.error('Error getting Sponsored Content:', err.message, err)
+      console.error('Error getting Sponsored Content:', e.message, e)
       this.setState({ content: null })
     }
   }
@@ -18,7 +18,7 @@ export default class SponsoredLinks extends React.Component {
   render() {
     const { content } = this.state
 
-    if (!content) return ""
+    if (!content) return ''
 
     return (
       <div className='sponsored-links'>

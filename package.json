@@ -1,9 +1,11 @@
 {
   "name": "@dbklab/dbknews",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "The front-end to The DBK's main website - powered by React and Next.js.",
   "author": "The Diamondback Lab <thedbklab@gmail.com>",
   "scripts": {
+    "lint": "eslint **/*.js **/*.jsx",
+    "lint-auto-fix": "eslint **/*.js **/*.jsx --fix",
     "dev": "cross-env NODE_ENV=development API_URL=\"http://localhost:8080\" node ./server.js",
     "devWithApi": "cross-env NODE_ENV=developerment API_URL=\"https://api.dbknews.com\" node ./server.js",
     "build": "next build",
@@ -27,8 +29,10 @@
     "@babel/plugin-proposal-export-default-from": "^7.5.2",
     "@babel/plugin-proposal-export-namespace-from": "^7.2.0",
     "@babel/plugin-proposal-throw-expressions": "^7.2.0",
+    "@babel/plugin-transform-runtime": "^7.9.6",
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
+    "@babel/runtime": "^7.9.6",
     "@fortawesome/fontawesome-svg-core": "^1.2.12",
     "@fortawesome/free-brands-svg-icons": "^5.7.2",
     "@fortawesome/free-solid-svg-icons": "^5.6.3",

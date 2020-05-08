@@ -1,6 +1,7 @@
 // global variables
 
 // html elements
+// If you're using this, make sure to export it properly
 // const ROOT = {
 //   app: document.getElementById('app'),
 //   lightbox: document.getElementById('lightbox'),
@@ -10,10 +11,10 @@
 
 // api url
 const API_URL = process.env.NODE_ENV === 'development'
-  ? 'http://localhost:8080' : 'https://dbknews.com/developer';
+  ? 'http://localhost:8080' : 'https://dbknews.com/developer'
 
 // google analytics
-const GOOGLE_ANALYTICS_ID = 'UA-130746753-2';
+const GOOGLE_ANALYTICS_ID = 'UA-130746753-2'
 
 // style
 const BREAKPOINTS = {
@@ -23,6 +24,6 @@ const BREAKPOINTS = {
   medium: 980,
   large: 1200,
   xlarge: 1440
-};
+}
 
-export { ROOT, API_URL, GOOGLE_ANALYTICS_ID, BREAKPOINTS };
+export { API_URL, GOOGLE_ANALYTICS_ID, BREAKPOINTS }

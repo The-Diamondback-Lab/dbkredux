@@ -1,18 +1,21 @@
 const withSass = require('@zeit/next-sass')
 const withCss = require('@zeit/next-css')
 const { PHASE_DEVELOPMENT_SERVER, PHASE_PRODUCTION_BUILD } = require('next/constants')
-const useBackendServers = (process.env.PRODUCTION_BACKEND || '').toLowerCase() === 'true'
+const useProductionBackend = (process.env.PRODUCTION_BACKEND || '').toLowerCase() === 'true'
 
 module.exports = (phase, { defaultConfig }) => {
   let env = null
 
-  if (phase === PHASE_DEVELOPMENT_SERVER || useBackendServers) {
+  // Only use local backend servers if PRODUCTION_BACKEND is not specified and we're in development
+  // mode
+  if (phase === PHASE_DEVELOPMENT_SERVER && !useProductionBackend) {
     env = {
       API_URL: 'http://localhost:8080',
       WP_URL: 'http://localhost/wordpress'
     }
   } else {
-    if (phase !== PHASE_PRODUCTION_BUILD) {
+    // Warn if we're not building, not in development mode, and production backend is not defined
+    if (phase !== PHASE_PRODUCTION_BUILD && phase !== PHASE_DEVELOPMENT_SERVER && !useProductionBackend) {
       console.warn(`Unexpected NextJS phase: ${phase}`)
     }
 

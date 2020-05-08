@@ -10,7 +10,7 @@ module.exports = (phase, { defaultConfig }) => {
     }
   } else {
     if (phase !== PHASE_PRODUCTION_BUILD) {
-      console.warn(`Unexpected NextJS phase: ${phase}`);
+      console.warn(`Unexpected NextJS phase: ${phase}`)
     }
 
     return {
@@ -20,4 +20,4 @@ module.exports = (phase, { defaultConfig }) => {
       }
     }
   }
-};
+}

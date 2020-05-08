@@ -1,3 +1,4 @@
+// TODO Should this file be deprecated? This isn't imported anywhere...
 // global variables
 
 // html elements

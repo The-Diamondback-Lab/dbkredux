@@ -21,7 +21,6 @@
       "jsx": true
     },
     "ecmaVersion": 6,
-    "requireConfigFile": true,
     "sourceType": "module"
   },
   "plugins": [
@@ -29,9 +28,16 @@
   ],
   "root": true,
   "rules": {
-    "camelcase": 0,
+    "brace-style": [
+      1,
+      "1tbs"
+    ],
+    "no-warning-comments": 1,
     "react/jsx-fragments": 0,
     "react/prop-types": 0,
+    "react/jsx-closing-tag-location": 0,
+    "jsx-a11y/anchor-is-valid": 0,
+    "camelcase": 0,
     "space-before-function-paren": 0
   }
 }

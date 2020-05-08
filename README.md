@@ -26,8 +26,13 @@ React.js and is server side rendered using Next.js. It can be viewed [here][2].
 
 ## Usage
 
-After installing the project dependenices, run `npm run dev` to view the site locally.
-The site will be available at **http://localhost:3000**.
+After installing the project dependenices, there are two ways to run the site locally:
+
+1. `npm run dev` - Queries our production backend servers for content
+2. `npm run local` - Queries *local* backend servers for content. This requires having three services running locally on your machine
+    1. [Our API][8] on port 8080
+    2. A WordPress server, running on port 80. This is easiest to setup with [XAMPP][9] and [Bitnami for XAMPP modules][10]
+    3. A [MySQL server][11], typically running on port 3306, though this port can be changed in your WordPress configuration.
 
 ## Built With
 
@@ -44,3 +49,7 @@ The site will be available at **http://localhost:3000**.
 [5]: https://sass-lang.com
 [6]: https://babeljs.io/docs/en/#jsx-and-react
 [7]: https://github.com/fknussel/react-router-ga
+[8]: https://github.com/The-Diamondback-Lab/dbkreduxapi
+[9]: https://www.apachefriends.org/index.html
+[10]: https://bitnami.com/stack/xampp
+[11]: https://www.mysql.com

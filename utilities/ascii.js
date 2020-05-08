@@ -1,4 +1,4 @@
-let ascii =`
+let ascii = `
 111111111111111111111111111111111111111
 111111111111111111111111111111111111111
 111111111111111111111111111111111111111
@@ -21,6 +21,6 @@ let ascii =`
 
 Hey developer! Email thedbklab@gmail.com if you'd like to help us write software.
 
-`;
+`
 
-export default ascii;
+export default ascii

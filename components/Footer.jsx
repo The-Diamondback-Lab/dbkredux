@@ -1,9 +1,8 @@
-import React from 'react';
+import React from 'react'
 
 // react router
-import { Link } from '../routes';
+import { Link } from '../routes'
 
-/* eslint-disable space-before-function-paren */
 /* eslint-disable prefer-promise-reject-errors */
 /* eslint-disable no-unused-vars */
 
@@ -13,7 +12,6 @@ import { Link } from '../routes';
  * copyright.
  */
 export default class Footer extends React.Component {
-
   /**
    * This function takes a category title as an argument and returns it
    * lowercase with spaces replaced by dashes.
@@ -24,7 +22,7 @@ export default class Footer extends React.Component {
    * @return {string} category title lowercase with spaces replaced by dashes
    */
   getColumnId(title) {
-    return `footer-column-${title.toLowerCase().replace(' ', '-')}`;
+    return `footer-column-${title.toLowerCase().replace(' ', '-')}`
   }
 
   /**
@@ -32,9 +30,9 @@ export default class Footer extends React.Component {
    * categories), contact information, the stay connected menu, and copyright.
    */
   render() {
-    const { footer, social } = this.props;
-    if (footer === null || social === null){
-      return "";
+    const { footer, social } = this.props
+    if (footer === null || social === null) {
+      return ''
     }
     return (
       <footer>
@@ -44,7 +42,7 @@ export default class Footer extends React.Component {
           <div className='categories row'>
             {
               footer.items.map((category, index) => {
-                const id = `column-${category.id}`;
+                const id = `column-${category.id}`
 
                 return (
                   <ul className='footer-column' id={id} key={id}>
@@ -57,7 +55,7 @@ export default class Footer extends React.Component {
                       )}
                     </div>
                   </ul>
-                );
+                )
               }
               )
             }
@@ -68,7 +66,7 @@ export default class Footer extends React.Component {
             <p className='title-link'>
               Contact Us
             </p>
-            <a href="https://goo.gl/maps/14QKBBK8x1v" target="_blank" rel="noopener noreferrer">
+            <a href='https://goo.gl/maps/14QKBBK8x1v' target='_blank' rel='noopener noreferrer'>
               <address>
                 3150 South Campus Dining Hall<br />
                 University of Maryland<br />
@@ -105,7 +103,7 @@ export default class Footer extends React.Component {
           </div>
         </div>
       </footer>
-    );
+    )
   }
 }
 
@@ -123,6 +121,7 @@ const FooterLink = (props) => {
         className={props.classes}
         href={props.url}
         target='_blank'
+        rel='noopener noreferrer'
       >
         {props.title}
       </a>
@@ -130,5 +129,5 @@ const FooterLink = (props) => {
   }
   return (
     <Link href={props.url}><a className={props.classes}>{props.title}</a></Link>
-  );
-};
+  )
+}

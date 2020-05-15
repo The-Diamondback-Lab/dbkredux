@@ -7,3 +7,9 @@
   margin-top: px-to-em(20)
   +respond-to($breakpoint-schmedium)
     display: none
+
+  // From our styles, text color for anchor tags are the same as this element's background color
+  // (aka red text on red background)
+  // So just have anchor tags inherit text color from this element to prevent that
+  a
+    color: inherit

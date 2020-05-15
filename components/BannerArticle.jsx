@@ -45,7 +45,7 @@ export default class ArticleBanner extends React.Component {
         }
 
         return <Link href={link}>
-          <a><div id='banner-article' className='container'>{headline}</div></a>
+          <div id='banner-article' className='container'><a>{headline}</a></div>
         </Link>
       } catch (e) {
         // Couldn't show the banner article because of an unexpected error

@@ -45,7 +45,7 @@
               "path": {
                 "description": "URI path to a remote resource. File URIs are NOT supported",
                 "format": "uri",
-                "pattern": "^https?:\/\/"
+                "pattern": "^https?:\/\/.+$"
               }
             }
           }
@@ -53,7 +53,8 @@
       ],
       "required": [
         "type"
-      ]
+      ],
+      "additionalProperties": false
     }
   },
   "additionalProperties": false

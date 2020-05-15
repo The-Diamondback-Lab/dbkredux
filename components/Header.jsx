@@ -8,9 +8,11 @@ import { Link } from '../routes'
 import $ from 'jquery'
 
 // components
+// TODO clean these imports up...
 import Navigation from '../components/Navigation.jsx'
 import Sidebar from '../components/Sidebar.jsx'
 import Searchbar from '../components/Searchbar.jsx'
+import BannerArticle from './BannerArticle.jsx'
 
 /**
  * Header class. Renders the header.
@@ -34,6 +36,7 @@ export default class Header extends React.Component {
 
     return (
       <React.Fragment>
+        <BannerArticle />
         <header id='header' className='header-main'>
           <div id='masthead' className='container'>
             <React.Fragment>

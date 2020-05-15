@@ -1,6 +1,11 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
   "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    }
+  },
   "patternProperties": {
     "^(/[a-zA-Z0-9\\.\\-\\+_]+)+/?$": {
       "type": "object",
@@ -50,5 +55,6 @@
         "type"
       ]
     }
-  }
+  },
+  "additionalProperties": false
 }

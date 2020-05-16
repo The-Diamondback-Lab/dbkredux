@@ -16,7 +16,7 @@
           "description": "The type of data associated with this route",
           "oneOf": [
             { "const": "file" },
-            { "const": "uri" }
+            { "const": "url" }
           ]
         },
         "path": {
@@ -38,12 +38,12 @@
         },
         {
           "if": {
-            "properties": { "type": { "const": "uri" } }
+            "properties": { "type": { "const": "url" } }
           },
           "then": {
             "properties": {
               "path": {
-                "description": "URI path to a remote resource. File URIs are NOT supported",
+                "description": "URL path to a remote resource.",
                 "format": "uri",
                 "pattern": "^https?:\/\/.+$"
               }

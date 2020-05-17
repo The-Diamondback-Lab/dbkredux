@@ -10,21 +10,21 @@ const jsonValidator = new Validator()
 const redirectSchemaPromise = (async () => {
   try {
     let jsonSchema = await axios.get('http://json-schema.org/draft-07/schema')
-    let redirectSchema = await fs.readFile('../schemas/redirects-schema.json', { encoding: 'utf8' })
+    let redirectSchema = await fs.readFile('./schemas/redirects-schema.json', { encoding: 'utf8' })
 
     jsonValidator.validate(redirectSchema, jsonSchema, {
       throwError: true,
       nestedErrors: true
     })
 
-    return redirectSchema
+    return JSON.parse(redirectSchema)
   } catch (e) {
     console.error(e)
     return null
   }
 })()
 
-const REDIRECT_JSON_INPUT_PATH = './redirects.json'
+const REDIRECT_JSON_INPUT_PATH = './utilities/redirects.json'
 
 /**
  * Adds redirection routes to an Express application during runtime
@@ -93,6 +93,8 @@ async function dynamicRedirect(app, req, res) {
       res.status(500).send(e.message)
     }
   }
+
+  res.status(200).end()
 }
 
 /**
@@ -130,7 +132,8 @@ function redirectEndpointForRemoteUrl(url) {
     throw new ValidationError(`Malformed URL ${url}`, 400)
   }
 
-  if (urlObj.protocol !== 'http' && urlObj.protocol !== 'https') {
+  if (!urlObj.protocol.toLowerCase().startsWith('http') &&
+      !urlObj.protocol.toLowerCase().startsWith('https')) {
     throw new ValidationError(`Invalid protocol ${urlObj.protocol}, can only be HTTP or HTTPS`, 400)
   }
 

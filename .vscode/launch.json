@@ -4,11 +4,23 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch Site",
+      "name": "Launch With Local Backend",
+      "program": "${workspaceFolder}/server.js",
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "skipFiles": [
+        "<node_internals>/**"
+      ]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch With Production Backend",
       "program": "${workspaceFolder}/server.js",
       "env": {
         "NODE_ENV": "development",
-        "API_URL": "http://localhost:8080"
+        "PRODUCTION_BACKEND": "true"
       },
       "skipFiles": [
         "<node_internals>/**"

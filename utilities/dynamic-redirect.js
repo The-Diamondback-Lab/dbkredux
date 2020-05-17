@@ -30,8 +30,8 @@ const REDIRECT_JSON_INPUT_PATH = './utilities/redirects.json'
  * Adds redirection routes to an Express application during runtime
  *
  * @param {Express.Application} app An Express application
- * @param req An Express Request object
- * @param res An Express Response object
+ * @param {Express.Request} req An Express Request object
+ * @param {Express.Response} res An Express Response object
  */
 async function dynamicRedirect(app, req, res) {
   /**

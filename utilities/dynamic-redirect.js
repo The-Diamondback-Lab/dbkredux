@@ -63,8 +63,6 @@ async function dynamicRedirect(app, req, res) {
 
   // TODO Find a way to store previous set of dynamically redirected routes
 
-  // TODO Loop over previous set of routes and remove them if query parameter "overwrite" is present
-
   // Loop over redirect obj's properties and add the routes
   // Skip the $schema property if it exists
   try {

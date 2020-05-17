@@ -33,13 +33,13 @@ const redirectSchemaPromise = (async () => {
 const REDIRECT_JSON_INPUT_PATH = './utilities/redirects.json'
 
 /**
- * Updates redirection routes to an Express application during runtime based on the most recent
- * redirect routes
+ * Updates runtime redirection routes to an Express application during runtime based on the most
+ * recent redirect routes
  *
  * @param {Express.Request} req An Express Request object
  * @param {Express.Response} res An Express Response object
  */
-async function updateRedirects(req, res) {
+async function updateRuntimeRedirects(req, res) {
   /**
    * @type
    */
@@ -141,7 +141,7 @@ function validateRemoteUrl(url) {
 }
 
 module.exports = {
-  updateRedirects
+  updateRuntimeRedirects
 }
 
 /**

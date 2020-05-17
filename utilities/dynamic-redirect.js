@@ -57,9 +57,6 @@ const REDIRECT_JSON_INPUT_PATH = './utilities/redirects.json'
  * @param {Express.Response} res An Express Response object
  */
 async function updateRuntimeRedirects(req, res) {
-  /**
-   * @type
-   */
   let redirectSchema = await redirectSchemaPromise
 
   if (redirectSchema == null) {

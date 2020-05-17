@@ -1,9 +1,5 @@
 {
   "$schema": "../schemas/redirects-schema.json",
-  "/ads.txt": {
-    "type": "file",
-    "path": "ads.txt"
-  },
   "/looking-back-2020": {
     "type": "url",
     "path": "https://wps3.dbknews.com/uploads/2020/04/Looking_Back_2020.pdf"

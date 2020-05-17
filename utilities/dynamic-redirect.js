@@ -84,8 +84,6 @@ async function updateRuntimeRedirects(req, res) {
     return
   }
 
-  // TODO Find a way to store previous set of dynamically redirected routes
-
   // Loop over redirect obj's properties and add the routes
   // Skip the $schema property if it exists
   try {

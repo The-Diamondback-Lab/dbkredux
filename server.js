@@ -12,7 +12,9 @@ app.prepare()
     const adsTxtPromise = fs.readFile('./ads.txt', { encoding: 'utf-8' })
 
     server.get('/ads.txt', (_, res) => {
-      adsTxtPromise.then(data => res.send(data))
+      adsTxtPromise
+        .then(data => res.send(data))
+        .catch(_ => res.status(500).send('Unexpected error reading ads.txt'))
     })
 
     server.get('/looking-back-2020', (_, res) => {

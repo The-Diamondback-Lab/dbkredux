@@ -12,6 +12,23 @@ const jsonValidator = new Validator()
  */
 const redirectTable = {}
 
+/**
+ * Redirects the request to a redirection route added during runtime if and only if the exact
+ * request path matches an entry in the runtime redirection table.
+ *
+ * @param {Express.Request} req An Express request object
+ * @param {Express.Response} res An Express response object
+ * @param {function} nextStep A callback to execute the next step in the Express routing stack
+ */
+function handleRuntimeRedirects(req, res, nextStep) {
+  if (redirectTable[req.path] != null) {
+    let url = redirectTable[req.path]
+    res.redirect(url)
+  } else {
+    nextStep()
+  }
+}
+
 // Before using our redirect schema, first validate it to make sure it's a valid schema
 const redirectSchemaPromise = (async () => {
   try {
@@ -141,6 +158,7 @@ function validateRemoteUrl(url) {
 }
 
 module.exports = {
+  handleRuntimeRedirects,
   updateRuntimeRedirects
 }
 

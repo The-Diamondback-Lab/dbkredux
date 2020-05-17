@@ -6,6 +6,12 @@ const ValidationError = require('./ValidationError')
 
 const jsonValidator = new Validator()
 
+/**
+ * Maps a route to a remote URL for redirection
+ * @type {Object.<string,string>}
+ */
+const redirectTable = {}
+
 // Before using our redirect schema, first validate it to make sure it's a valid schema
 const redirectSchemaPromise = (async () => {
   try {
@@ -27,13 +33,13 @@ const redirectSchemaPromise = (async () => {
 const REDIRECT_JSON_INPUT_PATH = './utilities/redirects.json'
 
 /**
- * Adds redirection routes to an Express application during runtime
+ * Updates redirection routes to an Express application during runtime based on the most recent
+ * redirect routes
  *
- * @param {Express.Application} app An Express application
  * @param {Express.Request} req An Express Request object
  * @param {Express.Response} res An Express Response object
  */
-async function dynamicRedirect(app, req, res) {
+async function updateRedirects(req, res) {
   /**
    * @type
    */
@@ -66,23 +72,21 @@ async function dynamicRedirect(app, req, res) {
   // Loop over redirect obj's properties and add the routes
   // Skip the $schema property if it exists
   try {
-    for (const routeName in redirectRoutes) {
-      if (routeName === '$schema') {
-        continue
-      }
+    let routeNames = Object.keys(redirectRoutes).filter(x => x !== '$schema')
+    for (let i = 0; i < routeNames.length; i++) {
+      let routeName = routeNames[i]
 
       let routeInfo = redirectRoutes[routeName]
-      let endpoint = null
 
       if (routeInfo.type === 'url') {
-        endpoint = redirectEndpointForRemoteUrl(routeInfo.path)
+        validateRemoteUrl(routeInfo.path)
+        redirectTable[routeName] = routeInfo.path
       } else {
         throw new ValidationError(`Invalid route type ${routeInfo.type}`, 400)
       }
-
-      // Passed all validations, register the route
-      app.get(routeName, endpoint)
     }
+
+    // TODO delete any old routes if query parameter "delete_old_routes" is present
   } catch (e) {
     if (e instanceof ValidationError) {
       res.status(e.statusCode).send(e.message)
@@ -122,7 +126,7 @@ function validateRedirectJson(redirectObj, schema) {
  * @return {(req:Express.Request, res:Express.Response) => void}
  * @throws {ValidationError} if the url is malformed or does not use the HTTP or HTTPS protocols
  */
-function redirectEndpointForRemoteUrl(url) {
+function validateRemoteUrl(url) {
   let urlObj = null
   try {
     urlObj = new URL(url)
@@ -134,13 +138,11 @@ function redirectEndpointForRemoteUrl(url) {
       !urlObj.protocol.toLowerCase().startsWith('https')) {
     throw new ValidationError(`Invalid protocol ${urlObj.protocol}, can only be HTTP or HTTPS`, 400)
   }
-
-  return (req, res) => {
-    res.redirect(url)
-  }
 }
 
-module.exports = dynamicRedirect
+module.exports = {
+  updateRedirects
+}
 
 /**
  * @typedef RedirectRoute

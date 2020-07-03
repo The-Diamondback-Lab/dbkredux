@@ -1,5 +1,6 @@
 import * as React from 'react'
 import Head from 'next/head'
+import ColoringContestContainer from '../components/custom/coloring-contest/ColoringContestContainer'
 
 export default class ColoringContestPage extends React.Component {
   render() {
@@ -9,7 +10,7 @@ export default class ColoringContestPage extends React.Component {
         <meta key='og:title' property='og:title' content='Coloring Contest' />
         <meta key='viewport' name='viewport' content='initial-scale=1.0, width=device-width' />
       </Head>
-      <main className='page custom-page'>
+      <main className='page'>
         <div className='container-narrow'>
           <h1 dangerouslySetInnerHTML={{ __html: 'Coloring Contest' }} />
         </div>
@@ -17,7 +18,7 @@ export default class ColoringContestPage extends React.Component {
           <div className='left-rail'>
             <hr />
             <div id='page-content'>
-              Foobar
+              <ColoringContestContainer />
             </div>
           </div>
         </div>

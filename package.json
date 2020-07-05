@@ -1,6 +1,6 @@
 {
   "name": "@dbklab/dbknews",
-  "version": "1.3.2",
+  "version": "1.4.0",
   "description": "The front-end to The DBK's main website - powered by React and Next.js.",
   "author": "The Diamondback Lab <thedbklab@gmail.com>",
   "scripts": {

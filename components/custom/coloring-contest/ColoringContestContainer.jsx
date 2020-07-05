@@ -52,7 +52,7 @@ export default class ColoringContestContainer extends React.Component {
     let gForm = gFormLink == null
       ? <div style={{ fontSize: '1.5em', color: 'red' }}>Google Form failed to load</div>
       : <iframe title='coloring-contest-form' src={gFormLink} frameBorder='0' marginHeight='0' marginWidth='0'>Loading…</iframe>
-    return <div id='coloring-contest-container'>
+    return <div id='coloring-contest-container' className='article-text'>
       <div dangerouslySetInnerHTML={{ __html: rawHtml }} />
       <div className='coloring-contest-finalist-set'>
         {renderedFinalists}

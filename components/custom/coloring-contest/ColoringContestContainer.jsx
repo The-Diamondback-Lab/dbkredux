@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-closing-bracket-location */
 import * as React from 'react'
 
 import ColoringContestFinalist from './ColoringContestFinalist'
@@ -58,7 +59,11 @@ export default class ColoringContestContainer extends React.Component {
       <div key={`coloring-contest-row-${i}`} className='coloring-contest-row'>
         {
           group.map((finalist, j) =>
-            <ColoringContestFinalist key={`coloring-contest-finalist-${i}-${j}`} name={finalist.name} thumbSrc={finalist.thumbnailLink} />
+            <ColoringContestFinalist
+              key={`coloring-contest-finalist-${i}-${j}`}
+              name={finalist.name}
+              thumbSrc={finalist.thumbnailLink}
+              submissionLink={finalist.submissionLink} />
           )
         }
       </div>

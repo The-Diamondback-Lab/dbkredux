@@ -4,12 +4,14 @@ import axios from 'axios'
  * @typedef Finalist
  * @prop {string} coloring_contest_finalist_name
  * @prop {number | object} coloring_contest_finalist_thumbnail_image
+ * @prop {string} coloring_contest_finalist_submission_link
  */
 
 /**
  * @typedef FinalistMin A minimized finalist object, the contains the name and thumbnail link
  * @prop {string} name
  * @prop {string} thumbnailLink
+ * @prop {string} submissionLink
  */
 
 const WP_URL = `${process.env.WP_URL}/wp-json/wp/v2`
@@ -59,7 +61,8 @@ async function prepareFinalist(finalist) {
   try {
     let {
       coloring_contest_finalist_name: name,
-      coloring_contest_finalist_thumbnail_image: thumb
+      coloring_contest_finalist_thumbnail_image: thumb,
+      coloring_contest_finalist_submission_link: submissionLink
     } = finalist
 
     let thumbnailLink = null
@@ -72,7 +75,8 @@ async function prepareFinalist(finalist) {
 
     return {
       name,
-      thumbnailLink
+      thumbnailLink,
+      submissionLink
     }
   } catch (e) {
     console.error(e)

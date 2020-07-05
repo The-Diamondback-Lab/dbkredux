@@ -7,7 +7,7 @@ import ContestThumbnail from './ColoringContestThumbnail'
 export default class ContestFinalist extends React.Component {
   render() {
     return <div className='coloring-contest-finalist'>
-      <ContestThumbnail src={this.props.thumbSrc} />
+      <ContestThumbnail src={this.props.thumbSrc} submissionLink={this.props.submissionLink} />
       <div className='coloring-contest-name'>{this.props.name}</div>
     </div>
   }

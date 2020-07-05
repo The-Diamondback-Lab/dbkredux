@@ -6,9 +6,11 @@ import * as React from 'react'
  */
 export default class ContestThumbnail extends React.Component {
   render() {
-    return <img
-      className='coloring-contest-thumb'
-      src={this.props.src}
-      alt={this.props.alt} />
+    return <a href={this.props.submissionLink} target='_blank' rel='noopener noreferrer'>
+      <img
+        className='coloring-contest-thumb'
+        src={this.props.src}
+        alt={this.props.alt} />
+    </a>
   }
 }

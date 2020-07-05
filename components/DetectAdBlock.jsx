@@ -1,3 +1,5 @@
+// TODO Remove this because this isn't used anywhere?
+
 /**
  *
  * Detect Ad Blockers
@@ -40,10 +42,6 @@ class DetectAdBlock extends Component {
 
   componentDidMount() {
     this.handleDetectAdBlocker()
-  }
-
-  componentWillUpdate(nextProps, nextState) {
-    // this.detectAdBlocker();
   }
 
   handleDetectAdBlocker() {

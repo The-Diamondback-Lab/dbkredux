@@ -1,7 +1,7 @@
 import * as React from 'react'
 
-import axios from 'axios'
 import ColoringContestFinalist from './ColoringContestFinalist'
+import * as utils from './utils'
 
 const MAX_ITEMS = 3
 
@@ -17,19 +17,17 @@ export default class ColoringContestContainer extends React.Component {
       ready: false
     }
 
-    axios.get('/static/custom/coloring-contest/data.json')
-      .then(resp => {
-        this.setState({
-          ready: true,
-          data: resp.data
-        })
+    utils.fetchContestData().then(data => {
+      this.setState({
+        ready: true,
+        data
       })
-      .catch(err => {
-        this.setState({
-          ready: true,
-          error: err
-        })
+    }).catch(e => {
+      this.setState({
+        ready: true,
+        error: e
       })
+    })
   }
 
   render() {
@@ -38,10 +36,10 @@ export default class ColoringContestContainer extends React.Component {
       return <div>Loading...</div>
     } else if (this.state.error) {
       console.error(this.state.error)
-      return <div style={{ fontSize: '2em', color: 'red' }}>Something went wrong</div>
+      return <div style={{ fontSize: '1.5em', color: 'red' }}>Something went wrong</div>
     }
 
-    let { finalists, formUrl } = this.state.data
+    let { finalists, gFormLink, rawHtml } = this.state.data
 
     // Gather finalists into groups of 3 (or value of MAX_ITEMS)
     let groups = finalists.reduce((acc, curr) => {
@@ -60,14 +58,19 @@ export default class ColoringContestContainer extends React.Component {
       <div key={`coloring-contest-row-${i}`} className='coloring-contest-row'>
         {
           group.map((finalist, j) =>
-            <ColoringContestFinalist key={`coloring-contest-finalist-${i}-${j}`} name={finalist.name} thumbSrc={finalist.thumbSrc} />
+            <ColoringContestFinalist key={`coloring-contest-finalist-${i}-${j}`} name={finalist.name} thumbSrc={finalist.thumbnailLink} />
           )
         }
       </div>
     )
+
+    let gForm = gFormLink == null
+      ? <div style={{ fontSize: '1.5em', color: 'red' }}>Google Form failed to load</div>
+      : <iframe title='coloring-contest-form' src={gFormLink} frameBorder='0' marginHeight='0' marginWidth='0'>Loading…</iframe>
     return <div id='coloring-contest-container'>
+      <div dangerouslySetInnerHTML={{ __html: rawHtml }} />
       {rows}
-      <iframe title='coloring-contest-form' src={formUrl} frameBorder='0' marginHeight='0' marginWidth='0'>Loading…</iframe>
+      {gForm}
     </div>
   }
 }

@@ -1,0 +1,39 @@
+/// Scales the height in a letter size ratio, given the desired, scaled width
+/// @param {number} $scaledWidth - desired, scaled width
+/// @return {number} the scaled height
+@function letterScaleHeight($scaledWidth: number)
+  @return (11 / 8.5 * $scaledWidth)
+
+$width: 12.75em
+
+.coloring-contest-finalist-set
+  display: flex
+  flex-wrap: wrap
+  justify-content: space-evenly
+  width: inherit
+  padding: 1em 0
+
+img.coloring-contest-thumb
+  width: $width
+  height: letterScaleHeight($width)
+  object-fit: cover
+
+.coloring-contest-name
+  font-size: 1.1em
+  text-align: center
+  padding: 0.5em 0
+
+.coloring-contest-finalist
+  display: flex
+  flex-direction: column
+  justify-content: space-evenly
+  width: $width
+  padding: 1em 0em
+  margin: 0 0.5em
+
+iframe[title="coloring-contest-form"]
+  width: 100%
+
+.coloring-contest-error
+  font-size: 1.25em
+  color: red

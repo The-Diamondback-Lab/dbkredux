@@ -35,10 +35,10 @@ export default class ColoringContestContainer extends React.Component {
       return <div>Loading...</div>
     } else if (this.state.error) {
       console.error(this.state.error)
-      return <div style={{ fontSize: '1.5em', color: 'red' }}>Something went wrong</div>
+      return <div className='coloring-contest-error'>Something went wrong</div>
     }
 
-    let { finalists, gFormLink, rawHtml } = this.state.data
+    let { finalists, gForm, rawHtml } = this.state.data
 
     let renderedFinalists = finalists.map((finalist, i) =>
       <ColoringContestFinalist
@@ -49,15 +49,15 @@ export default class ColoringContestContainer extends React.Component {
       />
     )
 
-    let gForm = gFormLink == null
-      ? <div style={{ fontSize: '1.5em', color: 'red' }}>Google Form failed to load</div>
-      : <iframe title='coloring-contest-form' src={gFormLink} frameBorder='0' marginHeight='0' marginWidth='0'>Loading…</iframe>
+    let gFormElem = gForm == null
+      ? <div className='coloring-contest-error'>Google Form failed to load</div>
+      : <iframe title='coloring-contest-form' src={gForm.link} height={gForm.height || '500'} frameBorder='0' marginHeight='0' marginWidth='0'>Loading…</iframe>
     return <div id='coloring-contest-container' className='article-text'>
       <div dangerouslySetInnerHTML={{ __html: rawHtml }} />
       <div className='coloring-contest-finalist-set'>
         {renderedFinalists}
       </div>
-      {gForm}
+      {gFormElem}
     </div>
   }
 }

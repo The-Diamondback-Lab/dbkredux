@@ -37,18 +37,22 @@ export async function fetchContestData() {
     .filter(s => /^coloring_contest_finalist_\d+$/.test(s))
     .map(k => acf[k])
 
+  let gForm = acf.coloring_contest_gform
   /**
    * @type {string}
    */
-  let gFormLink = acf.coloring_contest_gform_link
+  let gFormLink = gForm.coloring_contest_gform_link
 
   // If a finalist preparation task fails, then the task resolves to an error object
   let finalists = await Promise.all(finalistObjs.map(f => prepareFinalist(f)))
 
   return {
     rawHtml,
-    gFormLink,
-    finalists
+    finalists,
+    gForm: {
+      link: gFormLink,
+      height: gForm.coloring_contest_gform_height
+    }
   }
 }
 

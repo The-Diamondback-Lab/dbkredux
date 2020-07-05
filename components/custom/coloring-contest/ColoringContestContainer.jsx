@@ -4,8 +4,6 @@ import * as React from 'react'
 import ColoringContestFinalist from './ColoringContestFinalist'
 import * as utils from './utils'
 
-const MAX_ITEMS = 3
-
 /**
  * Main container for the coloring contest page. Constructs rows of finalists from some JSON
  * data.
@@ -42,31 +40,13 @@ export default class ColoringContestContainer extends React.Component {
 
     let { finalists, gFormLink, rawHtml } = this.state.data
 
-    // Gather finalists into groups of 3 (or value of MAX_ITEMS)
-    let groups = finalists.reduce((acc, curr) => {
-      if (acc.length === 0 || acc[acc.length - 1].length === MAX_ITEMS) {
-        acc.push([])
-      }
-
-      acc[acc.length - 1].push(curr)
-
-      return acc
-    }, [])
-
-    // Map the groups into div "row" elements
-    // Each finalist is mapped into the finalist component
-    let rows = groups.map((group, i) =>
-      <div key={`coloring-contest-row-${i}`} className='coloring-contest-row'>
-        {
-          group.map((finalist, j) =>
-            <ColoringContestFinalist
-              key={`coloring-contest-finalist-${i}-${j}`}
-              name={finalist.name}
-              thumbSrc={finalist.thumbnailLink}
-              submissionLink={finalist.submissionLink} />
-          )
-        }
-      </div>
+    let renderedFinalists = finalists.map((finalist, i) =>
+      <ColoringContestFinalist
+        key={`coloring-contest-finalist-${i}`}
+        name={finalist.name}
+        thumbSrc={finalist.thumbnailLink}
+        submissionLink={finalist.submissionLink}
+      />
     )
 
     let gForm = gFormLink == null
@@ -74,7 +54,9 @@ export default class ColoringContestContainer extends React.Component {
       : <iframe title='coloring-contest-form' src={gFormLink} frameBorder='0' marginHeight='0' marginWidth='0'>Loading…</iframe>
     return <div id='coloring-contest-container'>
       <div dangerouslySetInnerHTML={{ __html: rawHtml }} />
-      {rows}
+      <div className='coloring-contest-finalist-set'>
+        {renderedFinalists}
+      </div>
       {gForm}
     </div>
   }

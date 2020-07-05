@@ -76,8 +76,7 @@ export default class ArticlePage extends React.Component {
             alt='Article'
             className='article-image'
             id={'image-' + article.id} src={article.featured_image.article}
-            onLoad={() => (loadImage('image-' + article.id))}
-          />
+            onLoad={() => (loadImage('image-' + article.id))} />
         </div>
         <span className='article-caption' dangerouslySetInnerHTML={{ __html: article.featured_image.caption }} />
       </React.Fragment>
@@ -133,8 +132,7 @@ export default class ArticlePage extends React.Component {
                     : ''
                 }
                 <span
-                  dangerouslySetInnerHTML={{ __html: dateString }}
-                />
+                  dangerouslySetInnerHTML={{ __html: dateString }} />
               </div>
               <div className='addthis_inline_share_toolbox' />
               {featuredImage}
@@ -159,8 +157,7 @@ export default class ArticlePage extends React.Component {
                   username: 'thedbk',
                   width: '100%',
                   height: '606px'
-                }}
-              />
+                }} />
               <br />
               <br />
               <SponsoredLinks />

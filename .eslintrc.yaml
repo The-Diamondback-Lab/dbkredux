@@ -1,0 +1,38 @@
+---
+env:
+  browser: true
+  es6: true
+  node: true
+  jest: true
+  jquery: true
+extends:
+- plugin:jest/recommended
+- plugin:jsx-a11y/recommended
+- plugin:react/recommended
+- standard
+- standard-react
+- standard-jsx
+parser: babel-eslint
+parserOptions:
+  ecmaFeatures:
+    impliedStrict: true
+    jsx: true
+  ecmaVersion: 6
+  sourceType: module
+plugins:
+- jsx-a11y
+root: true
+rules:
+  brace-style:
+  - 1
+  - 1tbs
+  no-warning-comments: 1
+  react/jsx-fragments: 0
+  react/prop-types: 0
+  react/jsx-closing-bracket-location:
+  - 1
+  - after-props
+  react/jsx-closing-tag-location: 0
+  jsx-a11y/anchor-is-valid: 0
+  camelcase: 0
+  space-before-function-paren: 0

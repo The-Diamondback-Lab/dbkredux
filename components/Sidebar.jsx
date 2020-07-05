@@ -75,8 +75,7 @@ const NestedMenu = (props) => {
     <div id={id} className='sidebar-item has-children'>
       <div
         className='sidebar-link'
-        onClick={() => toggle(id)}
-      >
+        onClick={() => toggle(id)} >
         <Link href={data.url}>
           <a><p>{data.title}</p></a>
         </Link>

@@ -93,8 +93,7 @@ class NavigationLinks extends React.Component {
                 href={item.url}
                 key={`link-${i}`}
                 target='_blank'
-                rel='noopener noreferrer'
-              >
+                rel='noopener noreferrer' >
                 {item.title}
               </a>)
           }
@@ -108,24 +107,21 @@ class NavigationLinks extends React.Component {
           className='special-nav disappear-on-mobile'
           href='/donate'
           target='_blank'
-          rel='noopener noreferrer'
-        >
+          rel='noopener noreferrer' >
           Donate
         </a>
         <a
           className='special-nav disappear-on-mobile'
           href='https://dbknews.us9.list-manage.com/subscribe/post?u=589bc6727b2e01217b65a369e&id=bfdcfcc0db'
           target='_blank'
-          rel='noopener noreferrer'
-        >
+          rel='noopener noreferrer' >
           Newsletter
         </a>
         <a
           className='special-nav disappear-on-mobile'
           href='https://issuu.com/thediamondback'
           target='_blank'
-          rel='noopener noreferrer'
-        >
+          rel='noopener noreferrer' >
           Print Edition
         </a>
       </React.Fragment>

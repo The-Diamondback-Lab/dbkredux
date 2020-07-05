@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-closing-bracket-location */
 import * as React from 'react'
 
 import ColoringContestFinalist from './ColoringContestFinalist'
@@ -44,8 +43,7 @@ export default class ColoringContestContainer extends React.Component {
         key={`coloring-contest-finalist-${i}`}
         name={finalist.name}
         thumbSrc={finalist.thumbnailLink}
-        submissionLink={finalist.submissionLink}
-      />
+        submissionLink={finalist.submissionLink} />
     )
 
     let gFormElem = gForm == null

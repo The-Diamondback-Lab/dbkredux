@@ -29,8 +29,7 @@ export default class FeaturedArticle extends React.Component {
         alt='Article'
         className='article-block-image'
         id={`image-${id}`} src={featured_image_link}
-        onLoad={() => loadImage(`image-${id}`)}
-      />
+        onLoad={() => loadImage(`image-${id}`)} />
     </a>)
 
     return (
@@ -43,21 +42,18 @@ export default class FeaturedArticle extends React.Component {
             <Link href={link}>
               <a
                 dangerouslySetInnerHTML={{ __html: title }}
-                className='article-block-title'
-              />
+                className='article-block-title' />
             </Link>
 
             <div className='article-info'>
               <Link href={author.link}>
                 <a
                   dangerouslySetInnerHTML={{ __html: author.name }}
-                  className='article-block-author'
-                />
+                  className='article-block-author' />
               </Link>
               <p
                 dangerouslySetInnerHTML={{ __html: getArticleDateDisplay(this.props.data) }}
-                className='article-block-published'
-              />
+                className='article-block-published' />
             </div>
           </div>
         </figcaption>

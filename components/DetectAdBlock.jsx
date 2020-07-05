@@ -86,11 +86,7 @@ class DetectAdBlock extends Component {
         <div className='message'>
           <h3>Hey, you!</h3>
           <p>Your adblocker is on again.</p>
-          <button
-            onClick={this.handleDetectAdBlocker}
-          >
-                        Check for Adblocker again
-          </button>
+          <button onClick={this.handleDetectAdBlocker}>Check for Adblocker again</button>
         </div>
       </div>
     )

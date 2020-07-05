@@ -121,8 +121,7 @@ const FooterLink = (props) => {
         className={props.classes}
         href={props.url}
         target='_blank'
-        rel='noopener noreferrer'
-      >
+        rel='noopener noreferrer' >
         {props.title}
       </a>
     )

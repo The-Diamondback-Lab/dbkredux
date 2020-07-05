@@ -27,8 +27,7 @@ export default class Article extends React.Component {
             alt='Article'
             className='article-block-image preload'
             id={img_id} src={featured_image_link}
-            onLoad={() => loadImage(img_id)}
-          />
+            onLoad={() => loadImage(img_id)} />
         </LazyLoad>
       </a>
     </Link>)
@@ -39,21 +38,18 @@ export default class Article extends React.Component {
           <Link href={link}>
             <a
               dangerouslySetInnerHTML={{ __html: title }}
-              className='article-block-title'
-            />
+              className='article-block-title' />
           </Link>
 
           <div className='article-info'>
             <Link href={author.link}>
               <a
                 dangerouslySetInnerHTML={{ __html: author.name }}
-                className='article-block-author'
-              />
+                className='article-block-author' />
             </Link>
             <p
               dangerouslySetInnerHTML={{ __html: getArticleDateDisplay(this.props) }}
-              className='article-block-published'
-            />
+              className='article-block-published' />
           </div>
         </div>
       )
@@ -67,21 +63,18 @@ export default class Article extends React.Component {
             <Link href={link}>
               <a
                 dangerouslySetInnerHTML={{ __html: title }}
-                className='article-block-title'
-              />
+                className='article-block-title' />
             </Link>
 
             <div className='article-info'>
               <Link href={author.link}>
                 <a
                   dangerouslySetInnerHTML={{ __html: author.name }}
-                  className='article-block-author'
-                />
+                  className='article-block-author' />
               </Link>
               <p
                 dangerouslySetInnerHTML={{ __html: getArticleDateDisplay(this.props) }}
-                className='article-block-published'
-              />
+                className='article-block-published' />
             </div>
           </div>
         </figcaption>

@@ -31,7 +31,6 @@ export default class ColoringContestContainer extends React.Component {
 
   render() {
     if (!this.state.ready) {
-      // TODO Maybe use a spinner logo?
       return <div>Loading...</div>
     } else if (this.state.error) {
       console.error(this.state.error)

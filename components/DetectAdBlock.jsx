@@ -1,3 +1,5 @@
+// TODO Remove this because this isn't used anywhere?
+
 /**
  *
  * Detect Ad Blockers
@@ -42,10 +44,6 @@ class DetectAdBlock extends Component {
     this.handleDetectAdBlocker()
   }
 
-  componentWillUpdate(nextProps, nextState) {
-    // this.detectAdBlocker();
-  }
-
   handleDetectAdBlocker() {
     const head = document.getElementsByTagName('head')[0]
 
@@ -86,11 +84,7 @@ class DetectAdBlock extends Component {
         <div className='message'>
           <h3>Hey, you!</h3>
           <p>Your adblocker is on again.</p>
-          <button
-            onClick={this.handleDetectAdBlocker}
-          >
-                        Check for Adblocker again
-          </button>
+          <button onClick={this.handleDetectAdBlocker}>Check for Adblocker again</button>
         </div>
       </div>
     )

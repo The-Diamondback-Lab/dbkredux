@@ -101,6 +101,10 @@ export default class Footer extends React.Component {
 
             <Link href='/'><a className='copyright'>&copy; {new Date().getFullYear()} The Diamondback</a></Link>
           </div>
+
+          <div className='notice'>
+            The Diamondback is published by <a href='http://marylandmedia.org/' target='_blank' rel='noopener noreferrer'>Maryland Media, Inc</a> a non-profit corporation
+          </div>
         </div>
       </footer>
     )
@@ -121,8 +125,7 @@ const FooterLink = (props) => {
         className={props.classes}
         href={props.url}
         target='_blank'
-        rel='noopener noreferrer'
-      >
+        rel='noopener noreferrer' >
         {props.title}
       </a>
     )

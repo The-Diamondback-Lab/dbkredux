@@ -43,8 +43,7 @@ class ArticlePreview extends React.Component {
             alt='Article'
             className='article-image'
             id={'image-' + article.id} src={article.featured_image.link}
-            onLoad={() => (loadImage('image-' + article.id))}
-          />
+            onLoad={() => (loadImage('image-' + article.id))} />
         </div>
         <span className='article-caption' dangerouslySetInnerHTML={{ __html: article.featured_image.caption.rendered }} />
       </React.Fragment>

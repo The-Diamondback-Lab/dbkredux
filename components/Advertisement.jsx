@@ -44,7 +44,14 @@ export default class Advertisement extends React.Component {
       : (
         <LazyLoad>
           <div className={`advertisement ad-${mode}`} id={`ad-${path}`}>
-            <AdSlot adUnit={path} sizes={[size]} onSlotRender={eventData => { if (eventData.event.isEmpty) { document.getElementById('ad-' + path).style.display = 'none' } }} />
+            <AdSlot
+              adUnit={path}
+              sizes={[size]}
+              onSlotRender={eventData => {
+                if (eventData.event.isEmpty) {
+                  document.getElementById('ad-' + path).style.display = 'none'
+                }
+              }} />
           </div>
         </LazyLoad>
       )

@@ -30,8 +30,7 @@ export default class LoadedArticle extends React.Component {
             className='picture preload'
             id={`image-${id}`}
             src={featured_image_link}
-            onLoad={() => loadImage('image-' + id)}
-          />
+            onLoad={() => loadImage('image-' + id)} />
         </LazyLoad>
       </a>
     </Link>
